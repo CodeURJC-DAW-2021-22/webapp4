@@ -29,31 +29,31 @@
 https://trello.com/b/CO5xGXpN/daw-2021-2022
 
  ## **Temática** 
- * Tienda de compra/venta de productos de segunda mano
+ * Tienda de compra/venta de productos de segunda mano.
 
 ## Aspectos principales
 
 ### Entidades
 * **Usuarios:** Podremos encontrar tres tipos de usuarios, no registrados, registrados y administradores.
-* **Anuncio:** Está relacionado con los usuarios, ya que estos serán los que podrán poner articulos a la venta o comprar los de otros usuarios.
-* **Favoritos:** Está relacionado con los usuarios, ya que estos podrán poner en una lista de favoritos los articulos que mas le gusten de los ofertados.
-* **Categorias:** Podremos encontrar las distintas categorías de los productos que se encuentran anunciados.
+* **Anuncio:** Está relacionado con los usuarios, ya que estos serán los que podrán poner artículos a la venta o comprar los de otros usuarios.
+* **Favoritos:** Está relacionado con los usuarios, ya que estos podrán poner en una lista de favoritos los artículos que más le gusten de los ofertados.
+* **Categorías:** Podremos encontrar las distintas categorías de los productos que se encuentran anunciados.
 
 ### Permisos de los usuarios
-* **Usuarios no registrados:** Podrán ver los articulos puestos a la venta, pero no podrán realizar ni compras ni ventas
-* **Usuarios registrados:** Podrán ver los articulos puestos a la venta, y además podrán vender un producto o comprar el de otro usuario
-* **Administradores:** Podrán ver los articulos puestos a la venta, los usuarios registrados y podrán eliminar productos y usuarios
+* **Usuarios no registrados:** Podrán ver los artículos puestos a la venta, pero no podrán realizar ni compras ni ventas.
+* **Usuarios registrados:** Podrán ver los articulos puestos a la venta, y además podrán vender un producto o comprar el de otro usuario.
+* **Administradores:** Podrán ver los articulos puestos a la venta, los usuarios registrados y podrán eliminar productos y usuarios.
 
-### Imagenes
-* **Imagenes de perfil:** Los usuarios registrados y administradores podrán establecer una imagen de perfil
-* **Imagenes de productos:** Los usuarios registrados podrán subir imagenes junto a los productos que pongan a la venta
+### Imágenes
+* **Imágenes de perfil:** Los usuarios registrados y administradores podrán establecer una imagen de perfil.
+* **Imágenes de productos:** Los usuarios registrados podrán subir imágenes junto a los productos que pongan a la venta.
 
 ### Gráficos
 * **Gráfica visitas anuncio:** se podrá consultar, en cada anuncio, el número de visitas, a lo largo del tiempo, que ha tenido el anuncio.
 
 ### Tecnología complementaria
-* **Envío de correos electronicos:** Podremos comunicarnos con los usuarios a través del uso del correo electronico para realizar la compra-venta
-* **Localizacion por mapas:** Podremos ver la ubicación aproximada del producto que queremos adquirir
+* **Envío de correos electrónicos:** Podremos comunicarnos con los usuarios a través del uso del correo electrónico para realizar la compra-venta.
+* **Localización por mapas:** Podremos ver la ubicación aproximada del producto que queremos adquirir.
 
 ### Algoritmo o consulta avanzada
 * La web recomendará a los usuarios productos similares a los adquiridos anteriormente
