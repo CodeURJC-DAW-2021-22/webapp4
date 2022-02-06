@@ -34,10 +34,10 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 ## Aspectos principales
 
 ### Entidades
-* **Usuarios:** Podremos encontrar tres tipos de usuarios, no registrados, registrados y administradores
-* **Compra-Venta:** Está relacionado con los usuarios, ya que estos serán los que podrán poner articulos a la venta o comprar los de otros usuarios
-* **Favoritos:** Está relacionado con los usuarios, ya que estos podrán poner en una lista de favoritos los articulos que mas le gusten de los ofertados
-* **Valoraciones:** Está relacionado con los usuarios, estos podrán valorar a los usuarios para puntuar como de bueno ha sido el trato con ellos
+* **Usuarios:** Podremos encontrar tres tipos de usuarios, no registrados, registrados y administradores.
+* **Anuncio:** Está relacionado con los usuarios, ya que estos serán los que podrán poner articulos a la venta o comprar los de otros usuarios.
+* **Favoritos:** Está relacionado con los usuarios, ya que estos podrán poner en una lista de favoritos los articulos que mas le gusten de los ofertados.
+* **Categorias:** Podremos encontrar las distintas categorías de los productos que se encuentran anunciados.
 
 ### Permisos de los usuarios
 * **Usuarios no registrados:** Podrán ver los articulos puestos a la venta, pero no podrán realizar ni compras ni ventas
@@ -49,12 +49,11 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 * **Imagenes de productos:** Los usuarios registrados podrán subir imagenes junto a los productos que pongan a la venta
 
 ### Gráficos
-
+* **Gráfica visitas anuncio: se podrá consultar, en cada anuncio, el número de visitas, a lo largo del tiempo, que ha tenido el anuncio.
 
 ### Tecnología complementaria
 * **Envío de correos electronicos:** Podremos comunicarnos con los usuarios a través del uso del correo electronico para realizar la compra-venta
 * **Localizacion por mapas:** Podremos ver la ubicación aproximada del producto que queremos adquirir
-* **Chat de usuarios:** Podremos comunicarnos con otros usuarios mediante un chat privado para realizar la compra-venta
 
 ### Algoritmo o consulta avanzada
 * La web recomendará a los usuarios productos similares a los adquiridos anteriormente
