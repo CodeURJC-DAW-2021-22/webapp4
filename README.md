@@ -1,4 +1,4 @@
-![](../../Downloads/Agile_Team.png)
+![](img/LogoTeam.png)
 ### "Nos gusta ser libres a la vez que responsables y el trabajo bien hecho"
 
 ### Equipo de desarrollo - Grupo 4
@@ -14,7 +14,7 @@
 https://trello.com/b/CO5xGXpN/daw-2021-2022
 
 ## APP: WALLYPOP
-![](../../Desktop/img7.jpg)
+![](img/LogoAPP.jpg)
 
 ### "En busca de Wally"
 
