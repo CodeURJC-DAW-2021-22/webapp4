@@ -28,29 +28,36 @@
 
 https://trello.com/b/CO5xGXpN/daw-2021-2022
 
- ### **Temática**: tienda de compra/venta de productos de segunda mano
- ### **Enfoque a grandes rasgos**:
-* Vamos a hacer una **tienda de segunda mano** que los usuarios puedan comprar y vender artículos y mantener una conversación mediante un chat o mediante el contacto por correo electrónico y nos ahorramos el chat.
-
-* Que se puedan guardar artículos en favoritos y demás.
-
-* Como **algoritmo avanzado** le tendremos que recomendar al usuario algo. (Jesús: Que yo diría que fuesen artículos de la misma categoría que de los que ha comprado anteriormente)
-
-* Y como **extra** ya estaría metido el envío de correos electrónicos en el contacto o si al final es un chat pues podríamos poner la ubicación del usuario con la api de maps
+ ## **Temática** 
+ * Tienda de compra/venta de productos de segunda mano
 
 ## Aspectos principales
 
 ### Entidades
+* **Usuarios:** Podremos encontrar tres tipos de usuarios, no registrados, registrados y administradores
+* **Compra-Venta:** Está relacionado con los usuarios, ya que estos serán los que podrán poner articulos a la venta o comprar los de otros usuarios
+* **Favoritos:** Está relacionado con los usuarios, ya que estos podrán poner en una lista de favoritos los articulos que mas le gusten de los ofertados
+* **Valoraciones:** Está relacionado con los usuarios, estos podrán valorar a los usuarios para puntuar como de bueno ha sido el trato con ellos
 
 ### Permisos de los usuarios
+* **Usuarios no registrados:** Podrán ver los articulos puestos a la venta, pero no podrán realizar ni compras ni ventas
+* **Usuarios registrados:** Podrán ver los articulos puestos a la venta, y además podrán vender un producto o comprar el de otro usuario
+* **Administradores:** Podrán ver los articulos puestos a la venta, los usuarios registrados y podrán eliminar productos y usuarios
 
 ### Imagenes
+* **Imagenes de perfil:** Los usuarios registrados y administradores podrán establecer una imagen de perfil
+* **Imagenes de productos:** Los usuarios registrados podrán subir imagenes junto a los productos que pongan a la venta
 
 ### Gráficos
 
-### Tecnología complementaria
 
-### Algoritmo
+### Tecnología complementaria
+* **Envío de correos electronicos:** Podremos comunicarnos con los usuarios a través del uso del correo electronico para realizar la compra-venta
+* **Localizacion por mapas:** Podremos ver la ubicación aproximada del producto que queremos adquirir
+* **Chat de usuarios:** Podremos comunicarnos con otros usuarios mediante un chat privado para realizar la compra-venta
+
+### Algoritmo o consulta avanzada
+* La web recomendará a los usuarios productos similares a los adquiridos anteriormente
 
 ## Licencia
 [APACHE](https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/26b1d22bc7625b0dd8cdb3a3b8eaf7bb5425833b/LICENSE)
