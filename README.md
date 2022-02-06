@@ -49,7 +49,7 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 * **Imagenes de productos:** Los usuarios registrados podrán subir imagenes junto a los productos que pongan a la venta
 
 ### Gráficos
-* **Gráfica visitas anuncio: se podrá consultar, en cada anuncio, el número de visitas, a lo largo del tiempo, que ha tenido el anuncio.
+* **Gráfica visitas anuncio:** se podrá consultar, en cada anuncio, el número de visitas, a lo largo del tiempo, que ha tenido el anuncio.
 
 ### Tecnología complementaria
 * **Envío de correos electronicos:** Podremos comunicarnos con los usuarios a través del uso del correo electronico para realizar la compra-venta
