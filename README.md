@@ -36,13 +36,13 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 ### Entidades
 * **Usuarios:** Podremos encontrar tres tipos de usuarios, no registrados, registrados y administradores.
 * **Anuncio:** Está relacionado con los usuarios, ya que estos serán los que podrán poner artículos a la venta o comprar los de otros usuarios.
-* **Reportes:** Los usuarios pueden relizar reportes de anuncios o de usuarios fraudulentos. Para ello tendrán un cuadro de diálogo en el que especificar el motivo, un email de contacto y subir alguna imagen como prueba del reporte.
+* **Reportes:** Los usuarios pueden realizar reportes de anuncios o de usuarios fraudulentos. Para ello tendrán un cuadro de diálogo en el que especificar el motivo, un email de contacto y subir alguna imagen como prueba del reporte.
 * **Categorías:** Podremos encontrar las distintas categorías de los productos que se encuentran anunciados.
 
 ### Permisos de los usuarios
 * **Usuarios no registrados:** Podrán ver los artículos puestos a la venta, pero no podrán realizar ni compras ni ventas.
-* **Usuarios registrados:** Podrán ver los articulos puestos a la venta, y además podrán vender un producto o comprar el de otro usuario.
-* **Administradores:** Podrán ver los articulos puestos a la venta, los usuarios registrados y podrán eliminar productos y usuarios.
+* **Usuarios registrados:** Podrán ver los artículos puestos a la venta, y además podrán vender un producto o comprar el de otro usuario.
+* **Administradores:** Podrán ver los artículos puestos a la venta, los usuarios registrados y podrán eliminar productos y usuarios.
 
 ### Imágenes
 * **Imágenes de perfil:** Los usuarios registrados y administradores podrán establecer una imagen de perfil.
@@ -50,7 +50,7 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 
 ### Gráficos
 * **Gráfica visitas anuncio:** se podrá consultar, en cada anuncio, el número de visitas, a lo largo del tiempo, que ha tenido el anuncio.
-* **Gráfico peores usuarios:** (visible para el administrador) se podrá consultar que usuarios con más reportes recibidos y en el caso de que sean malos usuarios se pueda suspender su cuenta.
+* **Gráfico peores usuarios:** (visible para el administrador) se podrá consultar que usuarios han recibido más reportes y en el caso de que sean malos usuarios se pueda suspender su cuenta.
 
 ### Tecnología complementaria
 * **Envío de correos electrónicos:** Podremos comunicarnos con los usuarios a través del uso del correo electrónico para realizar la compra-venta.
