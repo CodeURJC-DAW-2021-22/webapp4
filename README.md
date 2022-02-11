@@ -36,7 +36,7 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 ### Entidades
 * **Usuarios:** Podremos encontrar tres tipos de usuarios, no registrados, registrados y administradores.
 * **Anuncio:** Está relacionado con los usuarios, ya que estos serán los que podrán poner artículos a la venta o comprar los de otros usuarios.
-* **Favoritos:** Está relacionado con los usuarios, ya que estos podrán poner en una lista de favoritos los artículos que más le gusten de los ofertados.
+* **Reportes:** Los usuarios pueden relizar reportes de anuncios o de usuarios fraudulentos. Para ello tendrán un cuadro de diálogo en el que especificar el motivo, un email de contacto y subir alguna imagen como prueba del reporte.
 * **Categorías:** Podremos encontrar las distintas categorías de los productos que se encuentran anunciados.
 
 ### Permisos de los usuarios
@@ -50,12 +50,14 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 
 ### Gráficos
 * **Gráfica visitas anuncio:** se podrá consultar, en cada anuncio, el número de visitas, a lo largo del tiempo, que ha tenido el anuncio.
+* **Gráfico peores usuarios:** (visible para el administrador) se podrá consultar que usuarios con más reportes recibidos y en el caso de que sean malos usuarios se pueda suspender su cuenta.
 
 ### Tecnología complementaria
 * **Envío de correos electrónicos:** Podremos comunicarnos con los usuarios a través del uso del correo electrónico para realizar la compra-venta.
 * **Localización por mapas:** Podremos ver la ubicación aproximada del producto que queremos adquirir.
 
 ### Algoritmo o consulta avanzada
+* Búsqueda de artículos por una o varias etiquetas de categorías
 * La web recomendará a los usuarios productos similares a los adquiridos anteriormente
 
 ## Licencia
