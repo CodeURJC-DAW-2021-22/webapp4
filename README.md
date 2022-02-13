@@ -77,15 +77,15 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 
 ![](Screenshots%20Fase%201/adcommercial.jpg)
 
-## Añadir categoria
+## Añadir categoría
 
-### El administrador podrá añadir una nueva categoria visible para el resto de usuarios
+### El administrador podrá añadir una nueva categoría visible para el resto de usuarios
 
 ![](Screenshots%20Fase%201/categoriaAdmin.jpg)
 
-## Listado de categorias
+## Listado de categorías
 
-### El administrador podrá visualizar las categorias añadidas por él previamente 
+### El administrador podrá visualizar las categorías añadidas por él previamente 
 
 ![](Screenshots%20Fase%201/CategoriaAdminListado.jpg)
 
@@ -150,9 +150,15 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 
 ![](Screenshots%20Fase%201/post.jpg)
 
-## Visualizar Reporte
+## Listado de reportes
 
 ### El administrador podrá consultar las denuncias recibidas por los usuarios
+
+![](Screenshots%20Fase%201/reporteAdmin.jpg)
+
+## Visualizar reporte
+
+### El administrador podrá consultar las pruebas adjuntas a la denuncia seleccionada
 
 ![](Screenshots%20Fase%201/VisualizarReporte.jpg)
 
