@@ -49,7 +49,7 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 * **Imágenes de productos:** Los usuarios registrados podrán subir imágenes junto a los productos que pongan a la venta.
 
 ### Gráficos
-* **Gráfica visitas anuncio:** se podrá consultar, en cada anuncio, el número de visitas, a lo largo del tiempo, que ha tenido el anuncio.
+* **Gráfica ranking usuarios con más ventas:** se podrá consultar los usuarios que más ventas han realizado.
 * **Gráfico peores usuarios:** (visible para el administrador) se podrá consultar que usuarios han recibido más reportes y en el caso de que sean malos usuarios se pueda suspender su cuenta.
 
 ### Tecnología complementaria
