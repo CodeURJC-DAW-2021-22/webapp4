@@ -67,70 +67,108 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 
 ## Pantalla principal
 
+### Esta será la primera pantalla que vean los usuarios al acceder a la web
+
 ![](Screenshots%20Fase%201/Index.jpg)
 
 ## Añadir producto
+
+### Los usuarios registrados podrán subir un producto visible por el resto de usuarios
 
 ![](Screenshots%20Fase%201/adcommercial.jpg)
 
 ## Añadir categoria
 
+### El administrador podrá añadir una nueva categoria visible para el resto de usuarios
+
 ![](Screenshots%20Fase%201/categoriaAdmin.jpg)
 
 ## Listado de categorias
+
+### El administrador podrá visualizar las categorias añadidas por él previamente 
 
 ![](Screenshots%20Fase%201/CategoriaAdminListado.jpg)
 
 ## Recuperar contraseña
 
+### Los usuarios podrán recuperar la contraseña de su cuenta en caso de olvidarla
+
 ![](Screenshots%20Fase%201/Coderebootpass.jpg)
 
 ## Listado de productos
+
+### Los usuarios podrán visualizar todos los productos subidos subidos que no estén vendidos
 
 ![](Screenshots%20Fase%201/Commercial.jpg)
 
 ## Formulario de denuncias
 
+### Los usuarios podrán rellenar un formulario de denuncia en el caso de considerar un producto inapropiado
+
 ![](Screenshots%20Fase%201/formularioReporte.jpg)
 
 ## Gráfico
+
+### Se podrá ver un grafico con el ranking de usuarios que mas han vendido tanto mensualmente como su histórico
 
 ![](Screenshots%20Fase%201/grafico.jpg)
 
 ## Pantalla de ayuda
 
+### Los usuarios podrán consultar una pantalla de ayuda en caso de tener alguna duda
+
 ![](Screenshots%20Fase%201/help.jpg)
 
 ## Iniciar sesión
+
+### Los usuarios registrados y el administrador podrán iniciar sesión para acceder a su cuenta
 
 ![](Screenshots%20Fase%201/login.jpg)
 
 ## Registrarse
 
+### Los usuarios no registrados podrán hacerse una cuenta en la web
+
 ![](Screenshots%20Fase%201/newaccount.jpg)
 
 ## Perfil usuario
+
+### Pantalla que verán los usuarios registrados
 
 ![](Screenshots%20Fase%201/perfil.jpg)
 
 ## Perfil administrador
 
+### Pantalla que verá el administrador
+
 ![](Screenshots%20Fase%201/perfilAdministrador.jpg)
 
 ## Publicación
+
+### Pantalla que podrán ver los usuarios con la información del producto seleccionado
+### Los usuarios no registrados verán solo los botones verdes, al igual que los registrados si el producto es de otro usuario o todos los botones si es un artículo propio, al igual que el administrador
 
 ![](Screenshots%20Fase%201/post.jpg)
 
 ## Visualizar Reporte
 
+### El administrador podrá consultar las denuncias recibidas por los usuarios
+
 ![](Screenshots%20Fase%201/VisualizarReporte.jpg)
 
 ## Tus productos
+
+### Los usuarios podrán ver los productos que han subido a su perfil
 
 ![](Screenshots%20Fase%201/yourcommercial.jpg)
 
 ## Tus productos vendidos
 
+### Los usuarios podrán ver los productos que han subido a su perfil y que ya se hayan vendido
+
 ![](Screenshots%20Fase%201/yourcommercialsold.jpg)
 
 ## Diagrama de navegación
+
+![](Screenshots%20Fase%201/DiagramaNavegacion.jpg)
+
