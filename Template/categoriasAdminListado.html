@@ -87,7 +87,7 @@
 		</form>
 	</section>
 	<!-- ====== Contenido de pagina ======-->
-	<section class="full-width section">
+	<section class="full-width section"> 
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-4 col-md-3">
@@ -119,13 +119,13 @@
 							<div class="list-group-item text-center">
 								<small>Desde Junio 2016</small>
 							</div>
-						  	<a href="perfil.html" class="list-group-item active">
+						  	<a href="perfil.html" class="list-group-item">
 						  		<i class="fa fa-user fa-fw" aria-hidden="true"></i> TU PERFIL
 						  	</a>
 						  	<!-- <a href="config.html" class="list-group-item">
 						  		<i class="fa fa-cogs fa-fw" aria-hidden="true"></i> CONFIGURACIÓN
 						  	</a> -->
-							<a href="categoriasAdmin.html" class="list-group-item">
+							<a href="categoriasAdmin.html" class="list-group-item active">
 								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN CATEGORÍAS
 							</a>
 							<a href="reporteAdmin.html" class="list-group-item">
@@ -141,59 +141,143 @@
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-8 col-md-9">
+					<!-- Contenido-->
+					<div class="col-xs-12 col-sm-8 col-md-9">
 					<div class="full-width bar-info-user">
-						<i class="fa fa-user fa-fw" aria-hidden="true"></i>
-						<div>TU PERFIL</div>
+						<i class="fa fa-object-group fa-fw" aria-hidden="true"></i>
+						<div>CATEGORÍAS</div>
 					</div>
 					<!-- Contenido-->
-					<div class="full-width" style="padding: 15px; border: 1px solid #E1E1E1;">
-						<form action="">
-							<p class="text-muted text-center">Seleciona una image</p>
-							<div class="form-group">
-							    <div class="custom-input-file">
-							    	<input type="file" size="1" class="input-file" />
-								    <i class="fa fa-picture-o" aria-hidden="true"></i>
-								</div>
-								<br>
-								<p  class="text-muted text-center archivo">Archivo...</p>
-							</div>
-							<br><br><br>
-							<div class="form-group">
-								<label>Nombre</label>
-								<input type="text" placeholder="Nombre" class="form-control">
-							</div>
-							<div class="form-group">
-								<input type="text" placeholder="¿Cuál es tu teléfono?" class="form-control">
-							</div>
-							<div class="form-group">
-								<input type="email" placeholder="Email" class="form-control">
-							</div>
-							<div class="form-group">
-								<label>Email</label>
-								<input type="email" placeholder="Email" class="form-control">
-							</div>
-							<div class="form-group">
-								<label>Contraseña</label>
-								<a href="#!" class="btn btn-default btn-xs pull-right btn-dropdown-conatiner" data-drop-cont=".perfil-password">
-									Mostrar/Ocultar <i class="fa fa-sort" aria-hidden="true"></i>
-								</a>
-								<div class="full-width perfil-password">
-									<input type="password" placeholder="Contraseña" class="form-control">
-									<br>
-									<input type="password" placeholder="Nueva Contraseña" class="form-control">
-									<br>
-									<input type="password" placeholder="Confirmar Contraseña" class="form-control">
-								</div>
-							</div>
-							<p class="text-center">
-								<button class="btn btn-danger">GUARDAR</button>
-							</p>
-						</form>
+					<div class="full-widht">
+						<i class="fa fa-th-large btn btn-default hidden-xs btn-change-post"></i>
+						<i class="fa fa-refresh btn btn-default"></i>
+						<i class="fa fa-angle-right btn btn-default"></i>
 					</div>
-				</div>
+					<div class="full-width container-post">
+						<div class="full-width post">
+							<figure class="full-width post-img">
+								<!-- Tamaño de la imagen 248x186 pixeles-->
+								<img src="assets/img/post.jpg" alt="" class="img-responsive">
+							</figure>
+							<div class="full-width post-info">
+								<p class="full-width post-info-price">AUTOMÓVILES</p> <!-- QUITAR info price -->
+								<span class="post-info-zone">Lápiz</span> <!-- QUITAR info zone -->
+								<span class="post-info-date">x</span> <!-- QUITAR info date -->
+								<!-- <i class="fa fa-heart-o post-info-like"></i> -->
+							</div>
+						</div>
+						<div class="full-width post">
+							<figure class="full-width post-img">
+								<!-- Tamaño de la imagen 248x186 pixeles-->
+								<img src="assets/img/post.jpg" alt="" class="img-responsive">
+							</figure>
+							<div class="full-width post-info">
+								<p class="full-width post-info-price">MOBILIARIO</p> <!-- QUITAR info price -->
+								<span class="post-info-zone">Lápiz</span> <!-- QUITAR info zone -->
+								<span class="post-info-date">x</span> <!-- QUITAR info date -->
+								<!-- <i class="fa fa-heart-o post-info-like"></i> -->
+							</div>
+						</div>
+						<div class="full-width post">
+							<figure class="full-width post-img">
+								<!-- Tamaño de la imagen 248x186 pixeles-->
+								<img src="assets/img/post.jpg" alt="" class="img-responsive">
+							</figure>
+							<div class="full-width post-info">
+								<p class="full-width post-info-price">JARDÍN</p> <!-- QUITAR info price -->
+								<span class="post-info-zone">Lápiz</span> <!-- QUITAR info zone -->
+								<span class="post-info-date">x</span> <!-- QUITAR info date -->
+								<!-- <i class="fa fa-heart-o post-info-like"></i> -->
+							</div>
+						</div>
+						<div class="full-width post">
+							<figure class="full-width post-img">
+								<!-- Tamaño de la imagen 248x186 pixeles-->
+								<img src="assets/img/post.jpg" alt="" class="img-responsive">
+							</figure>
+							<div class="full-width post-info">
+								<p class="full-width post-info-price">MASCOTAS</p> <!-- QUITAR info price -->
+								<span class="post-info-zone">Lápiz</span> <!-- QUITAR info zone -->
+								<span class="post-info-date">x</span> <!-- QUITAR info date -->
+								<!-- <i class="fa fa-heart-o post-info-like"></i> -->
+							</div>
+						</div>
+						<div class="full-width post">
+							<figure class="full-width post-img">
+								<!-- Tamaño de la imagen 248x186 pixeles-->
+								<img src="assets/img/post.jpg" alt="" class="img-responsive">
+							</figure>
+							<div class="full-width post-info">
+								<p class="full-width post-info-price">ELECTRÓNICA</p> <!-- QUITAR info price -->
+								<span class="post-info-zone">Lápiz</span> <!-- QUITAR info zone -->
+								<span class="post-info-date">x</span> <!-- QUITAR info date -->
+								<!-- <i class="fa fa-heart-o post-info-like"></i> -->
+							</div>
+						</div>
+						<div class="full-width post">
+							<figure class="full-width post-img">
+								<!-- Tamaño de la imagen 248x186 pixeles-->
+								<img src="assets/img/post.jpg" alt="" class="img-responsive">
+							</figure>
+							<div class="full-width post-info">
+								<p class="full-width post-info-price">AUTOMÓVILES</p> <!-- QUITAR info price -->
+								<span class="post-info-zone">Lápiz</span> <!-- QUITAR info zone -->
+								<span class="post-info-date">x</span> <!-- QUITAR info date -->
+								<!-- <i class="fa fa-heart-o post-info-like"></i> -->
+							</div>
+						</div>
+						<div class="full-width post">
+							<figure class="full-width post-img">
+								<!-- Tamaño de la imagen 248x186 pixeles-->
+								<img src="assets/img/post.jpg" alt="" class="img-responsive">
+							</figure>
+							<div class="full-width post-info">
+								<p class="full-width post-info-price">HOGAR</p> <!-- QUITAR info price -->
+								<span class="post-info-zone">Lápiz</span> <!-- QUITAR info zone -->
+								<span class="post-info-date">x</span> <!-- QUITAR info date -->
+								<!-- <i class="fa fa-heart-o post-info-like"></i> -->
+							</div>
+						</div>
+						<div class="full-width post">
+							<figure class="full-width post-img">
+								<!-- Tamaño de la imagen 248x186 pixeles-->
+								<img src="assets/img/post.jpg" alt="" class="img-responsive">
+							</figure>
+							<div class="full-width post-info">
+								<p class="full-width post-info-price">TEXTILES</p> <!-- QUITAR info price -->
+								<span class="post-info-zone">Lápiz</span> <!-- QUITAR info zone -->
+								<span class="post-info-date">x</span> <!-- QUITAR info date -->
+								<!-- <i class="fa fa-heart-o post-info-like"></i> -->
+							</div>
+						</div>
+						<div class="full-width post">
+							<figure class="full-width post-img">
+								<!-- Tamaño de la imagen 248x186 pixeles-->
+								<img src="assets/img/post.jpg" alt="" class="img-responsive">
+							</figure>
+							<div class="full-width post-info">
+								<p class="full-width post-info-price">HERRAMIENTAS</p> <!-- QUITAR info price -->
+								<span class="post-info-zone">Lápiz</span> <!-- QUITAR info zone -->
+								<span class="post-info-date">x</span> <!-- QUITAR info date -->
+								<!-- <i class="fa fa-heart-o post-info-like"></i> -->
+							</div>
+						</div>
+						<div class="full-width post">
+							<figure class="full-width post-img">
+								<!-- Tamaño de la imagen 248x186 pixeles-->
+								<img src="assets/img/post.jpg" alt="" class="img-responsive">
+							</figure>
+							<div class="full-width post-info">
+								<p class="full-width post-info-price">PAPELERÍA</p> <!-- QUITAR info price -->
+								<span class="post-info-zone">Lápiz</span> <!-- QUITAR info zone -->
+								<span class="post-info-date">x</span> <!-- QUITAR info date -->
+								<!-- <i class="fa fa-heart-o post-info-like"></i> -->
+							</div>
+						</div>
 			</div>
 		</div>
 	</section>
+
 	<!-- ====== Pie de pagina ======-->
 	<footer class="full-width footer">
 		<div class="container">
