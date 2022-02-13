@@ -62,3 +62,75 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 
 ## Licencia
 [APACHE](https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/26b1d22bc7625b0dd8cdb3a3b8eaf7bb5425833b/LICENSE)
+
+# Fase 1
+
+## Pantalla principal
+
+![](Screenshots%20Fase%201/Index.jpg)
+
+## Añadir producto
+
+![](Screenshots%20Fase%201/adcommercial.jpg)
+
+## Añadir categoria
+
+![](Screenshots%20Fase%201/categoriaAdmin.jpg)
+
+## Listado de categorias
+
+![](Screenshots%20Fase%201/CategoriaAdminListado.jpg)
+
+## Recuperar contraseña
+
+![](Screenshots%20Fase%201/Coderebootpass.jpg)
+
+## Listado de productos
+
+![](Screenshots%20Fase%201/Commercial.jpg)
+
+## Formulario de denuncias
+
+![](Screenshots%20Fase%201/formularioReporte.jpg)
+
+## Gráfico
+
+![](Screenshots%20Fase%201/grafico.jpg)
+
+## Pantalla de ayuda
+
+![](Screenshots%20Fase%201/help.jpg)
+
+## Iniciar sesión
+
+![](Screenshots%20Fase%201/login.jpg)
+
+## Registrarse
+
+![](Screenshots%20Fase%201/newaccount.jpg)
+
+## Perfil usuario
+
+![](Screenshots%20Fase%201/perfil.jpg)
+
+## Perfil administrador
+
+![](Screenshots%20Fase%201/perfilAdministrador.jpg)
+
+## Publicación
+
+![](Screenshots%20Fase%201/post.jpg)
+
+## Visualizar Reporte
+
+![](Screenshots%20Fase%201/VisualizarReporte.jpg)
+
+## Tus productos
+
+![](Screenshots%20Fase%201/yourcommercial.jpg)
+
+## Tus productos vendidos
+
+![](Screenshots%20Fase%201/yourcommercialsold.jpg)
+
+## Diagrama de navegación
