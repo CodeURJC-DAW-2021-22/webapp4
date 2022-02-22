@@ -31,34 +31,31 @@ public class Article_Category {
 	@NonNull
 	@Column(name = "ID_CATEGORY")
 	private List<Category> CATEGORIES;
-	
-	
-	public Article_Category(Article aRTICLE, Category cATEGORY) {
+
+	public Article_Category(List<Article> aRTICLES, List<Category> cATEGORIES) {
 		super();
-		ARTICLE = aRTICLE;
-		CATEGORY = cATEGORY;
+		ARTICLES = aRTICLES;
+		CATEGORIES = cATEGORIES;
 	}
-	
+
 	public long getID_ARTICLE_CATEGORY() {
 		return ID_ARTICLE_CATEGORY;
 	}
-	public void setID_ARTICLE_CATEGORY(long iD_ARTICLE_CATEGORY) {
-		ID_ARTICLE_CATEGORY = iD_ARTICLE_CATEGORY;
+
+	public List<Article> getARTICLES() {
+		return ARTICLES;
 	}
-	public Article getARTICLE() {
-		return ARTICLE;
+
+	public void setARTICLES(List<Article> aRTICLES) {
+		ARTICLES = aRTICLES;
 	}
-	public void setARTICLE(Article aRTICLE) {
-		ARTICLE = aRTICLE;
+
+	public List<Category> getCATEGORIES() {
+		return CATEGORIES;
 	}
-	public Category getCATEGORY() {
-		return CATEGORY;
+
+	public void setCATEGORIES(List<Category> cATEGORIES) {
+		CATEGORIES = cATEGORIES;
 	}
-	public void setCATEGORY(Category cATEGORY) {
-		CATEGORY = cATEGORY;
-	}
-	
-	
-	
 	
 }
