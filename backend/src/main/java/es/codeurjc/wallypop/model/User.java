@@ -42,15 +42,13 @@ public class User {
 	@Column(name = "IS_ADMIN")
  	private boolean IS_ADMIN = false;
 
-	public User(String fULL_NAME, String pASSWORD, String eMAIL, String tEL, int n_SOLD, int n_SELL,
+	public User(String fULL_NAME, String pASSWORD, String eMAIL, String tEL,
 			boolean iS_ADMIN) {
 		super();
 		FULL_NAME = fULL_NAME;
 		PASSWORD = pASSWORD;
 		EMAIL = eMAIL;
 		TEL = tEL;
-		N_SOLD = n_SOLD;
-		N_SELL = n_SELL;
 		IS_ADMIN = iS_ADMIN;
 	}
 
