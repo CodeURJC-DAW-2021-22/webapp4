@@ -5,7 +5,7 @@ import javax.persistence.*;
 import org.springframework.lang.NonNull;
 
 @Entity
-@Table(name = "Favorites")
+@Table(name = "FAVORITES")
 public class Favorites {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

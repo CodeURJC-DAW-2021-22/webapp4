@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 import org.springframework.lang.NonNull;
 
+@Entity
+@Table(name = "REPORT")
 public class Report {
 
 	@Id
