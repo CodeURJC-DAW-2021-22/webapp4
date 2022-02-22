@@ -9,7 +9,7 @@ import org.springframework.lang.NonNull;
 public class User {
 
 	@Id
- 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+ 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NonNull
 	@Column(name = "ID_USER")
  	private Long ID_USER;

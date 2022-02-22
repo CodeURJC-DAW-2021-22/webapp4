@@ -18,7 +18,7 @@ public class Favorites {
 	@JoinColumn(name = "ID_USER")
 	private User USER;
 	
-	@OneToOne(mappedBy = "ID_ARTICLE")
+	@OneToOne
 	@NonNull
 	@JoinColumn(name = "ID_ARTICLE")
 	private Article ARTICLE;

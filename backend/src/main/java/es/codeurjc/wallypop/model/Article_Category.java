@@ -22,12 +22,12 @@ public class Article_Category {
 	@Column(name = "ID_ARTICLE_CATEGORY")
 	private long ID_ARTICLE_CATEGORY;
 	
-	@ManyToMany(mappedBy = "ID_ARTICLE")
+	@ManyToMany
 	@NonNull
 	@Column(name = "ID_ARTICLE")
 	private List<Article> ARTICLES;
 	
-	@ManyToMany(mappedBy = "ID_CATEGORY")
+	@ManyToMany
 	@NonNull
 	@Column(name = "ID_CATEGORY")
 	private List<Category> CATEGORIES;
