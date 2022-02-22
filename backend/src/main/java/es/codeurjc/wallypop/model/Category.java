@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
@@ -18,7 +19,7 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NonNull
-	@Column(name = "ID_CATEGORY")
+	@JoinColumn(name = "ID_CATEGORY")
 	private long ID_CATEGORY;
 	
 	@NonNull

@@ -12,15 +12,15 @@ import org.springframework.lang.NonNull;
 public class Article {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
  	@NonNull
  	@Column(name = "ID_ARTICLE")
  	private int ID_ARTICLE;
 
  	@ManyToOne
  	@NonNull
- 	@Column(name = "ID_USER")
- 	private int ID_USER;
+ 	@JoinColumn(name = "ID_USER")
+ 	private User USER;
  	
  	@NonNull
  	@Column(name = "TITLE")
@@ -52,9 +52,9 @@ public class Article {
  	@Column(name = "N_VISITS")
  	private int N_VISITS = 0;
 
-	public Article(int iD_USER, String tITLE, String dESCRIPTION, float pRICE, Blob pHOTO) {
+	public Article(User uSER, String tITLE, String dESCRIPTION, float pRICE, Blob pHOTO) {
 		super();
-		ID_USER = iD_USER;
+		USER = uSER;
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
 		PRICE = pRICE;
@@ -65,12 +65,12 @@ public class Article {
 		return ID_ARTICLE;
 	}
 
-	public int getID_USER() {
-		return ID_USER;
+	public User getUSER() {
+		return USER;
 	}
 
-	public void setID_USER(int iD_USER) {
-		ID_USER = iD_USER;
+	public void setUSER(User uSER) {
+		USER = uSER;
 	}
 
 	public String getTITLE() {

@@ -18,7 +18,7 @@ public class Report {
 	
 	@ManyToOne
 	@NonNull
-	@Column(name = "ID_ARTICLE")
+	@JoinColumn(name = "ID_ARTICLE")
 	private Article ARTICLE;
 	
 	@NonNull
