@@ -2,20 +2,25 @@ package es.codeurjc.wallypop.model;
 
 import javax.persistence.*;
 
+import org.springframework.lang.NonNull;
+
 @Entity
 @Table(name = "Favorites")
 public class Favorites {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NonNull
 	@Column(name = "ID_FAVORITE")
 	private long ID_FAVORITE;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_USER")
+	@NonNull
+	@Column(name = "ID_USER")
 	private User USER;
 	
-	@OneToMany
-	@JoinColumn(name = "ID_ARTICLE")
+	@OneToOne(mappedBy = "ID_ARTICLE")
+	@NonNull
+	@Column(name = "ID_ARTICLE")
 	private Article ARTICLE;
 
 	public Favorites(User uSER, Article aRTICLE) {
@@ -26,10 +31,6 @@ public class Favorites {
 
 	public long getID_FAVORITE() {
 		return ID_FAVORITE;
-	}
-
-	public void setID_FAVORITE(long iD_FAVORITE) {
-		ID_FAVORITE = iD_FAVORITE;
 	}
 
 	public User getUSER() {
