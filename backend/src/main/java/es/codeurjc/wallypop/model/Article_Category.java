@@ -1,5 +1,7 @@
 package es.codeurjc.wallypop.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,24 +12,25 @@ import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
 
+
 @Entity
-@Table(name = "Article_Category")
+@Table(name = "ARTICLE_CATEGORY")
 public class Article_Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NonNull
-	@Column(name = "ID_CATEGORY")
+	@Column(name = "ID_ARTICLE_CATEGORY")
 	private long ID_ARTICLE_CATEGORY;
 	
 	@ManyToMany(mappedBy = "ID_ARTICLE")
 	@NonNull
 	@Column(name = "ID_ARTICLE")
-	private Article ARTICLE;
+	private List<Article> ARTICLES;
 	
 	@ManyToMany(mappedBy = "ID_CATEGORY")
 	@NonNull
 	@Column(name = "ID_CATEGORY")
-	private Category CATEGORY;
+	private List<Category> CATEGORIES;
 	
 	
 	public Article_Category(Article aRTICLE, Category cATEGORY) {
