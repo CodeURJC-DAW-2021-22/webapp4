@@ -30,11 +30,13 @@ public class Category {
 	private String DESCRIPTION;
 	
 	@Column(name = "PHOTO")
-	private Blob PHOTO;
-	
-	public Category(String TITLE, String DESCRIPTION) {
-		this.TITLE = TITLE;
-		this.DESCRIPTION = DESCRIPTION;
+	private Blob PHOTO;	
+
+	public Category(String tITLE, String dESCRIPTION, Blob pHOTO) {
+		super();
+		TITLE = tITLE;
+		DESCRIPTION = dESCRIPTION;
+		PHOTO = pHOTO;
 	}
 
 	public Long getID_CATEGORY() {
@@ -68,4 +70,5 @@ public class Category {
 	public void setPHOTO(Blob pHOTO) {
 		PHOTO = pHOTO;
 	}
+	
 }

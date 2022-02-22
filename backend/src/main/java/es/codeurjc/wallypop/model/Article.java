@@ -2,6 +2,7 @@ package es.codeurjc.wallypop.model;
 
 import java.sql.Blob;
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -51,15 +52,22 @@ public class Article {
  	@NonNull
  	@Column(name = "N_VISITS")
  	private int N_VISITS = 0;
+ 	
+ 	@ManyToMany
+ 	@NonNull
+ 	@JoinColumn(name = "ID_CATEGORY")
+	private List<Category> CATEGORY;
 
-	public Article(User uSER, String tITLE, String dESCRIPTION, float pRICE, Blob pHOTO) {
+	public Article(User uSER, String tITLE, String dESCRIPTION, float pRICE, Blob pHOTO, List<Category> cATEGORY) {
 		super();
 		USER = uSER;
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
 		PRICE = pRICE;
 		PHOTO = pHOTO;
+		CATEGORY = cATEGORY;
 	}
+
 
 	public int getID_ARTICLE() {
 		return ID_ARTICLE;
@@ -136,6 +144,15 @@ public class Article {
 	public void setN_VISITS(int n_VISITS) {
 		N_VISITS = n_VISITS;
 	}
- 	
+
+
+	public List<Category> getCATEGORY() {
+		return CATEGORY;
+	}
+
+
+	public void setCATEGORY(List<Category> cATEGORY) {
+		CATEGORY = cATEGORY;
+	}
  	
 }
