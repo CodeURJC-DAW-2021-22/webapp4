@@ -1,26 +1,26 @@
 @Entity
-@Table(name = "ArticleCategory")
+@Table(name = "articleCategory")
  public class ArticleCategory {
 
  	@Id
  	@GenerationType = Identity
- 	@NonNull
+ 	@NotEmpty
  	@Column(name = "ID_ARTICLE_CATEGORY")
  	private int ID_ARTICLE_CATEGORY;
  	
  	@ManyToMany
- 	@NonNull
+ 	@NotEmpty
  	@Column(name = "ID_ARTICLE")
  	private int ID_ARTICLE;
  	
  	//@FALTA CARDINALIDAD
- 	@NonNull
+ 	@NotEmpty
  	@Column(name = "ID_CATEGORY")
  	private int ID_CATEGORY;
 
  	//CONSTRUCTOR POR DEFECTO
  	public ArticleCategory() {
-
+ 		super();
  	}
 
  	//CONSTRUCTOR 1, TODOS LOS DATOS

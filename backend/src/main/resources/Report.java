@@ -1,20 +1,23 @@
 @Entity
-@Table(name = "Report")
+@Table(name = "report")
  public class Report {
 
  	@Id
  	@GenerationType = Identity
- 	@NonNull
+ 	@NotEmpty
+ 	@GeneratedValue(strategy = GenerationType.AUTO)
  	@Column(name = "ID_REPORT")
  	private int ID_REPORT;
  	
  	@ManyToOne
  	@Column(name = "ID_ARTICLE")
  	private int ID_ARTICLE;
- 	@NonNull
+ 	@NotEmpty
  	@Column(name = "EMAIL")
+ 	@Email
  	private String EMAIL;
- 	@NonNull
+ 	@NotEmpty
+ 	@Length(min=0, max=256)
  	@Column(name = "DESCRIPTION")
  	private String DESCRIPTION;
  	@Column(name = "PHOTO_BLOB")
@@ -22,6 +25,7 @@
 
  	//CONSTRUCTOR POR DEFECTO
  	public Report() {
+ 		super();
  	}
 
  	//CONSTRUCTOR 1, TODOS LOS DATOS

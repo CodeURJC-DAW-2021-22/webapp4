@@ -1,27 +1,31 @@
 @Entity
-@Table(name = "Article")
+@Table(name = "article")
  public class Article {
 
  	@Id
  	@GenerationType = Identity
- 	@NonNull
+ 	@NotEmpty
  	@Column(name = "ID_ARTICLE")
+ 	@GeneratedValue(strategy = GenerationType.AUTO
  	private int ID_ARTICLE;
  	
  	@ManyToOne
- 	@NonNull
+ 	@NotEmpty
  	@Column(name = "ID_USER")
  	private int ID_USER;
- 	@NonNull
+ 	@NotEmpty
+ 	@Length(min=5, max=24)
  	@Column(name = "TITLE")
  	private String TITLE;
+ 	@Length(min=0, max=256)
  	@Column(name = "DESCRIPTION")
  	private String DESCRIPTION;
- 	@NonNull
+ 	@NotEmpty
  	@Column(name = "PRICE")
  	private float PRICE;
- 	@NonNull
+ 	@NotEmpty
  	@Column(name = "DATE")
+ 	@Date
  	private date DATE;
  	@Column(name = "RESERVED_BIT")
  	private boolean RESERVED_BIT;
@@ -34,6 +38,7 @@
 
  	//CONSTRUCTOR POR DEFECTO
  	public Article() {
+ 		super();
  		this.RESERVED_BIT = 0;
  		this.SOLD_BIT = 0;
  		this.END_VISITED = 0;

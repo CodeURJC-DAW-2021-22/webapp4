@@ -1,16 +1,19 @@
 @Entity
-@Table(name = "Category")
+@Table(name = "category")
  public class Category {
 
  	@Id
  	@GenerationType = Identity
- 	@NonNull
- 	@Column(name = "ID_ARTICLE")
+ 	@NotEmpty
+ 	@GeneratedValue(strategy = GenerationType.AUTO)
+ 	@Column(name = "ID_CATEGORY")
  	private int ID_ARTICLE;
  	
- 	@NonNull
+ 	@NotEmpty
+ 	@Length(min=5, max=24)
  	@Column(name = "TITLE")
  	private String TITLE;
+ 	@Length(min=0, max=256)
  	@Column(name = "DESCRIPTION")
  	private String DESCRIPTION;
  	@Column(name = "PHOTO_BLOB")
@@ -18,7 +21,7 @@
 
  	//CONSTRUCTOR POR DEFECTO
  	public Category() {
-
+ 		super();
  	}
 
  	//CONSTRUCTOR 1, TODOS LOS DATOS

@@ -1,23 +1,27 @@
 @Entity
-@Table(name = "User")
+@Table(name = "user")
  public class User {
 
  	@Id
  	@GenerationType = Identity
- 	@NonNull
+ 	@NotEmpty
+ 	@GeneratedValue(strategy = GenerationType.AUTO)
  	@Column(name = "ID_USER")
  	private int ID_USER;
  	
- 	@NonNull
+ 	@NotEmpty
+ 	@Length(min=3, max=25)
  	@Column(name = "FULL_NAME")
  	private String FULL_NAME;
- 	@NonNull
+ 	@NotEmpty
+ 	@Length(min=8, max=32)
  	@Column(name = "PASSWORD")
  	private String PASSWORD;
- 	@NonNull
+ 	@NotEmpty
  	@Column(name = "EMAIL")
+ 	@Email
  	private String EMAIL;
- 	@NonNull
+ 	@NotEmpty
  	@Column(name = "TEL")
  	private String TEL;
  	@Column(name = "N_SOLD")
@@ -28,7 +32,9 @@
  	private boolean IS_ADMIN; 
 
  	//CONSTRUCTOR POR DEFECTO
- 	public User() {}
+ 	public User() {
+ 		super();
+ 	}
 
  	//CONSTRUCTOR 1, TODOS LOS DATOS
  	public User(String FULL_NAME, String PASSWORD, String EMAIL, String TEL, String N_SOLD, String N_SELL, boolean IS_ADMIN) {

@@ -1,19 +1,21 @@
 @Entity
-@Table(name = "Favorites")
+@Table(name = "favorites")
 public class Favorites {
 	@Id
+ 	@GenerationType = Identity
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NonNull
+	@NotEmpty
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID_FAVORITE")
 	private int ID_FAVORITE;
 	
 	@ManyToOne
-	@NonNull
+	@NotEmpty
 	@Column(name = "ID_USER")
 	private int ID_USER;
 	
 	@OneToOne(mappedBy = "ID_ARTICLE")
-	@NonNull
+	@NotEmpty
 	@Column(name = "ID_ARTICLE")
 	private int ID_ARTICLE;
 
