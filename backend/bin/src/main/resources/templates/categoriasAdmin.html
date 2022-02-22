@@ -1,0 +1,181 @@
+{{>header}}
+	<!-- ====== Contenido de pagina ======-->
+	<section class="full-width section">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-4 col-md-3">
+					<buttom class="btn btn-default btn-block visible-xs btn-dropdown-conatiner" data-drop-cont=".user-menu-xs">
+						<i class="fa fa-user fa-fw" aria-hidden="true"></i> MOSTRAR MENÚ <i class="fa fa-sort pull-right" aria-hidden="true"></i>
+					</buttom>
+					<div class="full-width user-menu-xs">
+						<div class="full-width post-user-info" style="margin: 0 !important;">
+							<!--<i class="fa fa-user NavBar-Nav-icon" aria-hidden="true"></i>-->
+							<p class="full-width"><small>ADMIN</small></p>
+							<img src="assets/img/user.png" class="NavBar-Nav-icon" alt="User">
+							<p class="full-width"><small>Nombre de usuario</small></p>
+							<!--
+							<div class="full-width div-table">
+								<div class="full-width div-table-row">
+									<div class="div-table-cell div-table-cell-xs" style="height: auto !important; line-height: inherit; border:none;">
+										0 <br>
+										<small>En venta</small>
+									</div>
+									<div class="div-table-cell div-table-cell-xs" style="height: auto !important; line-height: inherit; border:none;">
+										0 <br>
+										<small>Vendidos</small>
+									</div>
+								</div>
+							</div>
+						-->
+						</div>
+						<div class="full-width list-group" style="border-radius: 0;">
+							<div class="list-group-item text-center">
+								<small>Desde Junio 2016</small>
+							</div>
+						  	<a href="perfil.html" class="list-group-item">
+						  		<i class="fa fa-user fa-fw" aria-hidden="true"></i> TU PERFIL
+						  	</a>
+						  	<!-- <a href="config.html" class="list-group-item">
+						  		<i class="fa fa-cogs fa-fw" aria-hidden="true"></i> CONFIGURACIÓN
+						  	</a> -->
+							<a href="categoriaAdmin.html" class="list-group-item active">
+								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN CATEGORÍAS
+							</a>
+							<a href="reporteAdmin.html" class="list-group-item">
+								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN REPORTES
+							</a>
+						  	<!-- <a href="messages.html" class="list-group-item">
+						  		<i class="fa fa-commenting-o fa-fw" aria-hidden="true"></i> MENSAJES
+						  	</a> -->
+						  	<!-- <a href="favorites.html" class="list-group-item">
+						  		<i class="fa fa-heart-o fa-fw" aria-hidden="true"></i> FAVORITOS
+						  	</a> -->
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-8 col-md-9">
+					<div class="full-width bar-info-user">
+						<div>GESTIÓN CATEGORÍAS</div>
+					</div>
+					<!-- Contenido-->
+						<!-- ====== Buscador movil ======-->
+	<section class="full-width hidden-md hidden-lg Search-mobile">
+		<form action="commercial.html" style="padding-top: 15px;">
+			<div class="form-group">
+			    <input type="text" class="form-control input-lg" placeholder="Estoy buscado..." required="">
+			</div>
+			<div class="form-group">
+			    <input type="text" class="form-control input-lg" placeholder="Provincia, ciudad, distrito..." required="">
+			</div>
+			<button class="btn btn-danger btn-lg" type="submit">BUSCAR</button>
+		</form>
+	</section>
+	<!-- ====== Contenido de pagina ======-->
+	<section class="section">
+		<h2 class="text-center text-light">CATEGORÍAS</h2>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
+					<form action="" class="form-horizontal">
+						<h3 class="text-info">Busca una categoría</h3>
+						<div class="form-inline">
+							<div class="col-sm-3 control-label">
+						    	<label>Busca categoría</label>
+							</div>
+							<div class="col-sm-7">
+							  	<div class="form-group">
+							    	<input type="text" class="form-control" placeholder="Busca categoría">
+							  	</div>
+							  	<button class="btn btn-default">Buscar categoría</button>
+							  	<a href="categoriasAdminListado.html">VER LISTADO CATEGORÍAS</a>
+
+							</div>
+						</div>
+						<br><br>
+						<h3 class="text-info">Añade una nueva Categoría</h3>
+						<div class="form-inline">
+							<div class="col-sm-3 control-label">
+						    	<label>Nombre categoría</label>
+							</div>
+							<div class="col-sm-7">
+							  	<div class="form-group">
+							    	<input type="text" class="form-control" placeholder="Añade nueva categoría">
+							  	</div>
+							  	<button class="btn btn-default">+</button>
+							</div>
+						</div>
+						<!--
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Título del anuncio</label>
+						    <div class="col-sm-7">
+						      	<input type="text" class="form-control" placeholder="Título del anuncio">
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Descripción</label>
+						    <div class="col-sm-7">
+						    	<textarea class="form-control" rows="3" placeholder="Descripción"></textarea>
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Precio</label>
+						    <div class="col-sm-7">
+						    	<input type="text" class="form-control" placeholder="Precio">
+						    </div>
+						</div>
+						-->
+						<br><br>
+						<h3 class="text-info">Foto</h3>
+						<p>¡Añade una foto a la categoría!</p>
+						<div class="form-group">
+						    <div class="custom-input-file">
+						    	<input type="file" size="1" class="input-file" />
+							    <i class="fa fa-picture-o" aria-hidden="true"></i>
+							</div>
+							<br>
+							<p  class="text-muted text-center archivo">Archivo...</p>
+						</div>
+						<!-- <br><br>
+						<h3 class="text-info">Datos para que te contacten</h3>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Eres</label>
+							<div class="col-sm-7">
+								<label class="radio-inline">
+									<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Particular
+								</label>
+								<label class="radio-inline">
+									<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Profesional
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Tu nombre</label>
+						    <div class="col-sm-7">
+						    	<input type="text" class="form-control" placeholder="Nombre">
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">E-mail</label>
+						    <div class="col-sm-7">
+						    	<input type="email" class="form-control" placeholder="E-mail">
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Confirmar E-mail</label>
+						    <div class="col-sm-7">
+						    	<input type="email" class="form-control" placeholder="Confirmar E-mail">
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Teléfono</label>
+						    <div class="col-sm-7">
+						    	<input type="tel" class="form-control" placeholder="Teléfono">
+						    </div>
+						</div> -->
+					</form>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+	{{>footer}}
