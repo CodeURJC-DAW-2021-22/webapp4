@@ -15,12 +15,12 @@ public class Favorites {
 	
 	@ManyToOne
 	@NonNull
-	@Column(name = "ID_USER")
+	@JoinColumn(name = "ID_USER")
 	private User USER;
 	
-	@OneToOne(mappedBy = "ID_ARTICLE")
+	@OneToOne
 	@NonNull
-	@Column(name = "ID_ARTICLE")
+	@JoinColumn(name = "ID_ARTICLE")
 	private Article ARTICLE;
 
 	public Favorites(User uSER, Article aRTICLE) {
