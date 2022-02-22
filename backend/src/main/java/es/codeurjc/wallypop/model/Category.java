@@ -7,13 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
 
 @Entity
-@Table(name = "Category")
+@Table(name = "CATEGORY")
 public class Category {
 
 	@Id
@@ -26,15 +25,11 @@ public class Category {
 	@Column(name = "TITLE")
 	private String TITLE;
 	
-	
 	@Column(name = "DESCRIPTION")
 	private String DESCRIPTION;
 	
-	@Lob
 	@Column(name = "PHOTO")
 	private Blob PHOTO;
-
-	public Category() {}
 	
 	public Category(String TITLE, String DESCRIPTION) {
 		this.TITLE = TITLE;
