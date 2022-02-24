@@ -24,6 +24,10 @@ public class Article {
  	private User USER;
  	
  	@NonNull
+ 	@Column(name = "CITY")
+ 	private String CITY;
+ 	
+ 	@NonNull
  	@Column(name = "TITLE")
  	private String TITLE;
  	
@@ -67,7 +71,7 @@ public class Article {
 		PHOTO = pHOTO;
 		CATEGORY = cATEGORY;
 	}
-	public Article(User uSER, String tITLE, String dESCRIPTION, float pRICE, List<Category> cATEGORY) {
+	public Article(User uSER,String cITY, String tITLE, String dESCRIPTION, float pRICE, List<Category> cATEGORY) {
 		super();
 		USER = uSER;
 		TITLE = tITLE;

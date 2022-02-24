@@ -19,7 +19,6 @@ public class DataBaseUsage implements CommandLineRunner {
 	private UserRepository userRepository;
 	//private ArticleRepository articleRepository;	// Declaration Object ArticleRepository to add new Articles
 
-	private User user;								// Declaration Object User class to create new user
 	//private Blob img ; 							// Declaration Object Blob class to create new image
 	private Category categoria_1;					// Declaration Object category to create new category
 	private Category categoria_2;
@@ -33,7 +32,6 @@ public class DataBaseUsage implements CommandLineRunner {
 	
 	// Data for Articles
 		// First: Initializer User Object with call User constructor (we don't save new user in data base, it's proof data)
-		this.user = (User) new User("Iván", "1234", "d@d.es", "999999999", true);
 		// Second: Initializer Blob Object with call Blob constructor (TO DO)
 		// Third: Initializer Category Objects with call Category constructor
 		this.categoria_1 = (Category) new Category("Deporte", "Árticulos deportivos que las personas utilizan para practicar deporte o para vestir en su día a día");
@@ -44,6 +42,6 @@ public class DataBaseUsage implements CommandLineRunner {
 		this.lista_categorias.add((Category)this.categoria_2);
 
 		// Fifth: mount Article object and save in article repository
-		//articleRepository.save(new Article(this.user, "Deportivas", "Se venden zapatillas deportivas sin usar, último modelo, son las mismas que llevan tus deportistas favoritos", (float) 19.90, this.lista_categorias ));
+		// articleRepository.save(new Article(new User("Iván", "1234", "d@d.es", "999999999", true), "Deportivas", "Se venden zapatillas deportivas sin usar, último modelo, son las mismas que llevan tus deportistas favoritos", (float) 19.90, this.lista_categorias ));
 	}
 }
