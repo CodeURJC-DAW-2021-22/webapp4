@@ -17,7 +17,7 @@ public class DataBaseUsage implements CommandLineRunner {
 
 	@Autowired
 	private UserRepository userRepository;
-	private ArticleRepository articleRepository;	// Declaration Object ArticleRepository to add new Articles
+	//private ArticleRepository articleRepository;	// Declaration Object ArticleRepository to add new Articles
 
 	private User user;								// Declaration Object User class to create new user
 	//private Blob img ; 							// Declaration Object Blob class to create new image
@@ -44,6 +44,6 @@ public class DataBaseUsage implements CommandLineRunner {
 		this.lista_categorias.add((Category)this.categoria_2);
 
 		// Fifth: mount Article object and save in article repository
-		articleRepository.save(new Article(this.user, "Deportivas", "Se venden zapatillas deportivas sin usar, último modelo, son las mismas que llevan tus deportistas favoritos", (float) 19.90, this.lista_categorias ));
+		//articleRepository.save(new Article(this.user, "Deportivas", "Se venden zapatillas deportivas sin usar, último modelo, son las mismas que llevan tus deportistas favoritos", (float) 19.90, this.lista_categorias ));
 	}
 }
