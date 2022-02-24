@@ -38,6 +38,12 @@ public class Category {
 		DESCRIPTION = dESCRIPTION;
 		PHOTO = pHOTO;
 	}
+	
+	public Category(String tITLE, String dESCRIPTION) {
+		super();
+		TITLE = tITLE;
+		DESCRIPTION = dESCRIPTION;
+	}
 
 	public Long getID_CATEGORY() {
 		return ID_CATEGORY;

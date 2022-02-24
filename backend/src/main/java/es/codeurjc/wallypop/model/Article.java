@@ -32,7 +32,7 @@ public class Article {
  	
  	@NonNull
  	@Column(name = "PRICE")
- 	private float PRICE;
+ 	private double PRICE;
  	
  	@NonNull
  	@Column(name = "DATE")
@@ -55,10 +55,10 @@ public class Article {
  	
  	@ManyToMany
  	@NonNull
- 	@JoinColumn(name = "ID_CATEGORY")
+ 	@JoinColumn(name = "CATEGORY")
 	private List<Category> CATEGORY;
 
-	public Article(User uSER, String tITLE, String dESCRIPTION, float pRICE, Blob pHOTO, List<Category> cATEGORY) {
+	public Article(User uSER, String tITLE, String dESCRIPTION, double pRICE, Blob pHOTO, List<Category> cATEGORY) {
 		super();
 		USER = uSER;
 		TITLE = tITLE;
@@ -67,7 +67,14 @@ public class Article {
 		PHOTO = pHOTO;
 		CATEGORY = cATEGORY;
 	}
-
+	public Article(User uSER, String tITLE, String dESCRIPTION, double pRICE, List<Category> cATEGORY) {
+		super();
+		USER = uSER;
+		TITLE = tITLE;
+		DESCRIPTION = dESCRIPTION;
+		PRICE = pRICE;
+		CATEGORY = cATEGORY;
+	}
 
 	public int getID_ARTICLE() {
 		return ID_ARTICLE;
@@ -97,11 +104,11 @@ public class Article {
 		DESCRIPTION = dESCRIPTION;
 	}
 
-	public float getPRICE() {
+	public double getPRICE() {
 		return PRICE;
 	}
 
-	public void setPRICE(float pRICE) {
+	public void setPRICE(double pRICE) {
 		PRICE = pRICE;
 	}
 
