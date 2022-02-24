@@ -44,6 +44,6 @@ public class DataBaseUsage implements CommandLineRunner {
 		this.lista_categorias.add((Category)this.categoria_2);
 
 		// Fifth: mount Article object and save in article repository
-		articleRepository.save(new Article(this.user, "Deportivas", "Se venden zapatillas deportivas sin usar, último modelo, son las mismas que llevan tus deportistas favoritos", 19.99, this.lista_categorias ));
+		articleRepository.save(new Article(this.user, "Deportivas", "Se venden zapatillas deportivas sin usar, último modelo, son las mismas que llevan tus deportistas favoritos", (float) 19.90, this.lista_categorias ));
 	}
 }

@@ -32,7 +32,7 @@ public class Article {
  	
  	@NonNull
  	@Column(name = "PRICE")
- 	private double PRICE;
+ 	private float PRICE;
  	
  	@NonNull
  	@Column(name = "DATE")
@@ -58,7 +58,7 @@ public class Article {
  	@JoinColumn(name = "CATEGORY")
 	private List<Category> CATEGORY;
 
-	public Article(User uSER, String tITLE, String dESCRIPTION, double pRICE, Blob pHOTO, List<Category> cATEGORY) {
+	public Article(User uSER, String tITLE, String dESCRIPTION, float pRICE, Blob pHOTO, List<Category> cATEGORY) {
 		super();
 		USER = uSER;
 		TITLE = tITLE;
@@ -67,7 +67,7 @@ public class Article {
 		PHOTO = pHOTO;
 		CATEGORY = cATEGORY;
 	}
-	public Article(User uSER, String tITLE, String dESCRIPTION, double pRICE, List<Category> cATEGORY) {
+	public Article(User uSER, String tITLE, String dESCRIPTION, float pRICE, List<Category> cATEGORY) {
 		super();
 		USER = uSER;
 		TITLE = tITLE;
@@ -104,11 +104,11 @@ public class Article {
 		DESCRIPTION = dESCRIPTION;
 	}
 
-	public double getPRICE() {
+	public float getPRICE() {
 		return PRICE;
 	}
 
-	public void setPRICE(double pRICE) {
+	public void setPRICE(float pRICE) {
 		PRICE = pRICE;
 	}
 
