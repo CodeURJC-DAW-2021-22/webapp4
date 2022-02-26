@@ -32,11 +32,10 @@ public class Category {
 	@Column(name = "PHOTO")
 	private Blob PHOTO;	
 
-	public Category(String tITLE, String dESCRIPTION, Blob pHOTO) {
+	public Category(String tITLE, String dESCRIPTION) {
 		super();
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
-		PHOTO = pHOTO;
 	}
 
 	public Long getID_CATEGORY() {
