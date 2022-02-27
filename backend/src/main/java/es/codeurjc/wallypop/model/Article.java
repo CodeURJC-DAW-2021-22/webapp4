@@ -165,14 +165,6 @@ public class Article {
 	public void setCATEGORY(List<Category> cATEGORY) {
 		CATEGORY = cATEGORY;
 	}
-	@Override
-	public String toString() {
-		return "Article [ID_ARTICLE=" + ID_ARTICLE + ", USER=" + USER + ", CITY=" + CITY + ", TITLE=" + TITLE
-				+ ", DESCRIPTION=" + DESCRIPTION + ", PRICE=" + PRICE + ", DATE=" + DATE + ", RESERVED=" + RESERVED
-				+ ", SOLD=" + SOLD + ", PHOTO=" + PHOTO + ", N_VISITS=" + N_VISITS + ", CATEGORY=" + CATEGORY + "]";
-	}
-	
-	
 	
 	
  	
