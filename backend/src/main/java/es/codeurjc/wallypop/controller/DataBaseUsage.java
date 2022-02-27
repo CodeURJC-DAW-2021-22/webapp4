@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 
-import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
 import es.codeurjc.wallypop.model.User;
-import es.codeurjc.wallypop.repositories.ArticleRepository;
 import es.codeurjc.wallypop.repositories.UserRepository;
 
 @Controller
