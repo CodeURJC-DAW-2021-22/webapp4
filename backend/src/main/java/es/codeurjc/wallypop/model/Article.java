@@ -165,5 +165,7 @@ public class Article {
 	public void setCATEGORY(List<Category> cATEGORY) {
 		CATEGORY = cATEGORY;
 	}
+	
+	
  	
 }
