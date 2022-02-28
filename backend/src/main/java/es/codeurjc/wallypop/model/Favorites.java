@@ -23,6 +23,10 @@ public class Favorites {
 	@JoinColumn(name = "ID_ARTICLE")
 	private Article ARTICLE;
 
+	public Favorites() {
+		
+	}
+	
 	public Favorites(User uSER, Article aRTICLE) {
 		super();
 		USER = uSER;

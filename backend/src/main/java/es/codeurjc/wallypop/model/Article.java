@@ -58,6 +58,10 @@ public class Article {
  	@JoinColumn(name = "ID_CATEGORY")
 	private List<Category> CATEGORY;
 
+ 	public Article() {
+		// DEFAULT CONSTRUCTOR FOR JPA
+	}
+ 	
 	public Article(User uSER, String tITLE, String dESCRIPTION, float pRICE, Blob pHOTO, List<Category> cATEGORY) {
 		super();
 		USER = uSER;

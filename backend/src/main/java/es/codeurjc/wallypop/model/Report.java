@@ -27,6 +27,10 @@ public class Report {
 	
 	@Column(name = "PROOF")
 	private Blob PROOF;
+	
+	public Report() {
+		
+	}
 
 	public Report(Article aRTICLE, String eMAIL, Blob pROOF) {
 		super();

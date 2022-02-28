@@ -32,6 +32,10 @@ public class Category {
 	@Column(name = "PHOTO")
 	private Blob PHOTO;	
 
+	public Category() {
+		// DEFAULT CONSTRUCTOR FOR JPA
+	}
+	
 	public Category(String tITLE, String dESCRIPTION, Blob pHOTO) {
 		super();
 		TITLE = tITLE;

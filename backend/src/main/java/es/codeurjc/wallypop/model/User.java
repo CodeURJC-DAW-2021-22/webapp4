@@ -15,8 +15,8 @@ public class User {
  	private Long ID_USER;
 
 	@NonNull
-	@Column(name = "FULL_NAME")
- 	private String FULL_NAME;
+	@Column(name = "NAME")
+ 	private String NAME;
 	
 	@NonNull
 	@Column(name = "PASSWORD")
@@ -41,20 +41,24 @@ public class User {
 	@NonNull
 	@Column(name = "IS_ADMIN")
  	private boolean IS_ADMIN = false;
+	
+	public User() {
+		// DEFAULT CONSTRUCTOR FOR JPA
+	}
 
-	public User(String fULL_NAME, String pASSWORD, String eMAIL, String tEL,
+	public User(String nAME, String pASSWORD, String eMAIL, String tEL,
 			boolean iS_ADMIN) {
 		super();
-		FULL_NAME = fULL_NAME;
+		NAME = nAME;
 		PASSWORD = pASSWORD;
 		EMAIL = eMAIL;
 		TEL = tEL;
 		IS_ADMIN = iS_ADMIN;
 	}
 
-	public User(String fULL_NAME, String pASSWORD, String eMAIL, String tEL) {
+	public User(String nAME, String pASSWORD, String eMAIL, String tEL) {
 		super();
-		FULL_NAME = fULL_NAME;
+		NAME = nAME;
 		PASSWORD = pASSWORD;
 		EMAIL = eMAIL;
 		TEL = tEL;
@@ -64,12 +68,12 @@ public class User {
 		return ID_USER;
 	}
 
-	public String getFULL_NAME() {
-		return FULL_NAME;
+	public String getNAME() {
+		return NAME;
 	}
 
-	public void setFULL_NAME(String fULL_NAME) {
-		FULL_NAME = fULL_NAME;
+	public void setNAME(String nAME) {
+		NAME = nAME;
 	}
 
 	public String getPASSWORD() {
