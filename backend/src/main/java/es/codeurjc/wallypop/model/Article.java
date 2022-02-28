@@ -59,6 +59,7 @@ public class Article {
  	
  	@ManyToMany
  	@NonNull
+	@ElementCollection(fetch = FetchType.EAGER)
  	@JoinColumn(name = "CATEGORY")
 	private List<Category> CATEGORY;
 
@@ -172,6 +173,11 @@ public class Article {
 
 	public void setCATEGORY(List<Category> cATEGORY) {
 		CATEGORY = cATEGORY;
+	}
+	@Override
+	public String toString() {
+		return "Article [ID_ARTICLE=" + ID_ARTICLE + ", USER=" + USER + ", CITY=" + CITY + ", TITLE=" + TITLE
+				+ ", DESCRIPTION=" + DESCRIPTION + ", PRICE=" + PRICE + "]";
 	}
 	
 	
