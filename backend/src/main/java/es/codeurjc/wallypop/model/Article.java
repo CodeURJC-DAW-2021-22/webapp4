@@ -19,8 +19,7 @@ public class Article {
  	private int ID_ARTICLE;
 
  	@ManyToOne
- 	@NonNull
- 	@JoinColumn(name = "ID_USER")
+ 	@JoinColumn(name = "USER")
  	private User USER;
  	
  	@NonNull
@@ -38,30 +37,36 @@ public class Article {
  	@Column(name = "PRICE")
  	private float PRICE;
  	
- 	@NonNull
  	@Column(name = "DATE")
  	private Date DATE = new java.sql.Date(System.currentTimeMillis());
  	
- 	@NonNull
  	@Column(name = "RESERVED")
  	private boolean RESERVED = false;
  	
- 	@NonNull
  	@Column(name = "SOLD")
  	private boolean SOLD = false;
  	
  	@Column(name = "PHOTO_BLOB")
  	private Blob PHOTO; 
  	
- 	@NonNull
  	@Column(name = "N_VISITS")
  	private int N_VISITS = 0;
  	
  	@ManyToMany
- 	@NonNull
-	@ElementCollection(fetch = FetchType.EAGER)
  	@JoinColumn(name = "CATEGORYS")
 	private List<Category> CATEGORYS;
+ 	
+ 	// Un artículo tiene que estar asociada con una única categoría. Una categoria puede estar asociada con varios artículos
+ 	@JoinColumn(name = "ID_CATEGORY")
+	private String  ID_CATEGORY;
+ 	
+ 	// Un artículo tiene que estar asociada con una única usuario. Un usuario puede estar asociada con varios artículos
+ 	@JoinColumn(name = "ID_USER")
+	private String  ID_USER;
+ 	
+ 	public Article() {
+ 		
+ 	}
 
 	public Article(User uSER, String tITLE, String dESCRIPTION, float pRICE, Blob pHOTO, List<Category> lISTcATEGORYS) {
 		super();
@@ -89,6 +94,25 @@ public class Article {
 		PRICE = pRICE;
 	}
 
+	public Article(String cITY, String tITLE, String dESCRIPTION, float pRICE, List<Category> lISTcATEGORYS) {
+		super();
+		CITY = cITY;
+		TITLE = tITLE;
+		DESCRIPTION = dESCRIPTION;
+		PRICE = pRICE;
+	}
+	
+	public Article(String iD_USER, String cITY, String tITLE, String dESCRIPTION, float pRICE, String iD_CATEGORY) {
+		super();
+		ID_USER = iD_USER;
+		CITY = cITY;
+		TITLE = tITLE;
+		DESCRIPTION = dESCRIPTION;
+		PRICE = pRICE;
+		ID_CATEGORY = iD_CATEGORY;
+		
+	}
+	
 	public int getID_ARTICLE() {
 		return ID_ARTICLE;
 	}
@@ -174,6 +198,44 @@ public class Article {
 	public void setCATEGORY(List<Category> cATEGORY) {
 		CATEGORYS = cATEGORY;
 	}
+	
+	
+	public String getCITY() {
+		return CITY;
+	}
+
+	public void setCITY(String cITY) {
+		CITY = cITY;
+	}
+
+	public List<Category> getCATEGORYS() {
+		return CATEGORYS;
+	}
+
+	public void setCATEGORYS(List<Category> cATEGORYS) {
+		CATEGORYS = cATEGORYS;
+	}
+
+	public String getID_CATEGORY() {
+		return ID_CATEGORY;
+	}
+
+	public void setID_CATEGORY(String iD_CATEGORY) {
+		ID_CATEGORY = iD_CATEGORY;
+	}
+
+	public String getID_USER() {
+		return ID_USER;
+	}
+
+	public void setID_USER(String iD_USER) {
+		ID_USER = iD_USER;
+	}
+
+	public void setID_ARTICLE(int iD_ARTICLE) {
+		ID_ARTICLE = iD_ARTICLE;
+	}
+
 	@Override
 	public String toString() {
 		return "Article [ID_ARTICLE=" + ID_ARTICLE + ", USER=" + USER + ", CITY=" + CITY + ", TITLE=" + TITLE
