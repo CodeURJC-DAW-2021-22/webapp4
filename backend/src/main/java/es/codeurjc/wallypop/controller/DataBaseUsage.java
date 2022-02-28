@@ -5,7 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 
 import es.codeurjc.wallypop.model.User;
-import es.codeurjc.wallypop.repositories.UserRepository;
+import es.codeurjc.wallypop.repository.UserRepository;
 
 @Controller
 public class DataBaseUsage implements CommandLineRunner {
