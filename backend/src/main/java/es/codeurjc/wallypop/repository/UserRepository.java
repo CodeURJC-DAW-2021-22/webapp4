@@ -1,4 +1,4 @@
-package es.codeurjc.wallypop.repositories;
+package es.codeurjc.wallypop.repository;
 
 import java.util.Optional;
 
