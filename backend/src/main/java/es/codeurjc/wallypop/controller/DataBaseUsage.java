@@ -29,9 +29,13 @@ public class DataBaseUsage implements CommandLineRunner {
 		userRepository.save(new User("David", "1234", "d@d.es", "666666666"));
 		
 		//Category
-		Category category1 = new Category("Videojuegos", "Compra y vende videojuegos de todo tipo");
+		Category category1 = new Category("Videojuegos", "Compra y vende videojuegos de todo tipo", null);
 		setCategoryImage(category1, "/sample_image/videojuego.jpg");
 		categoryRepository.save(category1);
+		
+		Category category2 = new Category("Ropa", "Dale una segunda vida a las prendas que ya no usas", null);
+		setCategoryImage(category2, "/sample_image/ropa.png");
+		categoryRepository.save(category2);
 	}
 	
 	public void setCategoryImage(Category category, String ruta) throws IOException {
