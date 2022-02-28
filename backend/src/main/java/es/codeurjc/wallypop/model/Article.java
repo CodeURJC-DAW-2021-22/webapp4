@@ -79,6 +79,14 @@ public class Article {
 		PRICE = pRICE;
 		CATEGORY = cATEGORY;
 	}
+	
+	public Article(String cITY, String tITLE, String dESCRIPTION, float pRICE) {
+		super();
+		CITY = cITY;
+		TITLE = tITLE;
+		DESCRIPTION = dESCRIPTION;
+		PRICE = pRICE;
+	}
 
 	public int getID_ARTICLE() {
 		return ID_ARTICLE;
