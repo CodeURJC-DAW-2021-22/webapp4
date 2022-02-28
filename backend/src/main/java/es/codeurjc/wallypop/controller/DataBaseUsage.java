@@ -1,6 +1,7 @@
 package es.codeurjc.wallypop.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,12 +18,12 @@ public class DataBaseUsage implements CommandLineRunner {
 
 	@Autowired
 	private UserRepository userRepository;
-	//private ArticleRepository articleRepository;	// Declaration Object ArticleRepository to add new Articles
+	private ArticleRepository articleRepository;	// Declaration Object ArticleRepository to add new Articles
 
 	//private Blob img ; 							// Declaration Object Blob class to create new image
 	private Category categoria_1;					// Declaration Object category to create new category
 	private Category categoria_2;
-	private ArrayList<Category> lista_categorias;	// Declaration Object list to save categories
+	private List<Category> lista_categorias;	// Declaration Object list to save categories
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -42,6 +43,7 @@ public class DataBaseUsage implements CommandLineRunner {
 		this.lista_categorias.add((Category)this.categoria_2);
 
 		// Fifth: mount Article object and save in article repository
-		// articleRepository.save(new Article(new User("Iván", "1234", "d@d.es", "999999999", true), "Deportivas", "Se venden zapatillas deportivas sin usar, último modelo, son las mismas que llevan tus deportistas favoritos", (float) 19.90, this.lista_categorias ));
+		//articleRepository.save(new Article(new User("David", "1234", "d@d.es", "666666666"),"Madrid" ,"Deportivas", "Se venden zapatillas deportivas sin usar, último modelo, son las mismas que llevan tus deportistas favoritos", (float) 19.90, this.lista_categorias ));
+
 	}
 }

@@ -60,25 +60,25 @@ public class Article {
  	@ManyToMany
  	@NonNull
 	@ElementCollection(fetch = FetchType.EAGER)
- 	@JoinColumn(name = "CATEGORY")
-	private List<Category> CATEGORY;
+ 	@JoinColumn(name = "CATEGORYS")
+	private List<Category> CATEGORYS;
 
-	public Article(User uSER, String tITLE, String dESCRIPTION, float pRICE, Blob pHOTO, List<Category> cATEGORY) {
+	public Article(User uSER, String tITLE, String dESCRIPTION, float pRICE, Blob pHOTO, List<Category> lISTcATEGORYS) {
 		super();
 		USER = uSER;
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
 		PRICE = pRICE;
 		PHOTO = pHOTO;
-		CATEGORY = cATEGORY;
+		CATEGORYS = lISTcATEGORYS;
 	}
-	public Article(User uSER,String cITY, String tITLE, String dESCRIPTION, float pRICE, List<Category> cATEGORY) {
+	public Article(User uSER,String cITY, String tITLE, String dESCRIPTION, float pRICE, List<Category> lISTcATEGORYS) {
 		super();
 		USER = uSER;
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
 		PRICE = pRICE;
-		CATEGORY = cATEGORY;
+		CATEGORYS = lISTcATEGORYS;
 	}
 	
 	public Article(String cITY, String tITLE, String dESCRIPTION, float pRICE) {
@@ -167,12 +167,12 @@ public class Article {
 
 
 	public List<Category> getCATEGORY() {
-		return CATEGORY;
+		return CATEGORYS;
 	}
 
 
 	public void setCATEGORY(List<Category> cATEGORY) {
-		CATEGORY = cATEGORY;
+		CATEGORYS = cATEGORY;
 	}
 	@Override
 	public String toString() {
