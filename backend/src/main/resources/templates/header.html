@@ -23,6 +23,7 @@
 					<i class="fa fa-times header-menu-mobile-close-btn show-menu-mobile" aria-hidden="true"></i>
 					<i class="fa fa-user NavBar-Nav-icon header-menu-mobile-icon" aria-hidden="true"></i>
 					{{^logged}}
+					</br>
 					<a href="/login" class="btn btn-info header-menu-mobile-btn">INICIAR SESIÓN</a>
 					<div class="divider"></div>
 					<a href="/newaccount" class="btn btn-primary header-menu-mobile-btn">CRÉATE UNA CUENTA</a>
@@ -71,9 +72,28 @@
 					</a>
 				</li>
 				{{^logged}}
-				<li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="/login">INICIAR SESIÓN</a></li>
+				<li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!">INICIAR SESIÓN</a></li>
 				<li class="hidden-xs hidden-sm"><i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i></li>
 				{{/logged}}
+				{{#logged}} 
+  							<li>
+  								{{^ADMIN}}
+								<a href="/perfil">
+								{{/ADMIN}} {{#ADMIN}}
+								<a href="/perfilAdmin">
+								{{/ADMIN}}
+									<i class="fa fa-life-ring fa-fw hidden-md hidden-lg" aria-hidden="true"></i> {{FULL_NAME}}
+								</a>
+							</li>
+    						<!-- <li>{{NAME}}</li> -->
+    						<li><form action="/logout" method="post">
+								<button class="btn btn-default navbar-btn" type="submit">Log Out</button>
+    						    <!-- <input type="hidden" name="_csrf" value="{{token}}" /> -->
+							</form></li>
+						</ul>
+					</div>
+					{{/logged}}
+				
 			</ul>
 		</nav>
 		<i class="fa fa-bars hidden-md hidden-lg btn-mobile-menu show-menu-mobile" aria-hidden="true"></i>
