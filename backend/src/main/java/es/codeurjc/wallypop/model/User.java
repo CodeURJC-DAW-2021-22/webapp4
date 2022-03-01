@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import org.springframework.lang.NonNull;
 
+
 @Entity
 @Table(name = "USER")
 public class User {
@@ -16,7 +17,7 @@ public class User {
 
 	@NonNull
 	@Column(name = "NAME")
- 	private String NAME;
+ 	private String FULL_NAME;
 	
 	@NonNull
 	@Column(name = "PASSWORD")
@@ -24,7 +25,7 @@ public class User {
  	
 	@NonNull
 	@Column(name = "EMAIL")
- 	private String EMAIL;
+ 	private String NAME;
  	
 	@NonNull
 	@Column(name = "TEL")
@@ -49,18 +50,18 @@ public class User {
 	public User(String nAME, String pASSWORD, String eMAIL, String tEL,
 			boolean iS_ADMIN) {
 		super();
-		NAME = nAME;
+		FULL_NAME = nAME;
 		PASSWORD = pASSWORD;
-		EMAIL = eMAIL;
+		NAME = eMAIL;
 		TEL = tEL;
 		IS_ADMIN = iS_ADMIN;
 	}
 
 	public User(String nAME, String pASSWORD, String eMAIL, String tEL) {
 		super();
-		NAME = nAME;
+		FULL_NAME = nAME;
 		PASSWORD = pASSWORD;
-		EMAIL = eMAIL;
+		NAME = eMAIL;
 		TEL = tEL;
 	}
 
@@ -68,28 +69,30 @@ public class User {
 		return ID_USER;
 	}
 
+	public String getFULL_NAME() {
+		return FULL_NAME;
+	}
+
+	public void setFULL_NAME(String fULL_NAME) {
+		FULL_NAME = fULL_NAME;
+	}
+
+	public String getEncodedPASSWORD() {
+		return PASSWORD;
+	}
+
+	public void setEncodedPASSWORD(String pASSWORD) {
+		PASSWORD = pASSWORD;
+	}
+
+	// EMAIL
 	public String getNAME() {
 		return NAME;
 	}
 
-	public void setNAME(String nAME) {
-		NAME = nAME;
-	}
-
-	public String getPASSWORD() {
-		return PASSWORD;
-	}
-
-	public void setPASSWORD(String pASSWORD) {
-		PASSWORD = pASSWORD;
-	}
-
-	public String getEMAIL() {
-		return EMAIL;
-	}
-
-	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
+	// EMAIL
+	public void setNAME(String eMAIL) {
+		NAME = eMAIL;
 	}
 
 	public String getTEL() {
