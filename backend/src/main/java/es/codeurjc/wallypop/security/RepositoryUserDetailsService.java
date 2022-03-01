@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,23 +20,9 @@ public class RepositoryUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public UserDetails loadUserByEmail(String email) throws NotFoundException {
-		User user = userRepository.findByEMAIL(email)
-				.orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
-
-		List<GrantedAuthority> roles = new ArrayList<>();
-		roles.add(new SimpleGrantedAuthority("ROLE_USER"));
-		if (user.isIS_ADMIN()) {
-			roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-		}
-
-		return new org.springframework.security.core.userdetails.User(user.getNAME(), 
-				user.getPASSWORD(), roles);
-	}
-
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userRepository.findByEMAIL(username)
+	public UserDetails loadUserByUsername(String EMAIL) throws UsernameNotFoundException {
+		User user = userRepository.findByNAME(EMAIL)
 				.orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
 
 		List<GrantedAuthority> roles = new ArrayList<>();
@@ -47,7 +32,7 @@ public class RepositoryUserDetailsService implements UserDetailsService {
 		}
 
 		return new org.springframework.security.core.userdetails.User(user.getNAME(), 
-				user.getPASSWORD(), roles);
+				user.getEncodedPASSWORD(), roles);
 	}
 	
 }
