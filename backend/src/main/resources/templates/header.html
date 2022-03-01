@@ -28,15 +28,21 @@
 					<div class="divider"></div>
 					<a href="/newaccount" class="btn btn-primary header-menu-mobile-btn">CRÉATE UNA CUENTA</a>
 					{{/logged}} {{#logged}} 
-					<div class="nav navbar-nav navbar-right">
+					<p><center>{{NAME}}</center></p>
+					<p><center>
+						<form action="/logout" method="post">
+							<button class="btn btn-default navbar-btn" type="submit">Log Out</button>
+						    <!-- <input type="hidden" name="_csrf" value="{{token}}" /> -->
+						</form>
+					</center></p>
+					<!--<div class="nav navbar-nav navbar-right">
   						<ul class="nav navbar-nav">
-    						<li>{{NAME}}</li>
     						<li><form action="/logout" method="post">
-								<button class="btn btn-default navbar-btn" type="submit">Log Out</button>
+								<button class="btn btn-default navbar-btn" type="submit">Log Out</button> -->
     						    <!-- <input type="hidden" name="_csrf" value="{{token}}" /> -->
-							</form></li>
+							<!-- </form></li>
 						</ul>
-					</div>
+					</div> -->
 					{{/logged}}
 				</div>
 				<li>
@@ -94,7 +100,9 @@
 					</a>
 				</li>
 				<li class="hidden-xs hidden-sm">
-					<i class="fa fa-user NavBar-Nav-icon" aria-hidden="true"></i>
+					<a href="/login">
+						<i class="fa fa-user NavBar-Nav-icon" aria-hidden="true"></i>
+					</a>
 				</li>
 				<!-- 
 					<li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!">INICIAR SESIÓN</a></li>
@@ -108,7 +116,7 @@
     						    <!-- <input type="hidden" name="_csrf" value="{{token}}" /> -->
 							<!-- </form></li> -->
 				<li>
-					<form action="/logout" method="post">
+					<form class="visible-md visible-lg" action="/logout" method="post">
 						<button class="btn btn-default navbar-btn" type="submit">Log Out</button>
 						<input type="hidden" name="_csrf" value="{{token}}" />
 					</form>
