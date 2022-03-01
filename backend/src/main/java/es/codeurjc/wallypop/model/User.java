@@ -77,11 +77,11 @@ public class User {
 		FULL_NAME = fULL_NAME;
 	}
 
-	public String getEncodedPASSWORD() {
+	public String getPASSWORD() {
 		return PASSWORD;
 	}
 
-	public void setEncodedPASSWORD(String pASSWORD) {
+	public void setPASSWORD(String pASSWORD) {
 		PASSWORD = pASSWORD;
 	}
 
