@@ -1,49 +1,32 @@
 	{{>header}}
 	<!-- ====== Contenido de pagina ======-->
-	<section class="full-width section">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-4 col-md-3">
-					<buttom class="btn btn-default btn-block visible-xs btn-dropdown-conatiner" data-drop-cont=".user-menu-xs">
-						<i class="fa fa-user fa-fw" aria-hidden="true"></i> MOSTRAR MENÚ <i class="fa fa-sort pull-right" aria-hidden="true"></i>
-					</buttom>
-					<div class="full-width user-menu-xs">
-						<div class="full-width post-user-info" style="margin: 0 !important;">
-							<!--<i class="fa fa-user NavBar-Nav-icon" aria-hidden="true"></i>-->
-							<img src="assets/img/user.png" class="NavBar-Nav-icon" alt="User">
-							<p class="full-width"><small>Nombre de usuario</small></p>
-							<div class="full-width div-table">
-								<div class="full-width div-table-row">
-									<div class="div-table-cell div-table-cell-xs" style="height: auto !important; line-height: inherit; border:none;">
-										0 <br>
-										<small>En venta</small>
-									</div>
-									<div class="div-table-cell div-table-cell-xs" style="height: auto !important; line-height: inherit; border:none;">
-										0 <br>
-										<small>Vendidos</small>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="full-width list-group" style="border-radius: 0;">
-							<div class="list-group-item text-center">
-								<small>Desde Junio 2016</small>
-							</div>
+	{{>nav_side}}
 						  	<a href="perfil" class="list-group-item">
 						  		<i class="fa fa-user fa-fw" aria-hidden="true"></i> TU PERFIL
 						  	</a>
-						  	<a href="config" class="list-group-item">
+						  	<!-- <a href="config" class="list-group-item">
 						  		<i class="fa fa-cogs fa-fw" aria-hidden="true"></i> CONFIGURACIÓN
-						  	</a>
+						  	</a> -->
 						  	<a href="yourcommercial" class="list-group-item">
 						  		<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS
 						  	</a>
-						  	<a href="messages" class="list-group-item">
+							<a href="yourcommercialsold" class="list-group-item">
+								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS VENDIDOS
+							</a>
+						  	<!-- <a href="messages" class="list-group-item">
 						  		<i class="fa fa-commenting-o fa-fw" aria-hidden="true"></i> MENSAJES
-						  	</a>
+						  	</a> -->
 						  	<a href="favorites" class="list-group-item active">
 						  		<i class="fa fa-heart-o fa-fw" aria-hidden="true"></i> FAVORITOS
 						  	</a>
+						  	{{#admin}}
+						  	<a href="categoriasAdmin" class="list-group-item">
+								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN CATEGORÍAS
+							</a>
+							<a href="reportesAdmin" class="list-group-item">
+								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN REPORTES
+							</a>
+							{{/admin}}
 						</div>
 					</div>
 				</div>

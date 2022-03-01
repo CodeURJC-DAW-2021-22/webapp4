@@ -1,0 +1,60 @@
+	{{>header}}
+	<!-- ====== Contenido de pagina ======-->
+	{{>nav_side}}
+						  	<a href="perfil" class="list-group-item">
+						  		<i class="fa fa-user fa-fw" aria-hidden="true"></i> TU PERFIL
+						  	</a>
+						  	<!-- <a href="config" class="list-group-item">
+						  		<i class="fa fa-cogs fa-fw" aria-hidden="true"></i> CONFIGURACIÓN
+						  	</a> -->
+						  	<!-- <a href="messages" class="list-group-item">
+						  		<i class="fa fa-commenting-o fa-fw" aria-hidden="true"></i> MENSAJES
+						  	</a> -->
+						  	<a href="yourcommercial" class="list-group-item">
+						  		<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS
+						  	</a>
+							  <a href="yourcommercialsold" class="list-group-item">
+								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS VENDIDOS
+							</a>
+						  	<a href="favorites" class="list-group-item">
+						  		<i class="fa fa-heart-o fa-fw" aria-hidden="true"></i> FAVORITOS
+						  	</a>
+						  	{{#admin}}
+						  	<a href="categoriasAdmin" class="list-group-item">
+								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN CATEGORÍAS
+							</a>
+							<a href="reportesAdmin" class="list-group-item active">
+								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN REPORTES
+							</a>
+							{{/admin}}
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-8 col-md-9">
+					<div class="full-width bar-info-user">
+						<div>GESTIÓN REPORTES</div>
+					</div>
+					<!-- Contenido-->
+					<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-8">
+					<div class="page-header">
+					</div>
+				  	<p>
+				  		Listado con todos los reportes enviados por los usuarios:
+				  	</p>
+				  	<div class="list-group">
+					  	<a href="VisualizaReporte" class="list-group-item">ID: 0000, email:userCualquiera@gmail.com </a>
+					  	<a href="#!" class="list-group-item">ID: 0001, email:userCualquiera1@gmail.com </a>
+					  	<a href="#!" class="list-group-item">ID: 0002, email:userCualquiera2@gmail.com </a>
+					  	<a href="#!" class="list-group-item">ID: 0003, email:userCualquiera3@gmail.com </a>
+					  	<a href="#!" class="list-group-item">ID: 0004, email:userCualquiera4@gmail.com </a>
+					  	<a href="#!" class="list-group-item">ID: 0005, email:userCualquiera5@gmail.com </a>
+					</div>
+				</div>
+			</div>
+		</div>
+			</div>
+		</div>
+	</section>
+	{{>footer}}
