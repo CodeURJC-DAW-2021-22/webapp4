@@ -71,29 +71,56 @@
 						<i class="fa fa-life-ring fa-fw hidden-md hidden-lg" aria-hidden="true"></i> AYUDA
 					</a>
 				</li>
+				{{#logged}}
+				<li class="hidden-xs hidden-sm">
+					{{^ADMIN}}
+						<a href="/perfil">
+					{{/ADMIN}} {{#ADMIN}}
+						<a href="/perfilAdmin">
+					{{/ADMIN}}
+						{{FULL_NAME}} <i class="fa fa-user NavBar-Nav-icon" aria-hidden="true"></i>
+					</a>
+				</li>
+				{{/logged}}
 				{{^logged}}
-				<li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!">INICIAR SESIÓN</a></li>
-				<li class="hidden-xs hidden-sm"><i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i></li>
+				<li>
+					<a href="/newaccount">
+						<i class="fa fa-life-ring fa-fw hidden-md hidden-lg" aria-hidden="true"></i> CREAR CUENTA
+					</a>
+				</li>
+				<li>
+					<a href="/login">
+						<i class="fa fa-life-ring fa-fw hidden-md hidden-lg" aria-hidden="true"></i> INICIAR SESIÓN
+					</a>
+				</li>
+				<li class="hidden-xs hidden-sm">
+					<i class="fa fa-user NavBar-Nav-icon" aria-hidden="true"></i>
+				</li>
+				<!-- 
+					<li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!">INICIAR SESIÓN</a></li>
+					<li class="hidden-xs hidden-sm"><i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i></li>
+				-->
 				{{/logged}}
 				{{#logged}} 
-  							<li>
-  								{{^ADMIN}}
-								<a href="/perfil">
-								{{/ADMIN}} {{#ADMIN}}
-								<a href="/perfilAdmin">
-								{{/ADMIN}}
-									<i class="fa fa-life-ring fa-fw hidden-md hidden-lg" aria-hidden="true"></i> {{FULL_NAME}}
-								</a>
-							</li>
     						<!-- <li>{{NAME}}</li> -->
-    						<li><form action="/logout" method="post">
+    						<!-- <li><form action="/logout" method="post">
 								<button class="btn btn-default navbar-btn" type="submit">Log Out</button>
     						    <!-- <input type="hidden" name="_csrf" value="{{token}}" /> -->
-							</form></li>
+							<!-- </form></li> -->
+				<li>
+					<form action="/logout" method="post">
+						<button class="btn btn-default navbar-btn" type="submit">Log Out</button>
+						<input type="hidden" name="_csrf" value="{{token}}" />
+					</form>
+				</li>
+							<!-- <li>
+								<a href="/logout">
+									<i class="fa fa-life-ring fa-fw hidden-md hidden-lg" aria-hidden="true"></i> Cerrar sesión
+								</a>
+							</li> -->
 						</ul>
 					</div>
-					{{/logged}}
-				
+				{{/logged}}
 			</ul>
 		</nav>
 		<i class="fa fa-bars hidden-md hidden-lg btn-mobile-menu show-menu-mobile" aria-hidden="true"></i>
