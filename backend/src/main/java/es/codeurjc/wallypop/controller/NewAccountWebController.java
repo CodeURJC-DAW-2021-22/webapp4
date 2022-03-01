@@ -7,7 +7,6 @@ import es.codeurjc.wallypop.service.UserService;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +18,6 @@ public class NewAccountWebController {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	
 	@RequestMapping("/newaccount")
     public String postBody(Model model) {
 		model.addAttribute("user", new User());
@@ -30,7 +26,7 @@ public class NewAccountWebController {
 	
 	@PostMapping("/newaccount")
 	public String newUser(Model model, User us) throws IOException {
-		us.setPASSWORD(passwordEncoder.encode(us.getPASSWORD()));
+		us.setPASSWORD(userService.encodePassword(us.getPASSWORD()));
 		userService.save(us);
 		return "index";
 	}
