@@ -5,7 +5,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
-					<form method="post" action="AdcommercialWebController" class="form-horizontal">
+					<form method="post" action=yourcommercial class="form-horizontal">
 						<h3 class="text-info">Busca la categoría donde verán tu anuncio</h3>
 						<div class="form-inline">
 							<div class="col-sm-3 control-label">
@@ -13,12 +13,19 @@
 							</div>
 							<div class="col-sm-7">
 							  	<div class="form-group">
-							    	<select name="categories" id="categories" class="form-control" aria-label="Selecciona una categoría">
+							    	<select name="cATEGORY" id="categories" class="form-control" aria-label="Selecciona una categoría">
 										<option disabled selected>Selecciona una categoría</option>
-										<option value="1">Automóviles</option>
-										<option value="2">Inmuebles</option>
-										<option value="3">Menaje</option>
-										<option value="4">Mascotas</option>
+										<option value="1">Calzado</option>
+										<option value="2">Herramientas</option>
+										<option value="3">Hogar</option>	
+										<option value="4">Jardín</option>
+										<option value="5">Papelería</option>																				
+										<option value="6">Piscina</option>										
+										<option value="7">Varios</option>
+										<option value="8">Ropa</option>
+										
+										
+										
 									  </select>
 									<!-- <input type="text" class="form-control" placeholder="Dinos que anuncias"> -->
 							  	</div>
@@ -30,25 +37,25 @@
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Ciudad</label>
 						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder="Ciudad">
+						      	<input type="text" class="form-control" placeholder="Ciudad" name="cITY">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Título del anuncio</label>
 						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder="Título del anuncio">
+						      	<input type="text" class="form-control" placeholder="Título del anuncio" name ="tITLE">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Descripción</label>
 						    <div class="col-sm-7">
-						    	<textarea class="form-control" rows="3" placeholder="Descripción"></textarea>
+						    	<textarea class="form-control" rows="3" placeholder="Descripción" NAME ="dESCRIPTION"></textarea>
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Precio</label>
 						    <div class="col-sm-7">
-						    	<input type="text" class="form-control" placeholder="Precio">
+						    	<input type="text" class="form-control" placeholder="Precio" name="pRICE">
 						    </div>
 						</div>
 						<br><br>
@@ -103,7 +110,8 @@
 							Al publicar un anuncio, aceptas las <a href="#!">condiciones de uso y la Política de Privacidad</a>
 						</p>
 						<p class="text-center">
-							<button  type="submit" value="Enviar" class="btn btn-info">Continuar</button>
+							<!--  <button  type="submit" value="Enviar" class="btn btn-info">Continuar</button>	 -->
+							<input  type="submit" value="Enviar" class="btn btn-info"></input>
 						</p>
 					</form>
 				</div>

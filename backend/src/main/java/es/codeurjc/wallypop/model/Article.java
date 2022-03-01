@@ -56,11 +56,13 @@ public class Article {
  	@JoinColumn(name = "CATEGORYS")
 	private List<Category> CATEGORYS;
  	
- 	// Un artículo tiene que estar asociada con una única categoría. Una categoria puede estar asociada con varios artículos
+ 	// Un artículo tiene que estar asociada con una única categoría. 
+ 	// Una categoria puede estar asociada con varios artículos
  	@JoinColumn(name = "ID_CATEGORY")
 	private String  ID_CATEGORY;
  	
- 	// Un artículo tiene que estar asociada con una única usuario. Un usuario puede estar asociada con varios artículos
+ 	// Un artículo tiene que estar asociada con una única usuario. 
+ 	// Un usuario puede estar asociada con varios artículos
  	@JoinColumn(name = "ID_USER")
 	private String  ID_USER;
  	

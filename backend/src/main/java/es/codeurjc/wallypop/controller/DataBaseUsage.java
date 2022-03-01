@@ -12,14 +12,10 @@ public class DataBaseUsage implements CommandLineRunner {
 
 	@Autowired
 	private ArticleRepository articleRepository;
-
-	
 	
 	@Override
 	public void run(String... args) throws Exception {
-		
-		// Article (id_user,
 		articleRepository.save(new Article("001", "Alicante", "Zapatillas deportivas", "Zapatillas deportivas NBA", (float) 9.99, "0001"));
-
+		//articleRepository.findAll();
 	}
 }
