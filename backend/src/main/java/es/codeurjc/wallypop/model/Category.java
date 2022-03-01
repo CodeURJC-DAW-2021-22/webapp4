@@ -31,6 +31,8 @@ public class Category {
 	
 	@Column(name = "PHOTO")
 	private Blob PHOTO;	
+	
+	public Category(){}
 
 	public Category(String tITLE, String dESCRIPTION, Blob pHOTO) {
 		super();
@@ -38,6 +40,7 @@ public class Category {
 		DESCRIPTION = dESCRIPTION;
 		PHOTO = pHOTO;
 	}
+	
 
 	public Long getID_CATEGORY() {
 		return ID_CATEGORY;
