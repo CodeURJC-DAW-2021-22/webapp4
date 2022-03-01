@@ -17,20 +17,32 @@
 						<i class="fa fa-user container-login-icon" aria-hidden="true"></i>
 						<h4 class="text-center text-light">CREA UNA CUENTA</h4>
 						<br>
-						<form action="">
-							<div class="form-group">
-								<input type="text" class="form-control input-lg" placeholder="Nombre" required="">
-							</div>
-							<div class="form-group">
-								<input type="email" class="form-control input-lg" placeholder="Email" required="">
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control input-lg" placeholder="Contraseña" required="">
-							</div>
+						<form th:object="${user}" th:action="@{/register}" method="post">
+                            <div class="form-group">
+                                <input th:field="*{FULL_NAME}" class="form-control input-lg" id="full_name" placeholder="Nombre y apellidos" type="text"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input th:field="*{NAME}" class="form-control input-lg" id="NAME" placeholder="Email" type="email"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input th:field="*{TEL}" id="TEL" class="form-control input-lg" placeholder="Teléfono" type="text"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input th:field="*{PASSWORD}" class="form-control input-lg" id="PASSWORD" placeholder="Contraseña" type="text"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input th:field="*{password2}" class="form-control input-lg" id="password2" placeholder="Repetir contraseña" type="text"
+                                       class="form-control">
+                            </div>
+                            <input type="hidden" name="_csrf" value="{{token}}"/>
 							<p>Al registrarte aceptas las <a href="#!" style="display: inline-block;">condiciones de uso y la Política de Privacidad</a></p>
 							<button class="btn btn-danger btn-lg" type="submit">CREAR CUENTA</button>
 							<a href="login" class="text-center">Ya tengo una cuenta</a>
-						</form>
+                            </form>
 					</div>
 				</div>
 			</div>
