@@ -38,8 +38,8 @@
 					</div>
 					<!-- Contenido-->
 					<div class="full-width" style="padding: 15px; border: 1px solid #E1E1E1;">
-						<form action="">
-							<p class="text-muted text-center">Seleciona una image</p>
+						<form action="/updateProfile" method="POST">
+							<!-- <p class="text-muted text-center">Seleciona una image</p>
 							<div class="form-group">
 							    <div class="custom-input-file">
 							    	<input type="file" size="1" class="input-file" />
@@ -48,14 +48,19 @@
 								<br>
 								<p  class="text-muted text-center archivo">Archivo...</p>
 							</div>
-							<br><br><br>
+							<br><br><br> -->
 							<div class="form-group">
-								<label>Nombre</label>
-								<input type="text" placeholder="Nombre" class="form-control">
+								<h3>Nombre: {{FULL_NAME}}</h3>
+								<!-- <input type="text" placeholder="Nombre" class="form-control" required=""> -->
 							</div>
 							<div class="form-group">
-								<label>Teléfono <small>Éste será el teléfono de contacto en tus anuncios</small></label>
-								<input type="text" placeholder="¿Cuál es tu teléfono?" class="form-control">
+								<h3>Contacto:</h3>
+								<h4> - Correo electrónico: {{NAME}}</h4>
+								<!-- <input type="text" placeholder="¿Cuál es tu teléfono?" class="form-control" required=""> -->
+							</div>
+							<div class="form-group">
+								<h4> - Teléfono: {{TEL}}<small> (Éste será el teléfono de contacto en tus anuncios)</small></h4>
+								<!-- <input type="text" placeholder="¿Cuál es tu teléfono?" class="form-control" required=""> -->
 							</div>
 							<!-- <div class="form-group">
 								<label>Localización <small>¿Cuál es tu ubicación?</small></label>
@@ -65,22 +70,27 @@
 								<label>Email</label>
 								<input type="email" placeholder="Email" class="form-control">
 							</div> -->
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label>Contraseña</label>
-								<a href="#!" class="btn btn-default btn-xs pull-right btn-dropdown-conatiner" data-drop-cont=".perfil-password">
+								<input type="password" placeholder="Contraseña" class="form-control">
+								<br>
+								<input type="password" placeholder="Nueva Contraseña" class="form-control">
+								<br>
+								<input type="password" placeholder="Confirmar Contraseña" class="form-control"> -->
+								<!-- <a href="#!" class="btn btn-default btn-xs pull-right btn-dropdown-conatiner" data-drop-cont=".perfil-password">
 									Mostrar/Ocultar <i class="fa fa-sort" aria-hidden="true"></i>
-								</a>
-								<div class="full-width perfil-password">
+								</a> -->
+								<!-- <div class="full-width perfil-password">
 									<input type="password" placeholder="Contraseña" class="form-control">
 									<br>
 									<input type="password" placeholder="Nueva Contraseña" class="form-control">
 									<br>
 									<input type="password" placeholder="Confirmar Contraseña" class="form-control">
-								</div>
+								</div> -->
 							</div>
-							<p class="text-center">
+							<!-- <p class="text-center">
 								<button class="btn btn-danger">GUARDAR</button>
-							</p>
+							</p> -->
 						</form>
 					</div>
 				</div>

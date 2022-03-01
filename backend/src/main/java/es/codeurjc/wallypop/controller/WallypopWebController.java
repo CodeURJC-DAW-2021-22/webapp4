@@ -34,6 +34,7 @@ public class WallypopWebController {
 			Optional<User> us = userRepository.findByNAME(principal.getName());
 			if (us.isPresent()) {
 				model.addAttribute("FULL_NAME", us.get().getFULL_NAME());
+				model.addAttribute("TEL", us.get().getTEL());
 				model.addAttribute("sell", us.get().getN_SELL());
 				model.addAttribute("sold", us.get().getN_SOLD());
 			}
