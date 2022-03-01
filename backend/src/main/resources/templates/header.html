@@ -21,8 +21,15 @@
 			<ul class="list-unstyled full-width menu-mobile-c">
 				<div class="full-width hidden-md hidden-lg header-menu-mobile">
 					<i class="fa fa-times header-menu-mobile-close-btn show-menu-mobile" aria-hidden="true"></i>
-					<i class="fa fa-user NavBar-Nav-icon header-menu-mobile-icon" aria-hidden="true"></i>
+					{{#logged}}
+					<a href="/perfil">
+						<i class="fa fa-user NavBar-Nav-icon header-menu-mobile-icon" aria-hidden="true"></i>
+					</a>
+					{{/logged}}
 					{{^logged}}
+					<a href="/login">
+						<i class="fa fa-user NavBar-Nav-icon header-menu-mobile-icon" aria-hidden="true"></i>
+					</a>
 					</br>
 					<a href="/login" class="btn btn-info header-menu-mobile-btn">INICIAR SESIÓN</a>
 					<div class="divider"></div>
@@ -32,7 +39,7 @@
 					<p><center>
 						<form action="/logout" method="post">
 							<button class="btn btn-default navbar-btn" type="submit">Log Out</button>
-						    <!-- <input type="hidden" name="_csrf" value="{{token}}" /> -->
+						    <input type="hidden" name="_csrf" value="{{token}}" />
 						</form>
 					</center></p>
 					<!--<div class="nav navbar-nav navbar-right">
@@ -79,11 +86,7 @@
 				</li>-->
 				{{#logged}}
 				<li class="hidden-xs hidden-sm">
-					{{^ADMIN}}
-						<a href="/perfil">
-					{{/ADMIN}} {{#ADMIN}}
-						<a href="/perfilAdmin">
-					{{/ADMIN}}
+					<a href="/perfil">
 						{{FULL_NAME}} <i class="fa fa-user NavBar-Nav-icon" aria-hidden="true"></i>
 					</a>
 				</li>
