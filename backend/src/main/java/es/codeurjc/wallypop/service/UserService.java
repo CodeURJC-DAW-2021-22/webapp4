@@ -24,4 +24,7 @@ public class UserService {
 		return passwordEncoder.encode(password);
 	}
 
+	public boolean userExists(User us) {
+		return userRepository.findByNAME(us.getNAME()).isPresent();
+	}
 }

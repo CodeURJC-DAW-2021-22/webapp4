@@ -17,6 +17,18 @@
 						<i class="fa fa-user container-login-icon" aria-hidden="true"></i>
 						<h4 class="text-center text-light">CREA UNA CUENTA</h4>
 						<br>
+						{{#ERROR}}
+						<div class="row">
+							<div class="col-xs-12 col-sm-12">
+								<div class="alert alert-warning" role="alert">
+			  						<center>
+			  							El correo electrónico ha sido utilizado<br>
+			  							<a href="login">Intente iniciar sesión</a>
+			  						</center>
+								</div>
+							</div>
+						</div>
+						{{/ERROR}}
 						<form action="/newaccount" method="post">
 						    <div class="form-group">
 						        <input class="form-control input-lg" name="FULL_NAME" placeholder="Nombre y apellidos" type="text" class="form-control">

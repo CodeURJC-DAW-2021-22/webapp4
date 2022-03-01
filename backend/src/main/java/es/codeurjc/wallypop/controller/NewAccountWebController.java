@@ -19,16 +19,27 @@ public class NewAccountWebController {
 	private UserService userService;
 	
 	@RequestMapping("/newaccount")
-    public String postBody(Model model) {
+    public String newAccount(Model model) {
 		model.addAttribute("user", new User());
+        return "newaccount";
+    }
+	
+	@RequestMapping("/newaccounterror")
+    public String newAccountError(Model model) {
+		model.addAttribute("user", new User());
+		model.addAttribute("ERROR", true);
         return "newaccount";
     }
 	
 	@PostMapping("/newaccount")
 	public String newUser(Model model, User us) throws IOException {
 		us.setPASSWORD(userService.encodePassword(us.getPASSWORD()));
-		userService.save(us);
-		return "index";
+		if (userService.userExists(us)) {
+			return "newaccounterror";
+		} else {
+			userService.save(us);
+			return "login";
+		}
 	}
 
 }
