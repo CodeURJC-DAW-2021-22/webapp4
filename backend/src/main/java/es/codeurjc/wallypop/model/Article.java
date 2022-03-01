@@ -33,9 +33,12 @@ public class Article {
  	@Column(name = "DESCRIPTION")
  	private String DESCRIPTION;
  	
+ 	@Column(name = "PRICE_1")
+ 	private float PRICE_1;
+ 	
  	@NonNull
  	@Column(name = "PRICE")
- 	private float PRICE;
+ 	private String PRICE;
  	
  	@Column(name = "DATE")
  	private Date DATE = new java.sql.Date(System.currentTimeMillis());
@@ -75,7 +78,7 @@ public class Article {
 		USER = uSER;
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
-		PRICE = pRICE;
+		PRICE_1 = pRICE;
 		PHOTO = pHOTO;
 		CATEGORYS = lISTcATEGORYS;
 	}
@@ -84,7 +87,7 @@ public class Article {
 		USER = uSER;
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
-		PRICE = pRICE;
+		PRICE_1 = pRICE;
 		CATEGORYS = lISTcATEGORYS;
 	}
 	
@@ -93,7 +96,7 @@ public class Article {
 		CITY = cITY;
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
-		PRICE = pRICE;
+		PRICE_1 = pRICE;
 	}
 
 	public Article(String cITY, String tITLE, String dESCRIPTION, float pRICE, List<Category> lISTcATEGORYS) {
@@ -101,10 +104,10 @@ public class Article {
 		CITY = cITY;
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
-		PRICE = pRICE;
+		PRICE_1 = pRICE;
 	}
 	
-	public Article(String iD_USER, String cITY, String tITLE, String dESCRIPTION, float pRICE, String iD_CATEGORY) {
+	public Article(String iD_USER, String cITY, String tITLE, String dESCRIPTION, String pRICE, String iD_CATEGORY) {
 		super();
 		ID_USER = iD_USER;
 		CITY = cITY;
@@ -144,11 +147,11 @@ public class Article {
 	}
 
 	public float getPRICE() {
-		return PRICE;
+		return PRICE_1;
 	}
 
 	public void setPRICE(float pRICE) {
-		PRICE = pRICE;
+		PRICE_1 = pRICE;
 	}
 
 	public Date getDATE() {
@@ -236,6 +239,12 @@ public class Article {
 
 	public void setID_ARTICLE(int iD_ARTICLE) {
 		ID_ARTICLE = iD_ARTICLE;
+	}
+	
+	
+
+	public void setPRICE(String pRICE) {
+		PRICE = pRICE;
 	}
 
 	@Override

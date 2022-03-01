@@ -35,29 +35,31 @@
 						<br><br>
 						<h3 class="text-info">Detalles de tu anuncio</h3>
 						<div class="form-group">
-						    <label class="col-sm-3 control-label">Ciudad</label>
+						    <label class="col-sm-3 control-label">{{campo_obligatorio_city}}Ciudad</label>
 						    <div class="col-sm-7">
 						      	<input type="text" class="form-control" placeholder="Ciudad" name="cITY">
 						    </div>
 						</div>
 						<div class="form-group">
-						    <label class="col-sm-3 control-label">Título del anuncio</label>
+						    <label  class="col-sm-3 control-label"> {{campo_obligatorio_title}} Título del anuncio</label>
 						    <div class="col-sm-7">
 						      	<input type="text" class="form-control" placeholder="Título del anuncio" name ="tITLE">
 						    </div>
 						</div>
 						<div class="form-group">
-						    <label class="col-sm-3 control-label">Descripción</label>
+						    <label class="col-sm-3 control-label">{{campo_obligatorio_description}}Descripción</label>
 						    <div class="col-sm-7">
 						    	<textarea class="form-control" rows="3" placeholder="Descripción" NAME ="dESCRIPTION"></textarea>
 						    </div>
 						</div>
 						<div class="form-group">
-						    <label class="col-sm-3 control-label">Precio</label>
+						    <label class="col-sm-3 control-label">{{campo_obligatorio_price}}Precio</label>
 						    <div class="col-sm-7">
 						    	<input type="text" class="form-control" placeholder="Precio" name="pRICE">
 						    </div>
 						</div>
+						<p style="color: red;">{{campos_obligatorios}} </p>
+						
 						<br><br>
 						<h3 class="text-info">Foto</h3>
 						<p>¡los anuncios con fotos reciben 7 veces más contactos!</p>
