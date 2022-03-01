@@ -15,7 +15,7 @@ public class LoginWebController {
 	@RequestMapping("/loginerror")
 	public String loginerror(Model model) {
 		model.addAttribute("ERROR", true);
-		return "loginerror";
+		return "login";
 	}
 	
 }
