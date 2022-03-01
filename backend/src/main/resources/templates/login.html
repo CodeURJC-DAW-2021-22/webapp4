@@ -4,6 +4,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+					<div class="alert alert-danger" role="alert">
+  						Credenciales no válidas
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 					<div class="full-width container-login">
 						<i class="fa fa-user container-login-icon" aria-hidden="true"></i>
 						<h4 class="text-center text-light">INICIAR SESIÓN</h4>
@@ -17,8 +24,8 @@
 							</div>
 							<input type="hidden" name="_csrf" value="{{token}}"/>
 							<!-- <a class="text-left text-light" href="#!">No recuerdo mi contraseña</a> -->
-							<input type="submit" value="Sign In"/>
-							<!--<button class="btn btn-danger btn-lg" type="submit">INICIAR SESIÓN</button> -->
+							<!-- <input type="submit" value="Sign In"/> -->
+							<button class="btn btn-danger btn-lg" type="submit">INICIAR SESIÓN</button>
 							<a href="newaccount" class="text-center">Si eres nuevo ¡Crea una cuenta!</a>
 						</form>
 					</div>
