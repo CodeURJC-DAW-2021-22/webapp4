@@ -66,14 +66,17 @@
 				  	<p>
 				  		Listado con todos los reportes enviados por los usuarios:
 				  	</p>
-				  	<div class="list-group">
-					  	<a href="VisualizaReporte" class="list-group-item">ID: 0000, email:userCualquiera@gmail.com </a>
-					  	<a href="#!" class="list-group-item">ID: 0001, email:userCualquiera1@gmail.com </a>
-					  	<a href="#!" class="list-group-item">ID: 0002, email:userCualquiera2@gmail.com </a>
-					  	<a href="#!" class="list-group-item">ID: 0003, email:userCualquiera3@gmail.com </a>
-					  	<a href="#!" class="list-group-item">ID: 0004, email:userCualquiera4@gmail.com </a>
-					  	<a href="#!" class="list-group-item">ID: 0005, email:userCualquiera5@gmail.com </a>
-					</div>
+        <table th:if="${ not #lists.isEmpty(employees) }" border=1>
+        <tr>
+            <td>ID REPORT</td>
+            <td>EMAIL</td>
+
+        </tr>
+        <tr th:each="report : ${"REPORTS"}">
+            <td th:text="${report.ID_REPORT}"></td>
+            <td th:text="${report.EMAIL}"></td>
+        </tr>
+    </table>
 				</div>
 			</div>
 		</div>

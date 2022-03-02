@@ -6,6 +6,8 @@ import javax.persistence.*;
 
 import org.springframework.lang.NonNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "REPORT")
 public class Report {
@@ -19,17 +21,19 @@ public class Report {
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_ARTICLE")
-	private Article ARTICLE;
+	private Article ARTICLE=null;
 	
 	@NonNull
 	@Column(name = "EMAIL")
 	private String EMAIL;
 	
 	@Column(name = "DESCRIPTION")
-	private String DESCRIPTION;
+	private String DESCRIPTION=null;
 	
+	@Lob
+	@JsonIgnore
 	@Column(name = "PROOF")
-	private Blob PROOF;
+	private Blob PROOF=null;
 
 	public Report(Article aRTICLE, String eMAIL, Blob pROOF,String dESCRIPTION) {
 		super();
@@ -91,7 +95,7 @@ public class Report {
 		return DESCRIPTION;
 	}
 
-	public void setPROOF(String dESCRIPTION) {
+	public void setDESCRIPTION(String dESCRIPTION) {
 		DESCRIPTION = dESCRIPTION;
 	}
 	
