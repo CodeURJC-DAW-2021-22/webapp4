@@ -76,7 +76,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
-					<form action="" class="form-horizontal">
+					<form method="post" action="newCategory" class="form-horizontal">
 						<h3 class="text-info">Busca una categoría</h3>
 						<div class="form-inline">
 							<div class="col-sm-3 control-label">
@@ -99,7 +99,7 @@
 							</div>
 							<div class="col-sm-7">
 							  	<div class="form-group">
-							    	<input type="text" class="form-control" placeholder="Añade nueva categoría">
+							    	<input type="text" class="form-control" placeholder="Añade nueva categoría" name="TITLE">
 							  	</div>
 							  	<!--<button class="btn btn-default">+</button>-->
 							</div>
@@ -111,12 +111,20 @@
 						      	<input type="text" class="form-control" placeholder="Título del anuncio">
 						    </div>
 						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Descripción</label>
+						-->
+						<br>
+						<br>
+						<div class="form-inline">
+						    <div class="col-sm-3 control-label">
+						         <label>Descripción</label>
+						    </div>
 						    <div class="col-sm-7">
-						    	<textarea class="form-control" rows="3" placeholder="Descripción"></textarea>
+						         <div class="form-group">
+						    	      <textarea class="form-control" rows="3" placeholder="Descripción" name="DESCRIPTION"></textarea>
+						         </div>
 						    </div>
 						</div>
+						<!--
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Precio</label>
 						    <div class="col-sm-7">
@@ -124,12 +132,12 @@
 						    </div>
 						</div>
 						-->
-						<br><br>
+						<br><br><br>
 						<h3 class="text-info">Foto</h3>
 						<p>¡Añade una foto a la categoría!</p>
 						<div class="form-group">
 						    <div class="custom-input-file">
-						    	<input type="file" size="1" class="input-file" />
+						    	<input type="file" size="1" class="input-file" name="PHOTO"/>
 							    <i class="fa fa-picture-o" aria-hidden="true"></i>
 							</div>
 							<br>
@@ -173,7 +181,7 @@
 						    </div>
 						</div> -->
 						<p class="text-center">
-							<button class="btn btn-info">Guardar</button>
+							<input  type="submit" value="Guardar" class="btn btn-info"></input>
 						</p>
 					</form>
 				</div>
