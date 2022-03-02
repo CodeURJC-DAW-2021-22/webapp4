@@ -27,10 +27,10 @@ public class Category {
 	private String TITLE;
 	
 	@Column(name = "DESCRIPTION")
-	private String DESCRIPTION;
+	private String DESCRIPTION = null;
 	
 	@Column(name = "PHOTO")
-	private Blob PHOTO;	
+	private Blob PHOTO = null;	
 	
 	public Category(){}
 

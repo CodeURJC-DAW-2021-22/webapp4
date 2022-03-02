@@ -76,7 +76,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
-					<form method="post" action="newCategory" class="form-horizontal">
+					<form method="post" action="" class="form-horizontal">
 						<h3 class="text-info">Busca una categoría</h3>
 						<div class="form-inline">
 							<div class="col-sm-3 control-label">
@@ -91,7 +91,9 @@
 
 							</div>
 						</div>
+						</form>
 						<br><br>
+						<form method="post" action="/newCategory" class="form-horizontal" enctype="multipart/form-data">
 						<h3 class="text-info">Añade una nueva Categoría</h3>
 						<div class="form-inline">
 							<div class="col-sm-3 control-label">
@@ -137,49 +139,12 @@
 						<p>¡Añade una foto a la categoría!</p>
 						<div class="form-group">
 						    <div class="custom-input-file">
-						    	<input type="file" size="1" class="input-file" name="PHOTO"/>
+						    	<input type="file" size="1" class="input-file" name="imageField" accept=".jpg, .jpeg"/>
 							    <i class="fa fa-picture-o" aria-hidden="true"></i>
 							</div>
 							<br>
 							<p  class="text-muted text-center archivo">Archivo...</p>
 						</div>
-						<!-- <br><br>
-						<h3 class="text-info">Datos para que te contacten</h3>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Eres</label>
-							<div class="col-sm-7">
-								<label class="radio-inline">
-									<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Particular
-								</label>
-								<label class="radio-inline">
-									<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Profesional
-								</label>
-							</div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Tu nombre</label>
-						    <div class="col-sm-7">
-						    	<input type="text" class="form-control" placeholder="Nombre">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">E-mail</label>
-						    <div class="col-sm-7">
-						    	<input type="email" class="form-control" placeholder="E-mail">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Confirmar E-mail</label>
-						    <div class="col-sm-7">
-						    	<input type="email" class="form-control" placeholder="Confirmar E-mail">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Teléfono</label>
-						    <div class="col-sm-7">
-						    	<input type="tel" class="form-control" placeholder="Teléfono">
-						    </div>
-						</div> -->
 						<p class="text-center">
 							<input  type="submit" value="Guardar" class="btn btn-info"></input>
 						</p>
