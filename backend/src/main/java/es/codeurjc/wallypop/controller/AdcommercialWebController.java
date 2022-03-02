@@ -28,7 +28,7 @@ public class AdcommercialWebController {
 			return this.controlCampoObligatorio_1(model,cITY, tITLE,dESCRIPTION,pRICE); //call method this class
 
 		}else {
-			articleRepository.save(new Article("001", cITY, tITLE, dESCRIPTION, pRICE, "0001")); //save data in repository Article
+			articleRepository.save(new Article(cITY, tITLE, dESCRIPTION, pRICE)); //save data in repository Article
 			// Consultamos en el repositorio todos los artcículos
 			// listArticlesUser = articleRepository.getListArticles("001");
 			// el siguiente paso es incrustar toda la info. de listArticleUser (que contiene todos los articulos del usercon id 001) en template yourcommercial.html (recordar que hay que hacer paginación de 10 en 10 artiíulos)

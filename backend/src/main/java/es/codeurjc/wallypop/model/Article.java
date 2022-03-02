@@ -110,15 +110,12 @@ public class Article {
 		PRICE_1 = pRICE;
 	}
 	
-	public Article(String iD_USER, String cITY, String tITLE, String dESCRIPTION, String pRICE, String iD_CATEGORY) {
+	public Article( String cITY, String tITLE, String dESCRIPTION, String pRICE) {
 		super();
-		ID_USER = iD_USER;
 		CITY = cITY;
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
-		PRICE = pRICE;
-		ID_CATEGORY = iD_CATEGORY;
-		
+		PRICE = pRICE;		
 	}
 	
 	public int getID_ARTICLE() {
@@ -149,8 +146,8 @@ public class Article {
 		DESCRIPTION = dESCRIPTION;
 	}
 
-	public float getPRICE() {
-		return PRICE_1;
+	public String getPRICE() {
+		return PRICE;
 	}
 
 	public void setPRICE(float pRICE) {
@@ -183,6 +180,16 @@ public class Article {
 
 	public Blob getPHOTO() {
 		return PHOTO;
+	}
+	
+	
+
+	public float getPRICE_1() {
+		return PRICE_1;
+	}
+
+	public void setPRICE_1(float pRICE_1) {
+		PRICE_1 = pRICE_1;
 	}
 
 	public void setPHOTO(Blob pHOTO) {

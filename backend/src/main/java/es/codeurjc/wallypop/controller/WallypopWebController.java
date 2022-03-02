@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class WallypopWebController {
 
-	@GetMapping("/")
+	@GetMapping(value = {"/", "/index"})
 	public String showIndex(Model model) {
 		return "index";
 	}

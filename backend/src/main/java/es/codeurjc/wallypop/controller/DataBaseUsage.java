@@ -15,7 +15,7 @@ public class DataBaseUsage implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		articleRepository.save(new Article("001", "Alicante", "Zapatillas deportivas", "Zapatillas deportivas NBA", "9.99", "0001"));
+		articleRepository.save(new Article("Alicante", "Zapatillas deportivas", "Zapatillas deportivas NBA", "9.99"));
 		//articleRepository.findAll();
 	}
 }
