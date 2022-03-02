@@ -21,20 +21,22 @@ public class Report {
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_ARTICLE")
-	private Article ARTICLE=null;
+	private Article ARTICLE;
 	
 	@NonNull
 	@Column(name = "EMAIL")
 	private String EMAIL;
 	
 	@Column(name = "DESCRIPTION")
-	private String DESCRIPTION=null;
+	private String DESCRIPTION;
 	
 	@Lob
 	@JsonIgnore
 	@Column(name = "PROOF")
-	private Blob PROOF=null;
+	private Blob PROOF;
 
+	public Report() {}
+	
 	public Report(Article aRTICLE, String eMAIL, Blob pROOF,String dESCRIPTION) {
 		super();
 		ARTICLE = aRTICLE;
