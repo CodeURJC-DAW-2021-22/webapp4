@@ -5,8 +5,10 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-import org.springframework.lang.NonNull;
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name = "ARTICLE")
@@ -14,7 +16,6 @@ public class Article {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
- 	@NonNull
  	@Column(name = "ID_ARTICLE")
  	private int ID_ARTICLE;
 
@@ -22,24 +23,26 @@ public class Article {
  	@JoinColumn(name = "USER")
  	private User USER;
  	
- 	@NonNull
+ 	@NotNull(message = "Debes especificar la ciudad")
  	@Column(name = "CITY")
  	private String CITY;
  	
- 	@NonNull
+ 	@NotNull(message = "Debes especificar el título del anuncio.")
  	@Column(name = "TITLE")
  	private String TITLE;
- 	
+ 
+ 	@NotNull(message = "Debes especificar una pequeña descripción para el anuncio. ytuliza tu imaginación.")
  	@Column(name = "DESCRIPTION")
  	private String DESCRIPTION;
  	
  	@Column(name = "PRICE_1")
  	private float PRICE_1;
  	
- 	@NonNull
+ 	@NotNull(message = "Debes especificar el precio del producto que estas anunciando")
  	@Column(name = "PRICE")
  	private String PRICE;
  	
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
  	@Column(name = "DATE")
  	private Date DATE = new java.sql.Date(System.currentTimeMillis());
  	
