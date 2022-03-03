@@ -2,7 +2,7 @@
 	<!-- ====== Contenido de pagina ======-->
 	<section class="section">
 		<h2 class="text-center text-light">INCIDENCIA</h2>
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
 					<form action="" class="form-horizontal">
@@ -23,26 +23,33 @@
 						<br>
 						<button class="btn btn-info">&lt;</button>
 						<br>
-						<h3 class="text-info">ID incidencia: #0000</h3> <!-- ESTE CONTADOR AUNMENTA DE FORMA AUTOMNÁTICA CUANDO SE HACE UN NUEVO REPORTE DESDE LA PANTALLA FORMULARIOREPORTE.html -->
+						{{#report}}
+						<h3 class="text-info">ID incidencia: {{ID_REPORT}}</h3> <!-- ESTE CONTADOR AUNMENTA DE FORMA AUTOMNÁTICA CUANDO SE HACE UN NUEVO REPORTE DESDE LA PANTALLA FORMULARIOREPORTE.html -->
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Email</label>
-						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder="userCualquiera@gmail.com">
-						    </div>
+						    <label class="col-sm-7">
+						      	<a type="text" class="form-control">{{EMAIL}}</a>
+						    </label>
+						</div>
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Articlo Denunciado</label>
+						    <label class="col-sm-7">
+						      	<a href="#!" class="form-control">Pulsa para acceder al articulo denunciado</a>
+						    </label>
 						</div>
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Descripción de la incidencia</label>
-						    <div class="col-sm-7">
-								<textarea class="form-control" placeholder=" He detectado en un anucio que se están vendiendo productos peligrosos"></textarea>
+						    <label class="col-md-7">
+								<textarea class="form-control">{{DESCRIPTION}}</textarea>
 						      	<!-- <input type="text" class="form-control" placeholder=" He detectado en un anucio que se están vendiendo productos peligrosos"> -->
-						    </div>
+						    </label>
 						</div>
 						<br><br>
-						<h3 class="text-info">Ficheros adjuntos por el usuario</h3>
-						<h4 class="text-info">(Listado con los ficheros adjuntos)</h4>
-						<h5 class="text-info">--> Fichero adjunto 1: capturaPantalla1.png</h5>
-						<h5 class="text-info">--> Fichero adjunto 2: capturaPantalla2.png</h5>
-
+						<h3 class="text-info">Fichero adjunto por el usuario</h3>
+						<figure class="post-img">
+								<img src="{{ID_REPORT}}/image" alt="" class="img">
+							</figure>
+                        {{/report}}
 
 
 						<!--

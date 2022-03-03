@@ -74,11 +74,10 @@
           <th style="background-color:#337ab7;color:white">DESCRIPTION</th>
 		{{#report}}
 
-        <tr onclick="location.href='/VisualizaReporte'">
+        <tr onclick="location.href='/VisualizaReporte/{{ID_REPORT}}'">
             <td> {{ID_REPORT}}</a></td>
             <td>{{EMAIL}}</td>
             <td>{{DESCRIPTION}}</td>
-            
         </tr >
 
             {{/report}}
