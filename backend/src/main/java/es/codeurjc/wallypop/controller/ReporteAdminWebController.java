@@ -1,5 +1,6 @@
 package es.codeurjc.wallypop.controller;
 
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,15 +20,16 @@ public class ReporteAdminWebController {
 	@Autowired
 	private ReportRepository reportRepository;
 	
-	@RequestMapping(value="/reporteAdmin", method=RequestMethod.GET)
+	@RequestMapping(value="/reporteAdmin")
 	public String reporteadmin(Model model) {
-        List <Report> reportList= reportRepository.findAll(Sort.by("ID_REPORT"));
-        model.addAttribute("REPORTS", reportList);
+		model.addAttribute("report",reportRepository.findAll());
 		return "reporteAdmin";
 	}
 	
 	@RequestMapping("/VisualizaReporte")
-	public String visualizareporte() {
+	public String visualizareporte(Model model) {
 		return "VisualizaReporte";
 	}
+	
+
 }

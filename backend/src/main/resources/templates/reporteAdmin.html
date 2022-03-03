@@ -66,17 +66,24 @@
 				  	<p>
 				  		Listado con todos los reportes enviados por los usuarios:
 				  	</p>
-        <table th:if="${ not #lists.isEmpty(employees) }" border=1>
-        <tr>
-            <td>ID REPORT</td>
-            <td>EMAIL</td>
 
-        </tr>
-        <tr th:each="report : ${"REPORTS"}">
-            <td th:text="${report.ID_REPORT}"></td>
-            <td th:text="${report.EMAIL}"></td>
-        </tr>
+        <table border=1>
+
+          <th style="background-color:#337ab7 ;color:white">ID REPORT</th background="red">
+          <th style="background-color:#337ab7;color:white">EMAIL</th>
+          <th style="background-color:#337ab7;color:white">DESCRIPTION</th>
+		{{#report}}
+
+        <tr onclick="location.href='/VisualizaReporte'">
+            <td> {{ID_REPORT}}</a></td>
+            <td>{{EMAIL}}</td>
+            <td>{{DESCRIPTION}}</td>
+            
+        </tr >
+
+            {{/report}}
     </table>
+
 				</div>
 			</div>
 		</div>
