@@ -9,7 +9,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Report;
+import es.codeurjc.wallypop.repositories.ArticleRepository;
 import es.codeurjc.wallypop.repositories.ReportRepository;
 
 import java.io.IOException;
@@ -34,7 +36,10 @@ import org.springframework.ui.Model;
 public class ReporteAdminWebController {
 
 	@Autowired
-	private ReportRepository reportRepository;
+	private ReportRepository reportRepository;	
+	
+	@Autowired
+	private ArticleRepository articleRepository;
 	
 	@JsonIgnore
 	@RequestMapping(value="/reporteAdmin")
@@ -49,7 +54,7 @@ public class ReporteAdminWebController {
 	}
 	
 	@GetMapping("/VisualizaReporte/{id}")
-	public String showReeport(Model model, @PathVariable long id) {
+	public String showReport(Model model, @PathVariable long id) {
 
 		Optional<Report> report = reportRepository.findById(id);
 		if (report.isPresent()) {
@@ -68,11 +73,23 @@ public class ReporteAdminWebController {
 		if (report.get().getPROOF() != null) {
 			Resource file = new InputStreamResource(report.get().getPROOF().getBinaryStream());
 
-			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/zip")
 					.contentLength(report.get().getPROOF().length()).body(file);
 		} else {
 			return ResponseEntity.notFound().build();
 		}
+	}
+	
+	@GetMapping("/VisualizarPost/{id}")
+	public String showArticleReported(Model model, @PathVariable long id) {
+		Optional<Article> article = articleRepository.findById((long) reportRepository.getById(id).getARTICLE().getID_ARTICLE());
+		if (article.isPresent()) {
+			model.addAttribute("article", article.get());
+			return "post";
+		} else {
+			return "/VisualizaReporte/{id}";
+		}
+
 	}
 	
 
