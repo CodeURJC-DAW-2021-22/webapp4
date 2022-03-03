@@ -84,7 +84,11 @@
 							</div>
 							<div class="col-sm-7">
 							  	<div class="form-group">
-							    	<input type="text" class="form-control" placeholder="Busca categoría">
+							    	<select id="lcategories">
+						    	    {{#lcategory}}
+                                        <option value="{{ID_CATEGORY}}">{{TITLE}}</option>
+                                    {{/lcategory}}
+                                    </select>
 							  	</div>
 							  	<button class="btn btn-default">Buscar categoría</button>
 							  	<a href="categoriasAdminListado.html">VER LISTADO CATEGORÍAS</a>

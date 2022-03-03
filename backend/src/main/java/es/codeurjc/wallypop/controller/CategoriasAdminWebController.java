@@ -21,6 +21,7 @@ public class CategoriasAdminWebController {
 	@RequestMapping("/categoriasAdmin")
 	public String categoriasAdmin(Model model) {
 		model.addAttribute("category", new Category());
+		model.addAttribute("lcategory", categoryservice.findAll());
 		return "categoriasAdmin";
 	}
 	
