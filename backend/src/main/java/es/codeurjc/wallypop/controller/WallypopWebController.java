@@ -129,10 +129,10 @@ public class WallypopWebController {
 		return "commercial";
 	}
 	
-	@RequestMapping("/commercial/{category}")
-	public String commercial_filter(Model model, @PathVariable long category) {
+	@RequestMapping("/commercial/{id}")
+	public String commercial_filter(Model model, @PathVariable long id) {
 		model.addAttribute("Filtered", true);
-		//model.addAttribute("Articles", articleService.findArticlesByCategory(category));
+		//model.addAttribute("Articles", articleService.findArticlesByCategory(id));
 		model.addAttribute("Articles", articleService.findAll());
 		model.addAttribute("lcategory", categoryservice.findAll());
 		return "commercial";
