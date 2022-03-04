@@ -1,33 +1,34 @@
 package es.codeurjc.wallypop.controller;
 
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+
 
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.repository.UserRepository;
 
 import java.sql.SQLException;
-import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
 
 import es.codeurjc.wallypop.model.Category;
 import es.codeurjc.wallypop.service.CategoryService;
@@ -81,13 +82,27 @@ public class WallypopWebController {
 		return "adcommercial";
 	}
 	
-	@RequestMapping("/categoriasAdminListado")
-	public String categoriasAdminListado() {
+	@GetMapping("/categoriasAdminListado")
+	public String categoriasAdminListado(Model model) {
+		model.addAttribute("category", categoryservice.findAll());
 		return "categoriasAdminListado";
 	}
 	
 	@RequestMapping("/categoriasAdmin")
-	public String categoriasAdmin() {
+	public String categoriasAdmin(Model model) {
+		model.addAttribute("category", new Category());
+		model.addAttribute("lcategory", categoryservice.findAll());
+		return "categoriasAdmin";
+	}
+	
+	@PostMapping("/newCategory")
+	public String newCategory(Model model, Category category, MultipartFile imageField) throws IOException{
+		
+		if (!imageField.isEmpty()) {
+			category.setPHOTO(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
+		}
+
+		categoryservice.save(category);
 		return "categoriasAdmin";
 	}
 	
@@ -147,7 +162,7 @@ public class WallypopWebController {
 	}
 	
 	
-	@GetMapping("/{id}/imagen")
+	@GetMapping("category/{id}/imagen")
 	public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
 		Optional<Category> category = categoryservice.findById(id);
 

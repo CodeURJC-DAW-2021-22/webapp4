@@ -4,12 +4,6 @@
 						  	<a href="perfil" class="list-group-item">
 						  		<i class="fa fa-user fa-fw" aria-hidden="true"></i> TU PERFIL
 						  	</a>
-						  	<!-- <a href="config" class="list-group-item">
-						  		<i class="fa fa-cogs fa-fw" aria-hidden="true"></i> CONFIGURACIÓN
-						  	</a> -->
-						  	<!-- <a href="messages" class="list-group-item">
-						  		<i class="fa fa-commenting-o fa-fw" aria-hidden="true"></i> MENSAJES
-						  	</a> -->
 						  	<a href="yourcommercial" class="list-group-item">
 						  		<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS
 						  	</a>
@@ -55,21 +49,22 @@
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
 					<form method="post" action="" class="form-horizontal">
 						<h3 class="text-info">Busca una categoría</h3>
-						<div class="form-inline">
+						<div class="form-group">
 							<div class="col-sm-3 control-label">
 						    	<label>Busca categoría</label>
 							</div>
 							<div class="col-sm-7">
 							  	<div class="form-group">
-							    	<select id="lcategories">
+							    	<select class="form-control" id="lcategories">
 						    	    {{#lcategory}}
                                         <option value="{{ID_CATEGORY}}">{{TITLE}}</option>
                                     {{/lcategory}}
                                     </select>
+                                   	<button class="btn btn-default">Buscar categoría</button>
 							  	</div>
-							  	<button class="btn btn-default">Buscar categoría</button>
-							  	<a href="categoriasAdminListado">VER LISTADO CATEGORÍAS</a>
-
+							  	<div class="form-group">
+							  		<a href="categoriasAdminListado">VER LISTADO CATEGORÍAS</a>
+							  	</div>
 							</div>
 						</div>
 						</form>
@@ -97,13 +92,24 @@
 						-->
 						<br>
 						<br>
-						<div class="form-inline">
+						<div class="form-group">
 						    <div class="col-sm-3 control-label">
 						         <label>Descripción</label>
 						    </div>
 						    <div class="col-sm-7">
 						         <div class="form-group">
 						    	      <textarea class="form-control" rows="3" placeholder="Descripción" name="DESCRIPTION"></textarea>
+						         </div>
+						    </div>
+						</div>
+						<div class="form-group">
+						    <div class="col-sm-3 control-label">
+						         <label>Icono</label>
+						    </div>
+						    <div class="col-sm-7">
+						         <div class="form-group">
+						    	      <input type="text" class="form-control" placeholder="Icono" name="ICON">
+						    	      <p>Busca aquí el icono que quieres utilizar: <a href="https://fontawesome.com/search?m=free&s=solid%2Cbrands">Fontawesome</a></p>
 						         </div>
 						    </div>
 						</div>
@@ -126,6 +132,7 @@
 							<br>
 							<p  class="text-muted text-center archivo">Archivo...</p>
 						</div>
+						<input type="hidden" name="_csrf" value="{{token}}"/>
 						<p class="text-center">
 							<input  type="submit" value="Guardar" class="btn btn-info"></input>
 						</p>

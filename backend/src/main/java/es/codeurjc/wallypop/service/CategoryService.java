@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.codeurjc.wallypop.model.Category;
-import es.codeurjc.wallypop.repositories.CategoryRepository;
+import es.codeurjc.wallypop.repository.CategoryRepository;
 
 @Service
 public class CategoryService {

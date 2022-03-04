@@ -32,17 +32,20 @@ public class Category {
 	@Column(name = "PHOTO")
 	private Blob PHOTO = null;	
 	
-	public Category(){}
+	@Column(name = "ICON")
+	private String ICON = null;
+	
 
 	public Category() {
 		// DEFAULT CONSTRUCTOR FOR JPA
 	}
 	
-	public Category(String tITLE, String dESCRIPTION, Blob pHOTO) {
+	public Category(String tITLE, String dESCRIPTION, Blob pHOTO, String iCON) {
 		super();
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
 		PHOTO = pHOTO;
+		ICON = iCON;
 	}
 	
 
@@ -76,6 +79,14 @@ public class Category {
 
 	public void setPHOTO(Blob pHOTO) {
 		PHOTO = pHOTO;
+	}
+
+	public String getICON() {
+		return ICON;
+	}
+
+	public void setICON(String iCON) {
+		ICON = iCON;
 	}
 	
 }
