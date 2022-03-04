@@ -45,21 +45,21 @@
 					
 					<div class="full-width container-post">
 					
-					  {{#articleList}}
+					  {{#Articles}}
 						<div class="full-width post">
 							<figure class="full-width post-img">
 								<!-- Tamaño de la imagen 248x186 pixeles-->
-								<img src="assets/img/post.jpg" alt="" class="img-responsive">
+								<img src="article/{{ID_ARTICLE}}/imagen" alt="" class="img-responsive">
 							</figure>
 							<div class="full-width post-info">
-								<a href="post.html" class="full-width post-info-title">{{title_article}}</a>
-								<p class="full-width post-info-price">€{{price_article}}</p>
-								<span class="post-info-zone">{{city_article}}</span>
-								<span class="post-info-date">{{date_article}}</span>
+								<a href="post.html" class="full-width post-info-title">{{TITLE}}</a>
+								<p class="full-width post-info-price">{{PRICE_s}}€</p>
+								<span class="post-info-zone">{{CITY}}</span>
+								<span class="post-info-date">{{DATE}}</span>
 								<i class="fa fa-heart-o post-info-like"></i>
 							</div>
 						</div>
-						{{/articleList}}
+						{{/Articles}}
 					</div>
 					
 					<div class="clearfix"></div>
