@@ -45,27 +45,7 @@ public class Report {
 		EMAIL = eMAIL;
 		PROOF = pROOF;
 		DESCRIPTION = dESCRIPTION;
-	}
-
-	public Report(Article aRTICLE, String eMAIL) {
-		super();
-		ARTICLE = aRTICLE;
-		EMAIL = eMAIL;
-	}
-
-	public Report(Article aRTICLE, String eMAIL,Blob pROOF) {
-		super();
-		ARTICLE = aRTICLE;
-		EMAIL = eMAIL;
-		PROOF = pROOF;
 	}	
-	
-	public Report(Article aRTICLE, String eMAIL,String dESCRIPTION) {
-		super();
-		ARTICLE = aRTICLE;
-		EMAIL = eMAIL;
-		DESCRIPTION = dESCRIPTION;
-	}
 	
 	public long getID_REPORT() {
 		return ID_REPORT;
@@ -75,33 +55,15 @@ public class Report {
 		return ARTICLE;
 	}
 
-	public void setARTICLE(Article aRTICLE) {
-		ARTICLE = aRTICLE;
-	}
-
 	public String getEMAIL() {
 		return EMAIL;
-	}
-
-	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
 	}
 
 	public Blob getPROOF() {
 		return PROOF;
 	}
 
-	public void setPROOF(Blob pROOF) {
-		PROOF = pROOF;
-	}
-	
 	public String getDESCRIPTION() {
 		return DESCRIPTION;
 	}
-
-	public void setDESCRIPTION(String dESCRIPTION) {
-		DESCRIPTION = dESCRIPTION;
-	}
-	
-	
 }
