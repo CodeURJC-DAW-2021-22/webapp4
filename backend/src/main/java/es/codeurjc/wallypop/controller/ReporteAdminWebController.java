@@ -1,5 +1,6 @@
 package es.codeurjc.wallypop.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -79,7 +80,7 @@ public class ReporteAdminWebController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
+
 	@GetMapping("/VisualizarPost/{id}")
 	public String showArticleReported(Model model, @PathVariable long id) {
 		Optional<Article> article = articleRepository.findById((long) reportRepository.getById(id).getARTICLE().getID_ARTICLE());
@@ -87,10 +88,20 @@ public class ReporteAdminWebController {
 			model.addAttribute("article", article.get());
 			return "post";
 		} else {
-			return "/VisualizaReporte/{id}";
+			return "post/{id}";
 		}
 
 	}
+	
+
+	@GetMapping("/VisualizaReporte/{id}/delete")
+	public String deleteReport(Model model,@PathVariable long id) {
+	 reportRepository.deleteById(id);
+	 model.addAttribute("report",reportRepository.findAll());
+	 return "reporteAdmin";
+	 }
+
+
 	
 
 }

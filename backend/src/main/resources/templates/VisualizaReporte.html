@@ -47,61 +47,16 @@
 						<br><br>
 						<h3 class="text-info">Fichero adjunto por el usuario</h3>
 								<a href="{{ID_REPORT}}/image" download="">Download</a>
-                        {{/report}}
+                       
 
-
-						<!--
-						<div class="form-group">
-						    <div class="custom-input-file">
-						    	<input type="file" size="1" class="input-file" />
-							    <i class="fa fa-picture-o" aria-hidden="true"></i>
-							</div>
-							<br>
-							<p  class="text-muted text-center archivo">Fichero...</p>
-						</div>
-						<br><br>
-						<h3 class="text-info">Datos para que te contacten</h3>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Eres</label>
-							<div class="col-sm-7">
-								<label class="radio-inline">
-									<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Particular
-								</label>
-								<label class="radio-inline">
-									<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Profesional
-								</label>
-							</div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Tu nombre</label>
-						    <div class="col-sm-7">
-						    	<input type="text" class="form-control" placeholder="Nombre">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">E-mail</label>
-						    <div class="col-sm-7">
-						    	<input type="email" class="form-control" placeholder="E-mail">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Confirmar E-mail</label>
-						    <div class="col-sm-7">
-						    	<input type="email" class="form-control" placeholder="Confirmar E-mail">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Teléfono</label>
-						    <div class="col-sm-7">
-						    	<input type="tel" class="form-control" placeholder="Teléfono">
-						    </div>
-						</div> -->
 						<p class="text-center">
-							<button class="btn btn-success">ACEPTAR REPORTE</button>
-							<button class="btn btn-danger">RECHAZAR REPORTE</button>
-
+							<a class="btn btn-success"  >ACEPTAR REPORTE</a>
+							<a class="btn btn-danger" href="/VisualizaReporte/{{ID_REPORT}}/delete">RECHAZAR REPORTE</a> 
+							<button onclick="window.location.href='/VisualizaReporte/{{ID_REPORT}}/delete'" class="btn-btn-danger">RECHAZAR REPORTE</button>                      
 						</p>
+						{{/report}}
 					</form>
+					
 				</div>
 			</div>
 		</div>
