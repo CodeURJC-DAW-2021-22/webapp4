@@ -66,4 +66,8 @@ public class Report {
 	public String getDESCRIPTION() {
 		return DESCRIPTION;
 	}
+
+	public void setPROOF(Blob pROOF) {
+		PROOF = pROOF;
+	}
 }

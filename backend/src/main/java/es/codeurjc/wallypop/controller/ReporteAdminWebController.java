@@ -6,22 +6,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import es.codeurjc.wallypop.model.Article;
-import es.codeurjc.wallypop.model.Report;
-import es.codeurjc.wallypop.repositories.ArticleRepository;
-import es.codeurjc.wallypop.repositories.ReportRepository;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.sql.Blob;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Optional;
-
-import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -32,19 +16,36 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import es.codeurjc.wallypop.model.Article;
+import es.codeurjc.wallypop.model.Report;
+import es.codeurjc.wallypop.service.ArticleService;
+import es.codeurjc.wallypop.service.ReportService;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
+
+import org.hibernate.engine.jdbc.BlobProxy;
+
+
 @Controller
 public class ReporteAdminWebController {
 
 	@Autowired
-	private ReportRepository reportRepository;	
+	private ReportService reportService;	
 	
 	@Autowired
-	private ArticleRepository articleRepository;
+	private ArticleService articleService;
 	
 	@JsonIgnore
 	@RequestMapping(value="/reporteAdmin")
 	public String reporteadmin(Model model) {
-		model.addAttribute("report",reportRepository.findAll());
+		model.addAttribute("report",reportService.findAll());
 		return "reporteAdmin";
 	}
 	
@@ -56,7 +57,7 @@ public class ReporteAdminWebController {
 	@GetMapping("/VisualizaReporte/{id}")
 	public String showReport(Model model, @PathVariable long id) {
 
-		Optional<Report> report = reportRepository.findById(id);
+		Optional<Report> report = reportService.findById(id);
 		if (report.isPresent()) {
 			model.addAttribute("report", report.get());
 			return "VisualizaReporte";
@@ -68,7 +69,7 @@ public class ReporteAdminWebController {
 	
 	@GetMapping("/VisualizaReporte/{id}/image")
 	public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
-		Optional<Report> report = reportRepository.findById(id);
+		Optional<Report> report = reportService.findById(id);
 
 		if (report.get().getPROOF() != null) {
 			Resource file = new InputStreamResource(report.get().getPROOF().getBinaryStream());
@@ -82,7 +83,7 @@ public class ReporteAdminWebController {
 	
 	@GetMapping("/VisualizarPost/{id}")
 	public String showArticleReported(Model model, @PathVariable long id) {
-		Optional<Article> article = articleRepository.findById((long) reportRepository.getById(id).getARTICLE().getID_ARTICLE());
+		Optional<Article> article = articleService.findById((long) reportService.findById(id).get().getARTICLE().getID_ARTICLE());
 		if (article.isPresent()) {
 			model.addAttribute("article", article.get());
 			return "post";
