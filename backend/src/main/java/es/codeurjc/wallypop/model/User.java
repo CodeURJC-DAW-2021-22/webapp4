@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import org.springframework.lang.NonNull;
 
+
 @Entity
 @Table(name = "USER")
 public class User {
@@ -15,7 +16,7 @@ public class User {
  	private Long ID_USER;
 
 	@NonNull
-	@Column(name = "FULL_NAME")
+	@Column(name = "NAME")
  	private String FULL_NAME;
 	
 	@NonNull
@@ -24,7 +25,7 @@ public class User {
  	
 	@NonNull
 	@Column(name = "EMAIL")
- 	private String EMAIL;
+ 	private String NAME;
  	
 	@NonNull
 	@Column(name = "TEL")
@@ -41,22 +42,26 @@ public class User {
 	@NonNull
 	@Column(name = "IS_ADMIN")
  	private boolean IS_ADMIN = false;
+	
+	public User() {
+		// DEFAULT CONSTRUCTOR FOR JPA
+	}
 
-	public User(String fULL_NAME, String pASSWORD, String eMAIL, String tEL,
+	public User(String nAME, String pASSWORD, String eMAIL, String tEL,
 			boolean iS_ADMIN) {
 		super();
-		FULL_NAME = fULL_NAME;
+		FULL_NAME = nAME;
 		PASSWORD = pASSWORD;
-		EMAIL = eMAIL;
+		NAME = eMAIL;
 		TEL = tEL;
 		IS_ADMIN = iS_ADMIN;
 	}
 
-	public User(String fULL_NAME, String pASSWORD, String eMAIL, String tEL) {
+	public User(String nAME, String pASSWORD, String eMAIL, String tEL) {
 		super();
-		FULL_NAME = fULL_NAME;
+		FULL_NAME = nAME;
 		PASSWORD = pASSWORD;
-		EMAIL = eMAIL;
+		NAME = eMAIL;
 		TEL = tEL;
 	}
 
@@ -80,12 +85,14 @@ public class User {
 		PASSWORD = pASSWORD;
 	}
 
-	public String getEMAIL() {
-		return EMAIL;
+	// EMAIL
+	public String getNAME() {
+		return NAME;
 	}
 
-	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
+	// EMAIL
+	public void setNAME(String eMAIL) {
+		NAME = eMAIL;
 	}
 
 	public String getTEL() {

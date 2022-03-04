@@ -27,22 +27,25 @@ public class Category {
 	private String TITLE;
 	
 	@Column(name = "DESCRIPTION")
-	private String DESCRIPTION;
+	private String DESCRIPTION = null;
 	
 	@Column(name = "PHOTO")
-	private Blob PHOTO;	
+	private Blob PHOTO = null;	
+	
+	@Column(name = "ICON")
+	private String ICON = null;
+	
 
-	public Category(String tITLE, String dESCRIPTION, Blob pHOTO) {
+	public Category() {
+		// DEFAULT CONSTRUCTOR FOR JPA
+	}
+	
+	public Category(String tITLE, String dESCRIPTION, Blob pHOTO, String iCON) {
 		super();
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
 		PHOTO = pHOTO;
-	}
-	
-	public Category(String tITLE, String dESCRIPTION) {
-		super();
-		TITLE = tITLE;
-		DESCRIPTION = dESCRIPTION;
+		ICON = iCON;
 	}
 
 	public Long getID_CATEGORY() {
@@ -75,6 +78,14 @@ public class Category {
 
 	public void setPHOTO(Blob pHOTO) {
 		PHOTO = pHOTO;
+	}
+
+	public String getICON() {
+		return ICON;
+	}
+
+	public void setICON(String iCON) {
+		ICON = iCON;
 	}
 	
 }

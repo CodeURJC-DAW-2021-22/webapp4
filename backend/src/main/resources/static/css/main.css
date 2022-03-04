@@ -164,24 +164,24 @@ a:active{
 	color: #333;
 }
 .NavBar-Nav-icon{
-	width: 40px;
-	height: 40px;
-	line-height: 40px;
-	border-radius: 50%;
-	border: 2px solid rgb(145,153,161);
-	color: rgb(145,153,161);
-	text-align: center;
-	font-size: 23px;
-	margin: 0;
-	padding: 0;
-	background-color: rgb(220,220,220);
-	position: relative;
-	cursor: pointer;
-	top: 3px;
+	width: 40px !important;
+	height: 40px !important;
+	line-height: 40px !important;
+	border-radius: 50% !important;
+	border: 2px solid rgb(145,153,161) !important;
+	color: rgb(145,153,161) !important;
+	text-align: center !important;
+	font-size: 23px !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	background-color: rgb(220,220,220) !important;
+	position: relative !important;
+	cursor: pointer !important;
+	top: 3px !important;
 }
 img.NavBar-Nav-icon{
-	top: 0;
-	border-width: 1px;
+	top: 0 !important;
+	border-width: 1px !important;
 }
 /*====PopUpLogin==*/
 .PopUpLogin{
@@ -310,17 +310,17 @@ login.html & newaccount.html*/
 	margin: 20px 0;
 }
 .container-login-icon{
-	position: relative;
-	display: block;
-	margin: 25px auto;
-	width: 90px;
-	height: 90px;
-	line-height: 90px;
-	font-size: 60px;
-	text-align: center;
-	border-radius: 100%;
-	border: 2px solid #C62828;
-	color: #B71C1C;
+	position: relative !important;
+	display: block !important;
+	margin: 25px auto !important;
+	width: 90px !important;
+	height: 90px !important;
+	line-height: 90px !important;
+	font-size: 60px !important;
+	text-align: center !important;
+	border-radius: 100% !important;
+	border: 2px solid #C62828 !important;
+	color: #B71C1C !important;
 }
 /*============================
 ==================index.html*/
@@ -633,15 +633,15 @@ login.html & newaccount.html*/
 		padding: 25px 15px;
 	}
 	.header-menu-mobile-icon{
-		position: relative;
-		top: 0;
-		display: block;
-		margin: 0 auto;
-		width: 90px;
-		height: 90px;
-		line-height: 90px;
-		font-size: 45px;
-		cursor: inherit;
+		position: relative !important;
+		top: 0 !important;
+		display: block !important;
+		margin: 0 auto !important;
+		width: 90px !important;
+		height: 90px !important;
+		line-height: 90px !important;
+		font-size: 45px !important;
+		cursor: inherit !important;
 	}
 	.header-menu-mobile-btn{
 		display: block;

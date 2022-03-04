@@ -1,38 +1,10 @@
 	{{>header}}
 	<!-- ====== Contenido de pagina ======-->
-	<section class="full-width section">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-4 col-md-3">
-					<buttom class="btn btn-default btn-block visible-xs btn-dropdown-conatiner" data-drop-cont=".user-menu-xs">
-						<i class="fa fa-user fa-fw" aria-hidden="true"></i> MOSTRAR MENÚ <i class="fa fa-sort pull-right" aria-hidden="true"></i>
-					</buttom>
-					<div class="full-width user-menu-xs">
-						<div class="full-width post-user-info" style="margin: 0 !important;">
-							<!--<i class="fa fa-user NavBar-Nav-icon" aria-hidden="true"></i>-->
-							<img src="assets/img/user.png" class="NavBar-Nav-icon" alt="User">
-							<p class="full-width"><small>Nombre de usuario</small></p>
-							<div class="full-width div-table">
-								<div class="full-width div-table-row">
-									<div class="div-table-cell div-table-cell-xs" style="height: auto !important; line-height: inherit; border:none;">
-										0 <br>
-										<small>En venta</small>
-									</div>
-									<div class="div-table-cell div-table-cell-xs" style="height: auto !important; line-height: inherit; border:none;">
-										0 <br>
-										<small>Vendidos</small>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="full-width list-group" style="border-radius: 0;">
-							<div class="list-group-item text-center">
-								<small>Desde Junio 2016</small>
-							</div>
+	{{>nav_side}}
 						  	<a href="perfil" class="list-group-item active">
 						  		<i class="fa fa-user fa-fw" aria-hidden="true"></i> TU PERFIL
 						  	</a>
-						  	<!-- <a href="config.html" class="list-group-item">
+						  	<!-- <a href="config" class="list-group-item">
 						  		<i class="fa fa-cogs fa-fw" aria-hidden="true"></i> CONFIGURACIÓN
 						  	</a> -->
 						  	<a href="yourcommercial" class="list-group-item">
@@ -41,12 +13,21 @@
 							<a href="yourcommercialsold" class="list-group-item">
 								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS VENDIDOS
 							</a>
-						  	<!-- <a href="messages.html" class="list-group-item">
+						  	<!-- <a href="messages" class="list-group-item">
 						  		<i class="fa fa-commenting-o fa-fw" aria-hidden="true"></i> MENSAJES
 						  	</a> -->
-						  	<!-- <a href="favorites.html" class="list-group-item">
+						  	
+						  	<a href="favorites" class="list-group-item">
 						  		<i class="fa fa-heart-o fa-fw" aria-hidden="true"></i> FAVORITOS
-						  	</a> -->
+						  	</a>
+						  	{{#admin}}
+						  	<a href="categoriasAdmin" class="list-group-item">
+								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN CATEGORÍAS
+							</a>
+							<a href="reportesAdmin" class="list-group-item">
+								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN REPORTES
+							</a>
+							{{/admin}}
 						</div>
 					</div>
 				</div>
@@ -57,8 +38,8 @@
 					</div>
 					<!-- Contenido-->
 					<div class="full-width" style="padding: 15px; border: 1px solid #E1E1E1;">
-						<form action="">
-							<p class="text-muted text-center">Seleciona una image</p>
+						<form action="/updateProfile" method="POST">
+							<!-- <p class="text-muted text-center">Seleciona una image</p>
 							<div class="form-group">
 							    <div class="custom-input-file">
 							    	<input type="file" size="1" class="input-file" />
@@ -67,39 +48,49 @@
 								<br>
 								<p  class="text-muted text-center archivo">Archivo...</p>
 							</div>
-							<br><br><br>
+							<br><br><br> -->
 							<div class="form-group">
-								<label>Nombre</label>
-								<input type="text" placeholder="Nombre" class="form-control">
+								<h3>Nombre: {{FULL_NAME}}</h3>
+								<!-- <input type="text" placeholder="Nombre" class="form-control" required=""> -->
 							</div>
 							<div class="form-group">
-								<label>Teléfono <small>Éste será el teléfono de contacto en tus anuncios</small></label>
-								<input type="text" placeholder="¿Cuál es tu teléfono?" class="form-control">
+								<h3>Contacto:</h3>
+								<h4> - Correo electrónico: {{NAME}}</h4>
+								<!-- <input type="text" placeholder="¿Cuál es tu teléfono?" class="form-control" required=""> -->
 							</div>
 							<div class="form-group">
+								<h4> - Teléfono: {{TEL}}<small> (Éste será el teléfono de contacto en tus anuncios)</small></h4>
+								<!-- <input type="text" placeholder="¿Cuál es tu teléfono?" class="form-control" required=""> -->
+							</div>
+							<!-- <div class="form-group">
 								<label>Localización <small>¿Cuál es tu ubicación?</small></label>
-								<input type="email" placeholder="Email" class="form-control">
+								<input type="email" placeholder="Ciudad" class="form-control">
 							</div>
 							<div class="form-group">
 								<label>Email</label>
 								<input type="email" placeholder="Email" class="form-control">
-							</div>
-							<div class="form-group">
+							</div> -->
+							<!-- <div class="form-group">
 								<label>Contraseña</label>
-								<a href="#!" class="btn btn-default btn-xs pull-right btn-dropdown-conatiner" data-drop-cont=".perfil-password">
+								<input type="password" placeholder="Contraseña" class="form-control">
+								<br>
+								<input type="password" placeholder="Nueva Contraseña" class="form-control">
+								<br>
+								<input type="password" placeholder="Confirmar Contraseña" class="form-control"> -->
+								<!-- <a href="#!" class="btn btn-default btn-xs pull-right btn-dropdown-conatiner" data-drop-cont=".perfil-password">
 									Mostrar/Ocultar <i class="fa fa-sort" aria-hidden="true"></i>
-								</a>
-								<div class="full-width perfil-password">
+								</a> -->
+								<!-- <div class="full-width perfil-password">
 									<input type="password" placeholder="Contraseña" class="form-control">
 									<br>
 									<input type="password" placeholder="Nueva Contraseña" class="form-control">
 									<br>
 									<input type="password" placeholder="Confirmar Contraseña" class="form-control">
-								</div>
+								</div> -->
 							</div>
-							<p class="text-center">
+							<!-- <p class="text-center">
 								<button class="btn btn-danger">GUARDAR</button>
-							</p>
+							</p> -->
 						</form>
 					</div>
 				</div>
