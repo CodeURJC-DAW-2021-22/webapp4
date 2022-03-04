@@ -17,21 +17,21 @@ public class Article {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
  	@Column(name = "ID_ARTICLE")
- 	private int ID_ARTICLE;
+ 	private long ID_ARTICLE;
 
  	@ManyToOne
  	@JoinColumn(name = "USER")
  	private User USER;
  	
- 	@NotNull(message = "Debes especificar la ciudad")
+ 	@NotNull
  	@Column(name = "CITY")
  	private String CITY;
  	
- 	@NotNull(message = "Debes especificar el título del anuncio.")
+ 	@NotNull
  	@Column(name = "TITLE")
  	private String TITLE;
  
- 	@NotNull(message = "Debes especificar una pequeña descripción para el anuncio. ytuliza tu imaginación.")
+ 	@NotNull
  	@Column(name = "DESCRIPTION")
  	private String DESCRIPTION;
  	
@@ -79,6 +79,114 @@ public class Article {
 		CATEGORYS = lISTcATEGORYS;
 		CITY = cITY;
 	}
+
+
+	public String getCITY() {
+		return CITY;
+	}
+
+
+	public void setCITY(String cITY) {
+		CITY = cITY;
+	}
+
+
+	public String getTITLE() {
+		return TITLE;
+	}
+
+
+	public void setTITLE(String tITLE) {
+		TITLE = tITLE;
+	}
+
+
+	public String getDESCRIPTION() {
+		return DESCRIPTION;
+	}
+
+
+	public void setDESCRIPTION(String dESCRIPTION) {
+		DESCRIPTION = dESCRIPTION;
+	}
+
+
+	public float getPRICE() {
+		return PRICE;
+	}
+
+
+	public void setPRICE(float pRICE) {
+		PRICE = pRICE;
+	}
+
+
+	public boolean isRESERVED() {
+		return RESERVED;
+	}
+
+
+	public void setRESERVED(boolean rESERVED) {
+		RESERVED = rESERVED;
+	}
+
+
+	public boolean isSOLD() {
+		return SOLD;
+	}
+
+
+	public void setSOLD(boolean sOLD) {
+		SOLD = sOLD;
+	}
+
+
+	public Blob getPHOTO() {
+		return PHOTO;
+	}
+
+
+	public void setPHOTO(Blob pHOTO) {
+		PHOTO = pHOTO;
+	}
+
+
+	public List<Category> getCATEGORYS() {
+		return CATEGORYS;
+	}
+
+
+	public void setCATEGORYS(List<Category> cATEGORYS) {
+		CATEGORYS = cATEGORYS;
+	}
+
+
+	public long getID_ARTICLE() {
+		return ID_ARTICLE;
+	}
+
+
+	public User getUSER() {
+		return USER;
+	}
+
+
+	public Date getDATE() {
+		return DATE;
+	}
+
+
+	public int getN_VISITS() {
+		return N_VISITS;
+	}
+
+
+	public String getID_USER() {
+		return ID_USER;
+	}
 	
+	public String getPRICE_s() {
+		return String.valueOf(getPRICE()); 
+	}
  	
 }
