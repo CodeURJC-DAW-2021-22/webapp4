@@ -29,8 +29,10 @@ import java.sql.SQLException;
 
 import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
+import es.codeurjc.wallypop.model.Report;
 import es.codeurjc.wallypop.service.ArticleService;
 import es.codeurjc.wallypop.service.CategoryService;
+import es.codeurjc.wallypop.service.ReportService;
 import es.codeurjc.wallypop.service.UserService;
 
 @Controller
@@ -44,6 +46,9 @@ public class WallypopWebController {
 	
 	@Autowired
 	private ArticleService articleService;
+	
+	@Autowired
+	private ReportService reportService;
 	
 	@ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
@@ -143,9 +148,19 @@ public class WallypopWebController {
 		return "favorites"; 
 	}
 	
+	@PostMapping("/newformularioReporte")
+	public String newformularioReporte(Model model,Report report,MultipartFile imageField) throws IOException{
+		if (!imageField.isEmpty()) {
+			report.setPROOF(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));			
+		}
+		reportService.save(report);
+		return "formularioReporte"; }
+	
+	
 	@RequestMapping("/formularioReporte")
-	public String formularioReporte() {
-		return "formularioReporte"; 
+	public String formularioReporte(Model model) {
+	model.addAttribute("report",new Report());
+	return "formularioReporte";
 	}
 	
 	@RequestMapping("/help")
@@ -163,14 +178,54 @@ public class WallypopWebController {
 		return "post";
 	}
 	
-	@RequestMapping("/reportesAdmin")
-	public String reporteadmin() {
-		return "reportesAdmin";
+	@RequestMapping(value="/reporteAdmin")
+	public String reporteadmin(Model model) {
+		model.addAttribute("report",reportService.findAll());
+		return "reporteAdmin";
 	}
 	
 	@RequestMapping("/VisualizaReporte")
-	public String visualizareporte() {
+	public String visualizareporte(Model model) {
 		return "VisualizaReporte";
+	}
+	
+	@GetMapping("/VisualizaReporte/{id}")
+	public String showReport(Model model, @PathVariable long id) {
+
+		Optional<Report> report = reportService.findById(id);
+		if (report.isPresent()) {
+			model.addAttribute("report", report.get());
+			return "VisualizaReporte";
+		} else {
+			return "reporteAdmin";
+		}
+
+	}
+	
+	@GetMapping("/VisualizaReporte/{id}/image")
+	public ResponseEntity<Object> downloadZIPReport(@PathVariable long id) throws SQLException {
+		Optional<Report> report = reportService.findById(id);
+
+		if (report.get().getPROOF() != null) {
+			Resource file = new InputStreamResource(report.get().getPROOF().getBinaryStream());
+
+			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/zip")
+					.contentLength(report.get().getPROOF().length()).body(file);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	@GetMapping("/VisualizarPost/{id}")
+	public String showArticleReported(Model model, @PathVariable long id) {
+		Optional<Article> article = articleService.findById((long) reportService.findById(id).get().getARTICLE().getID_ARTICLE());
+		if (article.isPresent()) {
+			model.addAttribute("article", article.get());
+			return "post";
+		} else {
+			return "/VisualizaReporte/{id}";
+		}
+
 	}
 	
 	// Este es el método que se llama cuando vamos al apartado TUS ANUNCIOS
