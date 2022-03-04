@@ -24,14 +24,14 @@ import org.springframework.http.ResponseEntity;
 
 
 import es.codeurjc.wallypop.model.User;
-import es.codeurjc.wallypop.repository.UserRepository;
 
 import java.sql.SQLException;
 
-
-
+import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
+import es.codeurjc.wallypop.service.ArticleService;
 import es.codeurjc.wallypop.service.CategoryService;
+import es.codeurjc.wallypop.service.UserService;
 
 @Controller
 public class WallypopWebController {
@@ -40,7 +40,10 @@ public class WallypopWebController {
 	private CategoryService categoryservice;
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserService userService;
+	
+	@Autowired
+	private ArticleService articleService;
 	
 	@ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
@@ -52,7 +55,7 @@ public class WallypopWebController {
 
 			model.addAttribute("logged", true);
 			model.addAttribute("NAME", principal.getName());
-			Optional<User> us = userRepository.findByNAME(principal.getName());
+			Optional<User> us = userService.findByNAME(principal.getName());
 			if (us.isPresent()) {
 				model.addAttribute("FULL_NAME", us.get().getFULL_NAME());
 				model.addAttribute("TEL", us.get().getTEL());
@@ -78,9 +81,17 @@ public class WallypopWebController {
 	}
 	
 	@RequestMapping("/adcommercial")
-	public String adcommercial() {
+	 public String adcommercial(Model model) {
+		model.addAttribute("Article", new Article());
+		model.addAttribute("lcategory", categoryservice.findAll());
 		return "adcommercial";
-	}
+	 }
+	 
+	 @PostMapping("/newcommercial")
+	 public String newCommercial(Model model, Article article) throws IOException {
+		 articleService.save(article);
+		 return "yourcommercial_success";
+	 }
 	
 	@GetMapping("/categoriasAdminListado")
 	public String categoriasAdminListado(Model model) {
@@ -112,7 +123,18 @@ public class WallypopWebController {
 	}
 	
 	@RequestMapping("/commercial")
-	public String commercial() {
+	public String commercial(Model model) {
+		model.addAttribute("Articles", articleService.findAll());
+		model.addAttribute("lcategory", categoryservice.findAll());
+		return "commercial";
+	}
+	
+	@RequestMapping("/commercial/{category}")
+	public String commercial_filter(Model model, @PathVariable long category) {
+		model.addAttribute("Filtered", true);
+		//model.addAttribute("Articles", articleService.findArticlesByCategory(category));
+		model.addAttribute("Articles", articleService.findAll());
+		model.addAttribute("lcategory", categoryservice.findAll());
 		return "commercial";
 	}
 	
@@ -151,15 +173,26 @@ public class WallypopWebController {
 		return "VisualizaReporte";
 	}
 	
-	@RequestMapping("/yourcommercial")
-	public String yourcommercial() {
-		return "yourcommercial";
-	}
-	
-	@RequestMapping("/yourcommercialsold")
-	public String yourcommercialsold() {
-		return "yourcommercialsold";
-	}
+	// Este es el método que se llama cuando vamos al apartado TUS ANUNCIOS
+		@RequestMapping("/yourcommercial")
+		 public String yourcommercial(Model model) {
+			model.addAttribute("exito_creacion_nuevo_anuncio", true);
+			model.addAttribute("Articles", articleService.findAll());
+			return "yourcommercial";
+		}
+		
+		// Este es el método que se llama cuando agragamos un nuevo anuncio y toto va bien
+		@RequestMapping("/yourcommercial_exito_message")
+		public String mensajeCreadoExito(Model model) {
+			model.addAttribute("exito_creacion_nuevo_anuncio", "Enhorabuena! El nuevo anuncio ha sido creado con éxito");	
+			model.addAttribute("Articles", articleService.findAll());
+			return "yourcommercial";
+		}
+		
+		@RequestMapping("/yourcommercialsold")
+		public String yourcommercialsold() {
+			return "yourcommercialsold";
+		}	
 	
 	
 	@GetMapping("category/{id}/imagen")
@@ -171,6 +204,20 @@ public class WallypopWebController {
 
 			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
 					.contentLength(category.get().getPHOTO().length()).body(file);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	@GetMapping("article/{id}/imagen")
+	public ResponseEntity<Object> downloadImageArticle(@PathVariable long id) throws SQLException {
+		Optional<Article> article = articleService.findById(id);
+
+		if (article.get().getPHOTO() != null) {
+			Resource file = new InputStreamResource(article.get().getPHOTO().getBinaryStream());
+
+			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+					.contentLength(article.get().getPHOTO().length()).body(file);
 		} else {
 			return ResponseEntity.notFound().build();
 		}

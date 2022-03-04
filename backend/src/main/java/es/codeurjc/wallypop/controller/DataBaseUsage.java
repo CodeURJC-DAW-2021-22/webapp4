@@ -3,56 +3,70 @@ package es.codeurjc.wallypop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Controller;
 import es.codeurjc.wallypop.model.Article;
-import es.codeurjc.wallypop.repositories.ArticleRepository;
 import java.io.IOException;
+import java.sql.Blob;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.hibernate.engine.jdbc.BlobProxy;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import es.codeurjc.wallypop.model.Category;
 import es.codeurjc.wallypop.model.User;
-import es.codeurjc.wallypop.repository.CategoryRepository;
-import es.codeurjc.wallypop.repository.UserRepository;
+import es.codeurjc.wallypop.service.ArticleService;
+import es.codeurjc.wallypop.service.CategoryService;
+import es.codeurjc.wallypop.service.UserService;
 
 
-@Service
+@Controller
 public class DataBaseUsage implements CommandLineRunner {
-
-	@Autowired
-	private ArticleRepository articleRepository;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 	@Autowired
-	private CategoryRepository categoryRepository;
+	private CategoryService categoryService;
+	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private ArticleService articleService;
 	
 	@Override
 	public void run(String... args) throws Exception {
-		articleRepository.save(new Article("Alicante", "Zapatillas deportivas", "Zapatillas deportivas NBA", "9.99"));
-		//articleRepository.findAll();
-		userRepository.save(new User("Jesús", passwordEncoder.encode("1234"), "j@j.es", "666666666", true));
-		userRepository.save(new User("David", passwordEncoder.encode("1234"), "d@d.es", "666666666"));
+		
+		userService.save(new User("Jesús", passwordEncoder.encode("1234"), "j@j.es", "666666666", true));
+		userService.save(new User("David", passwordEncoder.encode("1234"), "d@d.es", "666666666"));
 		
 		//Category
-		Category category1 = new Category("Videojuegos", "Compra y vende videojuegos de todo tipo", null, "gamepad");
-		setCategoryImage(category1, "/sample_image/videojuego.jpg");
-		categoryRepository.save(category1);
+		categoryService.save(new Category("Videojuegos", "Compra y vende videojuegos de todo tipo", convertToBLOB("/sample_image/videojuego.jpg"), "gamepad"));
 		
-		Category category2 = new Category("Ropa", "Dale una segunda vida a las prendas que ya no usas", null, "shirt");
-		setCategoryImage(category2, "/sample_image/ropa.png");
-		categoryRepository.save(category2);
+		categoryService.save(new Category("Ropa", "Dale una segunda vida a las prendas que ya no usas", convertToBLOB("/sample_image/ropa.png"), "shirt"));
+		
+		
+		//articleService.save(new Article("Alicante", "Zapatillas deportivas", "Zapatillas deportivas NBA", "9.99"));
+		List<Category> lCat =  new LinkedList<>();
+		
+		if (categoryService.findById(1).isPresent() && categoryService.findById(2).isPresent()) {
+			lCat.add(categoryService.findById(1).get());
+			lCat.add(categoryService.findById(2).get());
+			articleService.save(new Article(userService.findById(1).get(), "Zapatillas deportivas", "Descripción", "Madrid", (float) 99.99, convertToBLOB("/sample_image/ropa.png"), lCat));
+		}
 	}
 	
 	public void setCategoryImage(Category category, String ruta) throws IOException {
 		Resource image = new ClassPathResource(ruta);
 		category.setPHOTO(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+	}
+	
+	public Blob convertToBLOB(String ruta) throws IOException {
+		Resource image = new ClassPathResource(ruta);
+		return BlobProxy.generateProxy(image.getInputStream(), image.contentLength());
 	}
 }
