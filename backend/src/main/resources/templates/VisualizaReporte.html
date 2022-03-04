@@ -2,95 +2,38 @@
 	<!-- ====== Contenido de pagina ======-->
 	<section class="section">
 		<h2 class="text-center text-light">INCIDENCIA</h2>
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
 					<form action="" class="form-horizontal">
-						<!--
-						<h3 class="text-info">Busca la categoría donde verán tu anuncio</h3>
-						<div class="form-inline">
-							<div class="col-sm-3 control-label">
-						    	<label>¿Qué anuncias?</label>
-							</div>
-							<div class="col-sm-7">
-							  	<div class="form-group">
-							    	<input type="text" class="form-control" placeholder="Dinos que anuncias">
-							  	</div>
-							  	<button class="btn btn-default">Buscar categoría</button>
-							</div>
-						</div>
-						<br><br> -->
 						<br>
-						<button class="btn btn-info">&lt;</button>
+						<a href="/reportesAdmin" class="btn btn-info">&lt;</a>
 						<br>
-						<h3 class="text-info">ID incidencia: #0000</h3> <!-- ESTE CONTADOR AUNMENTA DE FORMA AUTOMNÁTICA CUANDO SE HACE UN NUEVO REPORTE DESDE LA PANTALLA FORMULARIOREPORTE.html -->
+						{{#report}}
+						<h3 class="text-info">ID incidencia: {{ID_REPORT}}</h3>
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Email</label>
-						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder="userCualquiera@gmail.com">
-						    </div>
+						    <label class="col-sm-7">
+						      	<a type="text" class="form-control">{{EMAIL}}</a>
+						    </label>
+						</div>
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Articlo Denunciado</label>
+						    <label class="col-sm-7">
+						      	<a onclick="location.href='/VisualizarPost/{{ID_REPORT}}'" class="form-control">Pulsa para acceder al articulo denunciado</a>
+						    </label>
 						</div>
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Descripción de la incidencia</label>
-						    <div class="col-sm-7">
-								<textarea class="form-control" placeholder=" He detectado en un anucio que se están vendiendo productos peligrosos"></textarea>
+						    <label class="col-md-7">
+								<textarea class="form-control">{{DESCRIPTION}}</textarea>
 						      	<!-- <input type="text" class="form-control" placeholder=" He detectado en un anucio que se están vendiendo productos peligrosos"> -->
-						    </div>
+						    </label>
 						</div>
 						<br><br>
-						<h3 class="text-info">Ficheros adjuntos por el usuario</h3>
-						<h4 class="text-info">(Listado con los ficheros adjuntos)</h4>
-						<h5 class="text-info">--> Fichero adjunto 1: capturaPantalla1.png</h5>
-						<h5 class="text-info">--> Fichero adjunto 2: capturaPantalla2.png</h5>
-
-
-
-						<!--
-						<div class="form-group">
-						    <div class="custom-input-file">
-						    	<input type="file" size="1" class="input-file" />
-							    <i class="fa fa-picture-o" aria-hidden="true"></i>
-							</div>
-							<br>
-							<p  class="text-muted text-center archivo">Fichero...</p>
-						</div>
-						<br><br>
-						<h3 class="text-info">Datos para que te contacten</h3>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Eres</label>
-							<div class="col-sm-7">
-								<label class="radio-inline">
-									<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Particular
-								</label>
-								<label class="radio-inline">
-									<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Profesional
-								</label>
-							</div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Tu nombre</label>
-						    <div class="col-sm-7">
-						    	<input type="text" class="form-control" placeholder="Nombre">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">E-mail</label>
-						    <div class="col-sm-7">
-						    	<input type="email" class="form-control" placeholder="E-mail">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Confirmar E-mail</label>
-						    <div class="col-sm-7">
-						    	<input type="email" class="form-control" placeholder="Confirmar E-mail">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Teléfono</label>
-						    <div class="col-sm-7">
-						    	<input type="tel" class="form-control" placeholder="Teléfono">
-						    </div>
-						</div> -->
+						<h3 class="text-info">Fichero adjunto por el usuario</h3>
+								<a href="{{ID_REPORT}}/image" download="">Download</a>
+                        {{/report}}
 						<p class="text-center">
 							<button class="btn btn-success">ACEPTAR REPORTE</button>
 							<button class="btn btn-danger">RECHAZAR REPORTE</button>

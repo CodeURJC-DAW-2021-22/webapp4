@@ -1,6 +1,14 @@
 package es.codeurjc.wallypop.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
 
@@ -12,16 +20,20 @@ public class Favorites {
 	@NonNull
 	@Column(name = "ID_FAVORITE")
 	private long ID_FAVORITE;
-	
+
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name = "ID_USER")
 	private User USER;
-	
+
 	@OneToOne
 	@NonNull
 	@JoinColumn(name = "ID_ARTICLE")
 	private Article ARTICLE;
+
+	public Favorites() {
+
+	}
 
 	public Favorites(User uSER, Article aRTICLE) {
 		super();
@@ -48,7 +60,5 @@ public class Favorites {
 	public void setARTICLE(Article aRTICLE) {
 		ARTICLE = aRTICLE;
 	}
-	
-	
-	
+
 }

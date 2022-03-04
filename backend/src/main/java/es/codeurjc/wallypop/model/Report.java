@@ -2,7 +2,14 @@ package es.codeurjc.wallypop.model;
 
 import java.sql.Blob;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
 
@@ -15,30 +22,39 @@ public class Report {
 	@NonNull
 	@Column(name = "ID_REPORT")
 	private long ID_REPORT;
-	
+
 	@ManyToOne
-	@NonNull
 	@JoinColumn(name = "ID_ARTICLE")
 	private Article ARTICLE;
-	
+
 	@NonNull
 	@Column(name = "EMAIL")
 	private String EMAIL;
-	
-	@Column(name = "PROOF")
-	private Blob PROOF;
 
-	public Report(Article aRTICLE, String eMAIL, Blob pROOF) {
+	@NonNull
+	@Column(name = "DESCRIPTION")
+	private String DESCRIPTION;
+
+	@Column(name = "PROOF")
+	private Blob PROOF = null;
+
+	public Report() {
+
+	}
+
+	public Report(Article aRTICLE, String eMAIL, Blob pROOF, String dESCRIPTION) {
 		super();
 		ARTICLE = aRTICLE;
 		EMAIL = eMAIL;
 		PROOF = pROOF;
+		DESCRIPTION = dESCRIPTION;
 	}
 
-	public Report(Article aRTICLE, String eMAIL) {
+	public Report(Article aRTICLE, String eMAIL, String dESCRIPTION) {
 		super();
 		ARTICLE = aRTICLE;
 		EMAIL = eMAIL;
+		DESCRIPTION = dESCRIPTION;
 	}
 
 	public long getID_REPORT() {
@@ -57,18 +73,15 @@ public class Report {
 		return EMAIL;
 	}
 
-	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
-	}
-
 	public Blob getPROOF() {
 		return PROOF;
+	}
+
+	public String getDESCRIPTION() {
+		return DESCRIPTION;
 	}
 
 	public void setPROOF(Blob pROOF) {
 		PROOF = pROOF;
 	}
-	
-	
-	
 }

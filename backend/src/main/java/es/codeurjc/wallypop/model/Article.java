@@ -4,81 +4,95 @@ import java.sql.Blob;
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
 @Entity
 @Table(name = "ARTICLE")
 public class Article {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
- 	@NonNull
- 	@Column(name = "ID_ARTICLE")
- 	private int ID_ARTICLE;
+	@Column(name = "ID_ARTICLE")
+	private long ID_ARTICLE;
 
- 	@ManyToOne
- 	@NonNull
- 	@JoinColumn(name = "ID_USER")
- 	private User USER;
- 	
- 	@NonNull
- 	@Column(name = "TITLE")
- 	private String TITLE;
- 	
- 	@Column(name = "DESCRIPTION")
- 	private String DESCRIPTION;
- 	
- 	@NonNull
- 	@Column(name = "PRICE")
- 	private float PRICE;
- 	
- 	@NonNull
- 	@Column(name = "DATE")
- 	private Date DATE = new java.sql.Date(System.currentTimeMillis());
- 	
- 	@NonNull
- 	@Column(name = "RESERVED")
- 	private boolean RESERVED = false;
- 	
- 	@NonNull
- 	@Column(name = "SOLD")
- 	private boolean SOLD = false;
- 	
- 	@Column(name = "PHOTO_BLOB")
- 	private Blob PHOTO; 
- 	
- 	@NonNull
- 	@Column(name = "N_VISITS")
- 	private int N_VISITS = 0;
- 	
- 	@ManyToMany
- 	@NonNull
- 	@JoinColumn(name = "ID_CATEGORY")
-	private List<Category> CATEGORY;
+	@ManyToOne
+	@JoinColumn(name = "USER")
+	private User USER;
 
-	public Article(User uSER, String tITLE, String dESCRIPTION, float pRICE, Blob pHOTO, List<Category> cATEGORY) {
+	@NonNull
+	@Column(name = "CITY")
+	private String CITY;
+
+	@NonNull
+	@Column(name = "TITLE")
+	private String TITLE;
+
+	@NonNull
+	@Column(name = "DESCRIPTION")
+	private String DESCRIPTION;
+
+	@NonNull
+	@Column(name = "PRICE")
+	private float PRICE;
+
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Column(name = "DATE")
+	private Date DATE = new java.sql.Date(System.currentTimeMillis());
+
+	@Column(name = "RESERVED")
+	private boolean RESERVED = false;
+
+	@Column(name = "SOLD")
+	private boolean SOLD = false;
+
+	@Column(name = "PHOTO_BLOB")
+	private Blob PHOTO;
+
+	@Column(name = "N_VISITS")
+	private int N_VISITS = 0;
+
+	@ManyToMany
+	@JoinColumn(name = "CATEGORYS")
+	private List<Category> CATEGORYS;
+
+	// Un artículo tiene que estar asociada con una única usuario.
+	// Un usuario puede estar asociada con varios artículos
+	@JoinColumn(name = "ID_USER")
+	private String ID_USER;
+
+	public Article() {
+
+	}
+
+	public Article(User uSER, String tITLE, String dESCRIPTION, String cITY, float pRICE, Blob pHOTO,
+			List<Category> lISTcATEGORYS) {
 		super();
 		USER = uSER;
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
 		PRICE = pRICE;
 		PHOTO = pHOTO;
-		CATEGORY = cATEGORY;
+		CATEGORYS = lISTcATEGORYS;
+		CITY = cITY;
 	}
 
-
-	public int getID_ARTICLE() {
-		return ID_ARTICLE;
+	public String getCITY() {
+		return CITY;
 	}
 
-	public User getUSER() {
-		return USER;
-	}
-
-	public void setUSER(User uSER) {
-		USER = uSER;
+	public void setCITY(String cITY) {
+		CITY = cITY;
 	}
 
 	public String getTITLE() {
@@ -105,14 +119,6 @@ public class Article {
 		PRICE = pRICE;
 	}
 
-	public Date getDATE() {
-		return DATE;
-	}
-
-	public void setDATE(Date dATE) {
-		DATE = dATE;
-	}
-
 	public boolean isRESERVED() {
 		return RESERVED;
 	}
@@ -137,22 +143,36 @@ public class Article {
 		PHOTO = pHOTO;
 	}
 
+	public List<Category> getCATEGORYS() {
+		return CATEGORYS;
+	}
+
+	public void setCATEGORYS(List<Category> cATEGORYS) {
+		CATEGORYS = cATEGORYS;
+	}
+
+	public long getID_ARTICLE() {
+		return ID_ARTICLE;
+	}
+
+	public User getUSER() {
+		return USER;
+	}
+
+	public Date getDATE() {
+		return DATE;
+	}
+
 	public int getN_VISITS() {
 		return N_VISITS;
 	}
 
-	public void setN_VISITS(int n_VISITS) {
-		N_VISITS = n_VISITS;
+	public String getID_USER() {
+		return ID_USER;
 	}
 
-
-	public List<Category> getCATEGORY() {
-		return CATEGORY;
+	public String getPRICE_s() {
+		return String.valueOf(getPRICE());
 	}
 
-
-	public void setCATEGORY(List<Category> cATEGORY) {
-		CATEGORY = cATEGORY;
-	}
- 	
 }

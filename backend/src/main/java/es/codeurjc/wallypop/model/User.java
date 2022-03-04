@@ -1,6 +1,11 @@
 package es.codeurjc.wallypop.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
 
@@ -9,54 +14,57 @@ import org.springframework.lang.NonNull;
 public class User {
 
 	@Id
- 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NonNull
 	@Column(name = "ID_USER")
- 	private Long ID_USER;
+	private Long ID_USER;
 
 	@NonNull
-	@Column(name = "FULL_NAME")
- 	private String FULL_NAME;
-	
+	@Column(name = "NAME")
+	private String FULL_NAME;
+
 	@NonNull
 	@Column(name = "PASSWORD")
- 	private String PASSWORD;
- 	
+	private String PASSWORD;
+
 	@NonNull
 	@Column(name = "EMAIL")
- 	private String EMAIL;
- 	
+	private String NAME;
+
 	@NonNull
 	@Column(name = "TEL")
- 	private String TEL;
- 	
+	private String TEL;
+
 	@NonNull
 	@Column(name = "N_SOLD")
- 	private int N_SOLD = 0;
- 	
+	private int N_SOLD = 0;
+
 	@NonNull
 	@Column(name = "N_SELL")
- 	private int N_SELL = 0;
- 	
+	private int N_SELL = 0;
+
 	@NonNull
 	@Column(name = "IS_ADMIN")
- 	private boolean IS_ADMIN = false;
+	private boolean IS_ADMIN = false;
 
-	public User(String fULL_NAME, String pASSWORD, String eMAIL, String tEL,
-			boolean iS_ADMIN) {
+	public User() {
+		// DEFAULT CONSTRUCTOR FOR JPA
+	}
+
+	public User(String nAME, String pASSWORD, String eMAIL, String tEL, boolean iS_ADMIN) {
 		super();
-		FULL_NAME = fULL_NAME;
+		FULL_NAME = nAME;
 		PASSWORD = pASSWORD;
-		EMAIL = eMAIL;
+		NAME = eMAIL;
 		TEL = tEL;
 		IS_ADMIN = iS_ADMIN;
 	}
 
-	public User(String fULL_NAME, String pASSWORD, String eMAIL, String tEL) {
+	public User(String nAME, String pASSWORD, String eMAIL, String tEL) {
 		super();
-		FULL_NAME = fULL_NAME;
+		FULL_NAME = nAME;
 		PASSWORD = pASSWORD;
-		EMAIL = eMAIL;
+		NAME = eMAIL;
 		TEL = tEL;
 	}
 
@@ -80,12 +88,14 @@ public class User {
 		PASSWORD = pASSWORD;
 	}
 
-	public String getEMAIL() {
-		return EMAIL;
+	// EMAIL
+	public String getNAME() {
+		return NAME;
 	}
 
-	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
+	// EMAIL
+	public void setNAME(String eMAIL) {
+		NAME = eMAIL;
 	}
 
 	public String getTEL() {
@@ -114,6 +124,6 @@ public class User {
 
 	public boolean isIS_ADMIN() {
 		return IS_ADMIN;
-	} 	
-	
+	}
+
 }
