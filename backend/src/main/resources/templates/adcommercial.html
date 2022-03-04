@@ -7,25 +7,17 @@
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
 					<form method="post" action=adcommercial_1 class="form-horizontal">
 						<h3 class="text-info">Busca la categoría donde verán tu anuncio</h3>
-						<div class="form-inline">
+						<div class="form-group">
 							<div class="col-sm-3 control-label">
 						    	<label>¿Qué anuncias?</label>
 							</div>
 							<div class="col-sm-7">
 							  	<div class="form-group">
-							    	<select name="cATEGORY" id="categories" class="form-control" aria-label="Selecciona una categoría">
+							    	<select name="cATEGORY" id="categories" class="form-control" aria-label="Selecciona una categoría" multiple>
 										<option disabled selected>Selecciona una categoría</option>
-										<option value="1">Calzado</option>
-										<option value="2">Herramientas</option>
-										<option value="3">Hogar</option>	
-										<option value="4">Jardín</option>
-										<option value="5">Papelería</option>																				
-										<option value="6">Piscina</option>										
-										<option value="7">Varios</option>
-										<option value="8">Ropa</option>
-										
-										
-										
+										{{#lcategory}}
+                                        <option value="{{ID_CATEGORY}}">{{TITLE}}</option>
+                                    	{{/lcategory}}
 									  </select>
 									<!-- <input type="text" class="form-control" placeholder="Dinos que anuncias"> -->
 							  	</div>
@@ -35,30 +27,29 @@
 						<br><br>
 						<h3 class="text-info">Detalles de tu anuncio</h3>
 						<div class="form-group">
-						    <label class="col-sm-3 control-label">{{campo_obligatorio_city}}Ciudad</label>
+						    <label class="col-sm-3 control-label">Ciudad</label>
 						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder="Ciudad" name="cITY">
+						      	<input type="text" class="form-control" placeholder="Ciudad" name="cITY" required="">
 						    </div>
 						</div>
 						<div class="form-group">
-						    <label  class="col-sm-3 control-label"> {{campo_obligatorio_title}} Título del anuncio</label>
+						    <label  class="col-sm-3 control-label">Título del anuncio</label>
 						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder="Título del anuncio" name ="tITLE">
+						      	<input type="text" class="form-control" placeholder="Título del anuncio" name ="tITLE" required="">
 						    </div>
 						</div>
 						<div class="form-group">
-						    <label class="col-sm-3 control-label">{{campo_obligatorio_description}}Descripción</label>
+						    <label class="col-sm-3 control-label">Descripción</label>
 						    <div class="col-sm-7">
-						    	<textarea class="form-control" rows="3" placeholder="Descripción" NAME ="dESCRIPTION"></textarea>
+						    	<textarea class="form-control" rows="3" placeholder="Descripción" NAME ="dESCRIPTION" required=""></textarea>
 						    </div>
 						</div>
 						<div class="form-group">
-						    <label class="col-sm-3 control-label">{{campo_obligatorio_price}}Precio</label>
+						    <label class="col-sm-3 control-label">Precio</label>
 						    <div class="col-sm-7">
-						    	<input type="text" class="form-control" placeholder="Precio" name="pRICE">
+						    	<input type="text" class="form-control" placeholder="Precio" name="pRICE" required="">
 						    </div>
 						</div>
-						<p style="color: red;">{{campos_obligatorios}} </p>
 						
 						<br><br>
 						<h3 class="text-info">Foto</h3>
@@ -71,49 +62,13 @@
 							<br>
 							<p  class="text-muted text-center archivo">Archivo...</p>
 						</div>
-						<!-- <br><br>
-						<h3 class="text-info">Datos para que te contacten</h3>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Eres</label>
-							<div class="col-sm-7">
-								<label class="radio-inline">
-									<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Particular
-								</label>
-								<label class="radio-inline">
-									<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Profesional
-								</label>
-							</div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Tu nombre</label>
-						    <div class="col-sm-7">
-						    	<input type="text" class="form-control" placeholder="Nombre">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">E-mail</label>
-						    <div class="col-sm-7">
-						    	<input type="email" class="form-control" placeholder="E-mail">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Confirmar E-mail</label>
-						    <div class="col-sm-7">
-						    	<input type="email" class="form-control" placeholder="Confirmar E-mail">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Teléfono</label>
-						    <div class="col-sm-7">
-						    	<input type="tel" class="form-control" placeholder="Teléfono">
-						    </div>
-						</div> -->
 						<p class="text-center">
 							Al publicar un anuncio, aceptas las <a href="#!">condiciones de uso y la Política de Privacidad</a>
 						</p>
+						<input type="hidden" name="_csrf" value="{{token}}"/>
 						<p class="text-center">
 							<!--  <button  type="submit" value="Enviar" class="btn btn-info">Continuar</button>	 -->
-							<input  type="submit" value="Enviar" class="btn btn-info"></input>
+							<input  type="submit" value="Guardar" class="btn btn-info"></input>
 						</p>
 					</form>
 				</div>
