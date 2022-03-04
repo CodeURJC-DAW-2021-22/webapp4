@@ -16,12 +16,10 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
-import es.codeurjc.wallypop.model.Category;
+import es.codeurjc.wallypop.model.Report;
 import es.codeurjc.wallypop.model.User;
-import es.codeurjc.wallypop.service.ArticleService;
-import es.codeurjc.wallypop.service.CategoryService;
-import es.codeurjc.wallypop.service.UserService;
-
+import es.codeurjc.wallypop.repositories.ReportRepository;
+import es.codeurjc.wallypop.repositories.UserRepository;
 
 @Controller
 public class DataBaseUsage implements CommandLineRunner {
@@ -37,6 +35,9 @@ public class DataBaseUsage implements CommandLineRunner {
 	
 	@Autowired
 	private ArticleService articleService;
+	
+	@Autowired
+	private ReportRepository reportRepository;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -58,6 +59,9 @@ public class DataBaseUsage implements CommandLineRunner {
 			lCat.add(categoryService.findById(2).get());
 			articleService.save(new Article(userService.findById(1).get(), "Zapatillas deportivas", "Descripción", "Madrid", (float) 99.99, convertToBLOB("/sample_image/ropa.png"), lCat));
 		}
+
+		// reportRepository.save(new Report(null,"j@j",null,null));
+		// reportRepository.save(new Report(null,"j@j",null,"Texto obsceno"));
 	}
 	
 	public void setCategoryImage(Category category, String ruta) throws IOException {

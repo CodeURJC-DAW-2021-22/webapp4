@@ -5,7 +5,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
-					<form action="" class="form-horizontal">
+					<form method="post" action="/newformularioReporte" class="form-horizontal" enctype="multipart/form-data">
 						<!--
 						<h3 class="text-info">Busca la categoría donde verán tu anuncio</h3>
 						<div class="form-inline">
@@ -25,13 +25,13 @@
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Email</label>
 						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder=" email">
+						      	<input type="text" class="form-control" placeholder=" email"  name="EMAIL">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Descripción de la incidencia</label>
 						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder=" Descripción incidencia">
+						      	<input type="text" class="form-control" placeholder=" Descripción incidencia"  name="DESCRIPTION">
 						    </div>
 						</div>
 						<br><br>
@@ -39,7 +39,7 @@
 						<p>¡Toda la información que nos proporcione nos ayudará, gracias!</p>
 						<div class="form-group">
 						    <div class="custom-input-file">
-						    	<input type="file" size="1" class="input-file" />
+						    	<input type="file" size="1" class="input-file" name="imageField" />
 							    <i class="fa fa-picture-o" aria-hidden="true"></i>
 							</div>
 							<br>
@@ -86,7 +86,7 @@
 							Al enviarnos un reporte de una incidencia, aceptas las <a href="#!">condiciones de uso y la Política de Privacidad</a>
 						</p>
 						<p class="text-center">
-							<button class="btn btn-info">Continuar</button>
+							<input class="btn btn-info" type="submit" value="Continuar"></input>
 						</p>
 					</form>
 				</div>
