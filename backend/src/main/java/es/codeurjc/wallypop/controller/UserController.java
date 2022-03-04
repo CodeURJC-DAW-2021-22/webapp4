@@ -1,9 +1,5 @@
 package es.codeurjc.wallypop.controller;
 
-
-import es.codeurjc.wallypop.model.User;
-import es.codeurjc.wallypop.service.UserService;
-
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +8,27 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import es.codeurjc.wallypop.model.User;
+import es.codeurjc.wallypop.service.UserService;
+
 @Controller
-public class NewAccountWebController {
-	
+public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	/* LOGIN */
+	@RequestMapping("/login")
+	public String login() {
+		return "login";
+	}
+
+	@RequestMapping("/loginerror")
+	public String loginerror(Model model) {
+		model.addAttribute("ERROR", true);
+		return "login";
+	}
+	
+	/* SING UP */
 	@RequestMapping("/newaccount")
     public String newAccount(Model model) {
 		model.addAttribute("user", new User());
@@ -41,5 +52,4 @@ public class NewAccountWebController {
 			return "login";
 		}
 	}
-
 }
