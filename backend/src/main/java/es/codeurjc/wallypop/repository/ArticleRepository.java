@@ -8,7 +8,4 @@ import es.codeurjc.wallypop.model.Article;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
 	
-	//@Query("SELECT * FROM ARTICLE")
-	//public 	List getListArticles (String ID_USER);
-	
 }
