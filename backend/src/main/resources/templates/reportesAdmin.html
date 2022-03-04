@@ -4,12 +4,6 @@
 						  	<a href="perfil" class="list-group-item">
 						  		<i class="fa fa-user fa-fw" aria-hidden="true"></i> TU PERFIL
 						  	</a>
-						  	<!-- <a href="config" class="list-group-item">
-						  		<i class="fa fa-cogs fa-fw" aria-hidden="true"></i> CONFIGURACIÓN
-						  	</a> -->
-						  	<!-- <a href="messages" class="list-group-item">
-						  		<i class="fa fa-commenting-o fa-fw" aria-hidden="true"></i> MENSAJES
-						  	</a> -->
 						  	<a href="yourcommercial" class="list-group-item">
 						  		<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS
 						  	</a>
@@ -43,14 +37,23 @@
 				  	<p>
 				  		Listado con todos los reportes enviados por los usuarios:
 				  	</p>
-				  	<div class="list-group">
-					  	<a href="VisualizaReporte" class="list-group-item">ID: 0000, email:userCualquiera@gmail.com </a>
-					  	<a href="#!" class="list-group-item">ID: 0001, email:userCualquiera1@gmail.com </a>
-					  	<a href="#!" class="list-group-item">ID: 0002, email:userCualquiera2@gmail.com </a>
-					  	<a href="#!" class="list-group-item">ID: 0003, email:userCualquiera3@gmail.com </a>
-					  	<a href="#!" class="list-group-item">ID: 0004, email:userCualquiera4@gmail.com </a>
-					  	<a href="#!" class="list-group-item">ID: 0005, email:userCualquiera5@gmail.com </a>
-					</div>
+
+        <table border=1>
+
+          <th style="background-color:#337ab7 ;color:white">ID REPORT</th background="red">
+          <th style="background-color:#337ab7;color:white">EMAIL</th>
+          <th style="background-color:#337ab7;color:white">DESCRIPTION</th>
+		{{#report}}
+
+        <tr onclick="location.href='/VisualizaReporte/{{ID_REPORT}}'">
+            <td> {{ID_REPORT}}</a></td>
+            <td>{{EMAIL}}</td>
+            <td>{{DESCRIPTION}}</td>
+        </tr >
+
+            {{/report}}
+    </table>
+
 				</div>
 			</div>
 		</div>

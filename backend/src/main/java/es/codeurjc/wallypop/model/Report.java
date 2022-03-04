@@ -8,13 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "REPORT")
@@ -33,14 +30,13 @@ public class Report {
 	@NonNull
 	@Column(name = "EMAIL")
 	private String EMAIL;
-
+	
+	@NonNull
 	@Column(name = "DESCRIPTION")
 	private String DESCRIPTION;
 
-	@Lob
-	@JsonIgnore
 	@Column(name = "PROOF")
-	private Blob PROOF;
+	private Blob PROOF = null;
 
 	public Report() {
 
@@ -51,6 +47,13 @@ public class Report {
 		ARTICLE = aRTICLE;
 		EMAIL = eMAIL;
 		PROOF = pROOF;
+		DESCRIPTION = dESCRIPTION;
+	}
+
+	public Report(Article aRTICLE, String eMAIL, String dESCRIPTION) {
+		super();
+		ARTICLE = aRTICLE;
+		EMAIL = eMAIL;
 		DESCRIPTION = dESCRIPTION;
 	}
 
