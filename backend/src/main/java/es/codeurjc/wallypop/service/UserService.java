@@ -1,5 +1,7 @@
 package es.codeurjc.wallypop.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,5 +28,13 @@ public class UserService {
 
 	public boolean userExists(User us) {
 		return userRepository.findByNAME(us.getNAME()).isPresent();
+	}
+
+	public Optional<User> findByNAME(String name) {
+		return userRepository.findByNAME(name);
+	}
+	
+	public Optional<User> findById(long id) {
+		return userRepository.findById(id);
 	}
 }
