@@ -226,6 +226,13 @@ public class WallypopWebController {
 		}
 
 	}
+	
+	@GetMapping("/VisualizaReporte/{id}/delete")
+	public String deleteReport(Model model, @PathVariable long id) {
+		reportService.delete(id);
+		model.addAttribute("report", reportService.findAll());
+		return "reportesAdmin";
+	}
 
 	// Este es el método que se llama cuando vamos al apartado TUS ANUNCIOS
 	@RequestMapping("/yourcommercial")
