@@ -5,9 +5,9 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.NonNull;
 
 
 @Entity
@@ -23,19 +23,19 @@ public class Article {
  	@JoinColumn(name = "USER")
  	private User USER;
  	
- 	@NotNull
+ 	@NonNull
  	@Column(name = "CITY")
  	private String CITY;
  	
- 	@NotNull
+ 	@NonNull
  	@Column(name = "TITLE")
  	private String TITLE;
  
- 	@NotNull
+ 	@NonNull
  	@Column(name = "DESCRIPTION")
  	private String DESCRIPTION;
  	
- 	@NotNull
+ 	@NonNull
  	@Column(name = "PRICE")
  	private float PRICE;
  	
