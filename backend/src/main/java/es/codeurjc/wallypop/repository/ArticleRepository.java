@@ -7,5 +7,5 @@ import antlr.collections.List;
 import es.codeurjc.wallypop.model.Article;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
-	
+
 }

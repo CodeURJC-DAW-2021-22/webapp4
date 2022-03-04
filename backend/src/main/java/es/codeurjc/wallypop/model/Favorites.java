@@ -12,21 +12,21 @@ public class Favorites {
 	@NonNull
 	@Column(name = "ID_FAVORITE")
 	private long ID_FAVORITE;
-	
+
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name = "ID_USER")
 	private User USER;
-	
+
 	@OneToOne
 	@NonNull
 	@JoinColumn(name = "ID_ARTICLE")
 	private Article ARTICLE;
 
 	public Favorites() {
-		
+
 	}
-	
+
 	public Favorites(User uSER, Article aRTICLE) {
 		super();
 		USER = uSER;
@@ -52,7 +52,5 @@ public class Favorites {
 	public void setARTICLE(Article aRTICLE) {
 		ARTICLE = aRTICLE;
 	}
-	
-	
-	
+
 }

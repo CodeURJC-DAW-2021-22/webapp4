@@ -12,13 +12,14 @@ import es.codeurjc.wallypop.repository.ReportRepository;
 
 @Service
 public class ReportService {
+
 	@Autowired
 	private ReportRepository reportRepository;
-	
+
 	public Optional<Report> findById(long id) {
 		return reportRepository.findById(id);
 	}
-	
+
 	public boolean exist(long id) {
 		return reportRepository.existsById(id);
 	}
@@ -34,12 +35,11 @@ public class ReportService {
 	public void delete(long id) {
 		reportRepository.deleteById(id);
 	}
-	
-	public List<Report> findAllReportsByArticle(long article_id) {
-		Optional<List<Report>> lReports = reportRepository.findAllByArticleId(article_id); 
-		if (lReports.isPresent()) {
-			return lReports.get();
-		}
-		return new LinkedList<>();
-	}
+
+	/*
+	 * public List<Report> findAllReportsByArticle(long article_id) {
+	 * Optional<List<Report>> lReports =
+	 * reportRepository.findAllByArticleId(article_id); if (lReports.isPresent()) {
+	 * return lReports.get(); } return new LinkedList<>(); }
+	 */
 }

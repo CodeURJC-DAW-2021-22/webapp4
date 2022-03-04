@@ -15,7 +15,7 @@ import es.codeurjc.wallypop.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
-	
+
 	/* LOGIN */
 	@RequestMapping("/login")
 	public String login() {
@@ -27,21 +27,21 @@ public class UserController {
 		model.addAttribute("ERROR", true);
 		return "login";
 	}
-	
+
 	/* SING UP */
 	@RequestMapping("/newaccount")
-    public String newAccount(Model model) {
+	public String newAccount(Model model) {
 		model.addAttribute("user", new User());
-        return "newaccount";
-    }
-	
+		return "newaccount";
+	}
+
 	@RequestMapping("/newaccounterror")
-    public String newAccountError(Model model) {
+	public String newAccountError(Model model) {
 		model.addAttribute("user", new User());
 		model.addAttribute("ERROR", true);
-        return "newaccount";
-    }
-	
+		return "newaccount";
+	}
+
 	@PostMapping("/newaccount")
 	public String newUser(Model model, User us) throws IOException {
 		us.setPASSWORD(userService.encodePassword(us.getPASSWORD()));

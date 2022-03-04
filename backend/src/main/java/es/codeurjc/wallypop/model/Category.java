@@ -21,25 +21,24 @@ public class Category {
 	@NonNull
 	@JoinColumn(name = "ID_CATEGORY")
 	private long ID_CATEGORY;
-	
+
 	@NonNull
 	@Column(name = "TITLE")
 	private String TITLE;
-	
+
 	@Column(name = "DESCRIPTION")
 	private String DESCRIPTION = null;
-	
+
 	@Column(name = "PHOTO")
-	private Blob PHOTO = null;	
-	
+	private Blob PHOTO = null;
+
 	@Column(name = "ICON")
 	private String ICON = null;
-	
 
 	public Category() {
 		// DEFAULT CONSTRUCTOR FOR JPA
 	}
-	
+
 	public Category(String tITLE, String dESCRIPTION, Blob pHOTO, String iCON) {
 		super();
 		TITLE = tITLE;
@@ -87,5 +86,5 @@ public class Category {
 	public void setICON(String iCON) {
 		ICON = iCON;
 	}
-	
+
 }

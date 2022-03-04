@@ -17,42 +17,45 @@ public class Report {
 	@NonNull
 	@Column(name = "ID_REPORT")
 	private long ID_REPORT;
-	
-	
+
 	@ManyToOne
 	@JoinColumn(name = "ID_ARTICLE")
 	private Article ARTICLE;
-	
+
 	@NonNull
 	@Column(name = "EMAIL")
 	private String EMAIL;
-	
+
 	@Column(name = "DESCRIPTION")
 	private String DESCRIPTION;
-	
+
 	@Lob
 	@JsonIgnore
 	@Column(name = "PROOF")
 	private Blob PROOF;
-	
+
 	public Report() {
-		
+
 	}
-	
-	public Report(Article aRTICLE, String eMAIL, Blob pROOF,String dESCRIPTION) {
+
+	public Report(Article aRTICLE, String eMAIL, Blob pROOF, String dESCRIPTION) {
 		super();
 		ARTICLE = aRTICLE;
 		EMAIL = eMAIL;
 		PROOF = pROOF;
 		DESCRIPTION = dESCRIPTION;
-	}	
-	
+	}
+
 	public long getID_REPORT() {
 		return ID_REPORT;
 	}
 
 	public Article getARTICLE() {
 		return ARTICLE;
+	}
+
+	public void setARTICLE(Article aRTICLE) {
+		ARTICLE = aRTICLE;
 	}
 
 	public String getEMAIL() {

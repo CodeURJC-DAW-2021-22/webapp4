@@ -4,51 +4,49 @@ import javax.persistence.*;
 
 import org.springframework.lang.NonNull;
 
-
 @Entity
 @Table(name = "USER")
 public class User {
 
 	@Id
- 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NonNull
 	@Column(name = "ID_USER")
- 	private Long ID_USER;
+	private Long ID_USER;
 
 	@NonNull
 	@Column(name = "NAME")
- 	private String FULL_NAME;
-	
+	private String FULL_NAME;
+
 	@NonNull
 	@Column(name = "PASSWORD")
- 	private String PASSWORD;
- 	
+	private String PASSWORD;
+
 	@NonNull
 	@Column(name = "EMAIL")
- 	private String NAME;
- 	
+	private String NAME;
+
 	@NonNull
 	@Column(name = "TEL")
- 	private String TEL;
- 	
+	private String TEL;
+
 	@NonNull
 	@Column(name = "N_SOLD")
- 	private int N_SOLD = 0;
- 	
+	private int N_SOLD = 0;
+
 	@NonNull
 	@Column(name = "N_SELL")
- 	private int N_SELL = 0;
- 	
+	private int N_SELL = 0;
+
 	@NonNull
 	@Column(name = "IS_ADMIN")
- 	private boolean IS_ADMIN = false;
-	
+	private boolean IS_ADMIN = false;
+
 	public User() {
 		// DEFAULT CONSTRUCTOR FOR JPA
 	}
 
-	public User(String nAME, String pASSWORD, String eMAIL, String tEL,
-			boolean iS_ADMIN) {
+	public User(String nAME, String pASSWORD, String eMAIL, String tEL, boolean iS_ADMIN) {
 		super();
 		FULL_NAME = nAME;
 		PASSWORD = pASSWORD;
@@ -121,6 +119,6 @@ public class User {
 
 	public boolean isIS_ADMIN() {
 		return IS_ADMIN;
-	} 	
-	
+	}
+
 }

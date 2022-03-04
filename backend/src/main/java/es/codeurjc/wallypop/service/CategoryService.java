@@ -14,11 +14,11 @@ public class CategoryService {
 
 	@Autowired
 	private CategoryRepository categoryrepository;
-	
+
 	public Optional<Category> findById(long id) {
 		return categoryrepository.findById(id);
 	}
-	
+
 	public boolean exist(long id) {
 		return categoryrepository.existsById(id);
 	}
@@ -34,9 +34,9 @@ public class CategoryService {
 	public void delete(long id) {
 		categoryrepository.deleteById(id);
 	}
-	
-	public Optional<Category> findByCategory(String category){
+
+	public Optional<Category> findByCategory(String category) {
 		return categoryrepository.findByTITLE(category);
 	}
-	
+
 }

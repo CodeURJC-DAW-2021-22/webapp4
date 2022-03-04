@@ -15,14 +15,14 @@ import es.codeurjc.wallypop.repository.ArticleRepository;
 public class ArticleService {
 	@Autowired
 	private ArticleRepository articleRepository;
-	
+
 	@Autowired
 	private CategoryService categoryService;
-	
+
 	public Optional<Article> findById(long id) {
 		return articleRepository.findById(id);
 	}
-	
+
 	public boolean exist(long id) {
 		return articleRepository.existsById(id);
 	}
@@ -38,7 +38,7 @@ public class ArticleService {
 	public void delete(long id) {
 		articleRepository.deleteById(id);
 	}
-	
+
 	public List<Article> findArticlesByCategory(long id) {
 		Optional<Category> c = categoryService.findById(id);
 		List<Article> lResult = new LinkedList<>();
@@ -51,5 +51,5 @@ public class ArticleService {
 		}
 		return lResult;
 	}
-	
+
 }
