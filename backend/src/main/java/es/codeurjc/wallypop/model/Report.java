@@ -38,8 +38,6 @@ public class Report {
 	public Report() {
 		
 	}
-
-	public Report() {}
 	
 	public Report(Article aRTICLE, String eMAIL, Blob pROOF,String dESCRIPTION) {
 		super();
