@@ -70,18 +70,21 @@
 						<i class="fa fa-angle-right btn btn-default"></i>
 					</div>
 					<div class="full-width container-post">
+					    {{#category}}
 						<div class="full-width post">
 							<figure class="full-width post-img">
 								<!-- Tamaño de la imagen 248x186 pixeles-->
-								<img src="assets/img/post.jpg" alt="" class="img-responsive">
+								<img src="{{ID_CATEGORY}}/image" alt="" class="img-responsive">
 							</figure>
 							<div class="full-width post-info">
-								<p class="full-width post-info-price">AUTOMÓVILES</p> <!-- QUITAR info price -->
-								<span class="post-info-zone">Lápiz</span> <!-- QUITAR info zone -->
+								<p class="full-width post-info-price">{{TITLE}}</p> <!-- QUITAR info price -->
+								<span class="post-info-zone">{{DESCRIPTION}}</span> <!-- QUITAR info zone -->
 								<span class="post-info-date">x</span> <!-- QUITAR info date -->
 								<!-- <i class="fa fa-heart-o post-info-like"></i> -->
+							
 							</div>
 						</div>
+						{{/category}}
 						<div class="full-width post">
 							<figure class="full-width post-img">
 								<!-- Tamaño de la imagen 248x186 pixeles-->

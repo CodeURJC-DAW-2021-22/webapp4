@@ -31,14 +31,14 @@
 		<h2 class="text-center text-light">Todas las categorías que imaginas</h2>
 		<div class="container">
 			<div class="full-width container-category">
-				<a href="#!" id="categori-1">
-					<i class="fa fa-car" aria-hidden="true"></i>
-					<span>VEHÍCULOS</span>
-				</a>
-				<a href="#!" id="categori-2">
-					<i class="fa fa-building" aria-hidden="true"></i>
-					<span>INMOBILIARIA</span>
-				</a>
+				{{#Categories}}
+                 <a href="/commercial/{{TITLE}}"  id="category-{{ID_CATEGORY}}">
+	                 <!-- <i class="fa fa-car" aria-hidden="true"></i> --> <!-- Habría que ver como poner la foto aquí -->
+	                 <img src="{{ID_CATEGORY}}/imagen" alt="" class="img-responsive">
+	                 <span>{{TITLE}}</span>
+                 </a>
+                {{/Categories}}
+				<!--
 				<a href="#!" id="categori-3">
 					<i class="fa fa-home" aria-hidden="true"></i>
 					<span>HOGAR</span>
@@ -79,6 +79,7 @@
 					<i class="fa fa-star" aria-hidden="true"></i>
 					<span>TODAS LAS CATEGORIAS</span>
 				</a>
+				-->
 			</div>
 		</div>
 	</section>

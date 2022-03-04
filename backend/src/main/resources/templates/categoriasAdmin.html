@@ -53,7 +53,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
-					<form action="" class="form-horizontal">
+					<form method="post" action="" class="form-horizontal">
 						<h3 class="text-info">Busca una categoría</h3>
 						<div class="form-inline">
 							<div class="col-sm-3 control-label">
@@ -61,14 +61,20 @@
 							</div>
 							<div class="col-sm-7">
 							  	<div class="form-group">
-							    	<input type="text" class="form-control" placeholder="Busca categoría">
+							    	<select id="lcategories">
+						    	    {{#lcategory}}
+                                        <option value="{{ID_CATEGORY}}">{{TITLE}}</option>
+                                    {{/lcategory}}
+                                    </select>
 							  	</div>
 							  	<button class="btn btn-default">Buscar categoría</button>
 							  	<a href="categoriasAdminListado">VER LISTADO CATEGORÍAS</a>
 
 							</div>
 						</div>
+						</form>
 						<br><br>
+						<form method="post" action="/newCategory" class="form-horizontal" enctype="multipart/form-data">
 						<h3 class="text-info">Añade una nueva Categoría</h3>
 						<div class="form-inline">
 							<div class="col-sm-3 control-label">
@@ -76,9 +82,9 @@
 							</div>
 							<div class="col-sm-7">
 							  	<div class="form-group">
-							    	<input type="text" class="form-control" placeholder="Añade nueva categoría">
+							    	<input type="text" class="form-control" placeholder="Añade nueva categoría" name="TITLE">
 							  	</div>
-							  	<button class="btn btn-default">+</button>
+							  	<!--<button class="btn btn-default">+</button>-->
 							</div>
 						</div>
 						<!--
@@ -88,12 +94,20 @@
 						      	<input type="text" class="form-control" placeholder="Título del anuncio">
 						    </div>
 						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Descripción</label>
+						-->
+						<br>
+						<br>
+						<div class="form-inline">
+						    <div class="col-sm-3 control-label">
+						         <label>Descripción</label>
+						    </div>
 						    <div class="col-sm-7">
-						    	<textarea class="form-control" rows="3" placeholder="Descripción"></textarea>
+						         <div class="form-group">
+						    	      <textarea class="form-control" rows="3" placeholder="Descripción" name="DESCRIPTION"></textarea>
+						         </div>
 						    </div>
 						</div>
+						<!--
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Precio</label>
 						    <div class="col-sm-7">
@@ -101,54 +115,20 @@
 						    </div>
 						</div>
 						-->
-						<br><br>
+						<br><br><br>
 						<h3 class="text-info">Foto</h3>
 						<p>¡Añade una foto a la categoría!</p>
 						<div class="form-group">
 						    <div class="custom-input-file">
-						    	<input type="file" size="1" class="input-file" />
+						    	<input type="file" size="1" class="input-file" name="imageField" accept=".jpg, .jpeg"/>
 							    <i class="fa fa-picture-o" aria-hidden="true"></i>
 							</div>
 							<br>
 							<p  class="text-muted text-center archivo">Archivo...</p>
 						</div>
-						<!-- <br><br>
-						<h3 class="text-info">Datos para que te contacten</h3>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Eres</label>
-							<div class="col-sm-7">
-								<label class="radio-inline">
-									<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Particular
-								</label>
-								<label class="radio-inline">
-									<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Profesional
-								</label>
-							</div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Tu nombre</label>
-						    <div class="col-sm-7">
-						    	<input type="text" class="form-control" placeholder="Nombre">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">E-mail</label>
-						    <div class="col-sm-7">
-						    	<input type="email" class="form-control" placeholder="E-mail">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Confirmar E-mail</label>
-						    <div class="col-sm-7">
-						    	<input type="email" class="form-control" placeholder="Confirmar E-mail">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Teléfono</label>
-						    <div class="col-sm-7">
-						    	<input type="tel" class="form-control" placeholder="Teléfono">
-						    </div>
-						</div> -->
+						<p class="text-center">
+							<input  type="submit" value="Guardar" class="btn btn-info"></input>
+						</p>
 					</form>
 				</div>
 			</div>
