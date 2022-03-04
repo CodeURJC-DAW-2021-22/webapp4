@@ -30,7 +30,7 @@ public class Report {
 	@NonNull
 	@Column(name = "EMAIL")
 	private String EMAIL;
-	
+
 	@NonNull
 	@Column(name = "DESCRIPTION")
 	private String DESCRIPTION;

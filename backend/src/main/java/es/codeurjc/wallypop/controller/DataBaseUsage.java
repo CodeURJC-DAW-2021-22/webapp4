@@ -59,14 +59,14 @@ public class DataBaseUsage implements CommandLineRunner {
 			lCat.add(categoryService.findById(2).get());
 			articleService.save(new Article(userService.findById(1).get(), "Zapatillas deportivas", "Descripción",
 					"Madrid", (float) 99.99, convertToBLOB("/sample_image/ropa.png"), lCat));
-			articleService.save(new Article(userService.findById(2).get(), "Zapatillas correr", "Descripción",
-					"Madrid", (float) 50.99, convertToBLOB("/sample_image/ropa.png"), lCat));
+			articleService.save(new Article(userService.findById(2).get(), "Zapatillas correr", "Descripción", "Madrid",
+					(float) 50.99, convertToBLOB("/sample_image/ropa.png"), lCat));
 		}
-		
+
 		// Report
-		
-		reportService.save(new Report(articleService.findAll().get(0) , "a@a.es", "Descripción"));
-		
+
+		reportService.save(new Report(articleService.findAll().get(0), "a@a.es", "Descripción"));
+
 	}
 
 	public void setCategoryImage(Category category, String ruta) throws IOException {
