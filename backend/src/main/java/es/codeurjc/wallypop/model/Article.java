@@ -27,7 +27,7 @@ public class Article {
 	private long ID_ARTICLE;
 
 	@ManyToOne
-	@JoinColumn(name = "USER")
+	@JoinColumn(name = "ID_USER")
 	private User USER;
 
 	@NonNull
@@ -65,11 +65,6 @@ public class Article {
 	@ManyToMany
 	@JoinColumn(name = "CATEGORYS")
 	private List<Category> CATEGORYS;
-
-	// Un artículo tiene que estar asociada con una única usuario.
-	// Un usuario puede estar asociada con varios artículos
-	@JoinColumn(name = "ID_USER")
-	private String ID_USER;
 
 	public Article() {
 
@@ -158,6 +153,10 @@ public class Article {
 	public User getUSER() {
 		return USER;
 	}
+	
+	public void setUSER(User uSER) {
+		USER = uSER;
+	}
 
 	public Date getDATE() {
 		return DATE;
@@ -165,10 +164,6 @@ public class Article {
 
 	public int getN_VISITS() {
 		return N_VISITS;
-	}
-
-	public String getID_USER() {
-		return ID_USER;
 	}
 
 	public String getPRICE_s() {
