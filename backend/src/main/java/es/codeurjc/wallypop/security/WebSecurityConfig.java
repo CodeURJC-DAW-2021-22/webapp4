@@ -2,7 +2,11 @@ package es.codeurjc.wallypop.security;
 
 import java.security.SecureRandom;
 
+import javax.servlet.Servlet;
+
+import org.apache.catalina.servlets.WebdavServlet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -27,6 +31,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
+	
+	@Bean
+    ServletRegistrationBean<Servlet> h2servletRegistration(){
+        ServletRegistrationBean<Servlet> registrationBean = new ServletRegistrationBean<>( new WebdavServlet());
+        registrationBean.addUrlMappings("/console/*");
+        return registrationBean;
+    }
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -41,7 +52,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/formularioreporte").permitAll();
 		http.authorizeRequests().antMatchers("/post").permitAll();
 		http.authorizeRequests().antMatchers("/help").permitAll();
-		// http.authorizeRequests().antMatchers("/h2-console").permitAll();
+		
+		/* H2 CONSOLE */
+		http.authorizeRequests().antMatchers("/h2_console/**").permitAll();
+        	http.csrf().ignoringAntMatchers("/h2-console/**");
+        	http.headers().frameOptions().sameOrigin();
 
 		// Private pages
 		/* USER */
