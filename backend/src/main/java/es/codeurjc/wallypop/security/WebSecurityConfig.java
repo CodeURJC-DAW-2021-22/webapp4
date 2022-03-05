@@ -54,8 +54,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/help").permitAll();
 		
 		/* H2 CONSOLE */
-		// Uncomment if you need to access to h2 console
-		// http.antMatcher("/h2-console").csrf().disable(); 
+		http.authorizeRequests().antMatchers("/").permitAll().and().authorizeRequests().antMatchers("/console/**").permitAll();
+		http.csrf().disable();
+		http.headers().frameOptions().disable();
 
 		// Private pages
 		/* USER */
