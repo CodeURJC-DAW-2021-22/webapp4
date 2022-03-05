@@ -45,6 +45,8 @@ public class WallypopWebController {
 
 	@Autowired
 	private ReportService reportService;
+	
+	private User usLogged = null;
 
 	@ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
@@ -57,10 +59,13 @@ public class WallypopWebController {
 			model.addAttribute("NAME", principal.getName());
 			Optional<User> us = userService.findByNAME(principal.getName());
 			if (us.isPresent()) {
-				model.addAttribute("FULL_NAME", us.get().getFULL_NAME());
-				model.addAttribute("TEL", us.get().getTEL());
-				model.addAttribute("sell", us.get().getN_SELL());
-				model.addAttribute("sold", us.get().getN_SOLD());
+				User user = us.get();
+				usLogged = user;
+				model.addAttribute("ID_USER", user.getID_USER());
+				model.addAttribute("FULL_NAME", user.getFULL_NAME());
+				model.addAttribute("TEL", user.getTEL());
+				model.addAttribute("sell", user.getN_SELL());
+				model.addAttribute("sold", user.getN_SOLD());
 			}
 			model.addAttribute("admin", request.isUserInRole("ADMIN"));
 
@@ -83,7 +88,11 @@ public class WallypopWebController {
 	}
 
 	@PostMapping("/newcommercial")
-	public String newCommercial(Model model, Article article) throws IOException {
+	public String newCommercial(Model model, Article article, MultipartFile imageField) throws IOException {
+		if (!imageField.isEmpty()) {
+			article.setPHOTO(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
+		}
+		article.setUSER(usLogged);
 		articleService.save(article);
 		return "yourcommercial_success";
 	}
@@ -244,7 +253,7 @@ public class WallypopWebController {
 
 	// Este es el método que se llama cuando agragamos un nuevo anuncio y toto va
 	// bien
-	@RequestMapping("/yourcommercial_exito_message")
+	@RequestMapping("/yourcommercial_success")
 	public String mensajeCreadoExito(Model model) {
 		model.addAttribute("exito_creacion_nuevo_anuncio", "Enhorabuena! El nuevo anuncio ha sido creado con éxito");
 		model.addAttribute("Articles", articleService.findAll());
