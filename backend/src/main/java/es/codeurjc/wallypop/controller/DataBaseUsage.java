@@ -54,13 +54,15 @@ public class DataBaseUsage implements CommandLineRunner {
 
 		// Article
 		List<Category> lCat = new LinkedList<>();
+		List<Category> lCat2 = new LinkedList<>();
 		if (categoryService.findById(1).isPresent() && categoryService.findById(2).isPresent()) {
 			lCat.add(categoryService.findById(1).get());
-			lCat.add(categoryService.findById(2).get());
+			lCat2.add(categoryService.findById(1).get());
+			lCat2.add(categoryService.findById(2).get());
 			articleService.save(new Article(userService.findById(1).get(), "Zapatillas deportivas", "Descripción",
 					"Madrid", (float) 99.99, convertToBLOB("/sample_image/ropa.png"), lCat));
 			articleService.save(new Article(userService.findById(2).get(), "Zapatillas correr", "Descripción", "Madrid",
-					(float) 50.99, convertToBLOB("/sample_image/ropa.png"), lCat));
+					(float) 50.99, convertToBLOB("/sample_image/ropa.png"), lCat2));
 		}
 
 		// Report
