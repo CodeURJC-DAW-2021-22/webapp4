@@ -58,8 +58,8 @@ public class DataBaseUsage implements CommandLineRunner {
 			lCat.add(categoryService.findById(1).get());
 			lCat.add(categoryService.findById(2).get());
 			articleService.save(new Article(userService.findById(1).get(), "Zapatillas deportivas", "Descripción",
-					"Madrid", (float) 99.99, convertToBLOB("/sample_image/ropa.png"), lCat));
-			articleService.save(new Article(userService.findById(2).get(), "Zapatillas correr", "Descripción", "Madrid",
+					"Madrid", "28001", (float) 99.99, convertToBLOB("/sample_image/ropa.png"), lCat));
+			articleService.save(new Article(userService.findById(2).get(), "Zapatillas correr", "Descripción", "Madrid", "28042",
 					(float) 50.99, convertToBLOB("/sample_image/ropa.png"), lCat));
 		}
 
