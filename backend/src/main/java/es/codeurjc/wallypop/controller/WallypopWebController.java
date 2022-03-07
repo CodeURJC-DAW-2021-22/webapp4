@@ -203,16 +203,24 @@ public class WallypopWebController {
 					model.addAttribute("Owner", true);
 				} else {
 					// Only sum a visit if im not the owner o an admin
-					a.visit();
-					articleService.save(a);
+					visit(a);
 				}
+			} else {
+				// Visit because im not registered user
+				visit(a);
 			}
+			
 			model.addAttribute("Article", a);
 			model.addAttribute("User", a.getUSER());
 			return "post";
 		} else {
 			return "errorcommercial";
 		}
+	}
+	
+	private void visit(Article a) {
+		a.visit();
+		articleService.save(a);
 	}
 
 	@RequestMapping("/reportesAdmin")
