@@ -263,11 +263,10 @@ public class WallypopWebController {
 
 	@GetMapping("/VisualizarPost/{id}")
 	public String showArticleReported(Model model, @PathVariable long id) {
-		Optional<Article> article = articleService
-				.findById((long) reportService.findById(id).get().getARTICLE().getID_ARTICLE());
-		if (article.isPresent()) {
-			model.addAttribute("article", article.get());
-			return "post";
+		Article article = reportService.findById(id).get().getARTICLE();
+		if (article != null) {
+			//model.addAttribute("article", article);
+			return "/post/" + article.getID_ARTICLE();
 		} else {
 			return "/VisualizaReporte/{id}";
 		}
