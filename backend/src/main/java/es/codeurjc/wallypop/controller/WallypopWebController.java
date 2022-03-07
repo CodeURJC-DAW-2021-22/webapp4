@@ -86,16 +86,28 @@ public class WallypopWebController {
 		model.addAttribute("lcategory", categoryservice.findAll());
 		return "adcommercial";
 	}
-
+	
+	
 	@PostMapping("/newcommercial")
 	public String newCommercial(Model model, Article article, MultipartFile imageField) throws IOException {
 		if (!imageField.isEmpty()) {
 			article.setPHOTO(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
 		}
 		article.setUSER(usLogged);
+		newArticle(); // SUM 1 to N_SELL
 		articleService.save(article);
 		return "yourcommercial_success";
 	}
+	
+	private void newArticle() {
+		usLogged.newArticle();
+		userService.save(usLogged);
+	}
+	
+	/* private void deleteArticle(Article article) {
+		article.getUSER().deleteArticle();
+		userService.save(article.getUSER());
+	} */
 
 	@GetMapping("/categoriasAdminListado")
 	public String categoriasAdminListado(Model model) {
