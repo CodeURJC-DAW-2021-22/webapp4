@@ -132,6 +132,14 @@ public class WallypopWebController {
 		model.addAttribute("lcategory", categoryservice.findAll());
 		return "commercial";
 	}
+	
+	@RequestMapping("/errorcommercial")
+	public String errorcommercial(Model model) {
+		model.addAttribute("Articles", articleService.findAll());
+		model.addAttribute("lcategory", categoryservice.findAll());
+		model.addAttribute("ERROR", true);
+		return "commercial";
+	}
 
 	@RequestMapping("/commercial/{id}")
 	public String commercial_filter(Model model, @PathVariable long id) {
@@ -181,8 +189,30 @@ public class WallypopWebController {
 	}
 
 	@RequestMapping("/post")
-	public String post() {
+	public String post(Model model) {
 		return "post";
+	}
+	
+	@GetMapping("/post/{id}")
+	public String postID(Model model, @PathVariable long id) {
+		Optional<Article> article = articleService.findById(id);
+		if (article.isPresent()) {
+			Article a = article.get();
+			if (usLogged != null) {
+				if (usLogged.getID_USER() == a.getUserID() || usLogged.isIS_ADMIN()) {
+					model.addAttribute("Owner", true);
+				} else {
+					// Only sum a visit if im not the owner o an admin
+					a.visit();
+					articleService.save(a);
+				}
+			}
+			model.addAttribute("Article", a);
+			model.addAttribute("User", a.getUSER());
+			return "post";
+		} else {
+			return "errorcommercial";
+		}
 	}
 
 	@RequestMapping("/reportesAdmin")
