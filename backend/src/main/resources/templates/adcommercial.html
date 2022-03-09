@@ -13,12 +13,11 @@
 							</div>
 							<div class="col-sm-7">
 							  	<div class="form-group">
-							    	<select name="cATEGORY" id="categories" class="form-control" aria-label="Selecciona una categoría" multiple>
-										<option disabled selected>Selecciona una categoría</option>
-										{{#lcategory}}
-                                        <option value="{{ID_CATEGORY}}">{{TITLE}}</option>
-                                    	{{/lcategory}}
-									  </select>
+							    	<select name="CATEGORY" multiple>
+							  			{{#lcategory}}
+										<option name="CATEGORYS" value="{{ID_CATEGORY}}">{{TITLE}}</option>
+										{{/lcategory}}
+									</select>
 									<!-- <input type="text" class="form-control" placeholder="Dinos que anuncias"> -->
 							  	</div>
 							  	<!-- <button class="btn btn-default">Buscar categoría</button> -->
