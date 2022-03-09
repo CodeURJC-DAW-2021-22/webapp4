@@ -100,4 +100,14 @@ public class Category {
 		ARTICLES = aRTICLES;
 	}
 
+	public List<Article> getARTICLES() {
+		return ARTICLES;
+	}
+
+	public void setARTICLES(List<Article> aRTICLES) {
+		ARTICLES = aRTICLES;
+	}
+	
+	
+
 }

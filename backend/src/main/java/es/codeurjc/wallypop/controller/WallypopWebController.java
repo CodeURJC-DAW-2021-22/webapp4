@@ -119,6 +119,7 @@ public class WallypopWebController {
 	public String categoriasAdmin(Model model) {
 		model.addAttribute("category", new Category());
 		model.addAttribute("lcategory", categoryservice.findAll());
+		model.addAttribute("lcategories", 0);
 		return "categoriasAdmin";
 	}
 
@@ -160,6 +161,11 @@ public class WallypopWebController {
 		model.addAttribute("Articles", categoryservice.findById(id).get().getARTICLES());
 		model.addAttribute("lcategory", categoryservice.findAll());
 		return "commercial";
+	}
+	
+	@PostMapping("/commercialCategory")
+	public String commercialCategory(Model model, long lcategories) {
+		return "redirect:/commercial/" + String.valueOf(lcategories);
 	}
 
 	@RequestMapping("/favorites")
@@ -349,10 +355,5 @@ public class WallypopWebController {
 		}
 	}
 
-	@GetMapping("/commercial/{TITLE}")
-	public String categoryFilter(Model model, @PathVariable String TITLE) {
-		model.addAttribute("Articles", categoryservice.findByCategory(TITLE));
-		return "commercial";
-	}
 
 }
