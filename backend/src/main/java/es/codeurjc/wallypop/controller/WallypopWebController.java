@@ -167,26 +167,25 @@ public class WallypopWebController {
 		return "favorites";
 	}
 
-	@PostMapping("/newformularioReporte")
-	public String newformularioReporte(Model model, Report report, MultipartFile imageField) throws IOException {
+	@PostMapping("/newformularioReporte/{id_report}")
+	public String newformularioReporte(Model model, @PathVariable long id_report, MultipartFile imageField,String EMAIL,String DESCRIPTION) throws IOException {
+		reportService.findById(id_report).get().setEMAIL(EMAIL);
+		reportService.findById(id_report).get().setDESCRIPTION(DESCRIPTION);
 		if (!imageField.isEmpty()) {
-			report.setPROOF(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
+			reportService.findById(id_report).get().setPROOF(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
 		}
-		reportService.save(report);
-		return "formularioReporte";
-	}
 
-	@RequestMapping("/formularioReporte")
-	public String formularioReporte(Model model) {
-		model.addAttribute("report", new Report());
-		return "formularioReporte";
+		reportService.flush();
+		return "/commercial";
 	}
 
 	@RequestMapping("/{id_article}/formularioReporte")
 	public String formularioReporteID(Model model, @PathVariable long id_article) {
 		Report report = new Report();
-		report.setARTICLE(articleService.findById(id_article).get());
+		Optional<Article> article = articleService.findById(id_article);
+		report.setARTICLE(article.get());		
 		model.addAttribute("report", report);
+		reportService.save(report);
 		return "formularioReporte";
 	}
 
@@ -288,6 +287,14 @@ public class WallypopWebController {
 	@GetMapping("/VisualizaReporte/{id}/delete")
 	public String deleteReport(Model model, @PathVariable long id) {
 		reportService.delete(id);
+		model.addAttribute("report", reportService.findAll());
+		return "reportesAdmin";
+	}
+	
+	@GetMapping("/VisualizaReporte/{id}/deleteArticle")
+	public String deleteArticle(Model model, @PathVariable long id) {
+		long idArticle = reportService.findById(id).get().getARTICLE().getID_ARTICLE(); 
+		articleService.delete(idArticle); 
 		model.addAttribute("report", reportService.findAll());
 		return "reportesAdmin";
 	}
