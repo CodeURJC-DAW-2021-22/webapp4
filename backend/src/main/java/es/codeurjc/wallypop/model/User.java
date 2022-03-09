@@ -126,4 +126,12 @@ public class User {
 		return IS_ADMIN;
 	}
 
+	public void newArticle() {
+		N_SELL += 1;
+	}
+	
+	public void deleteArticle() {
+		N_SELL -= 1;
+	}
+
 }

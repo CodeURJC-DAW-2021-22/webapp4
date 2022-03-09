@@ -33,6 +33,10 @@ public class Article {
 	@NonNull
 	@Column(name = "CITY")
 	private String CITY;
+	
+	@NonNull
+	@Column(name = "POSTAL_CODE")
+	private String POSTAL_CODE;
 
 	@NonNull
 	@Column(name = "TITLE")
@@ -70,7 +74,7 @@ public class Article {
 
 	}
 
-	public Article(User uSER, String tITLE, String dESCRIPTION, String cITY, float pRICE, Blob pHOTO,
+	public Article(User uSER, String tITLE, String dESCRIPTION, String cITY, String pOSTAL_CODE, float pRICE, Blob pHOTO,
 			List<Category> lISTcATEGORYS) {
 		super();
 		USER = uSER;
@@ -80,7 +84,9 @@ public class Article {
 		PHOTO = pHOTO;
 		CATEGORYS = lISTcATEGORYS;
 		CITY = cITY;
+		POSTAL_CODE = pOSTAL_CODE;
 	}
+	
 
 	public String getCITY() {
 		return CITY;
@@ -165,9 +171,27 @@ public class Article {
 	public int getN_VISITS() {
 		return N_VISITS;
 	}
+	
+	public void visit() {
+		N_VISITS += 1;
+	}
 
 	public String getPRICE_s() {
 		return String.valueOf(getPRICE());
 	}
+	
+	public Long getUserID() {
+		return USER.getID_USER();
+	}
+
+	public String getPOSTAL_CODE() {
+		return POSTAL_CODE;
+	}
+
+	public void setPOSTAL_CODE(String pOSTAL_CODE) {
+		POSTAL_CODE = pOSTAL_CODE;
+	}
+	
+	
 
 }

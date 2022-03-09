@@ -16,6 +16,14 @@
 				</div>
 			</div>
 		</div>
+		{{#ERROR}}
+		<br>
+		<div class="container">
+			<div class="alert alert-danger" role="alert">
+  				<center>El artículo que buscas no existe o ya no está disponible</center>
+			</div>
+		</div>
+		{{/ERROR}}
 		<hr>
 		<div class="container-fluid">
 			<div class="row">
@@ -92,7 +100,7 @@
 								<img src="/article/{{ID_ARTICLE}}/imagen" alt="" class="img-responsive">
 							</figure>
 							<div class="full-width post-info">
-								<a href="post.html" class="full-width post-info-title">{{TITLE}}</a>
+								<a href="/post/{{ID_ARTICLE}}" class="full-width post-info-title">{{TITLE}}</a>
 								<p class="full-width post-info-price">{{PRICE_s}}€</p>
 								<span class="post-info-zone">{{CITY}}</span>
 								<span class="post-info-date">{{DATE}}</span>
