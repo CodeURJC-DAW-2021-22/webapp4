@@ -155,25 +155,21 @@ public class WallypopWebController {
 		return "favorites";
 	}
 
-	@PostMapping("/newformularioReporte/{id_report}")
-	public String newformularioReporte(Model model, @PathVariable long id_report, MultipartFile imageField,String EMAIL,String DESCRIPTION) throws IOException {
-		reportService.findById(id_report).get().setEMAIL(EMAIL);
-		reportService.findById(id_report).get().setDESCRIPTION(DESCRIPTION);
+	@PostMapping("/newformularioReporte/{id_article}")
+	public String newformularioReporte(Model model, Report report, MultipartFile imageField,@PathVariable long id_article) throws IOException {
 		if (!imageField.isEmpty()) {
-			reportService.findById(id_report).get().setPROOF(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
+			report.setPROOF(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
 		}
-
-		reportService.flush();
-		return "/commercial";
+        report.setARTICLE(articleService.findById(id_article).get());
+		reportService.save(report);
+		return "redirect:/commercial/";
 	}
 
 	@RequestMapping("/{id_article}/formularioReporte")
 	public String formularioReporteID(Model model, @PathVariable long id_article) {
 		Report report = new Report();
-		Optional<Article> article = articleService.findById(id_article);
-		report.setARTICLE(article.get());		
+		model.addAttribute("id_article",id_article);
 		model.addAttribute("report", report);
-		reportService.save(report);
 		return "formularioReporte";
 	}
 
