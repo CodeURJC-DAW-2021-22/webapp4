@@ -157,7 +157,7 @@ public class WallypopWebController {
 	public String commercial_filter(Model model, @PathVariable long id) {
 		model.addAttribute("Filtered", true);
 		// model.addAttribute("Articles", articleService.findArticlesByCategory(id));
-		model.addAttribute("Articles", articleService.findAll());
+		model.addAttribute("Articles", categoryservice.findById(id).get().getARTICLES());
 		model.addAttribute("lcategory", categoryservice.findAll());
 		return "commercial";
 	}
