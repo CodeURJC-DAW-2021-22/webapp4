@@ -142,20 +142,15 @@
 					<a href="/login" class="btn btn-success btn-block">LLAMAR</a>
 					{{/logged}}
 					{{#logged}}
-					{{^Owner}}
-					<a class="btn btn-success btn-block" data-toggle="collapse" href="#collapseEmail" role="button" aria-expanded="false" aria-controls="collapseExample">ENVIAR MENSAJE</a>
-					<a href="tel:{{#User}}{{TEL}}{{/User}}" class="btn btn-success btn-block">LLAMAR</a>
-					{{/Owner}}
 					{{#Owner}}
-					
 					<a href="#!" class="btn btn-primary btn-block">RESERVAR</a>
-					
-					
 					<a href="#!" class="btn btn-primary btn-block">ANULAR RESERVAR</a>
-					
 					<a href="#!" class="btn btn-primary btn-block">VENDIDO</a>
 					<a href="#!" class="btn btn-danger btn-block">ELIMINAR</a>
 					{{/Owner}}
+					{{^Owner}}
+					<a class="btn btn-success btn-block" data-toggle="collapse" href="#collapseEmail" role="button" aria-expanded="false" aria-controls="collapseExample">ENVIAR MENSAJE</a>
+					<a href="tel:{{#User}}{{TEL}}{{/User}}" class="btn btn-success btn-block">LLAMAR</a>
 					<div class="collapse" id="collapseEmail">
 					  <div class="card card-body">
 					  	<br>
@@ -176,6 +171,7 @@
 						</form>
 					  </div>
 					</div>
+					{{/Owner}}
 					{{/logged}}
 					<p class="lead text-light" style="margin: 7px 0; background-color: #F5F5F5;">
 						<i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> {{CITY}} ({{POSTAL_CODE}})
