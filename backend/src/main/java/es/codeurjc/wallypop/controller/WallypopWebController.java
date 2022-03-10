@@ -229,6 +229,9 @@ public class WallypopWebController {
 		}
 		if (article.isPresent()) {
 			Article a = article.get();
+			if (a.getPHOTO() == null) {
+				model.addAttribute("sample_img", true);
+			}
 			String direction = a.getCITY() + " " + a.getPOSTAL_CODE();
 			try {
 				String[] resultAPI = MapService.getLatitudeLongitude(direction);
