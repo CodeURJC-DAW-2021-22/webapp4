@@ -104,6 +104,9 @@
 					<div class="clearfix"></div>
 					<a href="#!" class="btn btn-success btn-block">ENVIAR MENSAJE</a>
 					<a href="tel:{{#User}}{{TEL}}{{/User}}" class="btn btn-success btn-block">LLAMAR</a>
+					{{#Logged}}
+					<a href="/addFavorite/{{#Article}}{{ID_ARTICLE}}{{/Article}}" class="btn btn-success btn-block" style="background-color: rgb(225, 15, 15);">FAVORITOS ♡</a>
+					{{/Logged}}
 					{{#Owner}}
 					<a href="#!" class="btn btn-primary btn-block">RESERVAR</a>
 					<a href="#!" class="btn btn-primary btn-block">VENDIDO</a>

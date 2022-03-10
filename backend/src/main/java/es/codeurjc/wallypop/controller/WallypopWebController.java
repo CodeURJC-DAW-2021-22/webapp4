@@ -3,6 +3,7 @@ package es.codeurjc.wallypop.controller;
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,15 +25,19 @@ import org.springframework.web.multipart.MultipartFile;
 
 import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
+import es.codeurjc.wallypop.model.Favorites;
 import es.codeurjc.wallypop.model.Report;
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.service.ArticleService;
 import es.codeurjc.wallypop.service.CategoryService;
+import es.codeurjc.wallypop.service.FavoritesService;
 import es.codeurjc.wallypop.service.ReportService;
 import es.codeurjc.wallypop.service.UserService;
 
 @Controller
 public class WallypopWebController {
+	@Autowired
+	private FavoritesService favoritesService;
 
 	@Autowired
 	private CategoryService categoryservice;
@@ -169,8 +174,21 @@ public class WallypopWebController {
 	}
 
 	@RequestMapping("/favorites")
-	public String favorites() {
-		return "favorites";
+	public String favorites(Model model) {
+		Optional<List<Article>> LFavArticles = favoritesService.findByUSER(usLogged);
+		if (LFavArticles != null) {
+		model.addAttribute("Articles", LFavArticles);
+		return "favorites";}
+	else {
+		return "/";
+	}
+	}
+	
+	@GetMapping("/addFavorite/{id_article}")
+	public String addFavorite(Model model,@PathVariable long id_article) {
+	Favorites favorite = new Favorites(usLogged,articleService.findById(id_article).get());	
+	favoritesService.save(favorite);
+	return "post/id_article";	
 	}
 
 	@PostMapping("/newformularioReporte/{id_article}")
@@ -212,6 +230,7 @@ public class WallypopWebController {
 		if (article.isPresent()) {
 			Article a = article.get();
 			if (usLogged != null) {
+				model.addAttribute("Logged", true);
 				if (usLogged.getID_USER() == a.getUserID() || usLogged.isIS_ADMIN()) {
 					model.addAttribute("Owner", true);
 				} else {
@@ -350,6 +369,6 @@ public class WallypopWebController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-
-
+	
+	
 }
