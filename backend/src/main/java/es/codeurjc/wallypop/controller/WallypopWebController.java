@@ -272,15 +272,21 @@ public class WallypopWebController {
 	}
 	
 	@RequestMapping("/reserve/{id_article}/{bool}")
-	public String reserve(Model model, @PathVariable long id_article, @PathVariable Boolean bool) {
+	public String reservePost(Model model, @PathVariable long id_article, @PathVariable Boolean bool) {
 		articleService.reserve(id_article, bool, usLogged.getID_USER(), usLogged.isIS_ADMIN());
 		return "redirect:/post/" + id_article;
 	}
 	
 	@RequestMapping("/sell/{id_article}/{bool}")
-	public String sell(Model model, @PathVariable long id_article, @PathVariable Boolean bool) {
+	public String sellPost(Model model, @PathVariable long id_article, @PathVariable Boolean bool) {
 		articleService.sell(id_article, bool, usLogged.getID_USER(), usLogged.isIS_ADMIN());
 		return "redirect:/post/" + id_article;
+	}
+	
+	@RequestMapping("/delete/{id_article}")
+	public String deletePost(Model model, @PathVariable long id_article) {
+		articleService.deletePost(id_article, usLogged.getID_USER(), usLogged.isIS_ADMIN());
+		return "redirect:/yourcommercial/";
 	}
 	
 	private void visit(Article a) {

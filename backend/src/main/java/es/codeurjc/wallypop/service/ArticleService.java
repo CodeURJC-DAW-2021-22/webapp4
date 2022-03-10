@@ -18,6 +18,9 @@ public class ArticleService {
 
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private ReportService reportService;
 
 	public Optional<Article> findById(long id) {
 		return articleRepository.findById(id);
@@ -34,12 +37,19 @@ public class ArticleService {
 	public void save(Article article) {
 		articleRepository.save(article);
 	}
-
+	
 	public void delete(long id) {
 		articleRepository.deleteById(id);
 	}
+
+	public void deletePost(long id, Long id_user, boolean admin) {
+		Article a = findById(id).get(); 
+		if (a.getUserID() == id_user || admin) {
+			delete(id);
+		}
+	}
 	
-	public void reserve(long id, Boolean bool, long id_user, Boolean admin) {
+	public void reserve(long id, boolean bool, long id_user, boolean admin) {
 		Article a = findById(id).get(); 
 		if (a.getUserID() == id_user || admin) {
 			a.setRESERVED(bool);
@@ -47,7 +57,7 @@ public class ArticleService {
 		}
 	}
 	
-	public void sell(long id, Boolean bool, long id_user, Boolean admin) {
+	public void sell(long id, boolean bool, long id_user, boolean admin) {
 		Article a = findById(id).get(); 
 		if (a.getUserID() == id_user || admin) {
 			a.setSOLD(bool);
