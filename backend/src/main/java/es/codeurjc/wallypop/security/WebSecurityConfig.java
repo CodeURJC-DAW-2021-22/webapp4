@@ -48,12 +48,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/login").permitAll();
 		http.authorizeRequests().antMatchers("/loginerror").permitAll();
 		http.authorizeRequests().antMatchers("/logout").permitAll();
-		http.authorizeRequests().antMatchers("/coderebootpass").permitAll();
+		// http.authorizeRequests().antMatchers("/coderebootpass").permitAll();
 		http.authorizeRequests().antMatchers("/formularioreporte").permitAll();
-		http.authorizeRequests().antMatchers("/post").permitAll();
-		http.authorizeRequests().antMatchers("/help").permitAll();
+		http.authorizeRequests().antMatchers("/newformularioReporte/**").permitAll();
+		http.authorizeRequests().antMatchers("/category/**").permitAll();
+		http.authorizeRequests().antMatchers("/article/**").permitAll();
+		http.authorizeRequests().antMatchers("/commercial/**").permitAll();
+		http.authorizeRequests().antMatchers("/commercialcategory").permitAll();
+		http.authorizeRequests().antMatchers("/errorcommercial").permitAll();
+		http.authorizeRequests().antMatchers("/post/**").permitAll();
+		// http.authorizeRequests().antMatchers("/help").permitAll();
 		
-		/* H2 CONSOLE */
+		/* H2 CONSOLE ONLY FOR ADMIN */
 		http.authorizeRequests().antMatchers("/h2_console/**").permitAll();
         http.csrf().ignoringAntMatchers("/h2-console/**");
         http.headers().frameOptions().sameOrigin();
@@ -61,10 +67,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// Private pages
 		/* USER */
 		http.authorizeRequests().antMatchers("/adcommercial").hasAnyRole("USER");
+		http.authorizeRequests().antMatchers("/newcommercial").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/favorites").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/perfil").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/yourcommercial").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/yourcommercialsold").hasAnyRole("USER");
+		http.authorizeRequests().antMatchers("/yourcommercialsuccess").hasAnyRole("USER");
 
 		/* ADMIN */
 		http.authorizeRequests().antMatchers("/categoriasAdmin").hasAnyRole("ADMIN");
@@ -73,7 +81,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/perfilAdmin").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/reporteAdmin").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/visualizaReporte").hasAnyRole("ADMIN");
-
+		
 		// Login form
 		http.formLogin().loginPage("/login");
 		http.formLogin().usernameParameter("username");
