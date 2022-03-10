@@ -28,9 +28,10 @@ public class Article {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID_ARTICLE")
 	private long ID_ARTICLE;
-
+	
 	@ManyToOne
-	@JoinColumn(name = "ID_USER")
+	@NonNull
+	@JoinColumn(name = "USER")
 	private User USER;
 
 	@NonNull

@@ -1,10 +1,15 @@
 package es.codeurjc.wallypop.model;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
@@ -46,6 +51,9 @@ public class User {
 	@NonNull
 	@Column(name = "IS_ADMIN")
 	private boolean IS_ADMIN = false;
+	
+	@OneToMany(cascade = CascadeType.ALL , mappedBy = "USER")
+	private List<Article> ARTICLES = new LinkedList<>();
 
 	public User() {
 		// DEFAULT CONSTRUCTOR FOR JPA
@@ -132,6 +140,14 @@ public class User {
 	
 	public void deleteArticle() {
 		N_SELL -= 1;
+	}
+
+	public List<Article> getARTICLES() {
+		return ARTICLES;
+	}
+
+	public void setARTICLES(List<Article> aRTICLES) {
+		ARTICLES = aRTICLES;
 	}
 
 }

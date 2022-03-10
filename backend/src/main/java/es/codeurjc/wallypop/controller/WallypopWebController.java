@@ -348,7 +348,7 @@ public class WallypopWebController {
 	@RequestMapping("/yourcommercial")
 	public String yourcommercial(Model model) {
 		model.addAttribute("exito_creacion_nuevo_anuncio", "");
-		model.addAttribute("Articles", articleService.findAll());
+		model.addAttribute("Articles", usLogged.getARTICLES());
 		return "yourcommercial";
 	}
 
