@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -38,9 +40,11 @@ import es.codeurjc.wallypop.model.Report;
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.service.ArticleService;
 import es.codeurjc.wallypop.service.CategoryService;
+import es.codeurjc.wallypop.service.EmailService;
 import es.codeurjc.wallypop.service.MapService;
 import es.codeurjc.wallypop.service.ReportService;
 import es.codeurjc.wallypop.service.UserService;
+import net.bytebuddy.matcher.ModifierMatcher.Mode;
 
 @Controller
 public class WallypopWebController {
@@ -85,7 +89,7 @@ public class WallypopWebController {
 		}
 	}
 
-	@GetMapping(value = { "/", "/index" })
+	@GetMapping("/")
 	public String showIndex(Model model) {
 		model.addAttribute("Categories", categoryservice.findAll());
 		return "index";
@@ -217,9 +221,12 @@ public class WallypopWebController {
 		return "post";
 	}
 	
-	@GetMapping("/post/{id_article}")
-	public String postID(Model model, @PathVariable long id_article) {
+	@RequestMapping(value = "/post/{id_article}", method = RequestMethod.GET, produces = "application/json")
+	public String postID(Model model, @PathVariable long id_article, @RequestParam(required = false, defaultValue = "") String r) {
 		Optional<Article> article = articleService.findById(id_article);
+		if (!r.isEmpty()) {
+			model.addAttribute("emailSended", true);
+		}
 		if (article.isPresent()) {
 			Article a = article.get();
 			String direction = a.getCITY() + " " + a.getPOSTAL_CODE();
@@ -229,15 +236,19 @@ public class WallypopWebController {
 				model.addAttribute("lat", resultAPI[0]);
 				model.addAttribute("lon", resultAPI[1]);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if (usLogged != null) {
-				if (usLogged.getID_USER() == a.getUserID() || usLogged.isIS_ADMIN()) {
+				long id_user_logged = usLogged.getID_USER();
+				if (id_user_logged == a.getUserID() || usLogged.isIS_ADMIN()) {
 					model.addAttribute("Owner", true);
 				} else {
 					// Only sum a visit if im not the owner o an admin
 					visit(a);
+					model.addAttribute("ID_BUYER", id_user_logged);
+					model.addAttribute("To", a.getUserEmail());
+					model.addAttribute("Resume", "Artículo: " + a.getTITLE() + " Email: " + usLogged.getNAME() + " Tel: " + usLogged.getTEL());
+					model.addAttribute("Mail", new Mail());
 				}
 			} else {
 				// Visit because im not registered user
@@ -249,6 +260,17 @@ public class WallypopWebController {
 			return "post";
 		} else {
 			return "errorcommercial";
+		}
+	}
+		
+	@PostMapping("/message/{id_article}/{id_buyer}")
+	public String sendEmail(Model model, Mail mail, @PathVariable long id_article, @PathVariable long id_buyer) {
+		try {
+			EmailService.sendEmail(mail);
+			return "redirect:/post/" + id_article + "/?r=0";
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "redirect:/post/" + id_article + "/?r=1";
 		}
 	}
 	

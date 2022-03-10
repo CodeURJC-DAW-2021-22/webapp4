@@ -49,6 +49,17 @@
 						</div>
 					</div>
 					{{/SOLD}}
+					{{#emailSended}}
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="alert alert-success" role="alert">
+		  						<center>
+		  							<b>Correo enviado correctamente</b>
+		  						</center>
+							</div>
+						</div>
+					</div>
+					{{/emailSended}}
 					<div id="slider-commercial" class="carousel slide" data-ride="carousel">
 					  	<!-- <ol class="carousel-indicators">
 					    	<li data-target="#slider-commercial" data-slide-to="0" class="active"></li>
@@ -132,7 +143,7 @@
 					{{/logged}}
 					{{#logged}}
 					{{^Owner}}
-					<a class="btn btn-success btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">ENVIAR MENSAJE</a>
+					<a class="btn btn-success btn-block" data-toggle="collapse" href="#collapseEmail" role="button" aria-expanded="false" aria-controls="collapseExample">ENVIAR MENSAJE</a>
 					<a href="tel:{{#User}}{{TEL}}{{/User}}" class="btn btn-success btn-block">LLAMAR</a>
 					{{/Owner}}
 					{{#Owner}}
@@ -145,15 +156,17 @@
 					<a href="#!" class="btn btn-primary btn-block">VENDIDO</a>
 					<a href="#!" class="btn btn-danger btn-block">ELIMINAR</a>
 					{{/Owner}}
-					<div class="collapse" id="collapseExample">
+					<div class="collapse" id="collapseEmail">
 					  <div class="card card-body">
 					  	<br>
 					    <form method="post" action="/message/{{ID_ARTICLE}}/{{ID_BUYER}}" class="form-horizontal" enctype="multipart/form-data">
 						    <h3 class="text-info">Envía tu mensaje</h3>
+						    <input type="hidden" name="to" value="{{To}}"/>
+						    <input type="hidden" name="resume" value="{{Resume}}"/>
 						    <div class="form-group">
 						        <label class="col-sm-3 control-label">Mensaje</label>
 						        <div class="col-sm-7">
-						            <textarea class="form-control input-lg" rows="3" placeholder="Mensaje" NAME ="mESSAGE" required=""></textarea>
+						            <textarea class="form-control input-lg" rows="3" placeholder="Mensaje" NAME ="message" required=""></textarea>
 						        </div>
 						    </div>
 						    <input type="hidden" name="_csrf" value="{{token}}"/>

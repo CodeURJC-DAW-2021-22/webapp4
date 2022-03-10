@@ -198,6 +198,8 @@ public class Article {
 		POSTAL_CODE = pOSTAL_CODE;
 	}
 	
-	
+	public String getUserEmail() {
+		return USER.getNAME();
+	}
 
 }
