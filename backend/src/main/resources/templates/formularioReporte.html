@@ -5,7 +5,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
-					<form method="post" action="/newformularioReporte" class="form-horizontal" enctype="multipart/form-data">
+				   
+					{{#report}}
+					<form method="post" action="/newformularioReporte/{{#id_article}}{{id_article}}{{/id_article}}" class="form-horizontal" enctype="multipart/form-data">
 						<!--
 						<h3 class="text-info">Busca la categoría donde verán tu anuncio</h3>
 						<div class="form-inline">
@@ -25,13 +27,13 @@
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Email</label>
 						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder=" email"  name="EMAIL">
+						      	<input type="email" class="form-control" placeholder=" email"  name="EMAIL" required="">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Descripción de la incidencia</label>
 						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder=" Descripción incidencia"  name="DESCRIPTION">
+						      	<input type="text" class="form-control" placeholder=" Descripción incidencia"  name="DESCRIPTION" required="">
 						    </div>
 						</div>
 						<br><br>
@@ -53,6 +55,7 @@
 							<input class="btn btn-info" type="submit" value="Continuar"></input>
 						</p>
 					</form>
+						{{/report}}
 				</div>
 			</div>
 		</div>

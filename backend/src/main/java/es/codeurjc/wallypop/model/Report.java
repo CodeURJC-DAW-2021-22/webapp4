@@ -24,7 +24,8 @@ public class Report {
 	private long ID_REPORT;
 
 	@ManyToOne
-	@JoinColumn(name = "ID_ARTICLE")
+	@NonNull
+	@JoinColumn(name = "ARTICLE")
 	private Article ARTICLE;
 
 	@NonNull
@@ -71,6 +72,15 @@ public class Report {
 
 	public String getEMAIL() {
 		return EMAIL;
+	}
+	
+
+	public void setEMAIL(String eMAIL) {
+		EMAIL = eMAIL;
+	}
+
+	public void setDESCRIPTION(String dESCRIPTION) {
+		DESCRIPTION = dESCRIPTION;
 	}
 
 	public Blob getPROOF() {
