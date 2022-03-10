@@ -215,11 +215,6 @@ public class WallypopWebController {
 	public String perfil() {
 		return "perfil";
 	}
-
-	@RequestMapping("/post")
-	public String post(Model model) {
-		return "post";
-	}
 	
 	@RequestMapping(value = "/post/{id_article}", method = RequestMethod.GET, produces = "application/json")
 	public String postID(Model model, @PathVariable long id_article, @RequestParam(required = false, defaultValue = "") String r) {
@@ -274,6 +269,18 @@ public class WallypopWebController {
 		} catch (Exception e) {
 			return "redirect:/post/" + id_article + "/?r=1";
 		}
+	}
+	
+	@RequestMapping("/reserve/{id_article}/{bool}")
+	public String reserve(Model model, @PathVariable long id_article, @PathVariable Boolean bool) {
+		articleService.reserve(id_article, bool, usLogged.getID_USER(), usLogged.isIS_ADMIN());
+		return "redirect:/post/" + id_article;
+	}
+	
+	@RequestMapping("/sell/{id_article}/{bool}")
+	public String sell(Model model, @PathVariable long id_article, @PathVariable Boolean bool) {
+		articleService.sell(id_article, bool, usLogged.getID_USER(), usLogged.isIS_ADMIN());
+		return "redirect:/post/" + id_article;
 	}
 	
 	private void visit(Article a) {

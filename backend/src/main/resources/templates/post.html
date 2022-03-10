@@ -143,10 +143,21 @@
 					{{/logged}}
 					{{#logged}}
 					{{#Owner}}
-					<a href="#!" class="btn btn-primary btn-block">RESERVAR</a>
-					<a href="#!" class="btn btn-primary btn-block">ANULAR RESERVAR</a>
-					<a href="#!" class="btn btn-primary btn-block">VENDIDO</a>
-					<a href="#!" class="btn btn-danger btn-block">ELIMINAR</a>
+					{{^SOLD}}
+					{{^RESERVED}}
+					<a href="/reserve/{{ID_ARTICLE}}/1" class="btn btn-primary btn-block">RESERVAR</a>
+					{{/RESERVED}}
+					{{#RESERVED}}
+					<a href="/reserve/{{ID_ARTICLE}}/0" class="btn btn-primary btn-block">ANULAR RESERVAR</a>
+					{{/RESERVED}}
+					{{/SOLD}}
+					{{^SOLD}}
+					<a href="/sell/{{ID_ARTICLE}}/1" class="btn btn-primary btn-block">VENDIDO</a>
+					{{/SOLD}}
+					{{#SOLD}}
+					<a href="/sell/{{ID_ARTICLE}}/0" class="btn btn-primary btn-block">ANULAR VENTA</a>
+					{{/SOLD}}
+					<a href="/delete/{{ID_ARTICLE}}" class="btn btn-danger btn-block">ELIMINAR</a>
 					{{/Owner}}
 					{{^Owner}}
 					<a class="btn btn-success btn-block" data-toggle="collapse" href="#collapseEmail" role="button" aria-expanded="false" aria-controls="collapseExample">ENVIAR MENSAJE</a>

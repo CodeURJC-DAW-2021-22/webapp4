@@ -38,6 +38,23 @@ public class ArticleService {
 	public void delete(long id) {
 		articleRepository.deleteById(id);
 	}
+	
+	public void reserve(long id, Boolean bool, long id_user, Boolean admin) {
+		Article a = findById(id).get(); 
+		if (a.getUserID() == id_user || admin) {
+			a.setRESERVED(bool);
+			save(a);
+		}
+	}
+	
+	public void sell(long id, Boolean bool, long id_user, Boolean admin) {
+		Article a = findById(id).get(); 
+		if (a.getUserID() == id_user || admin) {
+			a.setSOLD(bool);
+			a.setRESERVED(false);
+			save(a);
+		}
+	}
 
 	public List<Article> findArticlesByCategory(long id) {
 		Optional<Category> c = categoryService.findById(id);
