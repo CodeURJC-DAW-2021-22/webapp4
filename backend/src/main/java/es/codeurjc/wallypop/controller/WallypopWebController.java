@@ -149,10 +149,10 @@ public class WallypopWebController {
 		return "categoriasAdmin";
 	}
 
-	@RequestMapping("/coderebootpass")
+	/* @RequestMapping("/coderebootpass")
 	public String coderebootpas() {
 		return "coderebootpass";
-	}
+	} */
 
 	@RequestMapping("/commercial")
 	public String commercial(Model model) {
@@ -206,10 +206,10 @@ public class WallypopWebController {
 		return "formularioReporte";
 	}
 
-	@RequestMapping("/help")
+	/*@RequestMapping("/help")
 	public String help() {
 		return "help";
-	}
+	} */
 
 	@RequestMapping("/perfil")
 	public String perfil() {
