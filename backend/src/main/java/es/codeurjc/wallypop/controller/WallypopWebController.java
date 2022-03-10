@@ -1,6 +1,10 @@
 package es.codeurjc.wallypop.controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.security.Principal;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -22,12 +26,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
+import es.codeurjc.wallypop.model.Mail;
 import es.codeurjc.wallypop.model.Report;
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.service.ArticleService;
 import es.codeurjc.wallypop.service.CategoryService;
+import es.codeurjc.wallypop.service.MapService;
 import es.codeurjc.wallypop.service.ReportService;
 import es.codeurjc.wallypop.service.UserService;
 
@@ -206,11 +217,21 @@ public class WallypopWebController {
 		return "post";
 	}
 	
-	@GetMapping("/post/{id}")
-	public String postID(Model model, @PathVariable long id) {
-		Optional<Article> article = articleService.findById(id);
+	@GetMapping("/post/{id_article}")
+	public String postID(Model model, @PathVariable long id_article) {
+		Optional<Article> article = articleService.findById(id_article);
 		if (article.isPresent()) {
 			Article a = article.get();
+			String direction = a.getCITY() + " " + a.getPOSTAL_CODE();
+			try {
+				String[] resultAPI = MapService.getLatitudeLongitude(direction);
+				model.addAttribute("MapAPI", true);
+				model.addAttribute("lat", resultAPI[0]);
+				model.addAttribute("lon", resultAPI[1]);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if (usLogged != null) {
 				if (usLogged.getID_USER() == a.getUserID() || usLogged.isIS_ADMIN()) {
 					model.addAttribute("Owner", true);
