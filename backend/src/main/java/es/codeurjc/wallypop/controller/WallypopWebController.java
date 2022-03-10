@@ -269,7 +269,6 @@ public class WallypopWebController {
 			EmailService.sendEmail(mail);
 			return "redirect:/post/" + id_article + "/?r=0";
 		} catch (Exception e) {
-			// TODO: handle exception
 			return "redirect:/post/" + id_article + "/?r=1";
 		}
 	}
@@ -362,7 +361,8 @@ public class WallypopWebController {
 	}
 
 	@RequestMapping("/yourcommercialsold")
-	public String yourcommercialsold() {
+	public String yourcommercialsold(Model model) {
+		model.addAttribute("Articles", usLogged.getARTICLESSold());
 		return "yourcommercialsold";
 	}
 

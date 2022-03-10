@@ -149,5 +149,15 @@ public class User {
 	public void setARTICLES(List<Article> aRTICLES) {
 		ARTICLES = aRTICLES;
 	}
+	
+	public List<Article> getARTICLESSold() {
+		List<Article> lResult = new LinkedList<>();
+		for (Article a : ARTICLES) {
+			if (a.isSOLD()) {
+				lResult.add(a);
+			}
+		}
+		return lResult;
+	}
 
 }

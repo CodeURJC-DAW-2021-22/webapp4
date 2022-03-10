@@ -10,11 +10,10 @@
 						  	<a href="yourcommercial" class="list-group-item">
 						  		<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS
 						  	</a>
-							  <a href="yourcommercialsold" class="list-group-item active">
+							<a href="yourcommercialsold" class="list-group-item active">
 								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS VENDIDOS
 							</a>
-						  	<a href="favorites
-							  " class="list-group-item">
+						  	<a href="favorites" class="list-group-item">
 						  		<i class="fa fa-heart-o fa-fw" aria-hidden="true"></i> FAVORITOS
 						  	</a>
 						  	{{#admin}}
@@ -28,10 +27,11 @@
 						</div>
 					</div>
 				</div>
+				<p style="color: forestgreen;"> {{exito_creacion_nuevo_anuncio}}</p>		
 				<div class="col-xs-12 col-sm-8 col-md-9">
 					<div class="full-width bar-info-user">
 						<i class="fa fa-object-group fa-fw" aria-hidden="true"></i>
-						<div>TUS ANUNCIOS VENDIDOS</div>
+						<div>TUS ANUNCIOS</div>
 					</div>
 					<!-- Contenido-->
 					<div class="full-widht">
@@ -39,28 +39,33 @@
 						<i class="fa fa-refresh btn btn-default"></i>
 						<i class="fa fa-angle-right btn btn-default"></i>
 					</div>
+					
 					<div class="full-width container-post">
+					
+					  {{#Articles}}
 						<div class="full-width post">
 							<figure class="full-width post-img">
 								<!-- Tamaño de la imagen 248x186 pixeles-->
-								<img src="assets/img/post.jpg" alt="" class="img-responsive">
+								<img src="article/{{ID_ARTICLE}}/imagen" alt="" class="img-responsive">
 							</figure>
 							<div class="full-width post-info">
-								<a href="post" class="full-width post-info-title">Título del anuncio</a>
-								<p class="full-width post-info-price">$7,000</p>
-								<span class="post-info-zone">Zona</span>
-								<span class="post-info-date">hoy 07:00</span>
+								<a href="/post/{{ID_ARTICLE}}" class="full-width post-info-title">{{TITLE}}</a>
+								<p class="full-width post-info-price">{{PRICE_s}}€</p>
+								<span class="post-info-zone">{{CITY}}</span>
+								<span class="post-info-date">{{DATE}}</span>
 								<i class="fa fa-heart-o post-info-like"></i>
 							</div>
 						</div>
+						{{/Articles}}
 					</div>
+					
 					<div class="clearfix"></div>
 					<nav class="text-center">
 						<ul class="pagination">
 							<li>
 							  	<a href="#" aria-label="Previous">
 							    	<span aria-hidden="true">&laquo;</span>
-							  	</a> 
+							  	</a>
 							</li>
 							<li><a href="#">1</a></li>
 							<li><a href="#">2</a></li>
@@ -78,4 +83,9 @@
 			</div>
 		</div>
 	</section>
+	 <script>
+    	$(document).ready(function () {
+      		$('.full-width container-post').load('./paginacionArticulosPublicados.html');
+    	});
+  	</script>
 	{{>footer}}
