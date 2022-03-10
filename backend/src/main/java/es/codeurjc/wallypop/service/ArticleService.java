@@ -51,5 +51,21 @@ public class ArticleService {
 		}
 		return lResult;
 	}
+	
+	/*public List<Article> findReserved(Boolean bool) {
+		Optional<List<Article>> lResult = articleRepository.findByReserved(bool);
+		if (lResult.isPresent()) {
+			return lResult.get();
+		}
+		return new LinkedList<Article>();
+	}
+	
+	public List<Article> findSold(Boolean bool) {
+		Optional<List<Article>> lResult = articleRepository.findBySold(bool);
+		if (lResult.isPresent()) {
+			return lResult.get();
+		}
+		return new LinkedList<Article>();
+	}*/
 
 }
