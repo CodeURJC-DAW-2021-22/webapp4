@@ -357,7 +357,7 @@ public class WallypopWebController {
 	@RequestMapping("/yourcommercial_success")
 	public String mensajeCreadoExito(Model model) {
 		model.addAttribute("exito_creacion_nuevo_anuncio", "Enhorabuena! El nuevo anuncio ha sido creado con éxito");
-		model.addAttribute("Articles", articleService.findAll());
+		model.addAttribute("Articles", usLogged.getARTICLES());
 		return "yourcommercial";
 	}
 
