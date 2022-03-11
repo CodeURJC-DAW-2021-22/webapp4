@@ -7,6 +7,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -128,6 +130,13 @@ public class WallypopWebController {
 	public String categoriasAdminListado(Model model) {
 		model.addAttribute("category", categoryservice.findAll());
 		return "categoriasAdminListado";
+	}
+	
+	@GetMapping("/categoriasAdminListado/{id}/delete")
+	public String deleteCategory(Model model, @PathVariable long id) {
+		categoryservice.delete(id);
+		//model.addAttribute("categoryd", categoryservice.findAll());
+		return "redirect:/categoriasAdminListado";
 	}
 
 	@RequestMapping("/categoriasAdmin")
