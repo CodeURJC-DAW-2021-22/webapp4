@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
+import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.repository.ArticleRepository;
+import es.codeurjc.wallypop.repository.UserRepository;
 
 @Service
 public class ArticleService {
@@ -20,7 +22,7 @@ public class ArticleService {
 	private CategoryService categoryService;
 	
 	@Autowired
-	private ReportService reportService;
+	private UserRepository userRepository;
 
 	public Optional<Article> findById(long id) {
 		return articleRepository.findById(id);
@@ -59,8 +61,11 @@ public class ArticleService {
 	
 	public void sell(long id, boolean bool, long id_user, boolean admin) {
 		Article a = findById(id).get(); 
+		User user = userRepository.findById(id_user).get();
 		if (a.getUserID() == id_user || admin) {
 			a.setSOLD(bool);
+			user.sell(bool);
+			userRepository.save(user);
 			a.setRESERVED(false);
 			save(a);
 		}

@@ -213,6 +213,8 @@ public class WallypopWebController {
 
 	@RequestMapping("/perfil")
 	public String perfil() {
+		usLogged.updateN_Sell();
+		userService.save(usLogged);
 		return "perfil";
 	}
 	

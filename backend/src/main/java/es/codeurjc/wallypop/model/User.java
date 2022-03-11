@@ -160,4 +160,16 @@ public class User {
 		return lResult;
 	}
 
+	public void updateN_Sell() {
+		N_SELL = ARTICLES.size() - N_SOLD;
+	}
+	
+	public void sell(Boolean bool) {
+		if (bool) {
+			N_SOLD += 1;
+		} else {
+			N_SOLD -= 1;
+		}
+	}
+
 }
