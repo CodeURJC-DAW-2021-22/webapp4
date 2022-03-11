@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import org.springframework.lang.NonNull;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "USERS")
 public class User {
 
 	@Id
@@ -52,7 +52,7 @@ public class User {
 	@Column(name = "IS_ADMIN")
 	private boolean IS_ADMIN = false;
 	
-	@OneToMany(cascade = CascadeType.ALL , mappedBy = "USER")
+	@OneToMany(cascade = CascadeType.ALL , mappedBy = "USERS")
 	private List<Article> ARTICLES = new LinkedList<>();
 
 	public User() {

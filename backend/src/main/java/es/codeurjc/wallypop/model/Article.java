@@ -31,8 +31,8 @@ public class Article {
 	
 	@ManyToOne
 	@NonNull
-	@JoinColumn(name = "USER")
-	private User USER;
+	@JoinColumn(name = "USERS")
+	private User USERS;
 
 	@NonNull
 	@Column(name = "CITY")
@@ -47,8 +47,8 @@ public class Article {
 	private String TITLE;
 
 	@NonNull
-	@Column(name = "DESCRIPTION")
-	private String DESCRIPTION;
+	@Column(name = "DESCRIPTION", columnDefinition = "text")
+	private String DESCRIPTION = null;
 
 	@NonNull
 	@Column(name = "PRICE")
@@ -84,7 +84,7 @@ public class Article {
 	public Article(User uSER, String tITLE, String dESCRIPTION, String cITY, String pOSTAL_CODE, float pRICE, Blob pHOTO,
 			List<Category> lISTcATEGORYS) {
 		super();
-		USER = uSER;
+		USERS = uSER;
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
 		PRICE = pRICE;
@@ -164,11 +164,11 @@ public class Article {
 	}
 
 	public User getUSER() {
-		return USER;
+		return USERS;
 	}
 	
 	public void setUSER(User uSER) {
-		USER = uSER;
+		USERS = uSER;
 	}
 
 	public Date getDATE() {
@@ -188,7 +188,7 @@ public class Article {
 	}
 	
 	public Long getUserID() {
-		return USER.getID_USER();
+		return USERS.getID_USER();
 	}
 
 	public String getPOSTAL_CODE() {
@@ -200,7 +200,7 @@ public class Article {
 	}
 	
 	public String getUserEmail() {
-		return USER.getNAME();
+		return USERS.getNAME();
 	}
 
 }

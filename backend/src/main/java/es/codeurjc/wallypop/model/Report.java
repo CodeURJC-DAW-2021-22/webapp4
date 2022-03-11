@@ -33,7 +33,7 @@ public class Report {
 	private String EMAIL;
 
 	@NonNull
-	@Column(name = "DESCRIPTION")
+	@Column(name = "DESCRIPTION", columnDefinition = "text")
 	private String DESCRIPTION;
 
 	@Column(name = "PROOF")

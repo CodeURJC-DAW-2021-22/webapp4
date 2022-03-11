@@ -28,7 +28,7 @@ public class Category {
 	@Column(name = "TITLE")
 	private String TITLE;
 
-	@Column(name = "DESCRIPTION")
+	@Column(name = "DESCRIPTION", columnDefinition = "text")
 	private String DESCRIPTION = null;
 
 	@Column(name = "PHOTO")
