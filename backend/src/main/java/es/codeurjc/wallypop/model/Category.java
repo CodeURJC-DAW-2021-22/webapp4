@@ -1,6 +1,7 @@
 package es.codeurjc.wallypop.model;
 
 import java.sql.Blob;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
@@ -26,7 +28,7 @@ public class Category {
 	@Column(name = "TITLE")
 	private String TITLE;
 
-	@Column(name = "DESCRIPTION")
+	@Column(name = "DESCRIPTION", columnDefinition = "text")
 	private String DESCRIPTION = null;
 
 	@Column(name = "PHOTO")
@@ -34,6 +36,9 @@ public class Category {
 
 	@Column(name = "ICON")
 	private String ICON = null;
+	
+	@ManyToMany(mappedBy = "CATEGORYS")
+	private List<Article> ARTICLES;
 
 	public Category() {
 		// DEFAULT CONSTRUCTOR FOR JPA
@@ -85,6 +90,13 @@ public class Category {
 
 	public void setICON(String iCON) {
 		ICON = iCON;
+	}
+	public List<Article> getARTICLES() {
+		return ARTICLES;
+	}
+
+	public void setARTICLES(List<Article> aRTICLES) {
+		ARTICLES = aRTICLES;
 	}
 
 }

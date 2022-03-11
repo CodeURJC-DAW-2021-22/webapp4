@@ -1,16 +1,21 @@
 package es.codeurjc.wallypop.model;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "USERS")
 public class User {
 
 	@Id
@@ -46,6 +51,9 @@ public class User {
 	@NonNull
 	@Column(name = "IS_ADMIN")
 	private boolean IS_ADMIN = false;
+	
+	@OneToMany(cascade = CascadeType.ALL , mappedBy = "USERS")
+	private List<Article> ARTICLES = new LinkedList<>();
 
 	public User() {
 		// DEFAULT CONSTRUCTOR FOR JPA
@@ -124,6 +132,44 @@ public class User {
 
 	public boolean isIS_ADMIN() {
 		return IS_ADMIN;
+	}
+
+	public void newArticle() {
+		N_SELL += 1;
+	}
+	
+	public void deleteArticle() {
+		N_SELL -= 1;
+	}
+
+	public List<Article> getARTICLES() {
+		return ARTICLES;
+	}
+
+	public void setARTICLES(List<Article> aRTICLES) {
+		ARTICLES = aRTICLES;
+	}
+	
+	public List<Article> getARTICLESSold() {
+		List<Article> lResult = new LinkedList<>();
+		for (Article a : ARTICLES) {
+			if (a.isSOLD()) {
+				lResult.add(a);
+			}
+		}
+		return lResult;
+	}
+
+	public void updateN_Sell() {
+		N_SELL = ARTICLES.size() - N_SOLD;
+	}
+	
+	public void sell(Boolean bool) {
+		if (bool) {
+			N_SOLD += 1;
+		} else {
+			N_SOLD -= 1;
+		}
 	}
 
 }

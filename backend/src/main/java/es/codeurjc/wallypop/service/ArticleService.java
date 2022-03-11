@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
+import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.repository.ArticleRepository;
+import es.codeurjc.wallypop.repository.UserRepository;
 
 @Service
 public class ArticleService {
@@ -18,6 +20,9 @@ public class ArticleService {
 
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	public Optional<Article> findById(long id) {
 		return articleRepository.findById(id);
@@ -34,9 +39,36 @@ public class ArticleService {
 	public void save(Article article) {
 		articleRepository.save(article);
 	}
-
+	
 	public void delete(long id) {
 		articleRepository.deleteById(id);
+	}
+
+	public void deletePost(long id, Long id_user, boolean admin) {
+		Article a = findById(id).get(); 
+		if (a.getUserID() == id_user || admin) {
+			delete(id);
+		}
+	}
+	
+	public void reserve(long id, boolean bool, long id_user, boolean admin) {
+		Article a = findById(id).get(); 
+		if (a.getUserID() == id_user || admin) {
+			a.setRESERVED(bool);
+			save(a);
+		}
+	}
+	
+	public void sell(long id, boolean bool, long id_user, boolean admin) {
+		Article a = findById(id).get(); 
+		User user = userRepository.findById(id_user).get();
+		if (a.getUserID() == id_user || admin) {
+			a.setSOLD(bool);
+			user.sell(bool);
+			userRepository.save(user);
+			a.setRESERVED(false);
+			save(a);
+		}
 	}
 
 	public List<Article> findArticlesByCategory(long id) {
@@ -51,5 +83,21 @@ public class ArticleService {
 		}
 		return lResult;
 	}
+	
+	/*public List<Article> findReserved(Boolean bool) {
+		Optional<List<Article>> lResult = articleRepository.findByReserved(bool);
+		if (lResult.isPresent()) {
+			return lResult.get();
+		}
+		return new LinkedList<Article>();
+	}
+	
+	public List<Article> findSold(Boolean bool) {
+		Optional<List<Article>> lResult = articleRepository.findBySold(bool);
+		if (lResult.isPresent()) {
+			return lResult.get();
+		}
+		return new LinkedList<Article>();
+	}*/
 
 }
