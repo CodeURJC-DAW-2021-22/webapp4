@@ -56,7 +56,7 @@ public class User {
 	private List<Article> ARTICLES = new LinkedList<>();
 	
 	@OneToMany(cascade = CascadeType.ALL , mappedBy = "USERS")
-	private List<Article> FAVORITES = new LinkedList<>();
+	private List<Favorites> FAVORITES = new LinkedList<>();
 
 	public User() {
 		// DEFAULT CONSTRUCTOR FOR JPA
@@ -153,11 +153,11 @@ public class User {
 		ARTICLES = aRTICLES;
 	}
 
-	public List<Article> getFAVORITES() {
+	public List<Favorites> getFAVORITES() {
 		return FAVORITES;
 	}
 
-	public void setFAVORITES(List<Article> fAVORITES) {
+	public void setFAVORITES(List<Favorites> fAVORITES) {
 		FAVORITES = fAVORITES;
 	}
 	

@@ -3,6 +3,7 @@ package es.codeurjc.wallypop.controller;
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -175,8 +176,12 @@ public class WallypopWebController {
 
 	@RequestMapping("/favorites")
 	public String favorites(Model model) {
-		List<Article> LFavArticles = usLogged.getFAVORITES();
-		model.addAttribute("Articles", LFavArticles);
+		List<Favorites> LFavArticles = usLogged.getFAVORITES();
+		List<Article> lArticles = new LinkedList<>();
+		for (Favorites fav : LFavArticles) {
+			lArticles.add(fav.getARTICLE());
+		}
+		model.addAttribute("Articles", lArticles);
 		return "favorites";
 	}
 	
