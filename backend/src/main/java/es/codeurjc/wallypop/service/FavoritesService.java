@@ -21,12 +21,19 @@ public class FavoritesService {
 		return favoritesRepository.findAll();
 	}
 	
-	public Optional<List<Article>> findByUSER(User user) {
-		return favoritesRepository.findByUSER(user);
-	}
-	
 	public void save(Favorites fav) {
 		favoritesRepository.save(fav);
 	}
 
+	public boolean favoriteExists(long id_favorite) {
+		return favoritesRepository.findById(id_favorite).isPresent();
+	}
+	
+	public void delete(long id_favorite) {
+		favoritesRepository.deleteById(id_favorite);
+	}
+	
+	public Favorites getByUSERandARTICLE(long id_favorite) {
+		return favoritesRepository.findById(id_favorite).get();
+	}
 }

@@ -23,8 +23,8 @@ public class Favorites {
 
 	@ManyToOne
 	@NonNull
-	@JoinColumn(name = "ID_USER")
-	private User USER;
+	@JoinColumn(name = "USERS")
+	private User USERS;
 
 	@OneToOne
 	@NonNull
@@ -37,20 +37,19 @@ public class Favorites {
 
 	public Favorites(User uSER, Article aRTICLE) {
 		super();
-		USER = uSER;
+		USERS = uSER;
 		ARTICLE = aRTICLE;
 	}
-
 	public long getID_FAVORITE() {
 		return ID_FAVORITE;
 	}
 
 	public User getUSER() {
-		return USER;
+		return USERS;
 	}
 
 	public void setUSER(User uSER) {
-		USER = uSER;
+		USERS = uSER;
 	}
 
 	public Article getARTICLE() {

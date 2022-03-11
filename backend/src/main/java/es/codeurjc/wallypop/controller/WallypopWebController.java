@@ -175,20 +175,16 @@ public class WallypopWebController {
 
 	@RequestMapping("/favorites")
 	public String favorites(Model model) {
-		Optional<List<Article>> LFavArticles = favoritesService.findByUSER(usLogged);
-		if (LFavArticles != null) {
+		List<Article> LFavArticles = usLogged.getFAVORITES();
 		model.addAttribute("Articles", LFavArticles);
-		return "favorites";}
-	else {
-		return "/";
-	}
+		return "favorites";
 	}
 	
 	@GetMapping("/addFavorite/{id_article}")
 	public String addFavorite(Model model,@PathVariable long id_article) {
 	Favorites favorite = new Favorites(usLogged,articleService.findById(id_article).get());	
 	favoritesService.save(favorite);
-	return "post/id_article";	
+	return "redirect:/commercial/";	
 	}
 
 	@PostMapping("/newformularioReporte/{id_article}")

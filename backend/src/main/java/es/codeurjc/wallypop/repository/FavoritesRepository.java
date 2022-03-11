@@ -10,6 +10,4 @@ import es.codeurjc.wallypop.model.Favorites;
 import es.codeurjc.wallypop.model.User;
 
 public interface FavoritesRepository extends JpaRepository<Favorites, Long> {
-	Optional<List<Article>> findByUSER(User user);
-
 }
