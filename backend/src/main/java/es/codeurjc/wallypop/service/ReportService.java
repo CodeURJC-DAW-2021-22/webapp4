@@ -34,6 +34,10 @@ public class ReportService {
 	public void delete(long id) {
 		reportRepository.deleteById(id);
 	}
+	
+	public void flush() {
+		reportRepository.flush();
+	}
 
 	/*
 	 * public List<Report> findAllReportsByArticle(long article_id) {

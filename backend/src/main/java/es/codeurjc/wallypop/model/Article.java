@@ -2,8 +2,10 @@ package es.codeurjc.wallypop.model;
 
 import java.sql.Blob;
 import java.sql.Date;
+import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,22 +28,27 @@ public class Article {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID_ARTICLE")
 	private long ID_ARTICLE;
-
+	
 	@ManyToOne
-	@JoinColumn(name = "ID_USER")
-	private User USER;
+	@NonNull
+	@JoinColumn(name = "USERS")
+	private User USERS;
 
 	@NonNull
 	@Column(name = "CITY")
 	private String CITY;
+	
+	@NonNull
+	@Column(name = "POSTAL_CODE")
+	private String POSTAL_CODE;
 
 	@NonNull
 	@Column(name = "TITLE")
 	private String TITLE;
 
 	@NonNull
-	@Column(name = "DESCRIPTION")
-	private String DESCRIPTION;
+	@Column(name = "DESCRIPTION", columnDefinition = "text")
+	private String DESCRIPTION = null;
 
 	@NonNull
 	@Column(name = "PRICE")
@@ -65,22 +73,27 @@ public class Article {
 	@ManyToMany
 	@JoinColumn(name = "CATEGORYS")
 	private List<Category> CATEGORYS;
+	
+	@OneToMany(cascade = CascadeType.ALL , mappedBy = "ARTICLE")
+	private List<Report> REPORTS = new LinkedList<>();
 
 	public Article() {
 
 	}
 
-	public Article(User uSER, String tITLE, String dESCRIPTION, String cITY, float pRICE, Blob pHOTO,
+	public Article(User uSER, String tITLE, String dESCRIPTION, String cITY, String pOSTAL_CODE, float pRICE, Blob pHOTO,
 			List<Category> lISTcATEGORYS) {
 		super();
-		USER = uSER;
+		USERS = uSER;
 		TITLE = tITLE;
 		DESCRIPTION = dESCRIPTION;
 		PRICE = pRICE;
 		PHOTO = pHOTO;
 		CATEGORYS = lISTcATEGORYS;
 		CITY = cITY;
+		POSTAL_CODE = pOSTAL_CODE;
 	}
+	
 
 	public String getCITY() {
 		return CITY;
@@ -151,11 +164,11 @@ public class Article {
 	}
 
 	public User getUSER() {
-		return USER;
+		return USERS;
 	}
 	
 	public void setUSER(User uSER) {
-		USER = uSER;
+		USERS = uSER;
 	}
 
 	public Date getDATE() {
@@ -165,9 +178,29 @@ public class Article {
 	public int getN_VISITS() {
 		return N_VISITS;
 	}
+	
+	public void visit() {
+		N_VISITS += 1;
+	}
 
 	public String getPRICE_s() {
 		return String.valueOf(getPRICE());
+	}
+	
+	public Long getUserID() {
+		return USERS.getID_USER();
+	}
+
+	public String getPOSTAL_CODE() {
+		return POSTAL_CODE;
+	}
+
+	public void setPOSTAL_CODE(String pOSTAL_CODE) {
+		POSTAL_CODE = pOSTAL_CODE;
+	}
+	
+	public String getUserEmail() {
+		return USERS.getNAME();
 	}
 
 }

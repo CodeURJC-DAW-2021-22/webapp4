@@ -3,9 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Inicio</title>
+	<title>Wallypop</title>
+	<link rel="icon" href="/assets/img/LogoAPP.png">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 </head>
 <body>
 	<!-- ====== Barra de navegacion ======-->
@@ -57,17 +60,22 @@
 						<i class="fa fa-home fa-fw hidden-md hidden-lg" aria-hidden="true"></i> INICIO
 					</a>
 				</li>
+				<li>
+					<a href="/commercial">
+						<i class="fa fa-object-group fa-fw hidden-md hidden-lg" aria-hidden="true"></i> ANUNCIOS
+					</a>
+				</li>
 				{{#logged}}
 				<li>
 					<a href="/adcommercial">
 						<i class="fa fa-pencil-square-o fa-fw hidden-md hidden-lg" aria-hidden="true"></i>  PON TU ANUNCIO
 					</a>
 				</li>
-				<li>
+				<!-- <li>
 					<a href="/yourcommercial">
 						<i class="fa fa-object-group fa-fw hidden-md hidden-lg" aria-hidden="true"></i> TUS ANUNCIOS
 					</a>
-				</li>
+				</li> -->
 				<!-- <li>
 					<a href="messages">
 						<i class="fa fa-commenting-o fa-fw hidden-md hidden-lg" aria-hidden="true"></i> MENSAJES
