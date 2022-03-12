@@ -187,8 +187,18 @@ public class WallypopWebController {
 	
 	@GetMapping("/addFavorite/{id_article}")
 	public String addFavorite(Model model,@PathVariable long id_article) {
+	Boolean articleIsInFavs=false;	
+	List<Favorites> LFavArticles = usLogged.getFAVORITES();
+	for (Favorites fav : LFavArticles) {
+		if(fav.getARTICLE()==articleService.findById(id_article).get()) {			
+			usLogged.getFAVORITES().remove(fav);
+			articleIsInFavs =true;
+		}
+	}
+	if(articleIsInFavs == false) {
 	Favorites favorite = new Favorites(usLogged,articleService.findById(id_article).get());	
 	favoritesService.save(favorite);
+	}
 	return "redirect:/commercial/";	
 	}
 
