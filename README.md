@@ -60,9 +60,6 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 * Búsqueda de artículos por una o varias etiquetas de categorías
 * La web recomendará a los usuarios productos similares a los adquiridos anteriormente
 
-## Licencia
-[APACHE](https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/26b1d22bc7625b0dd8cdb3a3b8eaf7bb5425833b/LICENSE)
-
 # Fase 1
 
 ## Pantalla principal
@@ -178,3 +175,24 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 
 ![](Screenshots%20Fase%201/DiagramaNavegacion.jpg)
 
+# Intrucciones ejecución
+
+* JavaSE 17
+
+## Dependencias: 
+* **org.springframework.boot:**
+   * spring-boot-starter-data-jpa
+   * spring-boot-starter-mustache
+   * spring-boot-starter-web
+   * spring-boot-starter-security
+   * spring-boot-devtools
+* **com.h2database:** 
+   * H2 (Sólo en el caso de que se ejecute la aplicación sobre H2, en lugar de sobre PostgreSQL)
+* **org.postgresql**
+   * postgresql
+* **com.sun.mail:**
+   * javax.mail (v1.6.2)
+
+
+## Licencia
+[APACHE](https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/26b1d22bc7625b0dd8cdb3a3b8eaf7bb5425833b/LICENSE)
