@@ -127,6 +127,7 @@ public class WallypopWebController {
 	
 	@RequestMapping("/modifyDataUser")
 	public String modifyDataUser(Model model) {
+		model.addAttribute("old_user", usLogged);
 		model.addAttribute("user", new User());
 		return "modifyDataUser";
 	}
@@ -138,7 +139,7 @@ public class WallypopWebController {
 		user2.setPASSWORD(userService.encodePassword(user.getPASSWORD()));
 		user2.setTEL(user.getTEL());
 		userService.save(user2);
-		return "modifyDataUser";
+		return "redirect:/perfil";
 	}
 	
 	@RequestMapping("/commercial")
