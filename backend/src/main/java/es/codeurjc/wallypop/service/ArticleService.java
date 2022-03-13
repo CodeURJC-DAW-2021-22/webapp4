@@ -60,6 +60,21 @@ public class ArticleService {
 		return articleRepository.findById(id);
 	}
 
+	public void save(Article article) {
+		articleRepository.save(article);
+	}
+
+	public void delete(long id) {
+		articleRepository.deleteById(id);
+	}
+
+	public void deletePost(long id, Long id_user, boolean admin) {
+		Article a = findById(id).get();
+		if (a.getUserID() == id_user || admin) {
+			delete(id);
+		}
+	}
+
 	public void reserve(long id, boolean bool, long id_user, boolean admin) {
 		Article a = findById(id).get();
 		if (a.getUserID() == id_user || admin) {
@@ -84,14 +99,28 @@ public class ArticleService {
 		}
 	}
 
-	/*
-	 * public List<Article> findReserved(Boolean bool) { Optional<List<Article>>
-	 * lResult = articleRepository.findByReserved(bool); if (lResult.isPresent()) {
-	 * return lResult.get(); } return new LinkedList<Article>(); }
-	 *
-	 * public List<Article> findSold(Boolean bool) { Optional<List<Article>> lResult
-	 * = articleRepository.findBySold(bool); if (lResult.isPresent()) { return
-	 * lResult.get(); } return new LinkedList<Article>(); }
-	 */
+	public List<Article> findArticlesByCategory(long id) {
+		return articleRepository.findByCATEGORYS(categoryService.findById(id).get());
+	}
 
+	public List<Article> findBySOLDFalse() {
+		return articleRepository.findBySOLDFalse();
+	}
+
+	public List<Article> findBySOLDTrue() {
+		return articleRepository.findBySOLDTrue();
+	}
+
+	public List<Article> findByTitleContainingOrDescriptionContainingOrCITYContaining(String query, String city) {
+		return articleRepository
+				.findByTITLEContainingIgnoreCaseOrDESCRIPTIONContainingIgnoreCaseOrCITYContainingIgnoreCaseAndSOLDFalse(
+						query, query, city);
+	}
+
+	public List<Article> findByTITLEContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalse(
+			String query, String city) {
+		return articleRepository
+				.findByTITLEContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalse(
+						query, city, query, city);
+	}
 }

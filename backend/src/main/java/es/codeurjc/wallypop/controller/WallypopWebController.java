@@ -3,6 +3,7 @@ package es.codeurjc.wallypop.controller;
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -53,13 +54,6 @@ public class WallypopWebController {
 
 	private User usLogged = null;
 
-	@RequestMapping("/adcommercial")
-	public String adcommercial(Model model) {
-		model.addAttribute("Article", new Article());
-		model.addAttribute("lcategory", categoryservice.findAll());
-		return "adcommercial";
-	}
-
 	@ModelAttribute
 	public void addAttributes(Model model, HttpServletRequest request) {
 
@@ -86,6 +80,53 @@ public class WallypopWebController {
 		}
 	}
 
+	@GetMapping("/")
+	public String showIndex(Model model) {
+		model.addAttribute("Categories", categoryservice.findAll());
+		return "index";
+	}
+
+	@RequestMapping("/adcommercial")
+	public String adcommercial(Model model) {
+		model.addAttribute("Article", new Article());
+		model.addAttribute("lcategory", categoryservice.findAll());
+		return "adcommercial";
+	}
+
+	@PostMapping("/newcommercial")
+	public String newCommercial(Model model, Article article, MultipartFile imageField) throws IOException {
+		if (!imageField.isEmpty()) {
+			article.setPHOTO(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
+		}
+		article.setUSER(usLogged);
+		newArticle(); // SUM 1 to N_SELL
+		articleService.save(article);
+		return "yourcommercial_success";
+	}
+
+	private void newArticle() {
+		usLogged.newArticle();
+		userService.save(usLogged);
+	}
+
+	/*
+	 * private void deleteArticle(Article article) {
+	 * article.getUSER().deleteArticle(); userService.save(article.getUSER()); }
+	 */
+
+	@GetMapping("/categoriasAdminListado")
+	public String categoriasAdminListado(Model model) {
+		model.addAttribute("category", categoryservice.findAll());
+		return "categoriasAdminListado";
+	}
+
+	@GetMapping("/categoriasAdminListado/{id}/delete")
+	public String deleteCategory(Model model, @PathVariable long id) {
+		categoryservice.delete(id);
+		// model.addAttribute("categoryd", categoryservice.findAll());
+		return "redirect:/categoriasAdminListado";
+	}
+
 	@RequestMapping("/categoriasAdmin")
 	public String categoriasAdmin(Model model) {
 		model.addAttribute("category", new Category());
@@ -94,23 +135,57 @@ public class WallypopWebController {
 		return "categoriasAdmin";
 	}
 
-	@GetMapping("/categoriasAdminListado")
-	public String categoriasAdminListado(Model model) {
-		model.addAttribute("category", categoryservice.findAll());
-		return "categoriasAdminListado";
+	@PostMapping("/newCategory")
+	public String newCategory(Model model, Category category, MultipartFile imageField) throws IOException {
+
+		if (!imageField.isEmpty()) {
+			category.setPHOTO(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
+		}
+
+		categoryservice.save(category);
+		return "categoriasAdmin";
 	}
 
-	@RequestMapping("/commercial")
-	public String commercial(Model model) {
-		model.addAttribute("Articles", articleService.findAll());
+	/*
+	 * @RequestMapping("/coderebootpass") public String coderebootpas() { return
+	 * "coderebootpass"; }
+	 */
+
+	@RequestMapping("/search")
+	public String commercialFiltered(Model model, String query, String city) {
+		if (!city.equals("") && !query.equals("")) {
+			model.addAttribute("Articles", articleService
+					.findByTITLEContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalse(
+							query, city));
+		} else {
+			model.addAttribute("Articles",
+					articleService.findByTitleContainingOrDescriptionContainingOrCITYContaining(query, city));
+		}
 		model.addAttribute("lcategory", categoryservice.findAll());
 		return "commercial";
 	}
 
-	/*
-	 * private void deleteArticle(Article article) {
-	 * article.getUSER().deleteArticle(); userService.save(article.getUSER()); }
-	 */
+	@RequestMapping("/commercial")
+	public String commercial(Model model) {
+		model.addAttribute("Articles", articleService.findBySOLDFalse());
+		model.addAttribute("lcategory", categoryservice.findAll());
+		return "commercial";
+	}
+
+	@RequestMapping("/sold")
+	public String sold(Model model) {
+		model.addAttribute("Articles", articleService.findBySOLDTrue());
+		model.addAttribute("lcategory", categoryservice.findAll());
+		return "commercial";
+	}
+
+	@RequestMapping("/errorcommercial")
+	public String errorcommercial(Model model) {
+		model.addAttribute("Articles", articleService.findAll());
+		model.addAttribute("lcategory", categoryservice.findAll());
+		model.addAttribute("ERROR", true);
+		return "commercial";
+	}
 
 	@RequestMapping("/commercial/{id}")
 	public String commercial_filter(Model model, @PathVariable long id) {
@@ -126,140 +201,9 @@ public class WallypopWebController {
 		return "redirect:/commercial/" + String.valueOf(lcategories);
 	}
 
-	@GetMapping("/VisualizaReporte/{id}/deleteArticle")
-	public String deleteArticle(Model model, @PathVariable long id) {
-		long idArticle = reportService.findById(id).get().getARTICLE().getID_ARTICLE();
-		articleService.delete(idArticle);
-		model.addAttribute("report", reportService.findAll());
-		return "reportesAdmin";
-	}
-
-	@GetMapping("/categoriasAdminListado/{id}/delete")
-	public String deleteCategory(Model model, @PathVariable long id) {
-		categoryservice.delete(id);
-		// model.addAttribute("categoryd", categoryservice.findAll());
-		return "redirect:/categoriasAdminListado";
-	}
-
-	/*
-	 * @RequestMapping("/coderebootpass") public String coderebootpas() { return
-	 * "coderebootpass"; }
-	 */
-
-	@RequestMapping("/delete/{id_article}")
-	public String deletePost(Model model, @PathVariable long id_article) {
-		articleService.deletePost(id_article, usLogged.getID_USER(), usLogged.isIS_ADMIN());
-		return "redirect:/yourcommercial/";
-	}
-
-	@GetMapping("/VisualizaReporte/{id}/delete")
-	public String deleteReport(Model model, @PathVariable long id) {
-		reportService.delete(id);
-		model.addAttribute("report", reportService.findAll());
-		return "reportesAdmin";
-	}
-
-	@GetMapping("category/{id}/imagen")
-	public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
-		Optional<Category> category = categoryservice.findById(id);
-
-		if (category.get().getPHOTO() != null) {
-			Resource file = new InputStreamResource(category.get().getPHOTO().getBinaryStream());
-
-			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-					.contentLength(category.get().getPHOTO().length()).body(file);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
-
-	@GetMapping("article/{id}/imagen")
-	public ResponseEntity<Object> downloadImageArticle(@PathVariable long id) throws SQLException {
-		Optional<Article> article = articleService.findById(id);
-
-		if (article.get().getPHOTO() != null) {
-			Resource file = new InputStreamResource(article.get().getPHOTO().getBinaryStream());
-
-			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-					.contentLength(article.get().getPHOTO().length()).body(file);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
-
-	@GetMapping("/VisualizaReporte/{id}/image")
-	public ResponseEntity<Object> downloadZIPReport(@PathVariable long id) throws SQLException {
-		Optional<Report> report = reportService.findById(id);
-
-		if (report.get().getPROOF() != null) {
-			Resource file = new InputStreamResource(report.get().getPROOF().getBinaryStream());
-
-			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/zip")
-					.contentLength(report.get().getPROOF().length()).body(file);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
-
-	@RequestMapping("/errorcommercial")
-	public String errorcommercial(Model model) {
-		model.addAttribute("Articles", articleService.findAll());
-		model.addAttribute("lcategory", categoryservice.findAll());
-		model.addAttribute("ERROR", true);
-		return "commercial";
-	}
-
 	@RequestMapping("/favorites")
 	public String favorites() {
 		return "favorites";
-	}
-
-	/*
-	 * @RequestMapping("/help") public String help() { return "help"; }
-	 */
-
-	@RequestMapping("/{id_article}/formularioReporte")
-	public String formularioReporteID(Model model, @PathVariable long id_article) {
-		Report report = new Report();
-		model.addAttribute("id_article", id_article);
-		model.addAttribute("report", report);
-		return "formularioReporte";
-	}
-
-	// Este es el método que se llama cuando agragamos un nuevo anuncio y toto va
-	// bien
-	@RequestMapping("/yourcommercial_success")
-	public String mensajeCreadoExito(Model model) {
-		model.addAttribute("exito_creacion_nuevo_anuncio", "Enhorabuena! El nuevo anuncio ha sido creado con éxito");
-		model.addAttribute("Articles", usLogged.getARTICLES());
-		return "yourcommercial";
-	}
-
-	private void newArticle() {
-		usLogged.newArticle();
-		userService.save(usLogged);
-	}
-
-	@PostMapping("/newCategory")
-	public String newCategory(Model model, Category category, MultipartFile imageField) throws IOException {
-
-		if (!imageField.isEmpty()) {
-			category.setPHOTO(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
-		}
-
-		categoryservice.save(category);
-		return "categoriasAdmin";
-	}
-
-	@PostMapping("/newcommercial")
-	public String newCommercial(Model model, Article article, MultipartFile imageField) throws IOException {
-		if (!imageField.isEmpty()) {
-			article.setPHOTO(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
-		}
-		article.setUSER(usLogged);
-		newArticle(); // SUM 1 to N_SELL
-		articleService.save(article);
-		return "yourcommercial_success";
 	}
 
 	@PostMapping("/newformularioReporte/{id_article}")
@@ -272,6 +216,18 @@ public class WallypopWebController {
 		reportService.save(report);
 		return "redirect:/commercial/";
 	}
+
+	@RequestMapping("/{id_article}/formularioReporte")
+	public String formularioReporteID(Model model, @PathVariable long id_article) {
+		Report report = new Report();
+		model.addAttribute("id_article", id_article);
+		model.addAttribute("report", report);
+		return "formularioReporte";
+	}
+
+	/*
+	 * @RequestMapping("/help") public String help() { return "help"; }
+	 */
 
 	@RequestMapping("/perfil")
 	public String perfil() {
@@ -327,10 +283,14 @@ public class WallypopWebController {
 		}
 	}
 
-	@RequestMapping("/reportesAdmin")
-	public String reporteadmin(Model model) {
-		model.addAttribute("report", reportService.findAll());
-		return "reportesAdmin";
+	@PostMapping("/message/{id_article}/{id_buyer}")
+	public String sendEmail(Model model, Mail mail, @PathVariable long id_article, @PathVariable long id_buyer) {
+		try {
+			EmailService.sendEmail(mail);
+			return "redirect:/post/" + id_article + "/?r=0";
+		} catch (Exception e) {
+			return "redirect:/post/" + id_article + "/?r=1";
+		}
 	}
 
 	@RequestMapping("/reserve/{id_article}/{bool}")
@@ -345,32 +305,26 @@ public class WallypopWebController {
 		return "redirect:/post/" + id_article;
 	}
 
-	@PostMapping("/message/{id_article}/{id_buyer}")
-	public String sendEmail(Model model, Mail mail, @PathVariable long id_article, @PathVariable long id_buyer) {
-		try {
-			EmailService.sendEmail(mail);
-			return "redirect:/post/" + id_article + "/?r=0";
-		} catch (Exception e) {
-			return "redirect:/post/" + id_article + "/?r=1";
-		}
+	@RequestMapping("/delete/{id_article}")
+	public String deletePost(Model model, @PathVariable long id_article) {
+		articleService.deletePost(id_article, usLogged.getID_USER(), usLogged.isIS_ADMIN());
+		return "redirect:/yourcommercial/";
 	}
 
-	@GetMapping("/VisualizarPost/{id}")
-	public String showArticleReported(Model model, @PathVariable long id) {
-		Article article = reportService.findById(id).get().getARTICLE();
-		if (article != null) {
-			// model.addAttribute("article", article);
-			return "/post/" + article.getID_ARTICLE();
-		} else {
-			return "/VisualizaReporte/{id}";
-		}
-
+	private void visit(Article a) {
+		a.visit();
+		articleService.save(a);
 	}
 
-	@GetMapping("/")
-	public String showIndex(Model model) {
-		model.addAttribute("Categories", categoryservice.findAll());
-		return "index";
+	@RequestMapping("/reportesAdmin")
+	public String reporteadmin(Model model) {
+		model.addAttribute("report", reportService.findAll());
+		return "reportesAdmin";
+	}
+
+	@RequestMapping("/VisualizaReporte")
+	public String visualizareporte(Model model) {
+		return "VisualizaReporte";
 	}
 
 	@GetMapping("/VisualizaReporte/{id}")
@@ -386,14 +340,45 @@ public class WallypopWebController {
 
 	}
 
-	private void visit(Article a) {
-		a.visit();
-		articleService.save(a);
+	@GetMapping("/VisualizaReporte/{id}/image")
+	public ResponseEntity<Object> downloadZIPReport(@PathVariable long id) throws SQLException {
+		Optional<Report> report = reportService.findById(id);
+
+		if (report.get().getPROOF() != null) {
+			Resource file = new InputStreamResource(report.get().getPROOF().getBinaryStream());
+
+			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/zip")
+					.contentLength(report.get().getPROOF().length()).body(file);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 
-	@RequestMapping("/VisualizaReporte")
-	public String visualizareporte(Model model) {
-		return "VisualizaReporte";
+	@GetMapping("/VisualizarPost/{id}")
+	public String showArticleReported(Model model, @PathVariable long id) {
+		Article article = reportService.findById(id).get().getARTICLE();
+		if (article != null) {
+			// model.addAttribute("article", article);
+			return "/post/" + article.getID_ARTICLE();
+		} else {
+			return "/VisualizaReporte/{id}";
+		}
+
+	}
+
+	@GetMapping("/VisualizaReporte/{id}/delete")
+	public String deleteReport(Model model, @PathVariable long id) {
+		reportService.delete(id);
+		model.addAttribute("report", reportService.findAll());
+		return "reportesAdmin";
+	}
+
+	@GetMapping("/VisualizaReporte/{id}/deleteArticle")
+	public String deleteArticle(Model model, @PathVariable long id) {
+		long idArticle = reportService.findById(id).get().getARTICLE().getID_ARTICLE();
+		articleService.delete(idArticle);
+		model.addAttribute("report", reportService.findAll());
+		return "reportesAdmin";
 	}
 
 	// Este es el método que se llama cuando vamos al apartado TUS ANUNCIOS
@@ -404,10 +389,47 @@ public class WallypopWebController {
 		return "yourcommercial";
 	}
 
+	// Este es el método que se llama cuando agragamos un nuevo anuncio y toto va
+	// bien
+	@RequestMapping("/yourcommercial_success")
+	public String mensajeCreadoExito(Model model) {
+		model.addAttribute("exito_creacion_nuevo_anuncio", "Enhorabuena! El nuevo anuncio ha sido creado con éxito");
+		model.addAttribute("Articles", usLogged.getARTICLES());
+		return "yourcommercial";
+	}
+
 	@RequestMapping("/yourcommercialsold")
 	public String yourcommercialsold(Model model) {
 		model.addAttribute("Articles", usLogged.getARTICLESSold());
 		return "yourcommercialsold";
+	}
+
+	@GetMapping("category/{id}/imagen")
+	public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
+		Optional<Category> category = categoryservice.findById(id);
+
+		if (category.get().getPHOTO() != null) {
+			Resource file = new InputStreamResource(category.get().getPHOTO().getBinaryStream());
+
+			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+					.contentLength(category.get().getPHOTO().length()).body(file);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@GetMapping("article/{id}/imagen")
+	public ResponseEntity<Object> downloadImageArticle(@PathVariable long id) throws SQLException {
+		Optional<Article> article = articleService.findById(id);
+
+		if (article.get().getPHOTO() != null) {
+			Resource file = new InputStreamResource(article.get().getPHOTO().getBinaryStream());
+
+			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+					.contentLength(article.get().getPHOTO().length()).body(file);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 
 }
