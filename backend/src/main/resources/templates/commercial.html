@@ -1,21 +1,7 @@
 {{>header}}
 	<!-- ====== Contenido de pagina ======-->
 	<section class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
-					<form action="/search" method="GET" class="form-inline text-center">
-						<div class="form-group">
-							<input type="text" name="query" class="form-control input-lg" placeholder="Estoy buscando...">
-						</div>
-						<div class="form-group">
-							<input type="text" name"city" class="form-control input-lg" placeholder="Ciudad, Provincia, Distrito...">
-						</div>
-						<button type="submit" class="btn btn-danger btn-lg">BUSCAR</button>
-					</form>
-				</div>
-			</div>
-		</div>
+		{{>search}}
 		{{#ERROR}}
 		<br>
 		<div class="container">
