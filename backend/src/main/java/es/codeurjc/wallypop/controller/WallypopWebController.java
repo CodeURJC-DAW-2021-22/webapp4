@@ -3,6 +3,8 @@ package es.codeurjc.wallypop.controller;
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,11 +28,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
+import es.codeurjc.wallypop.model.Favorites;
 import es.codeurjc.wallypop.model.Mail;
 import es.codeurjc.wallypop.model.Report;
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.service.ArticleService;
 import es.codeurjc.wallypop.service.CategoryService;
+import es.codeurjc.wallypop.service.FavoritesService;
 import es.codeurjc.wallypop.service.EmailService;
 import es.codeurjc.wallypop.service.MapService;
 import es.codeurjc.wallypop.service.ReportService;
@@ -38,6 +42,8 @@ import es.codeurjc.wallypop.service.UserService;
 
 @Controller
 public class WallypopWebController {
+	@Autowired
+	private FavoritesService favoritesService;
 
 	@Autowired
 	private CategoryService categoryservice;
@@ -126,6 +132,16 @@ public class WallypopWebController {
 		return "redirect:/commercial/" + String.valueOf(lcategories);
 	}
 
+	@RequestMapping("/favorites")
+	public String favorites(Model model) {
+		List<Favorites> LFavArticles = usLogged.getFAVORITES();
+		List<Article> lArticles = new LinkedList<>();
+		for (Favorites fav : LFavArticles) {
+			lArticles.add(fav.getARTICLE());
+		}
+		model.addAttribute("Articles", lArticles);
+		return "favorites";
+}
 	@RequestMapping("/search")
 	public String commercialFiltered(Model model, String query, String city) {
 		if (!city.equals("") && !query.equals("")) {
@@ -143,6 +159,18 @@ public class WallypopWebController {
 		model.addAttribute("lcategory", categoryservice.findAll());
 		return "commercial";
 	}
+	
+	@GetMapping("/addFavorite/{id_article}")
+    public String addFavorite(Model model,@PathVariable long id_article) {
+        Favorites favorites = favoritesService.findByUSERAndARTICLE(usLogged, articleService.findById(id_article).get());
+        if(favorites != null) {
+            favoritesService.delete(favorites);
+        }else {
+            Favorites favorite = new Favorites(usLogged,articleService.findById(id_article).get());
+            favoritesService.save(favorite);
+        }
+        return "redirect:/commercial/";
+    }
 
 	@GetMapping("/VisualizaReporte/{id}/deleteArticle")
 	public String deleteArticle(Model model, @PathVariable long id) {
@@ -435,4 +463,33 @@ public class WallypopWebController {
 		return "yourcommercialsold";
 	}
 
+	@GetMapping("category/{id}/imagen")
+	public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
+		Optional<Category> category = categoryservice.findById(id);
+
+		if (category.get().getPHOTO() != null) {
+			Resource file = new InputStreamResource(category.get().getPHOTO().getBinaryStream());
+
+			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+					.contentLength(category.get().getPHOTO().length()).body(file);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@GetMapping("article/{id}/imagen")
+	public ResponseEntity<Object> downloadImageArticle(@PathVariable long id) throws SQLException {
+		Optional<Article> article = articleService.findById(id);
+
+		if (article.get().getPHOTO() != null) {
+			Resource file = new InputStreamResource(article.get().getPHOTO().getBinaryStream());
+
+			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+					.contentLength(article.get().getPHOTO().length()).body(file);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	
 }

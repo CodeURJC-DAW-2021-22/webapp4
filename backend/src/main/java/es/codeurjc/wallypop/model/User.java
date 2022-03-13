@@ -51,6 +51,12 @@ public class User {
 	@NonNull
 	@Column(name = "IS_ADMIN")
 	private boolean IS_ADMIN = false;
+	
+	@OneToMany(cascade = CascadeType.ALL , mappedBy = "USERS")
+	private List<Article> ARTICLES = new LinkedList<>();
+	
+	@OneToMany(cascade = CascadeType.ALL , mappedBy = "USERS")
+	private List<Favorites> FAVORITES = new LinkedList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "USERS")
 	private List<Article> ARTICLES = new LinkedList<>();
@@ -171,5 +177,22 @@ public class User {
 	public void updateN_Sell() {
 		N_SELL = ARTICLES.size() - N_SOLD;
 	}
+
+	public List<Article> getARTICLES() {
+		return ARTICLES;
+	}
+
+	public void setARTICLES(List<Article> aRTICLES) {
+		ARTICLES = aRTICLES;
+	}
+
+	public List<Favorites> getFAVORITES() {
+		return FAVORITES;
+	}
+
+	public void setFAVORITES(List<Favorites> fAVORITES) {
+		FAVORITES = fAVORITES;
+	}
+	
 
 }

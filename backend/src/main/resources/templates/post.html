@@ -123,11 +123,11 @@
 						{{/User}}
 					</div>
 					<div class="clearfix"></div>
-					{{^logged}}
-					<a class="btn btn-success btn-block" href="/login">ENVIAR MENSAJE</a>
-					<a href="/login" class="btn btn-success btn-block">LLAMAR</a>
-					{{/logged}}
-					{{#logged}}
+					<a href="#!" class="btn btn-success btn-block">ENVIAR MENSAJE</a>
+					<a href="tel:{{#User}}{{TEL}}{{/User}}" class="btn btn-success btn-block">LLAMAR</a>
+					{{#Logged}}
+					<a href="/addFavorite/{{#Article}}{{ID_ARTICLE}}{{/Article}}" class="btn btn-success btn-block" style="background-color: rgb(225, 15, 15);">FAVORITOS ♡</a>
+					{{/Logged}}
 					{{#Owner}}
 					{{^SOLD}}
 					{{^RESERVED}}

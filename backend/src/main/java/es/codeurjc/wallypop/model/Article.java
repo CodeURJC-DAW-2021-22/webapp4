@@ -166,6 +166,12 @@ public class Article {
 		CITY = cITY;
 	}
 
+	public User getUSER() {
+		return USERS;
+	}
+	
+	public void setUSER(User uSER) {
+		USERS = uSER;
 	public void setDESCRIPTION(String dESCRIPTION) {
 		DESCRIPTION = dESCRIPTION;
 	}
@@ -189,7 +195,10 @@ public class Article {
 	public void setSOLD(boolean sOLD) {
 		SOLD = sOLD;
 	}
-
+	
+	public Long getUserID() {
+		return USERS.getID_USER();
+}
 	public void setTITLE(String tITLE) {
 		TITLE = tITLE;
 	}

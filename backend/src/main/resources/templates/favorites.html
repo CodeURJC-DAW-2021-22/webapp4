@@ -36,9 +36,24 @@
 						<i class="fa fa-angle-right btn btn-default"></i>
 					</div>
 					<div class="full-width container-post">
+					{{#Articles}}
 						<div class="full-width post">
 							<figure class="full-width post-img">
 								<!-- Tamaño de la imagen 248x186 pixeles-->
+								<img src="article/{{ID_ARTICLE}}/imagen" alt="" class="img-responsive">
+							</figure>
+							<div class="full-width post-info">
+								<a href="/post/{{ID_ARTICLE}}" class="full-width post-info-title">{{TITLE}}</a>
+								<p class="full-width post-info-price">{{PRICE_s}}€</p>
+								<span class="post-info-zone">{{CITY}}</span>
+								<span class="post-info-date">{{DATE}}</span>
+								<a href="/addFavorite/{{ID_ARTICLE}}"><i class="fa fa-heart-o post-info-like"></i></a>
+							</div>
+						</div>
+					{{/Articles}}
+					<!--	<div class="full-width post">
+							<figure class="full-width post-img">
+								 Tamaño de la imagen 248x186 pixeles
 								<img src="assets/img/post.jpg" alt="" class="img-responsive">
 							</figure>
 							<div class="full-width post-info">
@@ -51,7 +66,7 @@
 						</div>
 						<div class="full-width post">
 							<figure class="full-width post-img">
-								<!-- Tamaño de la imagen 248x186 pixeles-->
+								 Tamaño de la imagen 248x186 pixeles
 								<img src="assets/img/post.jpg" alt="" class="img-responsive">
 							</figure>
 							<div class="full-width post-info">
@@ -64,7 +79,7 @@
 						</div>
 						<div class="full-width post">
 							<figure class="full-width post-img">
-								<!-- Tamaño de la imagen 248x186 pixeles-->
+								 Tamaño de la imagen 248x186 pixeles
 								<img src="assets/img/post.jpg" alt="" class="img-responsive">
 							</figure>
 							<div class="full-width post-info">
@@ -77,7 +92,7 @@
 						</div>
 						<div class="full-width post">
 							<figure class="full-width post-img">
-								<!-- Tamaño de la imagen 248x186 pixeles-->
+								 Tamaño de la imagen 248x186 pixeles
 								<img src="assets/img/post.jpg" alt="" class="img-responsive">
 							</figure>
 							<div class="full-width post-info">
@@ -90,7 +105,7 @@
 						</div>
 						<div class="full-width post">
 							<figure class="full-width post-img">
-								<!-- Tamaño de la imagen 248x186 pixeles-->
+								 Tamaño de la imagen 248x186 pixeles
 								<img src="assets/img/post.jpg" alt="" class="img-responsive">
 							</figure>
 							<div class="full-width post-info">
@@ -103,7 +118,7 @@
 						</div>
 						<div class="full-width post">
 							<figure class="full-width post-img">
-								<!-- Tamaño de la imagen 248x186 pixeles-->
+								 Tamaño de la imagen 248x186 pixeles
 								<img src="assets/img/post.jpg" alt="" class="img-responsive">
 							</figure>
 							<div class="full-width post-info">
@@ -113,7 +128,7 @@
 								<span class="post-info-date">hoy 07:00</span>
 								<i class="fa fa-trash post-info-like"></i>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<div class="clearfix"></div>
 					<nav class="text-center">
