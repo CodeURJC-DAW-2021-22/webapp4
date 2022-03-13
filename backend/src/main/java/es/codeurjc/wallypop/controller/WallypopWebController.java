@@ -1,14 +1,9 @@
 package es.codeurjc.wallypop.controller;
 
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.security.Principal;
 import java.sql.SQLException;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,10 +25,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
@@ -46,7 +37,6 @@ import es.codeurjc.wallypop.service.EmailService;
 import es.codeurjc.wallypop.service.MapService;
 import es.codeurjc.wallypop.service.ReportService;
 import es.codeurjc.wallypop.service.UserService;
-import net.bytebuddy.matcher.ModifierMatcher.Mode;
 
 @Controller
 public class WallypopWebController {
