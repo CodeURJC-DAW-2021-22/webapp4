@@ -247,6 +247,34 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/FNI_Article_3/backend/src/main/resources/templates/adcommercial.html
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/FNI_Article_3/backend/src/main/resources/templates/yourcommercial.html
 
+### Contribución Sergio:
+
+#### Descripción textual
+
+##### He hecho que un administrador pueda añadir nuevas categorias
+##### He hecho que un administrador pueda eliminar categorias
+##### He ayudado a implementar los favoritos
+##### He añadido datos de ejemplo a la base de datos para comprobar el uso correcto del añadir y eliminar categorias
+##### He realizado el diagrama de navegación
+##### He implementado que un usuario pueda modificar el nombre, contraseña y telefono de su perfil
+
+#### 5 Commits más significativos:
+
+##### Modificar datos de los usuarios: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/d3dbf0034dfdcfc2c5706aa81e1e0deeec823bb2
+##### Añadir y eliminar favoritos: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/14897b6be8888828be30363b54d2f03fbc9fdfed
+##### Eliminar categorias a los articulos: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/904517997bea056f4d2d0dc36eef6df3f6f66815
+##### Cargar articulos asociados a una categoria seleccionada en la pantalla principal: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/5fcf1532bf9264206142938235d82d0edfc26169
+##### Mostrar categorias en la pantalla principal: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/aa713690a0fb9baac59ce4b22d1207591695d3eb
+
+#### 5 ficheros mayor participación:
+
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/FIX_AND_NEW_IMPLEMENTATIONS/backend/src/main/java/es/codeurjc/wallypop/model/Category.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/FIX_AND_NEW_IMPLEMENTATIONS/backend/src/main/java/es/codeurjc/wallypop/controller/DataBaseUsage.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/FIX_AND_NEW_IMPLEMENTATIONS/backend/src/main/java/es/codeurjc/wallypop/controller/WallypopWebController.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/FIX_AND_NEW_IMPLEMENTATIONS/backend/src/main/resources/templates/modifyDataUser.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/FIX_AND_NEW_IMPLEMENTATIONS/backend/src/main/resources/templates/index.html
+
+
 # Intrucciones ejecución
 
 * JavaSE 17
