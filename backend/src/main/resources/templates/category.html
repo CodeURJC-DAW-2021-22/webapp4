@@ -1,7 +1,7 @@
 {{>header}}
-	<!-- ====== Contenido de pagina ======-->
+	<!-- ====== Page content ======-->
 	{{>nav_side}}
-						  	<a href="perfil" class="list-group-item">
+						  	<a href="profile" class="list-group-item">
 						  		<i class="fa fa-user fa-fw" aria-hidden="true"></i> TU PERFIL
 						  	</a>
 						  	<a href="yourcommercial" class="list-group-item">
@@ -14,10 +14,10 @@
 						  		<i class="fa fa-heart-o fa-fw" aria-hidden="true"></i> FAVORITOS
 						  	</a>
 						  	{{#admin}}
-						  	<a href="categoriasAdmin" class="list-group-item active">
+						  	<a href="category" class="list-group-item active">
 								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN CATEGORÍAS
 							</a>
-							<a href="reportesAdmin" class="list-group-item">
+							<a href="reports" class="list-group-item">
 								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN REPORTES
 							</a>
 							{{/admin}}
@@ -28,8 +28,7 @@
 					<div class="full-width bar-info-user">
 						<div>GESTIÓN CATEGORÍAS</div>
 					</div>
-					<!-- Contenido-->
-						<!-- ====== Buscador movil ======-->
+					<!-- Content -->
 	<section class="full-width hidden-md hidden-lg Search-mobile">
 		<form action="commercial" style="padding-top: 15px;">
 			<div class="form-group">
@@ -41,7 +40,7 @@
 			<button class="btn btn-danger btn-lg" type="submit">BUSCAR</button>
 		</form>
 	</section>
-	<!-- ====== Contenido de pagina ======-->
+	<!-- ====== Page content ======-->
 	<section class="section">
 		<h2 class="text-center text-light">CATEGORÍAS</h2>
 		<div class="container">
@@ -54,7 +53,6 @@
 						    	<label>Busca categoría</label>
 							</div>
 							<div class="col-sm-7">
-							<!--<form method = "POST" action = "/commercialCategory">-->
 							  	<div class="form-group">
 							    	<select class="form-control" name="lcategories">
 						    	    {{#lcategory}}
@@ -64,9 +62,8 @@
                                    	 <input type="hidden" name="_csrf" value="{{token}}"/>
                                    	 <input  type="submit" value="Buscar Categoria" class="btn btn-default"></input>
 							  	</div>
-							<!--</form>-->
 							  	<div class="form-group">
-							  		<a href="categoriasAdminListado">VER LISTADO CATEGORÍAS</a>
+							  		<a href="categoryList">VER LISTADO CATEGORÍAS</a>
 							  	</div>
 							</div>
 						</div>
@@ -82,17 +79,8 @@
 							  	<div class="form-group">
 							    	<input type="text" class="form-control" placeholder="Añade nueva categoría" name="TITLE">
 							  	</div>
-							  	<!--<button class="btn btn-default">+</button>-->
 							</div>
 						</div>
-						<!--
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Título del anuncio</label>
-						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder="Título del anuncio">
-						    </div>
-						</div>
-						-->
 						<br>
 						<br>
 						<div class="form-group">
@@ -116,14 +104,6 @@
 						         </div>
 						    </div>
 						</div>
-						<!--
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Precio</label>
-						    <div class="col-sm-7">
-						    	<input type="text" class="form-control" placeholder="Precio">
-						    </div>
-						</div>
-						-->
 						<br><br><br>
 						<h3 class="text-info">Foto</h3>
 						<p>¡Añade una foto a la categoría!</p>

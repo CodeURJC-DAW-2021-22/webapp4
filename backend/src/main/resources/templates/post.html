@@ -1,5 +1,5 @@
 	{{>header}}
-	<!-- ====== Contenido de pagina ======-->
+	<!-- ====== Page content ======-->
 	<section class="section">
 		{{>search}}
 		<hr>
@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-8">
-					<ol class="breadcrumb"> <!-- Mostrar todas las categorías a las que pertenece el artículo -->
+					<ol class="breadcrumb">
 					  	{{#CATEGORYS}}
 					  	<li><a href="/commercial/{{ID_CATEGORY}}">{{TITLE}}</a></li>
 					  	{{/CATEGORYS}}
@@ -47,25 +47,6 @@
 					</div>
 					{{/emailSended}}
 					<div id="slider-commercial" class="carousel slide" data-ride="carousel">
-					  	<!-- <ol class="carousel-indicators">
-					    	<li data-target="#slider-commercial" data-slide-to="0" class="active"></li>
-					    	<li data-target="#slider-commercial" data-slide-to="1"></li>
-					    	<li data-target="#slider-commercial" data-slide-to="2"></li>
-					  	</ol> -->
-					  	<!-- <div class="carousel-inner" role="listbox">
-						    <div class="item active">
-						      	<center><img width="750px" height="auto" src="/article/{{ID_ARTICLE}}/imagen" alt=""></center>
-						    </div>
-					  	</div> -->
-					  	
-					  	<!-- <a class="left carousel-control" href="#slider-commercial" role="button" data-slide="prev">
-					    	<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-					    	<span class="sr-only">Previous</span>
-					  	</a>
-					  	<a class="right carousel-control" href="#slider-commercial" role="button" data-slide="next">
-					    	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					    	<span class="sr-only">Next</span>
-					  	</a> -->
 					</div>
 					<div class="col-xs-12">
 				  		<center><img width="500px" height="auto" src="{{^sample_img}}/article/{{ID_ARTICLE}}/imagen{{/sample_img}}{{#sample_img}}/assets/img/sample_image.png{{/sample_img}}" alt=""></center>
@@ -74,22 +55,6 @@
 					<p class="lead text-justify">					
 						{{DESCRIPTION}}
 					</p>
-					<!-- <div class="full-width div-table">
-						<div class="full-width div-table-row">
-							<div class="div-table-cell div-table-cell-xs div-table-cell-c">
-								Matriculación: 2007
-							</div>
-							<div class="div-table-cell div-table-cell-xs div-table-cell-c">
-								Km: 150.000 - 159.999
-							</div>
-							<div class="div-table-cell div-table-cell-xs div-table-cell-c">
-								Combustible: Gasolina
-							</div>
-							<div class="div-table-cell div-table-cell-xs div-table-cell-c">
-								Cambio: Manual
-							</div>
-						</div>
-					</div> -->
 					<p class="lead">
 						<strong>Publicado: {{DATE}}</strong>
 						&nbsp; <strong>Visto {{N_VISITS}} veces</strong>
@@ -101,9 +66,6 @@
 							<div class="div-table-cell div-table-cell-xs">
 								<a href="/commercial" class="btn btn-default btn-block"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver al listado</a>
 							</div>
-							<!-- <div class="div-table-cell div-table-cell-xs">
-								<a href="#!" class="btn btn-default btn-block">Siguiente anuncio <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-							</div> -->
 						</div>
 					</div>
 					<div class="full-width" style="padding:10px; background-color: #F5F5F5; margin: 7px 0;">
@@ -115,7 +77,6 @@
 						{{#User}}
 						<div>
 							<p class="full-width lead">{{FULL_NAME}}</p>
-							<!-- <p class="full-width lead">{{#User}}{{NAME}}{{/User}}</p> -->
 							{{#logged}}
 							<p class="full-width"><i class="fa fa-mobile" aria-hidden="true"></i> {{TEL}}</p>
 							{{/logged}}
@@ -179,39 +140,13 @@
 					  	<!-- <h3 class="text-light text-center">Comparte este anuncio</small></h1> -->
 					</div>
 					<ul class="list-unstyled fullwidth text-center footer-social social-post">
-						<!-- <li>
-							<a href="">
-								<i class="fa fa-facebook" aria-hidden="true"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#!">
-								<i class="fa fa-linkedin" aria-hidden="true"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#!">
-								<i class="fa fa-google-plus" aria-hidden="true"></i>
-							</a>
-						</li> -->
 						<li>
 							<h3 class="text-light text-center">Comparte este anuncio</small></h1>
 							<a href="https://twitter.com/intent/tweet?text={{TITLE}}&url=https://localhost/post/{{ID_ARTICLE}}" target="_BLANK">
 								<i class="fa fa-twitter" aria-hidden="true"></i>
 							</a>
 						</li>
-						<!-- <li>
-							<a href="#!">
-								<i class="fa fa-youtube" aria-hidden="true"></i>
-							</a>
-						</li>
-						<li>
-							<a href="#!">
-								<i class="fa fa-instagram" aria-hidden="true"></i>
-							</a>
-						</li> -->
 					</ul>
-					<!-- <a href="#!">¿ES INAPROPIADO? REPORTAR ESTE ANUNCIO</a> -->
 				</div>
 			</div>
 		</div>
@@ -244,8 +179,6 @@
 	        tileSize: 512,
 	        zoomOffset: -1
 	    }).addTo(map);
-	
-	    //var marker = L.marker([40.43958863903831, -3.5973164885885343]).addTo(map);
 	
 	    var circle = L.circle([lat, lon], {
 	        color: 'red',

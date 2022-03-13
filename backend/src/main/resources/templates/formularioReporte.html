@@ -1,5 +1,5 @@
 {{>header}}
-	<!-- ====== Contenido de pagina ======-->
+	<!-- ====== Page content ======-->
 	<section class="section">
 		<h2 class="text-center text-light">Formulario para reportar una incidencia</h2>
 		<div class="container">
@@ -8,20 +8,6 @@
 				   
 					{{#report}}
 					<form method="post" action="/newformularioReporte/{{#id_article}}{{id_article}}{{/id_article}}" class="form-horizontal" enctype="multipart/form-data">
-						<!--
-						<h3 class="text-info">Busca la categoría donde verán tu anuncio</h3>
-						<div class="form-inline">
-							<div class="col-sm-3 control-label">
-						    	<label>¿Qué anuncias?</label>
-							</div>
-							<div class="col-sm-7">
-							  	<div class="form-group">
-							    	<input type="text" class="form-control" placeholder="Dinos que anuncias">
-							  	</div>
-							  	<button class="btn btn-default">Buscar categoría</button>
-							</div>
-						</div>
-						-->
 						<br><br>
 						<h3 class="text-info">Formulario</h3>
 						<div class="form-group">

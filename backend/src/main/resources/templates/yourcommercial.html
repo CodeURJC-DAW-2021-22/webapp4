@@ -1,12 +1,9 @@
 	{{>header}}
-	<!-- ====== Contenido de pagina ======-->
+	<!-- ====== Page content ======-->
 	{{>nav_side}}
-						  	<a href="perfil" class="list-group-item">
+						  	<a href="profile" class="list-group-item">
 						  		<i class="fa fa-user fa-fw" aria-hidden="true"></i> TU PERFIL
 						  	</a>
-						  	<!-- <a href="config" class="list-group-item">
-						  		<i class="fa fa-cogs fa-fw" aria-hidden="true"></i> CONFIGURACIÓN
-						  	</a> -->
 						  	<a href="yourcommercial" class="list-group-item active">
 						  		<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS
 						  	</a>
@@ -17,10 +14,10 @@
 						  		<i class="fa fa-heart-o fa-fw" aria-hidden="true"></i> FAVORITOS
 						  	</a>
 						  	{{#admin}}
-						  	<a href="categoriasAdmin" class="list-group-item">
+						  	<a href="category" class="list-group-item">
 								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN CATEGORÍAS
 							</a>
-							<a href="reportesAdmin" class="list-group-item">
+							<a href="reports" class="list-group-item">
 								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN REPORTES
 							</a>
 							{{/admin}}
@@ -33,7 +30,7 @@
 						<i class="fa fa-object-group fa-fw" aria-hidden="true"></i>
 						<div>TUS ANUNCIOS</div>
 					</div>
-					<!-- Contenido-->
+					<!-- Content-->
 					<div class="full-widht">
 						<i class="fa fa-th-large btn btn-default hidden-xs btn-change-post"></i>
 						<i class="fa fa-refresh btn btn-default"></i>
@@ -45,7 +42,6 @@
 					  {{#Articles}}
 						<div class="full-width post">
 							<figure class="full-width post-img">
-								<!-- Tamaño de la imagen 248x186 pixeles-->
 								<img src="/article/{{ID_ARTICLE}}/imagen" alt="" class="img-responsive">
 							</figure>
 							<div class="full-width post-info">
