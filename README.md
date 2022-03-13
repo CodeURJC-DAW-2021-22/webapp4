@@ -175,6 +175,78 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 
 ![](Screenshots%20Fase%201/DiagramaNavegacion.jpg)
 
+# Fase 2
+
+## Diagrama de Bases de datos
+
+![](ScreenshotsFase2/diagramabbdd.jpg)
+
+## Diagrama de clases y templates
+
+![](ScreenshotsFase2/diagramaClasesTemplatesWallypop.jpg)
+
+## Contribución miembros equipo
+
+### Contribución Jesús:
+
+#### Descripción textual
+
+##### Diseño base de datos
+##### Usuarios (entidad, login, registro, perfil)
+##### Entidad de favorites
+##### Securizar aplicaci?n
+##### Generar certificado jks
+##### Mapas
+##### Envío de correos electrónicos
+##### Mostrar detalle de cada artículo publicado (reservar, vender, eliminar)
+##### Migraci?n a PostgreSQL
+##### Menús html y footer
+
+#### 5 Commits más significativos:
+
+##### Registro funcionando: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/b7a6c7414f36a81cffe26e1f2402954133d6b0eb
+##### Envío de correos electrónicos: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/407ff4441023080f7d8c861946d124cefd6252cc
+##### Mapas: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/5eb75b47eb04021b5d838486af7ae37ba2f6034a
+##### Encriptado de las contrase?as: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/407ff4441023080f7d8c861946d124cefd6252cc
+##### Certificado jks propio: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/407ff4441023080f7d8c861946d124cefd6252cc
+
+#### 5 ficheros mayor participaci?n:
+
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/main/backend/src/main/java/es/codeurjc/wallypop/controller/WallypopWebController.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/backend/src/main/java/es/codeurjc/wallypop/security/WebSecurityConfig.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/backend/src/main/resources/templates/post.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/backend/src/main/java/es/codeurjc/wallypop/service/MapService.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/backend/src/main/java/es/codeurjc/wallypop/controller/UserController.java
+
+### Contribución Iván:
+
+#### Descripción textual
+
+##### He participado en la implementación de la funcionalidad de añadir nuevos art?culos (formulario, botón enviar) a la base de datos.
+##### He participado en la implementación de la funcionalidad de cargar artículos almacenados en la base de datos para mostarlos al usuario.
+##### Mostrar mensaje de Enhorabuena!... cuando un artículo es almacenado con ?xito en la base datos.
+##### Redacción y e intento de descarga de documento de T&C (Terms and Conditions)
+##### Intento de implementaci?n de paginación con AJAX
+##### Añadir datos de prueba a la base datos de art?culos (+5 categorías y +11 artículos)
+##### Realizado el diagrama de clases y templates
+
+#### 5 Commits más significativos:
+
+##### Cargar datos desde la base de datos en orden inverso: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/92fb7e7b8669327e66fa8310b898769463b86599
+##### Mensaje enhorabuena y solución de problemas: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/67e119a898c13a5df04d1d618d903c2925845e22
+##### Quitar botones paginación simple, añadir nuevo botón "Más resultados": https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/92fb7e7b8669327e66fa8310b898769463b86599
+##### Añadir progress bar: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/ac017cc0bb688609f34474c268814cb150d0620b
+##### Añadir +5 categorías y +11 art?culos a la base de datos (paso previo a la implementación de la paginación con AJAX) https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/baffa3426997521405ec57ceafe75c54dfc139d4
+
+
+#### 5 ficheros mayor participación:
+
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/FNI_Article_3/backend/src/main/java/es/codeurjc/wallypop/controller/WallypopWebController.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/FNI_Article_3/backend/src/main/java/es/codeurjc/wallypop/controller/DataBaseUsage.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/FNI_Article_3/backend/src/main/java/es/codeurjc/wallypop/service/ArticleService.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/FNI_Article_3/backend/src/main/resources/templates/adcommercial.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/FNI_Article_3/backend/src/main/resources/templates/yourcommercial.html
+
 # Intrucciones ejecución
 
 * JavaSE 17
