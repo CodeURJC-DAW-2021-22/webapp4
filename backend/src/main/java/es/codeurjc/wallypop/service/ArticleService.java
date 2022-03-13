@@ -100,4 +100,7 @@ public class ArticleService {
 		return new LinkedList<Article>();
 	}*/
 
+	public List<Article> findByTitleOrDescriptionContaining(String query) {
+		return articleRepository.findByTITLEOrDESCRIPTIONContaining(query, query);
+	}
 }

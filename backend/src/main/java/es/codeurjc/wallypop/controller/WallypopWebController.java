@@ -4,6 +4,7 @@ package es.codeurjc.wallypop.controller;
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -153,6 +154,13 @@ public class WallypopWebController {
 		return "coderebootpass";
 	} */
 
+	@RequestMapping("/search")
+	public String commercialFiltered(Model model, @RequestParam("query") String query) {
+		model.addAttribute("Articles", articleService.findByTitleOrDescriptionContaining(query));
+		model.addAttribute("lcategory", categoryservice.findAll());
+		return "commercial";
+	}
+	
 	@RequestMapping("/commercial")
 	public String commercial(Model model) {
 		model.addAttribute("Articles", articleService.findAll());
