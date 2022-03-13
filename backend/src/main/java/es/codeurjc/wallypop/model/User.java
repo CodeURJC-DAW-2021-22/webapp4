@@ -51,8 +51,8 @@ public class User {
 	@NonNull
 	@Column(name = "IS_ADMIN")
 	private boolean IS_ADMIN = false;
-	
-	@OneToMany(cascade = CascadeType.ALL , mappedBy = "USERS")
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "USERS")
 	private List<Article> ARTICLES = new LinkedList<>();
 
 	public User() {
@@ -137,7 +137,7 @@ public class User {
 	public void newArticle() {
 		N_SELL += 1;
 	}
-	
+
 	public void deleteArticle() {
 		N_SELL -= 1;
 	}
@@ -149,7 +149,7 @@ public class User {
 	public void setARTICLES(List<Article> aRTICLES) {
 		ARTICLES = aRTICLES;
 	}
-	
+
 	public List<Article> getARTICLESSold() {
 		List<Article> lResult = new LinkedList<>();
 		for (Article a : ARTICLES) {
@@ -163,7 +163,7 @@ public class User {
 	public void updateN_Sell() {
 		N_SELL = ARTICLES.size() - N_SOLD;
 	}
-	
+
 	public void sell(Boolean bool) {
 		if (bool) {
 			N_SOLD += 1;

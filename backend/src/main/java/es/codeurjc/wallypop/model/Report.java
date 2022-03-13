@@ -73,7 +73,6 @@ public class Report {
 	public String getEMAIL() {
 		return EMAIL;
 	}
-	
 
 	public void setEMAIL(String eMAIL) {
 		EMAIL = eMAIL;

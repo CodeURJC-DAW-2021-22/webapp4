@@ -36,7 +36,7 @@ public class Category {
 
 	@Column(name = "ICON")
 	private String ICON = null;
-	
+
 	@ManyToMany(mappedBy = "CATEGORYS")
 	private List<Article> ARTICLES;
 
@@ -91,6 +91,7 @@ public class Category {
 	public void setICON(String iCON) {
 		ICON = iCON;
 	}
+
 	public List<Article> getARTICLES() {
 		return ARTICLES;
 	}

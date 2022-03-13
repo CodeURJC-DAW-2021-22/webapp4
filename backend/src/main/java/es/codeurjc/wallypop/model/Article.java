@@ -28,7 +28,7 @@ public class Article {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID_ARTICLE")
 	private long ID_ARTICLE;
-	
+
 	@ManyToOne
 	@NonNull
 	@JoinColumn(name = "USERS")
@@ -37,7 +37,7 @@ public class Article {
 	@NonNull
 	@Column(name = "CITY")
 	private String CITY;
-	
+
 	@NonNull
 	@Column(name = "POSTAL_CODE")
 	private String POSTAL_CODE;
@@ -73,16 +73,16 @@ public class Article {
 	@ManyToMany
 	@JoinColumn(name = "CATEGORYS")
 	private List<Category> CATEGORYS;
-	
-	@OneToMany(cascade = CascadeType.ALL , mappedBy = "ARTICLE")
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ARTICLE")
 	private List<Report> REPORTS = new LinkedList<>();
 
 	public Article() {
 
 	}
 
-	public Article(User uSER, String tITLE, String dESCRIPTION, String cITY, String pOSTAL_CODE, float pRICE, Blob pHOTO,
-			List<Category> lISTcATEGORYS) {
+	public Article(User uSER, String tITLE, String dESCRIPTION, String cITY, String pOSTAL_CODE, float pRICE,
+			Blob pHOTO, List<Category> lISTcATEGORYS) {
 		super();
 		USERS = uSER;
 		TITLE = tITLE;
@@ -93,7 +93,6 @@ public class Article {
 		CITY = cITY;
 		POSTAL_CODE = pOSTAL_CODE;
 	}
-	
 
 	public String getCITY() {
 		return CITY;
@@ -166,7 +165,7 @@ public class Article {
 	public User getUSER() {
 		return USERS;
 	}
-	
+
 	public void setUSER(User uSER) {
 		USERS = uSER;
 	}
@@ -178,7 +177,7 @@ public class Article {
 	public int getN_VISITS() {
 		return N_VISITS;
 	}
-	
+
 	public void visit() {
 		N_VISITS += 1;
 	}
@@ -186,7 +185,7 @@ public class Article {
 	public String getPRICE_s() {
 		return String.valueOf(getPRICE());
 	}
-	
+
 	public Long getUserID() {
 		return USERS.getID_USER();
 	}
@@ -198,7 +197,7 @@ public class Article {
 	public void setPOSTAL_CODE(String pOSTAL_CODE) {
 		POSTAL_CODE = pOSTAL_CODE;
 	}
-	
+
 	public String getUserEmail() {
 		return USERS.getNAME();
 	}

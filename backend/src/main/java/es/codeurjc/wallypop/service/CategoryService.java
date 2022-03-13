@@ -15,8 +15,7 @@ public class CategoryService {
 
 	@Autowired
 	private CategoryRepository categoryrepository;
-	
-	
+
 	public Optional<Category> findById(long id) {
 		return categoryrepository.findById(id);
 	}
@@ -41,6 +40,5 @@ public class CategoryService {
 		}
 		categoryrepository.deleteById(id);
 	}
-
 
 }

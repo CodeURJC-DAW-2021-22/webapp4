@@ -31,13 +31,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
-	
+
 	@Bean
-    ServletRegistrationBean<Servlet> h2servletRegistration(){
-        ServletRegistrationBean<Servlet> registrationBean = new ServletRegistrationBean<>( new WebdavServlet());
-        registrationBean.addUrlMappings("/console/*");
-        return registrationBean;
-    }
+	ServletRegistrationBean<Servlet> h2servletRegistration() {
+		ServletRegistrationBean<Servlet> registrationBean = new ServletRegistrationBean<>(new WebdavServlet());
+		registrationBean.addUrlMappings("/console/*");
+		return registrationBean;
+	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -58,11 +58,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/errorcommercial").permitAll();
 		http.authorizeRequests().antMatchers("/post/**").permitAll();
 		// http.authorizeRequests().antMatchers("/help").permitAll();
-		
+
 		/* H2 CONSOLE ONLY FOR ADMIN */
 		http.authorizeRequests().antMatchers("/h2_console/**").permitAll();
-        http.csrf().ignoringAntMatchers("/h2-console/**");
-        http.headers().frameOptions().sameOrigin();
+		http.csrf().ignoringAntMatchers("/h2-console/**");
+		http.headers().frameOptions().sameOrigin();
 
 		// Private pages
 		/* USER */
@@ -84,7 +84,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/perfilAdmin").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/reporteAdmin").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/visualizaReporte").hasAnyRole("ADMIN");
-		
+
 		// Login form
 		http.formLogin().loginPage("/login");
 		http.formLogin().usernameParameter("username");

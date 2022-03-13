@@ -1,6 +1,5 @@
 package es.codeurjc.wallypop.controller;
 
-
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.SQLException;
@@ -24,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 
 import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
@@ -52,7 +50,7 @@ public class WallypopWebController {
 
 	@Autowired
 	private ReportService reportService;
-	
+
 	private User usLogged = null;
 
 	@ModelAttribute
@@ -93,8 +91,7 @@ public class WallypopWebController {
 		model.addAttribute("lcategory", categoryservice.findAll());
 		return "adcommercial";
 	}
-	
-	
+
 	@PostMapping("/newcommercial")
 	public String newCommercial(Model model, Article article, MultipartFile imageField) throws IOException {
 		if (!imageField.isEmpty()) {
@@ -105,27 +102,27 @@ public class WallypopWebController {
 		articleService.save(article);
 		return "yourcommercial_success";
 	}
-	
+
 	private void newArticle() {
 		usLogged.newArticle();
 		userService.save(usLogged);
 	}
-	
-	/* private void deleteArticle(Article article) {
-		article.getUSER().deleteArticle();
-		userService.save(article.getUSER());
-	} */
+
+	/*
+	 * private void deleteArticle(Article article) {
+	 * article.getUSER().deleteArticle(); userService.save(article.getUSER()); }
+	 */
 
 	@GetMapping("/categoriasAdminListado")
 	public String categoriasAdminListado(Model model) {
 		model.addAttribute("category", categoryservice.findAll());
 		return "categoriasAdminListado";
 	}
-	
+
 	@GetMapping("/categoriasAdminListado/{id}/delete")
 	public String deleteCategory(Model model, @PathVariable long id) {
 		categoryservice.delete(id);
-		//model.addAttribute("categoryd", categoryservice.findAll());
+		// model.addAttribute("categoryd", categoryservice.findAll());
 		return "redirect:/categoriasAdminListado";
 	}
 
@@ -148,10 +145,10 @@ public class WallypopWebController {
 		return "categoriasAdmin";
 	}
 
-	/* @RequestMapping("/coderebootpass")
-	public String coderebootpas() {
-		return "coderebootpass";
-	} */
+	/*
+	 * @RequestMapping("/coderebootpass") public String coderebootpas() { return
+	 * "coderebootpass"; }
+	 */
 
 	@RequestMapping("/commercial")
 	public String commercial(Model model) {
@@ -159,7 +156,7 @@ public class WallypopWebController {
 		model.addAttribute("lcategory", categoryservice.findAll());
 		return "commercial";
 	}
-	
+
 	@RequestMapping("/errorcommercial")
 	public String errorcommercial(Model model) {
 		model.addAttribute("Articles", articleService.findAll());
@@ -176,7 +173,7 @@ public class WallypopWebController {
 		model.addAttribute("lcategory", categoryservice.findAll());
 		return "commercial";
 	}
-	
+
 	@PostMapping("/commercialCategory")
 	public String commercialCategory(Model model, long lcategories) {
 		return "redirect:/commercial/" + String.valueOf(lcategories);
@@ -188,11 +185,12 @@ public class WallypopWebController {
 	}
 
 	@PostMapping("/newformularioReporte/{id_article}")
-	public String newformularioReporte(Model model, Report report, MultipartFile imageField,@PathVariable long id_article) throws IOException {
+	public String newformularioReporte(Model model, Report report, MultipartFile imageField,
+			@PathVariable long id_article) throws IOException {
 		if (!imageField.isEmpty()) {
 			report.setPROOF(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
 		}
-        report.setARTICLE(articleService.findById(id_article).get());
+		report.setARTICLE(articleService.findById(id_article).get());
 		reportService.save(report);
 		return "redirect:/commercial/";
 	}
@@ -200,15 +198,14 @@ public class WallypopWebController {
 	@RequestMapping("/{id_article}/formularioReporte")
 	public String formularioReporteID(Model model, @PathVariable long id_article) {
 		Report report = new Report();
-		model.addAttribute("id_article",id_article);
+		model.addAttribute("id_article", id_article);
 		model.addAttribute("report", report);
 		return "formularioReporte";
 	}
 
-	/*@RequestMapping("/help")
-	public String help() {
-		return "help";
-	} */
+	/*
+	 * @RequestMapping("/help") public String help() { return "help"; }
+	 */
 
 	@RequestMapping("/perfil")
 	public String perfil() {
@@ -216,9 +213,10 @@ public class WallypopWebController {
 		userService.save(usLogged);
 		return "perfil";
 	}
-	
+
 	@RequestMapping(value = "/post/{id_article}", method = RequestMethod.GET, produces = "application/json")
-	public String postID(Model model, @PathVariable long id_article, @RequestParam(required = false, defaultValue = "") String r) {
+	public String postID(Model model, @PathVariable long id_article,
+			@RequestParam(required = false, defaultValue = "") String r) {
 		Optional<Article> article = articleService.findById(id_article);
 		if (!r.isEmpty()) {
 			model.addAttribute("emailSended", true);
@@ -246,14 +244,15 @@ public class WallypopWebController {
 					visit(a);
 					model.addAttribute("ID_BUYER", id_user_logged);
 					model.addAttribute("To", a.getUserEmail());
-					model.addAttribute("Resume", "Artículo: " + a.getTITLE() + " Email: " + usLogged.getNAME() + " Tel: " + usLogged.getTEL());
+					model.addAttribute("Resume", "Artículo: " + a.getTITLE() + " Email: " + usLogged.getNAME()
+							+ " Tel: " + usLogged.getTEL());
 					model.addAttribute("Mail", new Mail());
 				}
 			} else {
 				// Visit because im not registered user
 				visit(a);
 			}
-			
+
 			model.addAttribute("Article", a);
 			model.addAttribute("User", a.getUSER());
 			return "post";
@@ -261,7 +260,7 @@ public class WallypopWebController {
 			return "errorcommercial";
 		}
 	}
-		
+
 	@PostMapping("/message/{id_article}/{id_buyer}")
 	public String sendEmail(Model model, Mail mail, @PathVariable long id_article, @PathVariable long id_buyer) {
 		try {
@@ -271,25 +270,25 @@ public class WallypopWebController {
 			return "redirect:/post/" + id_article + "/?r=1";
 		}
 	}
-	
+
 	@RequestMapping("/reserve/{id_article}/{bool}")
 	public String reservePost(Model model, @PathVariable long id_article, @PathVariable Boolean bool) {
 		articleService.reserve(id_article, bool, usLogged.getID_USER(), usLogged.isIS_ADMIN());
 		return "redirect:/post/" + id_article;
 	}
-	
+
 	@RequestMapping("/sell/{id_article}/{bool}")
 	public String sellPost(Model model, @PathVariable long id_article, @PathVariable Boolean bool) {
 		articleService.sell(id_article, bool, usLogged.getID_USER(), usLogged.isIS_ADMIN());
 		return "redirect:/post/" + id_article;
 	}
-	
+
 	@RequestMapping("/delete/{id_article}")
 	public String deletePost(Model model, @PathVariable long id_article) {
 		articleService.deletePost(id_article, usLogged.getID_USER(), usLogged.isIS_ADMIN());
 		return "redirect:/yourcommercial/";
 	}
-	
+
 	private void visit(Article a) {
 		a.visit();
 		articleService.save(a);
@@ -337,25 +336,25 @@ public class WallypopWebController {
 	public String showArticleReported(Model model, @PathVariable long id) {
 		Article article = reportService.findById(id).get().getARTICLE();
 		if (article != null) {
-			//model.addAttribute("article", article);
+			// model.addAttribute("article", article);
 			return "/post/" + article.getID_ARTICLE();
 		} else {
 			return "/VisualizaReporte/{id}";
 		}
 
 	}
-	
+
 	@GetMapping("/VisualizaReporte/{id}/delete")
 	public String deleteReport(Model model, @PathVariable long id) {
 		reportService.delete(id);
 		model.addAttribute("report", reportService.findAll());
 		return "reportesAdmin";
 	}
-	
+
 	@GetMapping("/VisualizaReporte/{id}/deleteArticle")
 	public String deleteArticle(Model model, @PathVariable long id) {
-		long idArticle = reportService.findById(id).get().getARTICLE().getID_ARTICLE(); 
-		articleService.delete(idArticle); 
+		long idArticle = reportService.findById(id).get().getARTICLE().getID_ARTICLE();
+		articleService.delete(idArticle);
 		model.addAttribute("report", reportService.findAll());
 		return "reportesAdmin";
 	}
@@ -410,6 +409,5 @@ public class WallypopWebController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-
 
 }

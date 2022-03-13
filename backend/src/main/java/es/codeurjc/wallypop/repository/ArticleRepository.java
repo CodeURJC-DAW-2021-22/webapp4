@@ -6,10 +6,18 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import es.codeurjc.wallypop.model.Article;
-import es.codeurjc.wallypop.model.User;
+import es.codeurjc.wallypop.model.Category;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
-	/*Optional<List<Article>> findByReserved(boolean RESERVED);
-	Optional<List<Article>> findBySold(boolean SOLD);
-	Optional<List<Article>> findByUser(User USER);*/
+	List<Article> findByTITLEContainingIgnoreCaseOrDESCRIPTIONContainingIgnoreCaseOrCITYContainingIgnoreCaseAndSOLDFalse(
+			String title, String description, String city);
+
+	List<Article> findByTITLEContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalse(
+			String title, String city, String description, String city2);
+
+	List<Article> findByCATEGORYS(Category cat);
+
+	List<Article> findBySOLDFalse();
+
+	List<Article> findBySOLDTrue();
 }

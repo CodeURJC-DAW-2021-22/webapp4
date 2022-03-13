@@ -20,7 +20,7 @@ public class ArticleService {
 
 	@Autowired
 	private CategoryService categoryService;
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
@@ -39,28 +39,28 @@ public class ArticleService {
 	public void save(Article article) {
 		articleRepository.save(article);
 	}
-	
+
 	public void delete(long id) {
 		articleRepository.deleteById(id);
 	}
 
 	public void deletePost(long id, Long id_user, boolean admin) {
-		Article a = findById(id).get(); 
+		Article a = findById(id).get();
 		if (a.getUserID() == id_user || admin) {
 			delete(id);
 		}
 	}
-	
+
 	public void reserve(long id, boolean bool, long id_user, boolean admin) {
-		Article a = findById(id).get(); 
+		Article a = findById(id).get();
 		if (a.getUserID() == id_user || admin) {
 			a.setRESERVED(bool);
 			save(a);
 		}
 	}
-	
+
 	public void sell(long id, boolean bool, long id_user, boolean admin) {
-		Article a = findById(id).get(); 
+		Article a = findById(id).get();
 		User user = userRepository.findById(id_user).get();
 		if (a.getUserID() == id_user || admin) {
 			a.setSOLD(bool);
@@ -83,21 +83,15 @@ public class ArticleService {
 		}
 		return lResult;
 	}
-	
-	/*public List<Article> findReserved(Boolean bool) {
-		Optional<List<Article>> lResult = articleRepository.findByReserved(bool);
-		if (lResult.isPresent()) {
-			return lResult.get();
-		}
-		return new LinkedList<Article>();
-	}
-	
-	public List<Article> findSold(Boolean bool) {
-		Optional<List<Article>> lResult = articleRepository.findBySold(bool);
-		if (lResult.isPresent()) {
-			return lResult.get();
-		}
-		return new LinkedList<Article>();
-	}*/
+
+	/*
+	 * public List<Article> findReserved(Boolean bool) { Optional<List<Article>>
+	 * lResult = articleRepository.findByReserved(bool); if (lResult.isPresent()) {
+	 * return lResult.get(); } return new LinkedList<Article>(); }
+	 * 
+	 * public List<Article> findSold(Boolean bool) { Optional<List<Article>> lResult
+	 * = articleRepository.findBySold(bool); if (lResult.isPresent()) { return
+	 * lResult.get(); } return new LinkedList<Article>(); }
+	 */
 
 }
