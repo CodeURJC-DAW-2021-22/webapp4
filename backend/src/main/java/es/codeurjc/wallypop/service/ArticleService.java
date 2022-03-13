@@ -45,6 +45,10 @@ public class ArticleService {
 		return articleRepository.findByCATEGORYS(categoryService.findById(id).get());
 	}
 
+	public List<Article> findByCITYContainingIgnoreCaseAndSOLDFalse(String city) {
+		return articleRepository.findByCITYContainingIgnoreCaseAndSOLDFalse(city);
+	}
+
 	public Optional<Article> findById(long id) {
 		return articleRepository.findById(id);
 	}
@@ -62,6 +66,12 @@ public class ArticleService {
 		return articleRepository
 				.findByTITLEContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalse(
 						query, city, query, city);
+	}
+
+	public List<Article> findByTITLEContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndSOLDFalse(
+			String query) {
+		return articleRepository
+				.findByTITLEContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndSOLDFalse(query, query);
 	}
 
 	public List<Article> findByTitleContainingOrDescriptionContainingOrCITYContaining(String query, String city) {
