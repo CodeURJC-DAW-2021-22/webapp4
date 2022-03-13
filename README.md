@@ -250,8 +250,10 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 # Intrucciones ejecución
 
 * JavaSE 17
+* Spring Boot
+* Docker (Base de datos PostgreSQL): docker run -d --name postgres-server -p 5433:5432 -e "POSTGRES_PASSWORD=password" postgres
 
-## Dependencias: 
+## Dependencias Maven: 
 * **org.springframework.boot:**
    * spring-boot-starter-data-jpa
    * spring-boot-starter-mustache
