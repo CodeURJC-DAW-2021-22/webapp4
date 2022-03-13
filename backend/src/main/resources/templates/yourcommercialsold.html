@@ -36,23 +36,7 @@
 						<i class="fa fa-angle-right btn btn-default"></i>
 					</div>
 					
-					<div class="full-width container-post">
-					
-					  {{#Articles}}
-						<div class="full-width post">
-							<figure class="full-width post-img">
-								<img src="article/{{ID_ARTICLE}}/imagen" alt="" class="img-responsive">
-							</figure>
-							<div class="full-width post-info">
-								<a href="/post/{{ID_ARTICLE}}" class="full-width post-info-title">{{TITLE}}</a>
-								<p class="full-width post-info-price">{{PRICE_s}}€</p>
-								<span class="post-info-zone">{{CITY}}</span>
-								<span class="post-info-date">{{DATE}}</span>
-								<i class="fa fa-heart-o post-info-like"></i>
-							</div>
-						</div>
-						{{/Articles}}
-					</div>
+					{{>article}}
 					
 					<div class="clearfix"></div>
 					<nav class="text-center">
