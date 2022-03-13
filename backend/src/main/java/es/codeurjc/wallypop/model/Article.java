@@ -30,13 +30,14 @@ public class Article {
 	private long ID_ARTICLE;
 
 	@ManyToOne
+	@NonNull
 	@JoinColumn(name = "USERS")
 	private User USERS;
 
 	@NonNull
 	@Column(name = "CITY")
 	private String CITY;
-	
+
 	@NonNull
 	@Column(name = "POSTAL_CODE")
 	private String POSTAL_CODE;
@@ -46,8 +47,8 @@ public class Article {
 	private String TITLE;
 
 	@NonNull
-	@Column(name = "DESCRIPTION")
-	private String DESCRIPTION;
+	@Column(name = "DESCRIPTION", columnDefinition = "text")
+	private String DESCRIPTION = null;
 
 	@NonNull
 	@Column(name = "PRICE")
@@ -72,16 +73,16 @@ public class Article {
 	@ManyToMany
 	@JoinColumn(name = "CATEGORYS")
 	private List<Category> CATEGORYS;
-	
-	@OneToMany(cascade = CascadeType.ALL , mappedBy = "ARTICLE")
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ARTICLE")
 	private List<Report> REPORTS = new LinkedList<>();
 
 	public Article() {
 
 	}
 
-	public Article(User uSER, String tITLE, String dESCRIPTION, String cITY, String pOSTAL_CODE, float pRICE, Blob pHOTO,
-			List<Category> lISTcATEGORYS) {
+	public Article(User uSER, String tITLE, String dESCRIPTION, String cITY, String pOSTAL_CODE, float pRICE,
+			Blob pHOTO, List<Category> lISTcATEGORYS) {
 		super();
 		USERS = uSER;
 		TITLE = tITLE;
@@ -92,74 +93,77 @@ public class Article {
 		CITY = cITY;
 		POSTAL_CODE = pOSTAL_CODE;
 	}
-	
+
+	public List<Category> getCATEGORYS() {
+		return CATEGORYS;
+	}
 
 	public String getCITY() {
 		return CITY;
 	}
 
-	public void setCITY(String cITY) {
-		CITY = cITY;
-	}
-
-	public String getTITLE() {
-		return TITLE;
-	}
-
-	public void setTITLE(String tITLE) {
-		TITLE = tITLE;
+	public Date getDATE() {
+		return DATE;
 	}
 
 	public String getDESCRIPTION() {
 		return DESCRIPTION;
 	}
 
-	public void setDESCRIPTION(String dESCRIPTION) {
-		DESCRIPTION = dESCRIPTION;
+	public long getID_ARTICLE() {
+		return ID_ARTICLE;
 	}
 
-	public float getPRICE() {
-		return PRICE;
-	}
-
-	public void setPRICE(float pRICE) {
-		PRICE = pRICE;
-	}
-
-	public boolean isRESERVED() {
-		return RESERVED;
-	}
-
-	public void setRESERVED(boolean rESERVED) {
-		RESERVED = rESERVED;
-	}
-
-	public boolean isSOLD() {
-		return SOLD;
-	}
-
-	public void setSOLD(boolean sOLD) {
-		SOLD = sOLD;
+	public int getN_VISITS() {
+		return N_VISITS;
 	}
 
 	public Blob getPHOTO() {
 		return PHOTO;
 	}
 
-	public void setPHOTO(Blob pHOTO) {
-		PHOTO = pHOTO;
+	public String getPOSTAL_CODE() {
+		return POSTAL_CODE;
 	}
 
-	public List<Category> getCATEGORYS() {
-		return CATEGORYS;
+	public float getPRICE() {
+		return PRICE;
+	}
+
+	public String getPRICE_s() {
+		return String.valueOf(getPRICE());
+	}
+
+	public String getTITLE() {
+		return TITLE;
+	}
+
+	public User getUSER() {
+		return USERS;
+	}
+
+	public String getUserEmail() {
+		return USERS.getNAME();
+	}
+
+	public Long getUserID() {
+		return USERS.getID_USER();
+	}
+
+	public boolean isRESERVED() {
+		return RESERVED;
+	}
+
+	public boolean isSOLD() {
+		return SOLD;
 	}
 
 	public void setCATEGORYS(List<Category> cATEGORYS) {
 		CATEGORYS = cATEGORYS;
 	}
 
-	public long getID_ARTICLE() {
-		return ID_ARTICLE;
+	public void setCITY(String cITY) {
+		CITY = cITY;
 	}
 
 	public User getUSER() {
@@ -168,36 +172,43 @@ public class Article {
 	
 	public void setUSER(User uSER) {
 		USERS = uSER;
+	public void setDESCRIPTION(String dESCRIPTION) {
+		DESCRIPTION = dESCRIPTION;
 	}
 
-	public Date getDATE() {
-		return DATE;
-	}
-
-	public int getN_VISITS() {
-		return N_VISITS;
-	}
-	
-	public void visit() {
-		N_VISITS += 1;
-	}
-
-	public String getPRICE_s() {
-		return String.valueOf(getPRICE());
-	}
-	
-	public Long getUserID() {
-		return USERS.getID_USER();
-	}
-
-	public String getPOSTAL_CODE() {
-		return POSTAL_CODE;
+	public void setPHOTO(Blob pHOTO) {
+		PHOTO = pHOTO;
 	}
 
 	public void setPOSTAL_CODE(String pOSTAL_CODE) {
 		POSTAL_CODE = pOSTAL_CODE;
 	}
+
+	public void setPRICE(float pRICE) {
+		PRICE = pRICE;
+	}
+
+	public void setRESERVED(boolean rESERVED) {
+		RESERVED = rESERVED;
+	}
+
+	public void setSOLD(boolean sOLD) {
+		SOLD = sOLD;
+	}
 	
-	
+	public Long getUserID() {
+		return USERS.getID_USER();
+}
+	public void setTITLE(String tITLE) {
+		TITLE = tITLE;
+	}
+
+	public void setUSER(User uSER) {
+		USERS = uSER;
+	}
+
+	public void visit() {
+		N_VISITS += 1;
+	}
 
 }

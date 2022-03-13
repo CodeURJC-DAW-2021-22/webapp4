@@ -9,11 +9,11 @@
 						<h3 class="text-info">Busca la categoría donde verán tu anuncio</h3>
 						<div class="form-group">
 							<div class="col-sm-3 control-label">
-						    	<label>¿Qué anuncias?</label>
+						    	<label>¿Qué anuncias?<small>Pulsando Ctrl puedes seleccionar varias catgorías</small></label>
 							</div>
 							<div class="col-sm-7">
 							  	<div class="form-group">
-							    	<select name="CATEGORY" multiple>
+							    	<select name="CATEGORY" class="form-control" multiple>
 							  			{{#lcategory}}
 										<option name="CATEGORYS" value="{{ID_CATEGORY}}">{{TITLE}}</option>
 										{{/lcategory}}

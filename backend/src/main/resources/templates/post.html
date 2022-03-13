@@ -1,32 +1,51 @@
 	{{>header}}
 	<!-- ====== Contenido de pagina ======-->
 	<section class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
-					<form action="commercial" class="form-inline text-center">
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" placeholder="Estoy buscando...">
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" placeholder="Ciudad, Provincia, Distrito...">
-						</div>
-						<button type="submit" class="btn btn-danger btn-lg">BUSCAR</button>
-					</form>
-				</div>
-			</div>
-		</div>
+		{{>search}}
 		<hr>
 		{{#Article}}
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-8">
 					<ol class="breadcrumb"> <!-- Mostrar todas las categorías a las que pertenece el artículo -->
-					  	<li><a href="#">Vehículos</a></li>
-					  	<li><a href="#">Marca</a></li>
-					  	<li><a href="#">Modelo</a></li>
+					  	{{#CATEGORYS}}
+					  	<li><a href="/commercial/{{ID_CATEGORY}}">{{TITLE}}</a></li>
+					  	{{/CATEGORYS}}
 					  	<li  class="active">Id: #{{ID_ARTICLE}}</li>
 					</ol>
+					{{#RESERVED}}
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="alert alert-info" role="alert">
+		  						<center>
+		  							<b>Este artículo se encuentra reservado</b>
+		  						</center>
+							</div>
+						</div>
+					</div>
+					{{/RESERVED}}
+					{{#SOLD}}
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="alert alert-success" role="alert">
+		  						<center>
+		  							<b>Artículo vendido</b>
+		  						</center>
+							</div>
+						</div>
+					</div>
+					{{/SOLD}}
+					{{#emailSended}}
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="alert alert-success" role="alert">
+		  						<center>
+		  							<b>Correo enviado correctamente</b>
+		  						</center>
+							</div>
+						</div>
+					</div>
+					{{/emailSended}}
 					<div id="slider-commercial" class="carousel slide" data-ride="carousel">
 					  	<!-- <ol class="carousel-indicators">
 					    	<li data-target="#slider-commercial" data-slide-to="0" class="active"></li>
@@ -49,7 +68,7 @@
 					  	</a> -->
 					</div>
 					<div class="col-xs-12">
-				  		<center><img width="100%" height="auto" src="/article/{{ID_ARTICLE}}/imagen" alt=""></center>
+				  		<center><img width="500px" height="auto" src="{{^sample_img}}/article/{{ID_ARTICLE}}/imagen{{/sample_img}}{{#sample_img}}/assets/img/sample_image.png{{/sample_img}}" alt=""></center>
 					 </div>
 					<h3>Descripción: </h3>
 					<p class="lead text-justify">					
@@ -97,7 +116,9 @@
 						<div>
 							<p class="full-width lead">{{FULL_NAME}}</p>
 							<!-- <p class="full-width lead">{{#User}}{{NAME}}{{/User}}</p> -->
+							{{#logged}}
 							<p class="full-width"><i class="fa fa-mobile" aria-hidden="true"></i> {{TEL}}</p>
+							{{/logged}}
 						</div>
 						{{/User}}
 					</div>
@@ -108,13 +129,51 @@
 					<a href="/addFavorite/{{#Article}}{{ID_ARTICLE}}{{/Article}}" class="btn btn-success btn-block" style="background-color: rgb(225, 15, 15);">FAVORITOS ♡</a>
 					{{/Logged}}
 					{{#Owner}}
-					<a href="#!" class="btn btn-primary btn-block">RESERVAR</a>
-					<a href="#!" class="btn btn-primary btn-block">VENDIDO</a>
-					<a href="#!" class="btn btn-danger btn-block">ELIMINAR</a>
+					{{^SOLD}}
+					{{^RESERVED}}
+					<a href="/reserve/{{ID_ARTICLE}}/1" class="btn btn-primary btn-block">RESERVAR</a>
+					{{/RESERVED}}
+					{{#RESERVED}}
+					<a href="/reserve/{{ID_ARTICLE}}/0" class="btn btn-primary btn-block">ANULAR RESERVAR</a>
+					{{/RESERVED}}
+					{{/SOLD}}
+					{{^SOLD}}
+					<a href="/sell/{{ID_ARTICLE}}/1" class="btn btn-primary btn-block">VENDIDO</a>
+					{{/SOLD}}
+					{{#SOLD}}
+					<a href="/sell/{{ID_ARTICLE}}/0" class="btn btn-primary btn-block">ANULAR VENTA</a>
+					{{/SOLD}}
+					<a href="/delete/{{ID_ARTICLE}}" class="btn btn-danger btn-block">ELIMINAR</a>
 					{{/Owner}}
+					{{^Owner}}
+					<a class="btn btn-success btn-block" data-toggle="collapse" href="#collapseEmail" role="button" aria-expanded="false" aria-controls="collapseExample">ENVIAR MENSAJE</a>
+					<a href="tel:{{#User}}{{TEL}}{{/User}}" class="btn btn-success btn-block">LLAMAR</a>
+					<div class="collapse" id="collapseEmail">
+					  <div class="card card-body">
+					  	<br>
+					    <form method="post" action="/message/{{ID_ARTICLE}}/{{ID_BUYER}}" class="form-horizontal" enctype="multipart/form-data">
+						    <h3 class="text-info">Envía tu mensaje</h3>
+						    <input type="hidden" name="to" value="{{To}}"/>
+						    <input type="hidden" name="resume" value="{{Resume}}"/>
+						    <div class="form-group">
+						        <label class="col-sm-3 control-label">Mensaje</label>
+						        <div class="col-sm-7">
+						            <textarea class="form-control input-lg" rows="3" placeholder="Mensaje" NAME ="message" required=""></textarea>
+						        </div>
+						    </div>
+						    <input type="hidden" name="_csrf" value="{{token}}"/>
+						    <p class="text-center">
+						        <input  type="submit" value="Enviar" class="btn btn-info"></input>
+						    </p>
+						</form>
+					  </div>
+					</div>
+					{{/Owner}}
+					{{/logged}}
 					<p class="lead text-light" style="margin: 7px 0; background-color: #F5F5F5;">
 						<i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> {{CITY}} ({{POSTAL_CODE}})
 					</p>
+					<div id="map"></div>
 					</br>
 					<a href="/{{ID_ARTICLE}}/formularioReporte">¿ES INAPROPIADO? REPORTAR ESTE ANUNCIO</a>
 					<div class="page-header">
@@ -159,4 +218,44 @@
 		</div>
 		{{/Article}}
 	</section>
+	{{#MapAPI}}
+	 <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        .leaflet-container {
+            height: 400px;
+            width: 600px;
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+	<script>
+	// Errors because of mustache, works ok in html
+		var lat = {{lat}};
+		var lon = {{lon}};
+	    var map = L.map('map').setView([lat, lon], 13);
+	
+	    var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+	        maxZoom: 18,
+	        attribution: 'Map data &copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+	            'Imagery © <a target="_blank" href="https://www.mapbox.com/">Mapbox</a>',
+	        id: 'mapbox/streets-v11',
+	        tileSize: 512,
+	        zoomOffset: -1
+	    }).addTo(map);
+	
+	    //var marker = L.marker([40.43958863903831, -3.5973164885885343]).addTo(map);
+	
+	    var circle = L.circle([lat, lon], {
+	        color: 'red',
+	        fillColor: '#f03',
+	        fillOpacity: 0.5,
+	        radius: 700
+	    }).addTo(map);
+	
+	
+	</script>
+	{{/MapAPI}}
 	{{>footer}}

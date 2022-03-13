@@ -40,6 +40,11 @@ public class Favorites {
 		USERS = uSER;
 		ARTICLE = aRTICLE;
 	}
+
+	public Article getARTICLE() {
+		return ARTICLE;
+	}
+
 	public long getID_FAVORITE() {
 		return ID_FAVORITE;
 	}
@@ -58,6 +63,10 @@ public class Favorites {
 
 	public void setARTICLE(Article aRTICLE) {
 		ARTICLE = aRTICLE;
+	}
+
+	public void setUSER(User uSER) {
+		USER = uSER;
 	}
 
 }
