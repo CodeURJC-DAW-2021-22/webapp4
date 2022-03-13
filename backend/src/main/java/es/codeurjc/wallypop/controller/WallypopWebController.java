@@ -136,6 +136,23 @@ public class WallypopWebController {
 		return "coderebootpass";
 	}
 
+	
+	@RequestMapping("/modifyDataUser")
+	public String modifyDataUser(Model model) {
+		model.addAttribute("user", new User());
+		return "modifyDataUser";
+	}
+	
+	@PostMapping("/modifyData")
+	public String modifyData(Model model, User user) {
+		User user2 = userService.findById(usLogged.getID_USER()).get();
+		user2.setFULL_NAME(user.getFULL_NAME());
+		user2.setPASSWORD(userService.encodePassword(user.getPASSWORD()));
+		user2.setTEL(user.getTEL());
+		userService.save(user2);
+		return "modifyDataUser";
+	}
+	
 	@RequestMapping("/commercial")
 	public String commercial(Model model) {
 		model.addAttribute("Articles", articleService.findAll());

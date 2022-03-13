@@ -1,0 +1,53 @@
+
+{{>header}}	<!-- ====== Contenido de pagina ======-->
+	<section class="section">
+		<h2 class="text-center text-light">Modifica tus datos</h2>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
+					<form method="post" action=/modifyData class="form-horizontal">
+						<h3 class="text-info">Modifica tus datos</h3>
+						<div class="form-group">
+						    <label  class="col-sm-3 control-label">Nombre</label>
+						    <div class="col-sm-7">
+						      	<input type="text" class="form-control" placeholder="Nombre" name="FULL_NAME">
+						    </div>
+						</div>
+						<!--<div class="form-group">
+						    <label class="col-sm-3 control-label">Email</label>
+						    <div class="col-sm-7">
+						    	<input type="email" class="form-control" rows="3" placeholder="Email" name="NAME">
+						    </div>
+						</div>-->
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Nueva contraseña</label>
+						    <div class="col-sm-7">
+						    	<input type="password" class="form-control" placeholder="Nueva Contraseña" name="PASSWORD">
+						    </div>
+						</div>
+						<!--
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Confirmar contraseña</label>
+						    <div class="col-sm-7">
+						      	<input type="password" class="form-control" placeholder="Confirmar Contraseña" name="cITY">
+						    </div>
+						</div>
+						-->
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Telefono</label>
+						    <div class="col-sm-7">
+						      	<input type="text" class="form-control" placeholder="Telefono" name="TEL">
+						    </div>
+						</div>
+						<br><br>
+						<input type="hidden" name="_csrf" value="{{token}}"/>
+						<p class="text-center">
+							<input  type="submit" value="Guardar" class="btn btn-info"></input>
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</section>
+	{{>footer}}
