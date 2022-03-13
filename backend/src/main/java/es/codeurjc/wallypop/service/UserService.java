@@ -18,23 +18,23 @@ public class UserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	public void save(User us) {
-		userRepository.save(us);
-	}
-
 	public String encodePassword(String password) {
 		return passwordEncoder.encode(password);
 	}
 
-	public boolean userExists(User us) {
-		return userRepository.findByNAME(us.getNAME()).isPresent();
+	public Optional<User> findById(long id) {
+		return userRepository.findById(id);
 	}
 
 	public Optional<User> findByNAME(String name) {
 		return userRepository.findByNAME(name);
 	}
 
-	public Optional<User> findById(long id) {
-		return userRepository.findById(id);
+	public void save(User us) {
+		userRepository.save(us);
+	}
+
+	public boolean userExists(User us) {
+		return userRepository.findByNAME(us.getNAME()).isPresent();
 	}
 }

@@ -1,0 +1,55 @@
+	{{>header}}
+	<!-- ====== Page content ======-->
+	{{>nav_side}}
+						  	<a href="profile" class="list-group-item active">
+						  		<i class="fa fa-user fa-fw" aria-hidden="true"></i> TU PERFIL
+						  	</a>						  	
+						  	<a href="yourcommercial" class="list-group-item">
+						  		<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS
+						  	</a>
+							<a href="yourcommercialsold" class="list-group-item">
+								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS VENDIDOS
+							</a>
+						  	<a href="favorites" class="list-group-item">
+						  		<i class="fa fa-heart-o fa-fw" aria-hidden="true"></i> FAVORITOS
+						  	</a>
+						  	{{#admin}}
+						  	<a href="category" class="list-group-item">
+								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN CATEGORÍAS
+							</a>
+							<a href="reports" class="list-group-item">
+								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN REPORTES
+							</a>
+							{{/admin}}
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-8 col-md-9">
+					<div class="full-width bar-info-user">
+						<i class="fa fa-user fa-fw" aria-hidden="true"></i>
+						<div>TU PERFIL</div>
+					</div>
+					<!-- Content-->
+					<div class="full-width" style="padding: 15px; border: 1px solid #E1E1E1;">
+						<form action="/updateProfile" method="POST">
+							<div class="form-group">
+								<h3>Nombre: {{FULL_NAME}}</h3>
+							</div>
+							<div class="form-group">
+								<h3>Contacto:</h3>
+								<h4> - Correo electrónico: {{NAME}}</h4>
+							</div>
+							<div class="form-group">
+								<h4> - Teléfono: {{TEL}}<small> (Éste será el teléfono de contacto en tus anuncios)</small></h4>
+							</div>
+							<br>
+                            <div class="form-group">
+							  		<a href="modifyDataUser">Modificar Datos</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{{>footer}}

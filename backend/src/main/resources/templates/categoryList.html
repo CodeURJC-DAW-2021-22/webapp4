@@ -1,20 +1,23 @@
 {{>header}}
-	<!-- ====== Contenido de pagina ======-->
+	<!-- ====== Page content ======-->
 	{{>nav_side}}
-						  	<a href="perfil" class="list-group-item">
+						  	<a href="profile" class="list-group-item">
 						  		<i class="fa fa-user fa-fw" aria-hidden="true"></i> TU PERFIL
 						  	</a>
 							<a href="yourcommercial" class="list-group-item">
 								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS
 							</a>
+							<a href="yourcommercialsold" class="list-group-item">
+								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS VENDIDOS
+							</a>
 						  	<a href="favorites" class="list-group-item">
 						  		<i class="fa fa-heart-o fa-fw" aria-hidden="true"></i> FAVORITOS
 						  	</a>
 						  	{{#admin}}
-						  	<a href="categoriasAdmin" class="list-group-item active">
+						  	<a href="category" class="list-group-item active">
 								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN CATEGORÍAS
 							</a>
-							<a href="reportesAdmin" class="list-group-item">
+							<a href="reports" class="list-group-item">
 								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN REPORTES
 							</a>
 							{{/admin}}
@@ -22,13 +25,13 @@
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-8 col-md-9">
-					<!-- Contenido-->
+					<!-- Content-->
 					<div class="col-xs-12 col-sm-8 col-md-9">
 					<div class="full-width bar-info-user">
 						<i class="fa fa-object-group fa-fw" aria-hidden="true"></i>
 						<div>CATEGORÍAS</div>
 					</div>
-					<!-- Contenido-->
+					<!-- Content-->
 					<div class="full-widht">
 						<i class="fa fa-th-large btn btn-default hidden-xs btn-change-post"></i>
 						<i class="fa fa-refresh btn btn-default"></i>
@@ -38,14 +41,12 @@
 					    {{#category}}
 						<div class="full-width post">
 							<figure class="full-width post-img">
-								<!-- Tamaño de la imagen 248x186 pixeles-->
 								<img src="category/{{ID_CATEGORY}}/imagen" alt="" class="img-responsive">
 							</figure>
 							<div class="full-width post-info">
-								<a href="/commercial/{{ID_CATEGORY}}" class="full-width post-info-price">{{TITLE}}</a> <!-- QUITAR info price -->
-								<span class="post-info-zone">{{DESCRIPTION}}</span> <!-- QUITAR info zone -->
-								<span class="post-info-date">x</span> <!-- QUITAR info date -->
-								<!-- <i class="fa fa-heart-o post-info-like"></i> -->
+								<a href="/commercial/{{ID_CATEGORY}}" class="full-width post-info-price">{{TITLE}}</a>
+								<span class="post-info-zone">{{DESCRIPTION}}</span>
+								<a class="post-info-date" href="/categoryList/{{ID_CATEGORY}}/delete">x</a>
 							
 							</div>
 						</div>

@@ -58,37 +58,36 @@ public class Report {
 		DESCRIPTION = dESCRIPTION;
 	}
 
-	public long getID_REPORT() {
-		return ID_REPORT;
-	}
-
 	public Article getARTICLE() {
 		return ARTICLE;
 	}
 
-	public void setARTICLE(Article aRTICLE) {
-		ARTICLE = aRTICLE;
+	public String getDESCRIPTION() {
+		return DESCRIPTION;
 	}
 
 	public String getEMAIL() {
 		return EMAIL;
 	}
-	
 
-	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
-	}
-
-	public void setDESCRIPTION(String dESCRIPTION) {
-		DESCRIPTION = dESCRIPTION;
+	public long getID_REPORT() {
+		return ID_REPORT;
 	}
 
 	public Blob getPROOF() {
 		return PROOF;
 	}
 
-	public String getDESCRIPTION() {
-		return DESCRIPTION;
+	public void setARTICLE(Article aRTICLE) {
+		ARTICLE = aRTICLE;
+	}
+
+	public void setDESCRIPTION(String dESCRIPTION) {
+		DESCRIPTION = dESCRIPTION;
+	}
+
+	public void setEMAIL(String eMAIL) {
+		EMAIL = eMAIL;
 	}
 
 	public void setPROOF(Blob pROOF) {

@@ -11,7 +11,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 </head>
 <body>
-	<!-- ====== Barra de navegacion ======-->
+	<!-- ====== Nav Bar ======-->
 	<div class="full-width NavBar">
 		<div class="full-width text-semi-bold NavBar-logo">
 			<a href="/">
@@ -45,14 +45,6 @@
 						    <input type="hidden" name="_csrf" value="{{token}}" />
 						</form>
 					</center></p>
-					<!--<div class="nav navbar-nav navbar-right">
-  						<ul class="nav navbar-nav">
-    						<li><form action="/logout" method="post">
-								<button class="btn btn-default navbar-btn" type="submit">Log Out</button> -->
-    						    <!-- <input type="hidden" name="_csrf" value="{{token}}" /> -->
-							<!-- </form></li>
-						</ul>
-					</div> -->
 					{{/logged}}
 				</div>
 				<li>
@@ -65,36 +57,26 @@
 						<i class="fa fa-object-group fa-fw hidden-md hidden-lg" aria-hidden="true"></i> ANUNCIOS
 					</a>
 				</li>
+				<li>
+					<a href="/sold">
+						<i class="fa fa-object-group fa-fw hidden-md hidden-lg" aria-hidden="true"></i> ANUNCIOS VENDIDOS
+					</a>
+				</li>
 				{{#logged}}
 				<li>
 					<a href="/adcommercial">
 						<i class="fa fa-pencil-square-o fa-fw hidden-md hidden-lg" aria-hidden="true"></i>  PON TU ANUNCIO
 					</a>
 				</li>
-				<!-- <li>
-					<a href="/yourcommercial">
-						<i class="fa fa-object-group fa-fw hidden-md hidden-lg" aria-hidden="true"></i> TUS ANUNCIOS
-					</a>
-				</li> -->
-				<!-- <li>
-					<a href="messages">
-						<i class="fa fa-commenting-o fa-fw hidden-md hidden-lg" aria-hidden="true"></i> MENSAJES
-					</a>
-				</li> -->
 				<li>
 					<a href="/favorites">
 						<i class="fa fa-heart-o fa-fw hidden-md hidden-lg" aria-hidden="true"></i> FAVORITOS
 					</a>
 				</li>
 				{{/logged}}
-				<!--<li>
-					<a href="/help">
-						<i class="fa fa-life-ring fa-fw hidden-md hidden-lg" aria-hidden="true"></i> AYUDA
-					</a>
-				</li>-->
 				{{#logged}}
 				<li class="hidden-xs hidden-sm">
-					<a href="/perfil">
+					<a href="/profile">
 						{{FULL_NAME}} <i class="fa fa-user NavBar-Nav-icon" aria-hidden="true"></i>
 					</a>
 				</li>
@@ -115,27 +97,14 @@
 						<i class="fa fa-user NavBar-Nav-icon" aria-hidden="true"></i>
 					</a>
 				</li>
-				<!-- 
-					<li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!">INICIAR SESIÓN</a></li>
-					<li class="hidden-xs hidden-sm"><i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i></li>
-				-->
 				{{/logged}}
 				{{#logged}} 
-    						<!-- <li>{{NAME}}</li> -->
-    						<!-- <li><form action="/logout" method="post">
-								<button class="btn btn-default navbar-btn" type="submit">Log Out</button> -->
-							<!-- </form></li> -->
 				<li>
 					<form class="visible-md visible-lg" action="/logout" method="post">
 						<button class="btn btn-default navbar-btn" type="submit">Log Out</button>
 						<input type="hidden" name="_csrf" value="{{token}}" />
 					</form>
 				</li>
-							<!-- <li>
-								<a href="/logout">
-									<i class="fa fa-life-ring fa-fw hidden-md hidden-lg" aria-hidden="true"></i> Cerrar sesión
-								</a>
-							</li> -->
 						</ul>
 					</div>
 				{{/logged}}
@@ -156,7 +125,6 @@
 					<div class="form-group">
 					    <input type="password" class="form-control input-lg" placeholder="Contraseña" required="">
 					</div>
-					<!-- <a class="text-left text-light" href="#!">No recuerdo mi contraseña</a> -->
 					<button class="btn btn-danger btn-lg" type="submit">INICIAR SESIÓN</button>
 				</form>
 				<div class="full-width divider"></div>
@@ -166,7 +134,7 @@
 		</div>
 	</section>
 	{{/logged}}
-	<!-- ====== Buscador movil ======-->
+	<!-- ====== Mobile Search Bar ======-->
 	<section class="full-width hidden-md hidden-lg Search-mobile">
 		<form action="commercial" style="padding-top: 15px;">
 			<div class="form-group">

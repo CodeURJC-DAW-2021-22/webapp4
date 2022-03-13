@@ -1,5 +1,5 @@
 {{>header}}
-	<!-- ====== Contenido de pagina ======-->
+	<!-- ====== Page content ======-->
 	<header class="full-width header-index">
 		<div class="container">
 			<div class="row">
@@ -11,21 +11,7 @@
 			</div>
 		</div>
 		<br><br>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
-					<form action="commercial" class="form-inline text-center">
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" placeholder="Estoy buscando...">
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" placeholder="Ciudad, Provincia, Distrito...">
-						</div>
-						<button type="submit" class="btn btn-danger btn-lg">BUSCAR</button>
-					</form>
-				</div>
-			</div>
-		</div>
+		{{>search}}
 	</header>
 	<section class="section">
 		<h2 class="text-center text-light">Todas las categorías que imaginas</h2>
@@ -33,8 +19,7 @@
 			<div class="full-width container-category">
 				{{#Categories}}
                  <a href="/commercial/{{ID_CATEGORY}}"  id="categori-{{ID_CATEGORY}}">
-	                 <i class="fa fa-{{ICON}}" aria-hidden="true"></i> <!-- Habría que ver como poner la foto aquí -->
-	                 <!-- <img src="category/{{ID_CATEGORY}}/imagen" alt="" class="img-responsive"> -->
+	                 <i class="fa fa-{{ICON}}" aria-hidden="true"></i>
 	                 <span>{{TITLE}}</span>
                  </a>
                 {{/Categories}}

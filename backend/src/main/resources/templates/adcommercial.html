@@ -1,5 +1,5 @@
 
-{{>header}}	<!-- ====== Contenido de pagina ======-->
+{{>header}}	<!-- ====== Page content ======-->
 	<section class="section">
 		<h2 class="text-center text-light">Pon tu anuncio gratis</h2>
 		<div class="container">
@@ -13,14 +13,12 @@
 							</div>
 							<div class="col-sm-7">
 							  	<div class="form-group">
-							    	<select name="CATEGORY" class="form-control" multiple>
+							    	<select name="CATEGORYS" class="form-control" multiple>
 							  			{{#lcategory}}
-										<option name="CATEGORYS" value="{{ID_CATEGORY}}">{{TITLE}}</option>
+										<option name="CATEGORY" value="{{ID_CATEGORY}}">{{TITLE}}</option>
 										{{/lcategory}}
 									</select>
-									<!-- <input type="text" class="form-control" placeholder="Dinos que anuncias"> -->
 							  	</div>
-							  	<!-- <button class="btn btn-default">Buscar categoría</button> -->
 							</div>
 						</div>
 						<br><br>
@@ -71,7 +69,6 @@
 						</p>
 						<input type="hidden" name="_csrf" value="{{token}}"/>
 						<p class="text-center">
-							<!--  <button  type="submit" value="Enviar" class="btn btn-info">Continuar</button>	 -->
 							<input  type="submit" value="Guardar" class="btn btn-info"></input>
 						</p>
 					</form>

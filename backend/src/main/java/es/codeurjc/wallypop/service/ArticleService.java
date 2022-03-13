@@ -1,6 +1,5 @@
 package es.codeurjc.wallypop.service;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.codeurjc.wallypop.model.Article;
-import es.codeurjc.wallypop.model.Category;
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.repository.ArticleRepository;
 import es.codeurjc.wallypop.repository.UserRepository;
@@ -20,12 +18,19 @@ public class ArticleService {
 
 	@Autowired
 	private CategoryService categoryService;
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
-	public Optional<Article> findById(long id) {
-		return articleRepository.findById(id);
+	public void delete(long id) {
+		articleRepository.deleteById(id);
+	}
+
+	public void deletePost(long id, Long id_user, boolean admin) {
+		Article a = findById(id).get();
+		if (a.getUserID() == id_user || admin) {
+			delete(id);
+		}
 	}
 
 	public boolean exist(long id) {
@@ -36,31 +41,59 @@ public class ArticleService {
 		return articleRepository.findAll();
 	}
 
-	public void save(Article article) {
-		articleRepository.save(article);
-	}
-	
-	public void delete(long id) {
-		articleRepository.deleteById(id);
+	public List<Article> findArticlesByCategory(long id) {
+		return articleRepository.findByCATEGORYS(categoryService.findById(id).get());
 	}
 
-	public void deletePost(long id, Long id_user, boolean admin) {
-		Article a = findById(id).get(); 
-		if (a.getUserID() == id_user || admin) {
-			delete(id);
-		}
+	public List<Article> findByCITYContainingIgnoreCaseAndSOLDFalse(String city) {
+		return articleRepository.findByCITYContainingIgnoreCaseAndSOLDFalse(city);
 	}
-	
+
+	public Optional<Article> findById(long id) {
+		return articleRepository.findById(id);
+	}
+
+	public List<Article> findBySOLDFalse() {
+		return articleRepository.findBySOLDFalse();
+	}
+
+	public List<Article> findBySOLDTrue() {
+		return articleRepository.findBySOLDTrue();
+	}
+
+	public List<Article> findByTITLEContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalse(
+			String query, String city) {
+		return articleRepository
+				.findByTITLEContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalse(
+						query, city, query, city);
+	}
+
+	public List<Article> findByTITLEContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndSOLDFalse(
+			String query) {
+		return articleRepository
+				.findByTITLEContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndSOLDFalse(query, query);
+	}
+
+	public List<Article> findByTitleContainingOrDescriptionContainingOrCITYContaining(String query, String city) {
+		return articleRepository
+				.findByTITLEContainingIgnoreCaseOrDESCRIPTIONContainingIgnoreCaseOrCITYContainingIgnoreCaseAndSOLDFalse(
+						query, query, city);
+	}
+
 	public void reserve(long id, boolean bool, long id_user, boolean admin) {
-		Article a = findById(id).get(); 
+		Article a = findById(id).get();
 		if (a.getUserID() == id_user || admin) {
 			a.setRESERVED(bool);
 			save(a);
 		}
 	}
-	
+
+	public void save(Article article) {
+		articleRepository.save(article);
+	}
+
 	public void sell(long id, boolean bool, long id_user, boolean admin) {
-		Article a = findById(id).get(); 
+		Article a = findById(id).get();
 		User user = userRepository.findById(id_user).get();
 		if (a.getUserID() == id_user || admin) {
 			a.setSOLD(bool);
@@ -70,34 +103,4 @@ public class ArticleService {
 			save(a);
 		}
 	}
-
-	public List<Article> findArticlesByCategory(long id) {
-		Optional<Category> c = categoryService.findById(id);
-		List<Article> lResult = new LinkedList<>();
-		if (c.isPresent()) {
-			for (Article a : findAll()) {
-				if (a.getCATEGORYS().contains(c.get())) {
-					lResult.add(a);
-				}
-			}
-		}
-		return lResult;
-	}
-	
-	/*public List<Article> findReserved(Boolean bool) {
-		Optional<List<Article>> lResult = articleRepository.findByReserved(bool);
-		if (lResult.isPresent()) {
-			return lResult.get();
-		}
-		return new LinkedList<Article>();
-	}
-	
-	public List<Article> findSold(Boolean bool) {
-		Optional<List<Article>> lResult = articleRepository.findBySold(bool);
-		if (lResult.isPresent()) {
-			return lResult.get();
-		}
-		return new LinkedList<Article>();
-	}*/
-
 }
