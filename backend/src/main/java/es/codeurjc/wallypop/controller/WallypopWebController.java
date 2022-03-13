@@ -113,18 +113,18 @@ public class WallypopWebController {
 		return "redirect:/commercial/" + id_category;
 	}
 
-	@RequestMapping("/categoriasAdmin")
-	public String categoriasAdmin(Model model) {
+	@RequestMapping("/category")
+	public String category(Model model) {
 		model.addAttribute("category", new Category());
 		model.addAttribute("lcategory", categoryservice.findAll());
 		model.addAttribute("lcategories", 0);
-		return "categoriasAdmin";
+		return "category";
 	}
 
-	@GetMapping("/categoriasAdminListado")
-	public String categoriasAdminListado(Model model) {
+	@GetMapping("/categoryList")
+	public String categoryList(Model model) {
 		model.addAttribute("category", categoryservice.findAll());
-		return "categoriasAdminListado";
+		return "categoryList";
 	}
 
 	/*
@@ -147,7 +147,7 @@ public class WallypopWebController {
 		user2.setPASSWORD(userService.encodePassword(user.getPASSWORD()));
 		user2.setTEL(user.getTEL());
 		userService.save(user2);
-		return "redirect:/perfil";
+		return "redirect:/profile";
 	}
 	
 	@RequestMapping("/commercial")
@@ -189,19 +189,19 @@ public class WallypopWebController {
 		return "commercial";
 	}
 
-	@GetMapping("/VisualizaReporte/{id}/deleteArticle")
+	@GetMapping("/showReport/{id}/deleteArticle")
 	public String deleteArticle(Model model, @PathVariable long id) {
 		long idArticle = reportService.findById(id).get().getARTICLE().getID_ARTICLE();
 		articleService.delete(idArticle);
 		model.addAttribute("report", reportService.findAll());
-		return "reportesAdmin";
+		return "reports";
 	}
 
-	@GetMapping("/categoriasAdminListado/{id}/delete")
+	@GetMapping("/categoryList/{id}/delete")
 	public String deleteCategory(Model model, @PathVariable long id) {
 		categoryservice.delete(id);
 		// model.addAttribute("categoryd", categoryservice.findAll());
-		return "redirect:/categoriasAdminListado";
+		return "redirect:/categoryList";
 	}
 
 	/*
@@ -215,11 +215,11 @@ public class WallypopWebController {
 		return "redirect:/yourcommercial/";
 	}
 
-	@GetMapping("/VisualizaReporte/{id}/delete")
+	@GetMapping("/showReport/{id}/delete")
 	public String deleteReport(Model model, @PathVariable long id) {
 		reportService.delete(id);
 		model.addAttribute("report", reportService.findAll());
-		return "reportesAdmin";
+		return "report";
 	}
 
 	@GetMapping("category/{id}/imagen")
@@ -250,7 +250,7 @@ public class WallypopWebController {
 		}
 	}
 
-	@GetMapping("/VisualizaReporte/{id}/image")
+	@GetMapping("/showReport/{id}/image")
 	public ResponseEntity<Object> downloadZIPReport(@PathVariable long id) throws SQLException {
 		Optional<Report> report = reportService.findById(id);
 
@@ -313,7 +313,7 @@ public class WallypopWebController {
 		}
 
 		categoryservice.save(category);
-		return "categoriasAdmin";
+		return "category";
 	}
 
 	@PostMapping("/newcommercial")
@@ -338,11 +338,11 @@ public class WallypopWebController {
 		return "redirect:/commercial/";
 	}
 
-	@RequestMapping("/perfil")
-	public String perfil() {
+	@RequestMapping("/profile")
+	public String profile() {
 		usLogged.updateN_Sell();
 		userService.save(usLogged);
-		return "perfil";
+		return "profile";
 	}
 
 	@RequestMapping(value = "/post/{id_article}", method = RequestMethod.GET, produces = "application/json")
@@ -392,10 +392,10 @@ public class WallypopWebController {
 		}
 	}
 
-	@RequestMapping("/reportesAdmin")
-	public String reporteadmin(Model model) {
+	@RequestMapping("/reports")
+	public String reports(Model model) {
 		model.addAttribute("report", reportService.findAll());
-		return "reportesAdmin";
+		return "reports";
 	}
 
 	@RequestMapping("/reserve/{id_article}/{bool}")
@@ -420,14 +420,14 @@ public class WallypopWebController {
 		}
 	}
 
-	@GetMapping("/VisualizarPost/{id}")
+	@GetMapping("/showPost/{id}")
 	public String showArticleReported(Model model, @PathVariable long id) {
 		Article article = reportService.findById(id).get().getARTICLE();
 		if (article != null) {
 			// model.addAttribute("article", article);
 			return "/post/" + article.getID_ARTICLE();
 		} else {
-			return "/VisualizaReporte/{id}";
+			return "/showReport/{id}";
 		}
 
 	}
@@ -438,15 +438,15 @@ public class WallypopWebController {
 		return "index";
 	}
 
-	@GetMapping("/VisualizaReporte/{id}")
+	@GetMapping("/showReport/{id}")
 	public String showReport(Model model, @PathVariable long id) {
 
 		Optional<Report> report = reportService.findById(id);
 		if (report.isPresent()) {
 			model.addAttribute("report", report.get());
-			return "VisualizaReporte";
+			return "showReport";
 		} else {
-			return "reporteAdmin";
+			return "reports";
 		}
 
 	}
@@ -463,9 +463,9 @@ public class WallypopWebController {
 		articleService.save(a);
 	}
 
-	@RequestMapping("/VisualizaReporte")
-	public String visualizareporte(Model model) {
-		return "VisualizaReporte";
+	@RequestMapping("/showReport")
+	public String showReport(Model model) {
+		return "showReport";
 	}
 
 	// Este es el método que se llama cuando vamos al apartado TUS ANUNCIOS
