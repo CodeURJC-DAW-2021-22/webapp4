@@ -186,21 +186,16 @@ public class WallypopWebController {
 	}
 	
 	@GetMapping("/addFavorite/{id_article}")
-	public String addFavorite(Model model,@PathVariable long id_article) {
-	Boolean articleIsInFavs=false;	
-	List<Favorites> LFavArticles = usLogged.getFAVORITES();
-	for (Favorites fav : LFavArticles) {
-		if(fav.getARTICLE()==articleService.findById(id_article).get()) {			
-			usLogged.getFAVORITES().remove(fav);
-			articleIsInFavs =true;
-		}
-	}
-	if(articleIsInFavs == false) {
-	Favorites favorite = new Favorites(usLogged,articleService.findById(id_article).get());	
-	favoritesService.save(favorite);
-	}
-	return "redirect:/commercial/";	
-	}
+    public String addFavorite(Model model,@PathVariable long id_article) {
+        Favorites favorites = favoritesService.findByUSERAndARTICLE(usLogged, articleService.findById(id_article).get());
+        if(favorites != null) {
+            favoritesService.delete(favorites);
+        }else {
+            Favorites favorite = new Favorites(usLogged,articleService.findById(id_article).get());
+            favoritesService.save(favorite);
+        }
+        return "redirect:/commercial/";
+    }
 
 	@PostMapping("/newformularioReporte/{id_article}")
 	public String newformularioReporte(Model model, Report report, MultipartFile imageField,@PathVariable long id_article) throws IOException {

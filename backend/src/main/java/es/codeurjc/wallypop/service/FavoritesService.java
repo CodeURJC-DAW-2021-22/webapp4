@@ -17,6 +17,14 @@ public class FavoritesService {
 	@Autowired
 	private FavoritesRepository favoritesRepository;
 	
+	public Optional<Favorites> findById(long id) {
+		return favoritesRepository.findById(id);
+	}
+	
+	public Favorites findByUSERAndARTICLE(User user, Article article) {
+        return favoritesRepository.findByUSERSAndARTICLE(user, article);
+    }
+	
 	public List<Favorites> findAll() {
 		return favoritesRepository.findAll();
 	}
@@ -31,6 +39,10 @@ public class FavoritesService {
 	
 	public void delete(long id_favorite) {
 		favoritesRepository.deleteById(id_favorite);
+	}
+	
+	public void delete(Favorites favorites) {
+		favoritesRepository.delete(favorites);
 	}
 	
 	public Favorites getByUSERandARTICLE(long id_favorite) {
