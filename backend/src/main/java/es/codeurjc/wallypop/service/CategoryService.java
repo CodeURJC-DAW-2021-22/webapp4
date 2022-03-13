@@ -16,8 +16,13 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryrepository;
 
-	public Optional<Category> findById(long id) {
-		return categoryrepository.findById(id);
+	public void delete(long id) {
+		Category cat = findById(id).get();
+		for (Article a : cat.getARTICLES()) {
+			List<Category> lCategories = a.getCATEGORYS();
+			lCategories.remove(cat);
+		}
+		categoryrepository.deleteById(id);
 	}
 
 	public boolean exist(long id) {
@@ -28,17 +33,12 @@ public class CategoryService {
 		return categoryrepository.findAll();
 	}
 
-	public void save(Category category) {
-		categoryrepository.save(category);
+	public Optional<Category> findById(long id) {
+		return categoryrepository.findById(id);
 	}
 
-	public void delete(long id) {
-		Category cat = findById(id).get();
-		for (Article a : cat.getARTICLES()) {
-			List<Category> lCategories = a.getCATEGORYS();
-			lCategories.remove(cat);
-		}
-		categoryrepository.deleteById(id);
+	public void save(Category category) {
+		categoryrepository.save(category);
 	}
 
 }

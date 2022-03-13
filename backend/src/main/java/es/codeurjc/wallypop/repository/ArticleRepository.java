@@ -1,7 +1,6 @@
 package es.codeurjc.wallypop.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -9,15 +8,15 @@ import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
-	List<Article> findByTITLEContainingIgnoreCaseOrDESCRIPTIONContainingIgnoreCaseOrCITYContainingIgnoreCaseAndSOLDFalse(
-			String title, String description, String city);
-
-	List<Article> findByTITLEContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalse(
-			String title, String city, String description, String city2);
-
 	List<Article> findByCATEGORYS(Category cat);
 
 	List<Article> findBySOLDFalse();
 
 	List<Article> findBySOLDTrue();
+
+	List<Article> findByTITLEContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalse(
+			String title, String city, String description, String city2);
+
+	List<Article> findByTITLEContainingIgnoreCaseOrDESCRIPTIONContainingIgnoreCaseOrCITYContainingIgnoreCaseAndSOLDFalse(
+			String title, String description, String city);
 }

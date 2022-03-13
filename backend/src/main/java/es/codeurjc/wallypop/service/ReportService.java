@@ -15,8 +15,8 @@ public class ReportService {
 	@Autowired
 	private ReportRepository reportRepository;
 
-	public Optional<Report> findById(long id) {
-		return reportRepository.findById(id);
+	public void delete(long id) {
+		reportRepository.deleteById(id);
 	}
 
 	public boolean exist(long id) {
@@ -27,16 +27,16 @@ public class ReportService {
 		return reportRepository.findAll();
 	}
 
-	public void save(Report report) {
-		reportRepository.save(report);
-	}
-
-	public void delete(long id) {
-		reportRepository.deleteById(id);
+	public Optional<Report> findById(long id) {
+		return reportRepository.findById(id);
 	}
 
 	public void flush() {
 		reportRepository.flush();
+	}
+
+	public void save(Report report) {
+		reportRepository.save(report);
 	}
 
 	/*

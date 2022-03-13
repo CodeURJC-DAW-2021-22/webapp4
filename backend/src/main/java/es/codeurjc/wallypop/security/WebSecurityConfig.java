@@ -21,22 +21,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	RepositoryUserDetailsService userDetailsService;
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder(10, new SecureRandom());
-	}
-
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-	}
-
-	@Bean
-	ServletRegistrationBean<Servlet> h2servletRegistration() {
-		ServletRegistrationBean<Servlet> registrationBean = new ServletRegistrationBean<>(new WebdavServlet());
-		registrationBean.addUrlMappings("/console/*");
-		return registrationBean;
 	}
 
 	@Override
@@ -95,5 +83,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// Logout
 		http.logout().logoutUrl("/logout");
 		http.logout().logoutSuccessUrl("/");
+	}
+
+	@Bean
+	ServletRegistrationBean<Servlet> h2servletRegistration() {
+		ServletRegistrationBean<Servlet> registrationBean = new ServletRegistrationBean<>(new WebdavServlet());
+		registrationBean.addUrlMappings("/console/*");
+		return registrationBean;
+	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder(10, new SecureRandom());
 	}
 }

@@ -59,6 +59,14 @@ public class User {
 		// DEFAULT CONSTRUCTOR FOR JPA
 	}
 
+	public User(String nAME, String pASSWORD, String eMAIL, String tEL) {
+		super();
+		FULL_NAME = nAME;
+		PASSWORD = pASSWORD;
+		NAME = eMAIL;
+		TEL = tEL;
+	}
+
 	public User(String nAME, String pASSWORD, String eMAIL, String tEL, boolean iS_ADMIN) {
 		super();
 		FULL_NAME = nAME;
@@ -68,86 +76,12 @@ public class User {
 		IS_ADMIN = iS_ADMIN;
 	}
 
-	public User(String nAME, String pASSWORD, String eMAIL, String tEL) {
-		super();
-		FULL_NAME = nAME;
-		PASSWORD = pASSWORD;
-		NAME = eMAIL;
-		TEL = tEL;
-	}
-
-	public Long getID_USER() {
-		return ID_USER;
-	}
-
-	public String getFULL_NAME() {
-		return FULL_NAME;
-	}
-
-	public void setFULL_NAME(String fULL_NAME) {
-		FULL_NAME = fULL_NAME;
-	}
-
-	public String getPASSWORD() {
-		return PASSWORD;
-	}
-
-	public void setPASSWORD(String pASSWORD) {
-		PASSWORD = pASSWORD;
-	}
-
-	// EMAIL
-	public String getNAME() {
-		return NAME;
-	}
-
-	// EMAIL
-	public void setNAME(String eMAIL) {
-		NAME = eMAIL;
-	}
-
-	public String getTEL() {
-		return TEL;
-	}
-
-	public void setTEL(String tEL) {
-		TEL = tEL;
-	}
-
-	public int getN_SOLD() {
-		return N_SOLD;
-	}
-
-	public void setN_SOLD(int n_SOLD) {
-		N_SOLD = n_SOLD;
-	}
-
-	public int getN_SELL() {
-		return N_SELL;
-	}
-
-	public void setN_SELL(int n_SELL) {
-		N_SELL = n_SELL;
-	}
-
-	public boolean isIS_ADMIN() {
-		return IS_ADMIN;
-	}
-
-	public void newArticle() {
-		N_SELL += 1;
-	}
-
 	public void deleteArticle() {
 		N_SELL -= 1;
 	}
 
 	public List<Article> getARTICLES() {
 		return ARTICLES;
-	}
-
-	public void setARTICLES(List<Article> aRTICLES) {
-		ARTICLES = aRTICLES;
 	}
 
 	public List<Article> getARTICLESSold() {
@@ -160,8 +94,41 @@ public class User {
 		return lResult;
 	}
 
-	public void updateN_Sell() {
-		N_SELL = ARTICLES.size() - N_SOLD;
+	public String getFULL_NAME() {
+		return FULL_NAME;
+	}
+
+	public Long getID_USER() {
+		return ID_USER;
+	}
+
+	public int getN_SELL() {
+		return N_SELL;
+	}
+
+	public int getN_SOLD() {
+		return N_SOLD;
+	}
+
+	// EMAIL
+	public String getNAME() {
+		return NAME;
+	}
+
+	public String getPASSWORD() {
+		return PASSWORD;
+	}
+
+	public String getTEL() {
+		return TEL;
+	}
+
+	public boolean isIS_ADMIN() {
+		return IS_ADMIN;
+	}
+
+	public void newArticle() {
+		N_SELL += 1;
 	}
 
 	public void sell(Boolean bool) {
@@ -170,6 +137,39 @@ public class User {
 		} else {
 			N_SOLD -= 1;
 		}
+	}
+
+	public void setARTICLES(List<Article> aRTICLES) {
+		ARTICLES = aRTICLES;
+	}
+
+	public void setFULL_NAME(String fULL_NAME) {
+		FULL_NAME = fULL_NAME;
+	}
+
+	public void setN_SELL(int n_SELL) {
+		N_SELL = n_SELL;
+	}
+
+	public void setN_SOLD(int n_SOLD) {
+		N_SOLD = n_SOLD;
+	}
+
+	// EMAIL
+	public void setNAME(String eMAIL) {
+		NAME = eMAIL;
+	}
+
+	public void setPASSWORD(String pASSWORD) {
+		PASSWORD = pASSWORD;
+	}
+
+	public void setTEL(String tEL) {
+		TEL = tEL;
+	}
+
+	public void updateN_Sell() {
+		N_SELL = ARTICLES.size() - N_SOLD;
 	}
 
 }

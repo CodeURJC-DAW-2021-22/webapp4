@@ -16,28 +16,28 @@ public class Mail {
 		this.message = message;
 	}
 
-	public String getTo() {
-		return to;
-	}
-
-	public void setTo(String to) {
-		this.to = to;
+	public String getMessage() {
+		return message;
 	}
 
 	public String getResume() {
 		return resume;
 	}
 
-	public void setResume(String resume) {
-		this.resume = resume;
-	}
-
-	public String getMessage() {
-		return message;
+	public String getTo() {
+		return to;
 	}
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public void setResume(String resume) {
+		this.resume = resume;
+	}
+
+	public void setTo(String to) {
+		this.to = to;
 	}
 
 }

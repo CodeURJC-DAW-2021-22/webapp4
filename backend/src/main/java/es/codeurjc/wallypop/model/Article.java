@@ -94,112 +94,112 @@ public class Article {
 		POSTAL_CODE = pOSTAL_CODE;
 	}
 
-	public String getCITY() {
-		return CITY;
-	}
-
-	public void setCITY(String cITY) {
-		CITY = cITY;
-	}
-
-	public String getTITLE() {
-		return TITLE;
-	}
-
-	public void setTITLE(String tITLE) {
-		TITLE = tITLE;
-	}
-
-	public String getDESCRIPTION() {
-		return DESCRIPTION;
-	}
-
-	public void setDESCRIPTION(String dESCRIPTION) {
-		DESCRIPTION = dESCRIPTION;
-	}
-
-	public float getPRICE() {
-		return PRICE;
-	}
-
-	public void setPRICE(float pRICE) {
-		PRICE = pRICE;
-	}
-
-	public boolean isRESERVED() {
-		return RESERVED;
-	}
-
-	public void setRESERVED(boolean rESERVED) {
-		RESERVED = rESERVED;
-	}
-
-	public boolean isSOLD() {
-		return SOLD;
-	}
-
-	public void setSOLD(boolean sOLD) {
-		SOLD = sOLD;
-	}
-
-	public Blob getPHOTO() {
-		return PHOTO;
-	}
-
-	public void setPHOTO(Blob pHOTO) {
-		PHOTO = pHOTO;
-	}
-
 	public List<Category> getCATEGORYS() {
 		return CATEGORYS;
 	}
 
-	public void setCATEGORYS(List<Category> cATEGORYS) {
-		CATEGORYS = cATEGORYS;
-	}
-
-	public long getID_ARTICLE() {
-		return ID_ARTICLE;
-	}
-
-	public User getUSER() {
-		return USERS;
-	}
-
-	public void setUSER(User uSER) {
-		USERS = uSER;
+	public String getCITY() {
+		return CITY;
 	}
 
 	public Date getDATE() {
 		return DATE;
 	}
 
+	public String getDESCRIPTION() {
+		return DESCRIPTION;
+	}
+
+	public long getID_ARTICLE() {
+		return ID_ARTICLE;
+	}
+
 	public int getN_VISITS() {
 		return N_VISITS;
 	}
 
-	public void visit() {
-		N_VISITS += 1;
-	}
-
-	public String getPRICE_s() {
-		return String.valueOf(getPRICE());
-	}
-
-	public Long getUserID() {
-		return USERS.getID_USER();
+	public Blob getPHOTO() {
+		return PHOTO;
 	}
 
 	public String getPOSTAL_CODE() {
 		return POSTAL_CODE;
 	}
 
-	public void setPOSTAL_CODE(String pOSTAL_CODE) {
-		POSTAL_CODE = pOSTAL_CODE;
+	public float getPRICE() {
+		return PRICE;
+	}
+
+	public String getPRICE_s() {
+		return String.valueOf(getPRICE());
+	}
+
+	public String getTITLE() {
+		return TITLE;
+	}
+
+	public User getUSER() {
+		return USERS;
 	}
 
 	public String getUserEmail() {
 		return USERS.getNAME();
+	}
+
+	public Long getUserID() {
+		return USERS.getID_USER();
+	}
+
+	public boolean isRESERVED() {
+		return RESERVED;
+	}
+
+	public boolean isSOLD() {
+		return SOLD;
+	}
+
+	public void setCATEGORYS(List<Category> cATEGORYS) {
+		CATEGORYS = cATEGORYS;
+	}
+
+	public void setCITY(String cITY) {
+		CITY = cITY;
+	}
+
+	public void setDESCRIPTION(String dESCRIPTION) {
+		DESCRIPTION = dESCRIPTION;
+	}
+
+	public void setPHOTO(Blob pHOTO) {
+		PHOTO = pHOTO;
+	}
+
+	public void setPOSTAL_CODE(String pOSTAL_CODE) {
+		POSTAL_CODE = pOSTAL_CODE;
+	}
+
+	public void setPRICE(float pRICE) {
+		PRICE = pRICE;
+	}
+
+	public void setRESERVED(boolean rESERVED) {
+		RESERVED = rESERVED;
+	}
+
+	public void setSOLD(boolean sOLD) {
+		SOLD = sOLD;
+	}
+
+	public void setTITLE(String tITLE) {
+		TITLE = tITLE;
+	}
+
+	public void setUSER(User uSER) {
+		USERS = uSER;
+	}
+
+	public void visit() {
+		N_VISITS += 1;
 	}
 
 }

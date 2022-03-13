@@ -52,52 +52,52 @@ public class Category {
 		ICON = iCON;
 	}
 
-	public Long getID_CATEGORY() {
-		return ID_CATEGORY;
-	}
-
-	public void setID_CATEGORY(Long iD_CATEGORY) {
-		ID_CATEGORY = iD_CATEGORY;
-	}
-
-	public String getTITLE() {
-		return TITLE;
-	}
-
-	public void setTITLE(String tITLE) {
-		TITLE = tITLE;
+	public List<Article> getARTICLES() {
+		return ARTICLES;
 	}
 
 	public String getDESCRIPTION() {
 		return DESCRIPTION;
 	}
 
-	public void setDESCRIPTION(String dESCRIPTION) {
-		DESCRIPTION = dESCRIPTION;
+	public String getICON() {
+		return ICON;
+	}
+
+	public Long getID_CATEGORY() {
+		return ID_CATEGORY;
 	}
 
 	public Blob getPHOTO() {
 		return PHOTO;
 	}
 
-	public void setPHOTO(Blob pHOTO) {
-		PHOTO = pHOTO;
+	public String getTITLE() {
+		return TITLE;
 	}
 
-	public String getICON() {
-		return ICON;
+	public void setARTICLES(List<Article> aRTICLES) {
+		ARTICLES = aRTICLES;
+	}
+
+	public void setDESCRIPTION(String dESCRIPTION) {
+		DESCRIPTION = dESCRIPTION;
 	}
 
 	public void setICON(String iCON) {
 		ICON = iCON;
 	}
 
-	public List<Article> getARTICLES() {
-		return ARTICLES;
+	public void setID_CATEGORY(Long iD_CATEGORY) {
+		ID_CATEGORY = iD_CATEGORY;
 	}
 
-	public void setARTICLES(List<Article> aRTICLES) {
-		ARTICLES = aRTICLES;
+	public void setPHOTO(Blob pHOTO) {
+		PHOTO = pHOTO;
+	}
+
+	public void setTITLE(String tITLE) {
+		TITLE = tITLE;
 	}
 
 }
