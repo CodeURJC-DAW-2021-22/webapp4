@@ -104,6 +104,14 @@ public class WallypopWebController {
 		}
 		return "redirect:/commercial/";
 	}
+	
+	@RequestMapping("/search/commercial")
+	public String commercialFiltered(Model model, String id_category) {
+		if (id_category == null) {
+			return "redirect:/commercial/";
+		}
+		return "redirect:/commercial/" + id_category;
+	}
 
 	@RequestMapping("/categoriasAdmin")
 	public String categoriasAdmin(Model model) {
