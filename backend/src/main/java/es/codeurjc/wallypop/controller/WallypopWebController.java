@@ -34,8 +34,8 @@ import es.codeurjc.wallypop.model.Report;
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.service.ArticleService;
 import es.codeurjc.wallypop.service.CategoryService;
-import es.codeurjc.wallypop.service.FavoritesService;
 import es.codeurjc.wallypop.service.EmailService;
+import es.codeurjc.wallypop.service.FavoritesService;
 import es.codeurjc.wallypop.service.MapService;
 import es.codeurjc.wallypop.service.ReportService;
 import es.codeurjc.wallypop.service.UserService;
@@ -92,6 +92,19 @@ public class WallypopWebController {
 		}
 	}
 
+	@GetMapping("/addFavorite/{id_article}")
+	public String addFavorite(Model model, @PathVariable long id_article) {
+		Favorites favorites = favoritesService.findByUSERAndARTICLE(usLogged,
+				articleService.findById(id_article).get());
+		if (favorites != null) {
+			favoritesService.delete(favorites);
+		} else {
+			Favorites favorite = new Favorites(usLogged, articleService.findById(id_article).get());
+			favoritesService.save(favorite);
+		}
+		return "redirect:/commercial/";
+	}
+
 	@RequestMapping("/categoriasAdmin")
 	public String categoriasAdmin(Model model) {
 		model.addAttribute("category", new Category());
@@ -106,17 +119,17 @@ public class WallypopWebController {
 		return "categoriasAdminListado";
 	}
 
+	/*
+	 * private void deleteArticle(Article article) {
+	 * article.getUSER().deleteArticle(); userService.save(article.getUSER()); }
+	 */
+
 	@RequestMapping("/commercial")
 	public String commercial(Model model) {
 		model.addAttribute("Articles", articleService.findBySOLDFalse());
 		model.addAttribute("lcategory", categoryservice.findAll());
 		return "commercial";
 	}
-
-	/*
-	 * private void deleteArticle(Article article) {
-	 * article.getUSER().deleteArticle(); userService.save(article.getUSER()); }
-	 */
 
 	@RequestMapping("/commercial/{id}")
 	public String commercial_filter(Model model, @PathVariable long id) {
@@ -132,16 +145,6 @@ public class WallypopWebController {
 		return "redirect:/commercial/" + String.valueOf(lcategories);
 	}
 
-	@RequestMapping("/favorites")
-	public String favorites(Model model) {
-		List<Favorites> LFavArticles = usLogged.getFAVORITES();
-		List<Article> lArticles = new LinkedList<>();
-		for (Favorites fav : LFavArticles) {
-			lArticles.add(fav.getARTICLE());
-		}
-		model.addAttribute("Articles", lArticles);
-		return "favorites";
-}
 	@RequestMapping("/search")
 	public String commercialFiltered(Model model, String query, String city) {
 		if (!city.equals("") && !query.equals("")) {
@@ -159,18 +162,6 @@ public class WallypopWebController {
 		model.addAttribute("lcategory", categoryservice.findAll());
 		return "commercial";
 	}
-	
-	@GetMapping("/addFavorite/{id_article}")
-    public String addFavorite(Model model,@PathVariable long id_article) {
-        Favorites favorites = favoritesService.findByUSERAndARTICLE(usLogged, articleService.findById(id_article).get());
-        if(favorites != null) {
-            favoritesService.delete(favorites);
-        }else {
-            Favorites favorite = new Favorites(usLogged,articleService.findById(id_article).get());
-            favoritesService.save(favorite);
-        }
-        return "redirect:/commercial/";
-    }
 
 	@GetMapping("/VisualizaReporte/{id}/deleteArticle")
 	public String deleteArticle(Model model, @PathVariable long id) {
@@ -180,17 +171,17 @@ public class WallypopWebController {
 		return "reportesAdmin";
 	}
 
-	/*
-	 * @RequestMapping("/coderebootpass") public String coderebootpas() { return
-	 * "coderebootpass"; }
-	 */
-
 	@GetMapping("/categoriasAdminListado/{id}/delete")
 	public String deleteCategory(Model model, @PathVariable long id) {
 		categoryservice.delete(id);
 		// model.addAttribute("categoryd", categoryservice.findAll());
 		return "redirect:/categoriasAdminListado";
 	}
+
+	/*
+	 * @RequestMapping("/coderebootpass") public String coderebootpas() { return
+	 * "coderebootpass"; }
+	 */
 
 	@RequestMapping("/delete/{id_article}")
 	public String deletePost(Model model, @PathVariable long id_article) {
@@ -256,7 +247,13 @@ public class WallypopWebController {
 	}
 
 	@RequestMapping("/favorites")
-	public String favorites() {
+	public String favorites(Model model) {
+		List<Favorites> LFavArticles = usLogged.getFAVORITES();
+		List<Article> lArticles = new LinkedList<>();
+		for (Favorites fav : LFavArticles) {
+			lArticles.add(fav.getARTICLE());
+		}
+		model.addAttribute("Articles", lArticles);
 		return "favorites";
 	}
 
@@ -267,10 +264,6 @@ public class WallypopWebController {
 		model.addAttribute("report", report);
 		return "formularioReporte";
 	}
-
-	/*
-	 * @RequestMapping("/help") public String help() { return "help"; }
-	 */
 
 	// Este es el método que se llama cuando agragamos un nuevo anuncio y toto va
 	// bien
@@ -463,33 +456,4 @@ public class WallypopWebController {
 		return "yourcommercialsold";
 	}
 
-	@GetMapping("category/{id}/imagen")
-	public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
-		Optional<Category> category = categoryservice.findById(id);
-
-		if (category.get().getPHOTO() != null) {
-			Resource file = new InputStreamResource(category.get().getPHOTO().getBinaryStream());
-
-			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-					.contentLength(category.get().getPHOTO().length()).body(file);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
-
-	@GetMapping("article/{id}/imagen")
-	public ResponseEntity<Object> downloadImageArticle(@PathVariable long id) throws SQLException {
-		Optional<Article> article = articleService.findById(id);
-
-		if (article.get().getPHOTO() != null) {
-			Resource file = new InputStreamResource(article.get().getPHOTO().getBinaryStream());
-
-			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-					.contentLength(article.get().getPHOTO().length()).body(file);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
-	
-	
 }

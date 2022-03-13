@@ -53,20 +53,12 @@ public class Favorites {
 		return USERS;
 	}
 
-	public void setUSER(User uSER) {
-		USERS = uSER;
-	}
-
-	public Article getARTICLE() {
-		return ARTICLE;
-	}
-
 	public void setARTICLE(Article aRTICLE) {
 		ARTICLE = aRTICLE;
 	}
 
 	public void setUSER(User uSER) {
-		USER = uSER;
+		USERS = uSER;
 	}
 
 }

@@ -51,15 +51,12 @@ public class User {
 	@NonNull
 	@Column(name = "IS_ADMIN")
 	private boolean IS_ADMIN = false;
-	
-	@OneToMany(cascade = CascadeType.ALL , mappedBy = "USERS")
-	private List<Article> ARTICLES = new LinkedList<>();
-	
-	@OneToMany(cascade = CascadeType.ALL , mappedBy = "USERS")
-	private List<Favorites> FAVORITES = new LinkedList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "USERS")
 	private List<Article> ARTICLES = new LinkedList<>();
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "USERS")
+	private List<Favorites> FAVORITES = new LinkedList<>();
 
 	public User() {
 		// DEFAULT CONSTRUCTOR FOR JPA
@@ -98,6 +95,10 @@ public class User {
 			}
 		}
 		return lResult;
+	}
+
+	public List<Favorites> getFAVORITES() {
+		return FAVORITES;
 	}
 
 	public String getFULL_NAME() {
@@ -149,6 +150,10 @@ public class User {
 		ARTICLES = aRTICLES;
 	}
 
+	public void setFAVORITES(List<Favorites> fAVORITES) {
+		FAVORITES = fAVORITES;
+	}
+
 	public void setFULL_NAME(String fULL_NAME) {
 		FULL_NAME = fULL_NAME;
 	}
@@ -177,22 +182,5 @@ public class User {
 	public void updateN_Sell() {
 		N_SELL = ARTICLES.size() - N_SOLD;
 	}
-
-	public List<Article> getARTICLES() {
-		return ARTICLES;
-	}
-
-	public void setARTICLES(List<Article> aRTICLES) {
-		ARTICLES = aRTICLES;
-	}
-
-	public List<Favorites> getFAVORITES() {
-		return FAVORITES;
-	}
-
-	public void setFAVORITES(List<Favorites> fAVORITES) {
-		FAVORITES = fAVORITES;
-	}
-	
 
 }

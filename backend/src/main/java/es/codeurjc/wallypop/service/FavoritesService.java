@@ -16,36 +16,36 @@ public class FavoritesService {
 
 	@Autowired
 	private FavoritesRepository favoritesRepository;
-	
-	public Optional<Favorites> findById(long id) {
-		return favoritesRepository.findById(id);
+
+	public void delete(Favorites favorites) {
+		favoritesRepository.delete(favorites);
 	}
-	
-	public Favorites findByUSERAndARTICLE(User user, Article article) {
-        return favoritesRepository.findByUSERSAndARTICLE(user, article);
-    }
-	
-	public List<Favorites> findAll() {
-		return favoritesRepository.findAll();
-	}
-	
-	public void save(Favorites fav) {
-		favoritesRepository.save(fav);
+
+	public void delete(long id_favorite) {
+		favoritesRepository.deleteById(id_favorite);
 	}
 
 	public boolean favoriteExists(long id_favorite) {
 		return favoritesRepository.findById(id_favorite).isPresent();
 	}
-	
-	public void delete(long id_favorite) {
-		favoritesRepository.deleteById(id_favorite);
+
+	public List<Favorites> findAll() {
+		return favoritesRepository.findAll();
 	}
-	
-	public void delete(Favorites favorites) {
-		favoritesRepository.delete(favorites);
+
+	public Optional<Favorites> findById(long id) {
+		return favoritesRepository.findById(id);
 	}
-	
+
+	public Favorites findByUSERAndARTICLE(User user, Article article) {
+		return favoritesRepository.findByUSERSAndARTICLE(user, article);
+	}
+
 	public Favorites getByUSERandARTICLE(long id_favorite) {
 		return favoritesRepository.findById(id_favorite).get();
+	}
+
+	public void save(Favorites fav) {
+		favoritesRepository.save(fav);
 	}
 }
