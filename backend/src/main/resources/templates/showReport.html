@@ -1,0 +1,47 @@
+	{{>header}}
+	<!-- ====== Page content ======-->
+	<section class="section">
+		<h2 class="text-center text-light">INCIDENCIA</h2>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
+					<form action="" class="form-horizontal">
+						<br>
+						<a href="/reportesAdmin" class="btn btn-info">&lt;</a>
+						<br>
+						{{#report}}
+						<h3 class="text-info">ID incidencia: {{ID_REPORT}}</h3>
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Email</label>
+						    <label class="col-sm-7">
+						      	<a type="text" class="form-control">{{EMAIL}}</a>
+						    </label>
+						</div>
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Articlo Denunciado</label>
+						    <label class="col-sm-7">
+						      	<a onclick="location.href='/showPost/{{ID_REPORT}}'" class="form-control">Pulsa para acceder al articulo denunciado</a>
+						    </label>
+						</div>
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Descripción de la incidencia</label>
+						    <label class="col-md-7">
+								<textarea class="form-control">{{DESCRIPTION}}</textarea>
+						    </label>
+						</div>
+						<br><br>
+						<h3 class="text-info">Fichero adjunto por el usuario</h3>
+						<a href="{{ID_REPORT}}/image" download="">Download</a>
+						<p class="text-center">
+							<a class="btn btn-success" href="/VisualizaReporte/{{ID_REPORT}}/deleteArticle" >ACEPTAR REPORTE</a>
+							<a class="btn btn-danger" href="/VisualizaReporte/{{ID_REPORT}}/delete">RECHAZAR REPORTE</a> 	                     
+						</p>
+						{{/report}}
+					</form>
+					
+				</div>
+			</div>
+		</div>
+
+	</section>
+	{{>footer}}

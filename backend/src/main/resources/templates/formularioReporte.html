@@ -1,37 +1,25 @@
 {{>header}}
-	<!-- ====== Contenido de pagina ======-->
+	<!-- ====== Page content ======-->
 	<section class="section">
 		<h2 class="text-center text-light">Formulario para reportar una incidencia</h2>
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
-					<form action="" class="form-horizontal">
-						<!--
-						<h3 class="text-info">Busca la categoría donde verán tu anuncio</h3>
-						<div class="form-inline">
-							<div class="col-sm-3 control-label">
-						    	<label>¿Qué anuncias?</label>
-							</div>
-							<div class="col-sm-7">
-							  	<div class="form-group">
-							    	<input type="text" class="form-control" placeholder="Dinos que anuncias">
-							  	</div>
-							  	<button class="btn btn-default">Buscar categoría</button>
-							</div>
-						</div>
-						-->
+				   
+					{{#report}}
+					<form method="post" action="/newformularioReporte/{{#id_article}}{{id_article}}{{/id_article}}" class="form-horizontal" enctype="multipart/form-data">
 						<br><br>
 						<h3 class="text-info">Formulario</h3>
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Email</label>
 						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder=" email">
+						      	<input type="email" class="form-control" placeholder=" email"  name="EMAIL" required="">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label class="col-sm-3 control-label">Descripción de la incidencia</label>
 						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder=" Descripción incidencia">
+						      	<input type="text" class="form-control" placeholder=" Descripción incidencia"  name="DESCRIPTION" required="">
 						    </div>
 						</div>
 						<br><br>
@@ -39,56 +27,21 @@
 						<p>¡Toda la información que nos proporcione nos ayudará, gracias!</p>
 						<div class="form-group">
 						    <div class="custom-input-file">
-						    	<input type="file" size="1" class="input-file" />
+						    	<input type="file" size="1" class="input-file" name="imageField" />
 							    <i class="fa fa-picture-o" aria-hidden="true"></i>
 							</div>
 							<br>
 							<p  class="text-muted text-center archivo">Fichero...</p>
 						</div>
-						<!-- <br><br>
-						<h3 class="text-info">Datos para que te contacten</h3>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Eres</label>
-							<div class="col-sm-7">
-								<label class="radio-inline">
-									<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Particular
-								</label>
-								<label class="radio-inline">
-									<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Profesional
-								</label>
-							</div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Tu nombre</label>
-						    <div class="col-sm-7">
-						    	<input type="text" class="form-control" placeholder="Nombre">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">E-mail</label>
-						    <div class="col-sm-7">
-						    	<input type="email" class="form-control" placeholder="E-mail">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Confirmar E-mail</label>
-						    <div class="col-sm-7">
-						    	<input type="email" class="form-control" placeholder="Confirmar E-mail">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Teléfono</label>
-						    <div class="col-sm-7">
-						    	<input type="tel" class="form-control" placeholder="Teléfono">
-						    </div>
-						</div> -->
+						<input type="hidden" name="_csrf" value="{{token}}"/>
 						<p class="text-center">
 							Al enviarnos un reporte de una incidencia, aceptas las <a href="#!">condiciones de uso y la Política de Privacidad</a>
 						</p>
 						<p class="text-center">
-							<button class="btn btn-info">Continuar</button>
+							<input class="btn btn-info" type="submit" value="Continuar"></input>
 						</p>
 					</form>
+						{{/report}}
 				</div>
 			</div>
 		</div>

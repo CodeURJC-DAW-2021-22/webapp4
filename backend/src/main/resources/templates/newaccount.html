@@ -1,12 +1,12 @@
 	{{>header}}
-	<!-- ====== Contenido de pagina ======-->
+	<!-- ====== Page content ======-->
 	<section class="full-width section">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 hidden-xs">
 					<h2 class="text-center text-danger text-semi-bold">Tu cuenta</h2>
 					<p class="lead text-center">
-						Gestiona tus anuncios, tus favoritos, chatea y vende cuando y desde dónde quieras
+						Gestiona tus anuncios, tus favoritos, compra y vende cuando y desde dónde quieras
 					</p>
 					<figure class="full-width">
 						<img src="assets/img/Devices.png" alt="" class="img-responsive">
@@ -17,19 +17,35 @@
 						<i class="fa fa-user container-login-icon" aria-hidden="true"></i>
 						<h4 class="text-center text-light">CREA UNA CUENTA</h4>
 						<br>
-						<form action="">
-							<div class="form-group">
-								<input type="text" class="form-control input-lg" placeholder="Nombre" required="">
+						{{#ERROR}}
+						<div class="row">
+							<div class="col-xs-12 col-sm-12">
+								<div class="alert alert-warning" role="alert">
+			  						<center>
+			  							El correo electrónico ha sido utilizado<br>
+			  							<a href="login">Intente iniciar sesión</a>
+			  						</center>
+								</div>
 							</div>
-							<div class="form-group">
-								<input type="email" class="form-control input-lg" placeholder="Email" required="">
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control input-lg" placeholder="Contraseña" required="">
-							</div>
-							<p>Al registrarte aceptas las <a href="#!" style="display: inline-block;">condiciones de uso y la Política de Privacidad</a></p>
-							<button class="btn btn-danger btn-lg" type="submit">CREAR CUENTA</button>
-							<a href="login.html" class="text-center">Ya tengo una cuenta</a>
+						</div>
+						{{/ERROR}}
+						<form action="/newaccount" method="post">
+						    <div class="form-group">
+						        <input class="form-control input-lg" name="FULL_NAME" placeholder="Nombre y apellidos" type="text" class="form-control">
+						    </div>
+						    <div class="form-group">
+						        <input class="form-control input-lg" name="NAME" placeholder="Email" type="email" class="form-control">
+						    </div>
+						    <div class="form-group">
+						        <input class="form-control input-lg" name="TEL" placeholder="Teléfono" type="text" class="form-control">
+						    </div>
+						    <div class="form-group">
+						        <input class="form-control input-lg" name="PASSWORD" placeholder="Contraseña" type="password" class="form-control">
+						    </div>
+						    <input type="hidden" name="_csrf" value="{{token}}"/>
+						    <p>Al registrarte aceptas las <a href="#!" style="display: inline-block;">condiciones de uso y la Política de Privacidad</a></p>
+						    <button class="btn btn-danger btn-lg" type="submit">CREAR CUENTA</button>
+						    <a href="login" class="text-center">Ya tengo una cuenta</a>
 						</form>
 					</div>
 				</div>

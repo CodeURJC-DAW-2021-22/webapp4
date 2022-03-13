@@ -1,0 +1,41 @@
+
+{{>header}}	<!-- ====== Page content ======-->
+	<section class="section">
+		<h2 class="text-center text-light">Modifica tus datos</h2>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
+					<form method="post" action=/modifyData class="form-horizontal">
+						<h3 class="text-info">Modifica tus datos</h3>
+						{{#old_user}}
+						<div class="form-group">
+						    <label  class="col-sm-3 control-label">Nombre</label>
+						    <div class="col-sm-7">
+						      	<input type="text" value="{{FULL_NAME}}" class="form-control" placeholder="Nombre" name="FULL_NAME">
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Nueva contraseña</label>
+						    <div class="col-sm-7">
+						    	<input type="password" class="form-control" placeholder="Nueva Contraseña" name="PASSWORD" required="">
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label class="col-sm-3 control-label">Telefono</label>
+						    <div class="col-sm-7">
+						      	<input type="text" value="{{TEL}}" class="form-control" placeholder="Telefono" name="TEL">
+						    </div>
+						</div>
+						{{/old_user}}
+						<br><br>
+						<input type="hidden" name="_csrf" value="{{token}}"/>
+						<p class="text-center">
+							<input  type="submit" value="Guardar" class="btn btn-info"></input>
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</section>
+	{{>footer}}
