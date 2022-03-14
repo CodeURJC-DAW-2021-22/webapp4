@@ -68,12 +68,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 		/* ADMIN */
-		http.authorizeRequests().antMatchers("/categoriasAdmin").hasAnyRole("ADMIN");
-		http.authorizeRequests().antMatchers("/categoriasAdminListado").hasAnyRole("ADMIN");
-		http.authorizeRequests().antMatchers("/grafico").hasAnyRole("ADMIN");
-		http.authorizeRequests().antMatchers("/perfilAdmin").hasAnyRole("ADMIN");
-		http.authorizeRequests().antMatchers("/reporteAdmin").hasAnyRole("ADMIN");
-		http.authorizeRequests().antMatchers("/visualizaReporte").hasAnyRole("ADMIN");
+		http.authorizeRequests().antMatchers("/category").hasAnyRole("ADMIN");
+		http.authorizeRequests().antMatchers("/categoryList").hasAnyRole("ADMIN");
+		http.authorizeRequests().antMatchers("/graphic").hasAnyRole("ADMIN");
+		http.authorizeRequests().antMatchers("/profile").hasAnyRole("ADMIN");
+		http.authorizeRequests().antMatchers("/reports").hasAnyRole("ADMIN");
+		http.authorizeRequests().antMatchers("/showReport").hasAnyRole("ADMIN");
 
 		// Login form
 		http.formLogin().loginPage("/login");
