@@ -39,6 +39,9 @@ public class Category {
 
 	@ManyToMany(mappedBy = "CATEGORYS")
 	private List<Article> ARTICLES;
+	
+	@Column(name="SIZE")
+	private int size = 0;
 
 	public Category() {
 		// DEFAULT CONSTRUCTOR FOR JPA
@@ -98,6 +101,18 @@ public class Category {
 
 	public void setTITLE(String tITLE) {
 		TITLE = tITLE;
+	}
+	
+	public int size() {
+		return ARTICLES.size();
+	}
+	
+	public void addSize() {
+		size++;
+	}
+	
+	public void setSize(int sIze) {
+		size = sIze;
 	}
 
 }
