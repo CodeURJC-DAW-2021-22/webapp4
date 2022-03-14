@@ -185,6 +185,10 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 
 ![](ScreenshotsFase2/diagramaClasesTemplatesWallypop.jpg)
 
+## Diagrama de navegación actualizado
+
+![](ScreenshotsFase2/Diagrama%20navegacion.jpg)
+
 ## Contribución miembros equipo
 
 ### Contribución Jesús:
