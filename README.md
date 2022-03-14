@@ -274,6 +274,32 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/FIX_AND_NEW_IMPLEMENTATIONS/backend/src/main/resources/templates/modifyDataUser.html
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/FIX_AND_NEW_IMPLEMENTATIONS/backend/src/main/resources/templates/index.html
 
+### Contribución Juan:
+
+#### Descripción textual
+
+##### He participado en la creacion y guardado en base de datos de los formularios de reporte
+##### He participado en la lista de reportes que debe salir de la base de datos para mostrarse al administrador
+##### He participado en la visualizacion individual de los reportes que permite al administrador aceptarlo o rechazarlo
+##### He participado en la creacion y borrado de favoritos 
+
+#### 5 Commits más significativos:
+
+##### Rellenar formulario de reportes y enviarlo a la base de datos. https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/8c57c2277999f69edc5648367537af2456d0f960
+##### Mostrar lista de reportes al administrador. https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/0ef1d4185c030ab3e1f5e6975f499d5cdb984df8
+##### Visualizar Reporte completo.https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/9c32a53c28d3b50db5028c883ffdfad3bbd621b4
+##### Funcionalidad de eliminar articlo reportado o eliminar reporte.https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/bed1f9db220cb8c52eb243809f2b63ca504b9b65
+##### Añadir articlos favoritos a la lista de favoritos de un usuario.https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/019a78bcc6cadc81bc84c2144cedcc746f1c1bcd
+
+#### 5 ficheros mayor participación:
+
+
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/FNI_Favorites/backend/src/main/java/es/codeurjc/wallypop/controller/WallypopWebController.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/FNI_Favorites/backend/src/main/java/es/codeurjc/wallypop/service/FavoritesService.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/FNI_Favorites/backend/src/main/resources/templates/VisualizaReporte.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/FNI_Favorites/backend/src/main/resources/templates/reportesAdmin.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/FNI_Favorites/backend/src/main/resources/templates/formularioReporte.html
+
 
 # Intrucciones ejecución
 
