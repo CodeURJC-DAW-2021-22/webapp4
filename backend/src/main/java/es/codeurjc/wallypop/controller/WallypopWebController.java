@@ -291,16 +291,6 @@ public class WallypopWebController {
 		return "formularioReporte";
 	}
 
-	// This method is called when user get to add new article successful.
-	/*
-	@RequestMapping("/yourcommercial_success")
-	public String mensajeCreadoExito(Model model) {
-		model.addAttribute("exito_creacion_nuevo_anuncio", "Enhorabuena! El nuevo anuncio ha sido creado con éxito");
-		model.addAttribute("Articles", usLogged.getARTICLES());
-		return "yourcommercial";
-		
-	}
-	*/
 
 	private void newArticle() {
 		usLogged.newArticle();
@@ -330,6 +320,7 @@ public class WallypopWebController {
 				encontradoIguales = true;
 			}		
 		}
+		listArticles = usLogged.getFirstTenARTICLES();
 		if(!encontradoIguales) {
 			if (!imageField.isEmpty()) {
 				article.setPHOTO(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
@@ -337,9 +328,8 @@ public class WallypopWebController {
 			
 			newArticle(); // SUM 1 to N_SELL
 			articleService.save(article);
+			listArticles.remove(listArticles.size()-1);
 			listArticles.add(0, article);
-			
-
 		}
 		model.addAttribute("Articles", listArticles);
 		return "yourcommercial";
@@ -490,7 +480,7 @@ public class WallypopWebController {
 	@RequestMapping("/yourcommercial")
 	public String yourcommercial(Model model) {
 		model.addAttribute("exito_creacion_nuevo_anuncio", "");
-		model.addAttribute("Articles", usLogged.getARTICLES());
+		model.addAttribute("Articles", usLogged.getFirstTenARTICLES());
 		return "yourcommercial";
 	}
 
