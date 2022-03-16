@@ -85,8 +85,10 @@ public class User {
 	}
 
 	public List<Article> getARTICLES() {
-		Collections.reverse(ARTICLES);
-		return ARTICLES;
+		List<Article> listArticles  = new LinkedList<Article>();
+		listArticles = ARTICLES;
+		Collections.reverse(listArticles);
+		return listArticles;
 		
 	}
 

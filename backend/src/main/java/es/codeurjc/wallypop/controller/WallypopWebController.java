@@ -291,13 +291,16 @@ public class WallypopWebController {
 		return "formularioReporte";
 	}
 
-	// This method is called when user get to add new article successful.	
+	// This method is called when user get to add new article successful.
+	/*
 	@RequestMapping("/yourcommercial_success")
 	public String mensajeCreadoExito(Model model) {
 		model.addAttribute("exito_creacion_nuevo_anuncio", "Enhorabuena! El nuevo anuncio ha sido creado con éxito");
 		model.addAttribute("Articles", usLogged.getARTICLES());
 		return "yourcommercial";
+		
 	}
+	*/
 
 	private void newArticle() {
 		usLogged.newArticle();
@@ -317,23 +320,29 @@ public class WallypopWebController {
 
 	@PostMapping("/newcommercial")
 	public String newCommercial(Model model, Article article, MultipartFile imageField) throws IOException {
+		model.addAttribute("exito_creacion_nuevo_anuncio", "Enhorabuena! El nuevo anuncio ha sido creado con éxito");
 		List<Article> listArticles  = new LinkedList<Article>();
 		boolean encontradoIguales = false;
-		listArticles = articleService.findAll();
+		article.setUSER(usLogged);
+		listArticles = usLogged.getARTICLES();
 		for (int i = 0; i < listArticles.size();i++) {
 			if(listArticles.get(i).getUserID() == article.getUserID() && listArticles.get(i).getDESCRIPTION().equals(article.getDESCRIPTION()) && listArticles.get(i).getPRICE_s().equals(article.getPRICE_s()) && listArticles.get(i).getPOSTAL_CODE().equals(article.getPOSTAL_CODE()) && listArticles.get(i).getTITLE().equals(article.getTITLE())) {
 				encontradoIguales = true;
-			}
+			}		
 		}
 		if(!encontradoIguales) {
 			if (!imageField.isEmpty()) {
 				article.setPHOTO(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
 			}
-			article.setUSER(usLogged);
+			
 			newArticle(); // SUM 1 to N_SELL
 			articleService.save(article);
+			listArticles.add(0, article);
+			
+
 		}
-		return "yourcommercial_success";
+		model.addAttribute("Articles", listArticles);
+		return "yourcommercial";
 	}
 
 	@PostMapping("/newformularioReporte/{id_article}")
@@ -380,7 +389,7 @@ public class WallypopWebController {
 				if (id_user_logged == a.getUserID() || usLogged.isIS_ADMIN()) {
 					model.addAttribute("Owner", true);
 				} else {
-					// Only sum a visit if im not the owner o an admin
+					// Only sum a visit if is not the owner o an admin
 					visit(a);
 					model.addAttribute("ID_BUYER", id_user_logged);
 					model.addAttribute("To", a.getUserEmail());
