@@ -1,5 +1,6 @@
 package es.codeurjc.wallypop.model;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -84,7 +85,9 @@ public class User {
 	}
 
 	public List<Article> getARTICLES() {
+		Collections.reverse(ARTICLES);
 		return ARTICLES;
+		
 	}
 
 	public List<Article> getARTICLESSold() {

@@ -291,8 +291,7 @@ public class WallypopWebController {
 		return "formularioReporte";
 	}
 
-	// Este es el método que se llama cuando agragamos un nuevo anuncio y toto va
-	// bien
+	// This method is called when user get to add new article successful.	
 	@RequestMapping("/yourcommercial_success")
 	public String mensajeCreadoExito(Model model) {
 		model.addAttribute("exito_creacion_nuevo_anuncio", "Enhorabuena! El nuevo anuncio ha sido creado con éxito");
@@ -318,12 +317,22 @@ public class WallypopWebController {
 
 	@PostMapping("/newcommercial")
 	public String newCommercial(Model model, Article article, MultipartFile imageField) throws IOException {
-		if (!imageField.isEmpty()) {
-			article.setPHOTO(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
+		List<Article> listArticles  = new LinkedList<Article>();
+		boolean encontradoIguales = false;
+		listArticles = articleService.findAll();
+		for (int i = 0; i < listArticles.size();i++) {
+			if(listArticles.get(i).getUserID() == article.getUserID() && listArticles.get(i).getDESCRIPTION().equals(article.getDESCRIPTION()) && listArticles.get(i).getPRICE_s().equals(article.getPRICE_s()) && listArticles.get(i).getPOSTAL_CODE().equals(article.getPOSTAL_CODE()) && listArticles.get(i).getTITLE().equals(article.getTITLE())) {
+				encontradoIguales = true;
+			}
 		}
-		article.setUSER(usLogged);
-		newArticle(); // SUM 1 to N_SELL
-		articleService.save(article);
+		if(!encontradoIguales) {
+			if (!imageField.isEmpty()) {
+				article.setPHOTO(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
+			}
+			article.setUSER(usLogged);
+			newArticle(); // SUM 1 to N_SELL
+			articleService.save(article);
+		}
 		return "yourcommercial_success";
 	}
 
@@ -380,7 +389,7 @@ public class WallypopWebController {
 					model.addAttribute("Mail", new Mail());
 				}
 			} else {
-				// Visit because im not registered user
+				// Visit because is not registered user
 				visit(a);
 			}
 
@@ -468,7 +477,7 @@ public class WallypopWebController {
 		return "showReport";
 	}
 
-	// Este es el método que se llama cuando vamos al apartado TUS ANUNCIOS
+	// This method is called when user click TUS ANUNCIOS
 	@RequestMapping("/yourcommercial")
 	public String yourcommercial(Model model) {
 		model.addAttribute("exito_creacion_nuevo_anuncio", "");
