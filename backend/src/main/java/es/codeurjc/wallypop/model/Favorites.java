@@ -61,4 +61,16 @@ public class Favorites {
 		USERS = uSER;
 	}
 
+	public void setID_FAVORITE(long ID_FAVORITE) {
+		this.ID_FAVORITE = ID_FAVORITE;
+	}
+
+	@NonNull
+	public User getUSERS() {
+		return USERS;
+	}
+
+	public void setUSERS(@NonNull User USERS) {
+		this.USERS = USERS;
+	}
 }

@@ -202,4 +202,32 @@ public class Article {
 		N_VISITS += 1;
 	}
 
+	public void setID_ARTICLE(long ID_ARTICLE) {
+		this.ID_ARTICLE = ID_ARTICLE;
+	}
+
+	@NonNull
+	public User getUSERS() {
+		return USERS;
+	}
+
+	public void setUSERS(@NonNull User USERS) {
+		this.USERS = USERS;
+	}
+
+	public void setDATE(Date DATE) {
+		this.DATE = DATE;
+	}
+
+	public void setN_VISITS(int n_VISITS) {
+		N_VISITS = n_VISITS;
+	}
+
+	public List<Report> getREPORTS() {
+		return REPORTS;
+	}
+
+	public void setREPORTS(List<Report> REPORTS) {
+		this.REPORTS = REPORTS;
+	}
 }

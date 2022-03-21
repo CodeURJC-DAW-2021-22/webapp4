@@ -93,4 +93,8 @@ public class Report {
 	public void setPROOF(Blob pROOF) {
 		PROOF = pROOF;
 	}
+
+	public void setID_REPORT(long ID_REPORT) {
+		this.ID_REPORT = ID_REPORT;
+	}
 }

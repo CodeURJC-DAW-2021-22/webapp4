@@ -1,5 +1,6 @@
 package es.codeurjc.wallypop.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,15 @@ public class UserService {
 
 	public boolean userExists(User us) {
 		return userRepository.findByNAME(us.getNAME()).isPresent();
+	}
+
+	public List<User> findAll() { return userRepository.findAll(); }
+
+	public boolean exist(long id) {
+		return userRepository.existsById(id);
+	}
+
+	public void deleteById(long id) {
+		userRepository.deleteById(id);
 	}
 }

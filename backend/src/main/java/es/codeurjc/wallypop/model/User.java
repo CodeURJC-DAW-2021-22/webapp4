@@ -146,6 +146,8 @@ public class User {
 		}
 	}
 
+	public void setID_USER(long iD_USER) { ID_USER = iD_USER; }
+
 	public void setARTICLES(List<Article> aRTICLES) {
 		ARTICLES = aRTICLES;
 	}
@@ -183,4 +185,11 @@ public class User {
 		N_SELL = ARTICLES.size() - N_SOLD;
 	}
 
+	public void setID_USER(@NonNull Long ID_USER) {
+		this.ID_USER = ID_USER;
+	}
+
+	public void setIS_ADMIN(boolean IS_ADMIN) {
+		this.IS_ADMIN = IS_ADMIN;
+	}
 }
