@@ -115,4 +115,14 @@ public class Category {
 		size = sIze;
 	}
 
+	public int getSize() {
+		return size;
+	}
+
+	public void setID_CATEGORY(long iD_CATEGORY) {
+		ID_CATEGORY = iD_CATEGORY;
+	}
+	
+	
+
 }
