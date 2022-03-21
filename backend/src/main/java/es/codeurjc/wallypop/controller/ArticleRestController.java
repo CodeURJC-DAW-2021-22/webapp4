@@ -29,8 +29,8 @@ public class ArticleRestController {
 
         Optional<Article> op = articleService.findById(id);
         if (op.isPresent()) {
-            Article user = op.get();
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            Article article = op.get();
+            return new ResponseEntity<>(article, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
