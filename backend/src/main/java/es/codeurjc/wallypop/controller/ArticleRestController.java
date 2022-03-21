@@ -81,9 +81,33 @@ public class ArticleRestController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Article> updateArticle(@PathVariable long id, @RequestBody Article updatedArticle) throws SQLException {
+    public ResponseEntity<Article> updateArticleID(@PathVariable long id, @RequestBody Article updatedArticle) throws SQLException {
         if (articleService.exist(id)) {
         	updatedArticle.setID_ARTICLE(id);
+        	articleService.save(updatedArticle);
+
+            return new ResponseEntity<>(updatedArticle, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<Article> updateArticleSOLD(@PathVariable long id, @RequestBody Article updatedArticle) throws SQLException {
+        if (articleService.exist(id)) {
+        	updatedArticle.setSOLD(true);
+        	articleService.save(updatedArticle);
+
+            return new ResponseEntity<>(updatedArticle, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<Article> updateArticleReserved(@PathVariable long id, @RequestBody Article updatedArticle) throws SQLException {
+        if (articleService.exist(id)) {
+        	updatedArticle.setRESERVED(true);
         	articleService.save(updatedArticle);
 
             return new ResponseEntity<>(updatedArticle, HttpStatus.OK);
