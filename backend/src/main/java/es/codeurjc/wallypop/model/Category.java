@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.lang.NonNull;
 
@@ -98,6 +99,7 @@ public class Category {
 		ID_CATEGORY = iD_CATEGORY;
 	}
 
+	@JsonIgnore
 	public void setPHOTO(Blob pHOTO) {
 		PHOTO = pHOTO;
 	}

@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
@@ -121,6 +122,7 @@ public class Article {
 		return N_VISITS;
 	}
 
+	@JsonIgnore
 	public Blob getPHOTO() {
 		return PHOTO;
 	}
