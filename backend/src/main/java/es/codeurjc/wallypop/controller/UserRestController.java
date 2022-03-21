@@ -48,6 +48,22 @@ public class UserRestController {
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody User updatedUser) throws SQLException {
         if (userService.exist(id)) {
+            User us = userService.findById(id).get();
+            if (updatedUser.getNAME() == null) {
+                updatedUser.setNAME(us.getNAME());
+            }
+            if (updatedUser.getFULL_NAME() == null) {
+                updatedUser.setFULL_NAME(us.getFULL_NAME());
+            }
+            if (updatedUser.getTEL() == null) {
+                updatedUser.setTEL(us.getTEL());
+            }
+            updatedUser.setIS_ADMIN(us.isIS_ADMIN());
+            updatedUser.setPASSWORD(userService.encodePassword(updatedUser.getPASSWORD()));
+            updatedUser.setN_SELL(us.getN_SELL());
+            updatedUser.setN_SOLD(us.getN_SOLD());
+            updatedUser.setARTICLES(us.getARTICLES());
+            updatedUser.setFAVORITES(us.getFAVORITES());
             updatedUser.setID_USER(id);
             userService.save(updatedUser);
 
