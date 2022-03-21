@@ -201,5 +201,9 @@ public class Article {
 	public void visit() {
 		N_VISITS += 1;
 	}
+	
+	public void setID_ARTICLE(@NonNull Long ID_ARTICLE) {
+		this.ID_ARTICLE = ID_ARTICLE;
+	}
 
 }

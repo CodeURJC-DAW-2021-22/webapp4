@@ -103,4 +103,8 @@ public class ArticleService {
 			save(a);
 		}
 	}
+	
+	public void deleteById(long id) {
+		articleRepository.deleteById(id);
+	}
 }
