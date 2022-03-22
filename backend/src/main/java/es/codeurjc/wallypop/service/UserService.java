@@ -4,11 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.repository.UserRepository;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class UserService {
@@ -47,5 +51,28 @@ public class UserService {
 
 	public void deleteById(long id) {
 		userRepository.deleteById(id);
+	}
+
+	public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody User updatedUser) {
+		User us = findById(id).get();
+		if (updatedUser.getNAME() == null) {
+			updatedUser.setNAME(us.getNAME());
+		}
+		if (updatedUser.getFULL_NAME() == null) {
+			updatedUser.setFULL_NAME(us.getFULL_NAME());
+		}
+		if (updatedUser.getTEL() == null) {
+			updatedUser.setTEL(us.getTEL());
+		}
+		updatedUser.setIS_ADMIN(us.isIS_ADMIN());
+		updatedUser.setPASSWORD(encodePassword(updatedUser.getPASSWORD()));
+		updatedUser.setN_SELL(us.getN_SELL());
+		updatedUser.setN_SOLD(us.getN_SOLD());
+		updatedUser.setARTICLES(us.getARTICLES());
+		updatedUser.setFAVORITES(us.getFAVORITES());
+		updatedUser.setID_USER(id);
+		save(updatedUser);
+
+		return new ResponseEntity<>(updatedUser, HttpStatus.OK);
 	}
 }

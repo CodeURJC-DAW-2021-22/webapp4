@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -20,24 +21,7 @@ public class UserRestController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
-    List<User> all() {
-        return userService.findAll();
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getUser(@PathVariable long id) {
-
-        Optional<User> op = userService.findById(id);
-        if (op.isPresent()) {
-            User user = op.get();
-            return new ResponseEntity<>(user, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @PostMapping("/")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public User createUser(@RequestBody User user) {
         user.setPASSWORD(userService.encodePassword(user.getPASSWORD()));
@@ -45,44 +29,41 @@ public class UserRestController {
         return user;
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody User updatedUser) throws SQLException {
-        if (userService.exist(id)) {
-            User us = userService.findById(id).get();
-            if (updatedUser.getNAME() == null) {
-                updatedUser.setNAME(us.getNAME());
-            }
-            if (updatedUser.getFULL_NAME() == null) {
-                updatedUser.setFULL_NAME(us.getFULL_NAME());
-            }
-            if (updatedUser.getTEL() == null) {
-                updatedUser.setTEL(us.getTEL());
-            }
-            updatedUser.setIS_ADMIN(us.isIS_ADMIN());
-            updatedUser.setPASSWORD(userService.encodePassword(updatedUser.getPASSWORD()));
-            updatedUser.setN_SELL(us.getN_SELL());
-            updatedUser.setN_SOLD(us.getN_SOLD());
-            updatedUser.setARTICLES(us.getARTICLES());
-            updatedUser.setFAVORITES(us.getFAVORITES());
-            updatedUser.setID_USER(id);
-            userService.save(updatedUser);
+    @GetMapping("/me")
+    public ResponseEntity<User> me(HttpServletRequest request) {
 
-            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        Principal principal = request.getUserPrincipal();
+
+        if(principal != null) {
+            return ResponseEntity.ok(userService.findByNAME(principal.getName()).orElseThrow());
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<User> deleteUser(@PathVariable long id) {
-
-        try {
-            userService.deleteById(id);
-            return new ResponseEntity<>(null, HttpStatus.OK);
-
-        } catch (EmptyResultDataAccessException e) {
+    @PutMapping("/me")
+    public ResponseEntity<User> updateUser(HttpServletRequest request, @RequestBody User updatedUser) throws SQLException {
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            return userService.updateUser(userService.findByNAME(principal.getName()).get().getID_USER(), updatedUser);
+        } else {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
-
     }
+
+    @DeleteMapping("/me")
+    public ResponseEntity<User> deleteUser(HttpServletRequest request) {
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            try {
+                userService.deleteById(userService.findByNAME(principal.getName()).get().getID_USER());
+                return new ResponseEntity<>(null, HttpStatus.OK);
+            } catch (EmptyResultDataAccessException e) {
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            }
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

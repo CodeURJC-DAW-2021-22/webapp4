@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.lang.NonNull;
 
@@ -31,6 +32,7 @@ public class User {
 	@Column(name = "NAME")
 	private String FULL_NAME;
 
+	@JsonIgnore
 	@NonNull
 	@Column(name = "PASSWORD")
 	private String PASSWORD;
@@ -125,6 +127,7 @@ public class User {
 		return NAME;
 	}
 
+	@JsonIgnore
 	public String getPASSWORD() {
 		return PASSWORD;
 	}

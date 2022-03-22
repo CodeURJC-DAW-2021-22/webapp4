@@ -49,12 +49,19 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.antMatcher("/api/**");
-		
-		// URLs that need authentication to access to it
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**").hasRole("ADMIN");
-		/*http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("ADMIN");*/
+
+		// New account
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users");
+
+		// Only for admin
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/admin/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/admin/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/admin/**").hasRole("ADMIN");
+
+		// All users - No post - user registered
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/me/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/me/**").hasRole("USER");
 		
 		// Other URLs can be accessed without authentication
 		http.authorizeRequests().anyRequest().permitAll();
