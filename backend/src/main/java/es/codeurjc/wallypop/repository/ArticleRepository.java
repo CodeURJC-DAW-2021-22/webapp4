@@ -30,4 +30,6 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
 
 	List<Article> findByTITLEContainingIgnoreCaseOrDESCRIPTIONContainingIgnoreCaseOrCITYContainingIgnoreCaseAndSOLDFalse(
 			String title, String description, String city);
+	
+	List<Category> findCategorierByID_ARTICLE(long id_article);
 }

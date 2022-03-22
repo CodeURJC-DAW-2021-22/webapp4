@@ -153,6 +153,10 @@ public class Article {
 	public boolean isRESERVED() {
 		return RESERVED;
 	}
+	
+	
+	
+	
 
 	public boolean isSOLD() {
 		return SOLD;
