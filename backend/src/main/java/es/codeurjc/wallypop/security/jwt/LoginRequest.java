@@ -8,8 +8,8 @@ public class LoginRequest {
 	public LoginRequest() {
 	}
 
-	public LoginRequest(String username, String password) {
-		this.email = username;
+	public LoginRequest(String email, String password) {
+		this.email = email;
 		this.password = password;
 	}
 

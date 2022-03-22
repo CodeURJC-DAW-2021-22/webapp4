@@ -32,7 +32,6 @@ public class User {
 	@Column(name = "NAME")
 	private String FULL_NAME;
 
-	@JsonIgnore
 	@NonNull
 	@Column(name = "PASSWORD")
 	private String PASSWORD;
@@ -127,7 +126,6 @@ public class User {
 		return NAME;
 	}
 
-	@JsonIgnore
 	public String getPASSWORD() {
 		return PASSWORD;
 	}
