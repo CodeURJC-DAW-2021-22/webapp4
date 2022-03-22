@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "REPORT")
 public class Report {
@@ -73,7 +75,8 @@ public class Report {
 	public long getID_REPORT() {
 		return ID_REPORT;
 	}
-
+     
+    @JsonIgnore
 	public Blob getPROOF() {
 		return PROOF;
 	}
