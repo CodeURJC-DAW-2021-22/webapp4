@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.lang.NonNull;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -98,5 +101,9 @@ public class Report {
 
 	public void setPROOF(Blob pROOF) {
 		PROOF = pROOF;
+	}
+
+	public void setID_REPORT(long ID_REPORT) {
+		this.ID_REPORT = ID_REPORT;
 	}
 }
