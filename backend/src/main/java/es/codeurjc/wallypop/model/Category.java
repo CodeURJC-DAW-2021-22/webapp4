@@ -17,6 +17,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.lang.NonNull;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "CATEGORY")
 @JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_category")
@@ -120,11 +124,18 @@ public class Category {
 		size = sIze;
 	}
 
-	public void setID_CATEGORY(long ID_CATEGORY) {
-		this.ID_CATEGORY = ID_CATEGORY;
-	}
-
 	public int getSize() {
 		return size;
 	}
+
+	public void setID_CATEGORY(long iD_CATEGORY) {
+		ID_CATEGORY = iD_CATEGORY;
+	}
+
+	@Override
+	public String toString() {
+		return "Category [ID_CATEGORY=" + ID_CATEGORY + ", TITLE=" + TITLE + ", DESCRIPTION=" + DESCRIPTION + ", PHOTO="
+				+ PHOTO + ", ICON=" + ICON + ", ARTICLES=" + ARTICLES + ", size=" + size + "]";
+	}
+	
 }
