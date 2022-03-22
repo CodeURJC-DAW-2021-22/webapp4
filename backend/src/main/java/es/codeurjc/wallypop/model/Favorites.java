@@ -12,8 +12,12 @@ import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "FAVORITES")
+@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_favorite")
 public class Favorites {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

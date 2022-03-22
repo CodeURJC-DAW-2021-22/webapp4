@@ -13,10 +13,13 @@ import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "REPORT")
+@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_report")
 public class Report {
 
 	@Id
@@ -96,4 +99,12 @@ public class Report {
 	public void setPROOF(Blob pROOF) {
 		PROOF = pROOF;
 	}
+
+	@Override
+	public String toString() {
+		return "Report [ID_REPORT=" + ID_REPORT + ", ARTICLE=" + ARTICLE + ", EMAIL=" + EMAIL + ", DESCRIPTION="
+				+ DESCRIPTION + ", PROOF=" + PROOF + "]";
+	}
+	
+	
 }

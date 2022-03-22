@@ -14,8 +14,13 @@ import javax.persistence.Table;
 
 import org.springframework.lang.NonNull;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "CATEGORY")
+@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_category")
 public class Category {
 
 	@Id
@@ -95,6 +100,7 @@ public class Category {
 		ID_CATEGORY = iD_CATEGORY;
 	}
 
+	@JsonIgnore
 	public void setPHOTO(Blob pHOTO) {
 		PHOTO = pHOTO;
 	}
