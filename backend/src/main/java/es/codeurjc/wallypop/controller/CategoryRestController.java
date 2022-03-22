@@ -53,7 +53,7 @@ public class CategoryRestController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Category> updateUser(@PathVariable long id, @RequestBody Category updatedCategory) throws SQLException {
+    public ResponseEntity<Category> updateCategory(@PathVariable long id, @RequestBody Category updatedCategory) throws SQLException {
         if (categoryService.exist(id)) {
         	Category cat = categoryService.findById(id).get();
             updatedCategory.setARTICLES(cat.getARTICLES());
@@ -72,7 +72,7 @@ public class CategoryRestController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Category> deleteUser(@PathVariable long id) {
+    public ResponseEntity<Category> deleteCategory(@PathVariable long id) {
 
         try {
             categoryService.deleteById(id);
