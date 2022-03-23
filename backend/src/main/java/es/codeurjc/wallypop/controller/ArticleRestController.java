@@ -26,9 +26,9 @@ public class ArticleRestController {
     @Autowired
     private ArticleService articleService;
     
-    @Autowired
-    private ArticleRepository articleRepository;
-
+    //@Autowired
+    //private ArticleRepository articleRepository;
+    /*
     public ResponseEntity<Map<String, Object>> getAllArticles(
             @RequestParam(required = false) String title,
             @RequestParam(defaultValue = "0") int page,
@@ -54,7 +54,7 @@ public class ArticleRestController {
           return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
       }
-    
+    */
     
     @GetMapping("/")
     List<Article> all() {

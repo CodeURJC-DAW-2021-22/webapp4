@@ -1,11 +1,9 @@
 package es.codeurjc.wallypop.service;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import es.codeurjc.wallypop.model.Article;
@@ -39,15 +37,16 @@ public class ArticleService {
 	public boolean exist(long id) {
 		return articleRepository.existsById(id);
 	}
-	
+	/*
 	public Page<Article> findAllPageable(Pageable pageable) {
 		return articleRepository.findAllPageable(pageable);
 	}
-	
+	*/
+	/*
 	public List<Category> findCategorierByID_ARTICLE(long id_article) {
 		return articleRepository.findCategorierByID_ARTICLE(id_article);
 	}
-
+	*/
 	public List<Article> findAll() {
 		return articleRepository.findAll();
 	}
