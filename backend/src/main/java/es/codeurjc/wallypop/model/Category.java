@@ -1,6 +1,7 @@
 package es.codeurjc.wallypop.model;
 
 import java.sql.Blob;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -46,7 +47,7 @@ public class Category {
 	private String ICON = null;
 
 	@ManyToMany(mappedBy = "CATEGORYS")
-	private List<Article> ARTICLES;
+	private List<Article> ARTICLES = new LinkedList<>();
 	
 	@Column(name="SIZE")
 	private int size = 0;
@@ -79,6 +80,7 @@ public class Category {
 		return ID_CATEGORY;
 	}
 
+	@JsonIgnore
 	public Blob getPHOTO() {
 		return PHOTO;
 	}
@@ -103,7 +105,6 @@ public class Category {
 		ID_CATEGORY = iD_CATEGORY;
 	}
 
-	@JsonIgnore
 	public void setPHOTO(Blob pHOTO) {
 		PHOTO = pHOTO;
 	}
