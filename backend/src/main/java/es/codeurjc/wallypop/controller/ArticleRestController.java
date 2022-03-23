@@ -83,7 +83,19 @@ public class ArticleRestController {
     @PutMapping("/{id}")
     public ResponseEntity<Article> updateArticleID(@PathVariable long id, @RequestBody Article updatedArticle) throws SQLException {
         if (articleService.exist(id)) {
+        	Article cat = articleService.findById(id).get();
+        	updatedArticle.setCATEGORYS(cat.getCATEGORYS());
+        	updatedArticle.setTITLE(cat.getTITLE());
+        	updatedArticle.setDESCRIPTION(cat.getDESCRIPTION());
         	updatedArticle.setID_ARTICLE(id);
+        	updatedArticle.setPHOTO(cat.getPHOTO());
+        	updatedArticle.setPOSTAL_CODE(cat.getPOSTAL_CODE());
+        	updatedArticle.setPRICE(cat.getPRICE());
+        	updatedArticle.setCITY(cat.getCITY());
+        	updatedArticle.setRESERVED(cat.isRESERVED());
+        	updatedArticle.setSOLD(cat.isSOLD());
+        	updatedArticle.setUSER(cat.getUSER());
+        	
         	articleService.save(updatedArticle);
 
             return new ResponseEntity<>(updatedArticle, HttpStatus.OK);
@@ -92,29 +104,6 @@ public class ArticleRestController {
         }
     }
     
-    @PutMapping("/{id}")
-    public ResponseEntity<Article> updateArticleSOLD(@PathVariable long id, @RequestBody Article updatedArticle) throws SQLException {
-        if (articleService.exist(id)) {
-        	updatedArticle.setSOLD(true);
-        	articleService.save(updatedArticle);
-
-            return new ResponseEntity<>(updatedArticle, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-    
-    @PutMapping("/{id}")
-    public ResponseEntity<Article> updateArticleReserved(@PathVariable long id, @RequestBody Article updatedArticle) throws SQLException {
-        if (articleService.exist(id)) {
-        	updatedArticle.setRESERVED(true);
-        	articleService.save(updatedArticle);
-
-            return new ResponseEntity<>(updatedArticle, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Article> deleteArticle(@PathVariable long id) {
