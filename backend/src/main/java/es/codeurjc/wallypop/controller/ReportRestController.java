@@ -22,13 +22,13 @@ import es.codeurjc.wallypop.model.Report;
 import es.codeurjc.wallypop.service.ReportService;
 
 @RestController
-@RequestMapping("/api/report")
+@RequestMapping("/api/reports")
 public class ReportRestController {
 	
 	@Autowired
 	private ReportService reportService;
 	
-	 @GetMapping("/")
+	 @GetMapping("")
 	    List<Report> all() {
 	        return reportService.findAll();
 	    }
