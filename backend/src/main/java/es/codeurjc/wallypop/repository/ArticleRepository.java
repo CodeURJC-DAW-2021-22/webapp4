@@ -16,12 +16,6 @@ public interface ArticleRepository extends JpaRepository<Article, Long>, CrudRep
 	Page<Article> findAll(Pageable pageable);
 	List<Article> findAll();
 	
-	//Page<Article> findByUSERS(User user, Pageable pageable);
-
-
-	
-	//Page<Article> findByTitleContaining (String title, Pageable pageable);
-	
 	List<Article> findByCATEGORYS(Category cat);
 
 	List<Article> findByCITYContainingIgnoreCaseAndSOLDFalse(String city);
@@ -38,7 +32,4 @@ public interface ArticleRepository extends JpaRepository<Article, Long>, CrudRep
 
 	List<Article> findByTITLEContainingIgnoreCaseOrDESCRIPTIONContainingIgnoreCaseOrCITYContainingIgnoreCaseAndSOLDFalse(
 			String title, String description, String city);
-
-	
-	//List<Category> findCategorierByID_ARTICLE(long id_article);
 }
