@@ -16,13 +16,11 @@ import java.util.logging.Logger;
 
 @Configuration
 public class DatabaseConfig {
-    private static Logger log = (Logger) LoggerFactory.getLogger(DatabaseConfig.class);
     @Value("${DATABASE_URL:null}")
     private String databaseUrl;
     @Bean
     @ConditionalOnProperty("DATABASE_URL")
     public DataSource dataSource() throws URISyntaxException {
-        log.log(Level.INFO, "Using database configured in DATABASE_URL=" + databaseUrl);
         HikariConfig config = new HikariConfig();
         URI uri = new URI(databaseUrl);
         String url = "jdbc:" + new URI("postgresql", null, uri.getHost(), uri.getPort(), uri.getPath(),
