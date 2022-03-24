@@ -2,12 +2,20 @@ package es.codeurjc.wallypop.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
+import es.codeurjc.wallypop.model.User;
 
-public interface ArticleRepository extends JpaRepository<Article, Long> {
+
+public interface ArticleRepository extends JpaRepository<Article, Long>, CrudRepository<Article, Long>  {
+	Page<Article> findAll(Pageable pageable);
+	List<Article> findAll();
+	
 	List<Article> findByCATEGORYS(Category cat);
 
 	List<Article> findByCITYContainingIgnoreCaseAndSOLDFalse(String city);

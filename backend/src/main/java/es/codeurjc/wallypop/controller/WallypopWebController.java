@@ -104,7 +104,7 @@ public class WallypopWebController {
 		}
 		return "redirect:/commercial/";
 	}
-	
+
 	@RequestMapping("/search/commercial")
 	public String commercialFiltered(Model model, String id_category) {
 		if (id_category == null) {
@@ -132,14 +132,14 @@ public class WallypopWebController {
 	 * article.getUSER().deleteArticle(); userService.save(article.getUSER()); }
 	 */
 
-	
+
 	@RequestMapping("/modifyDataUser")
 	public String modifyDataUser(Model model) {
 		model.addAttribute("old_user", usLogged);
 		model.addAttribute("user", new User());
 		return "modifyDataUser";
 	}
-	
+
 	@PostMapping("/modifyData")
 	public String modifyData(Model model, User user) {
 		User user2 = userService.findById(usLogged.getID_USER()).get();
@@ -149,7 +149,7 @@ public class WallypopWebController {
 		userService.save(user2);
 		return "redirect:/profile";
 	}
-	
+
 	@RequestMapping("/commercial")
 	public String commercial(Model model) {
 		model.addAttribute("Articles", articleService.findBySOLDFalse());
@@ -217,7 +217,7 @@ public class WallypopWebController {
 
 	@GetMapping("/showReport/{id}/delete")
 	public String deleteReport(Model model, @PathVariable long id) {
-		reportService.delete(id);
+		reportService.deleteById(id);
 		model.addAttribute("report", reportService.findAll());
 		return "report";
 	}
@@ -329,7 +329,7 @@ public class WallypopWebController {
 
 	@PostMapping("/newformularioReporte/{id_article}")
 	public String newformularioReporte(Model model, Report report, MultipartFile imageField,
-			@PathVariable long id_article) throws IOException {
+									   @PathVariable long id_article) throws IOException {
 		if (!imageField.isEmpty()) {
 			report.setPROOF(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
 		}
@@ -347,7 +347,7 @@ public class WallypopWebController {
 
 	@RequestMapping(value = "/post/{id_article}", method = RequestMethod.GET, produces = "application/json")
 	public String postID(Model model, @PathVariable long id_article,
-			@RequestParam(required = false, defaultValue = "") String r) {
+						 @RequestParam(required = false, defaultValue = "") String r) {
 		Optional<Article> article = articleService.findById(id_article);
 		if (!r.isEmpty()) {
 			model.addAttribute("emailSended", true);
@@ -457,7 +457,7 @@ public class WallypopWebController {
 		model.addAttribute("lcategory", categoryservice.findAll());
 		return "commercial";
 	}
-	
+
 	@RequestMapping("/graphic")
 	public String graphic(Model model) {
 		List<Category> lCategory = categoryservice.findAll();

@@ -17,11 +17,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
 @Entity
 @Table(name = "ARTICLE")
+@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_article")
 public class Article {
 
 	@Id
@@ -72,7 +76,7 @@ public class Article {
 
 	@ManyToMany
 	@JoinColumn(name = "CATEGORYS")
-	private List<Category> CATEGORYS;
+	private List<Category> CATEGORYS = new LinkedList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ARTICLE")
 	private List<Report> REPORTS = new LinkedList<>();
@@ -82,7 +86,7 @@ public class Article {
 	}
 
 	public Article(User uSER, String tITLE, String dESCRIPTION, String cITY, String pOSTAL_CODE, float pRICE,
-			Blob pHOTO, List<Category> lISTcATEGORYS) {
+				   Blob pHOTO, List<Category> lISTcATEGORYS) {
 		super();
 		USERS = uSER;
 		TITLE = tITLE;
@@ -118,6 +122,7 @@ public class Article {
 		return N_VISITS;
 	}
 
+	@JsonIgnore
 	public Blob getPHOTO() {
 		return PHOTO;
 	}
@@ -202,4 +207,36 @@ public class Article {
 		N_VISITS += 1;
 	}
 
+	public void setID_ARTICLE(long ID_ARTICLE) {
+		this.ID_ARTICLE = ID_ARTICLE;
+	}
+
+	@NonNull
+	public User getUSERS() {
+		return USERS;
+	}
+
+	public void setUSERS(@NonNull User USERS) {
+		this.USERS = USERS;
+	}
+
+	public void setDATE(Date DATE) {
+		this.DATE = DATE;
+	}
+
+	public void setN_VISITS(int n_VISITS) {
+		N_VISITS = n_VISITS;
+	}
+
+	public List<Report> getREPORTS() {
+		return REPORTS;
+	}
+
+	public void setREPORTS(List<Report> REPORTS) {
+		this.REPORTS = REPORTS;
+	}
+
+	public void addCategory(Category c) {
+		CATEGORYS.add(c);
+	}
 }

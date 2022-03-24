@@ -57,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/adcommercial").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/newcommercial").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/favorites").hasAnyRole("USER");
-		http.authorizeRequests().antMatchers("/perfil").hasAnyRole("USER");
+		http.authorizeRequests().antMatchers("/profile").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/yourcommercial").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/yourcommercialsold").hasAnyRole("USER");
 		http.authorizeRequests().antMatchers("/yourcommercialsuccess").hasAnyRole("USER");
@@ -71,7 +71,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/category").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/categoryList").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/graphic").hasAnyRole("ADMIN");
-		http.authorizeRequests().antMatchers("/profile").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/reports").hasAnyRole("ADMIN");
 		http.authorizeRequests().antMatchers("/showReport").hasAnyRole("ADMIN");
 

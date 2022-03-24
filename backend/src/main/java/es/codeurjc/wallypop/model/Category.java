@@ -1,6 +1,7 @@
 package es.codeurjc.wallypop.model;
 
 import java.sql.Blob;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,10 +13,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.lang.NonNull;
 
 @Entity
 @Table(name = "CATEGORY")
+@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_category")
 public class Category {
 
 	@Id
@@ -38,7 +43,7 @@ public class Category {
 	private String ICON = null;
 
 	@ManyToMany(mappedBy = "CATEGORYS")
-	private List<Article> ARTICLES;
+	private List<Article> ARTICLES = new LinkedList<>();
 	
 	@Column(name="SIZE")
 	private int size = 0;
@@ -71,6 +76,7 @@ public class Category {
 		return ID_CATEGORY;
 	}
 
+	@JsonIgnore
 	public Blob getPHOTO() {
 		return PHOTO;
 	}
@@ -102,17 +108,30 @@ public class Category {
 	public void setTITLE(String tITLE) {
 		TITLE = tITLE;
 	}
-	
+
 	public int size() {
 		return ARTICLES.size();
 	}
-	
+
 	public void addSize() {
 		size++;
 	}
-	
+
 	public void setSize(int sIze) {
 		size = sIze;
 	}
 
+	public void setID_CATEGORY(long ID_CATEGORY) {
+		this.ID_CATEGORY = ID_CATEGORY;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	@Override
+	public String toString() {
+		return "Category [ID_CATEGORY=" + ID_CATEGORY + ", TITLE=" + TITLE + ", DESCRIPTION=" + DESCRIPTION + ", PHOTO="
+				+ PHOTO + ", ICON=" + ICON + ", ARTICLES=" + ARTICLES + ", size=" + size + "]";
+	}
 }
