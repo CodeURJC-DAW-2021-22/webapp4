@@ -40,5 +40,9 @@ public class CategoryService {
 	public void save(Category category) {
 		categoryrepository.save(category);
 	}
+	
+	public void deleteById(long id) {
+		categoryrepository.deleteById(id);
+	}
 
 }

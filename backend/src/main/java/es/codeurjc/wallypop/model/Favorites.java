@@ -10,10 +10,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.lang.NonNull;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "FAVORITES")
+@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_favorite")
 public class Favorites {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,4 +67,16 @@ public class Favorites {
 		USERS = uSER;
 	}
 
+	public void setID_FAVORITE(long ID_FAVORITE) {
+		this.ID_FAVORITE = ID_FAVORITE;
+	}
+
+	@NonNull
+	public User getUSERS() {
+		return USERS;
+	}
+
+	public void setUSERS(@NonNull User USERS) {
+		this.USERS = USERS;
+	}
 }

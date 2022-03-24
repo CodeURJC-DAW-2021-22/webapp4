@@ -12,10 +12,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.lang.NonNull;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "CATEGORY")
+@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_category")
 public class Category {
 
 	@Id
@@ -39,6 +47,9 @@ public class Category {
 
 	@ManyToMany(mappedBy = "CATEGORYS")
 	private List<Article> ARTICLES;
+	
+	@Column(name="SIZE")
+	private int size = 0;
 
 	public Category() {
 		// DEFAULT CONSTRUCTOR FOR JPA
@@ -92,6 +103,7 @@ public class Category {
 		ID_CATEGORY = iD_CATEGORY;
 	}
 
+	@JsonIgnore
 	public void setPHOTO(Blob pHOTO) {
 		PHOTO = pHOTO;
 	}
@@ -99,5 +111,31 @@ public class Category {
 	public void setTITLE(String tITLE) {
 		TITLE = tITLE;
 	}
+	
+	public int size() {
+		return ARTICLES.size();
+	}
+	
+	public void addSize() {
+		size++;
+	}
+	
+	public void setSize(int sIze) {
+		size = sIze;
+	}
 
+	public int getSize() {
+		return size;
+	}
+
+	public void setID_CATEGORY(long iD_CATEGORY) {
+		ID_CATEGORY = iD_CATEGORY;
+	}
+
+	@Override
+	public String toString() {
+		return "Category [ID_CATEGORY=" + ID_CATEGORY + ", TITLE=" + TITLE + ", DESCRIPTION=" + DESCRIPTION + ", PHOTO="
+				+ PHOTO + ", ICON=" + ICON + ", ARTICLES=" + ARTICLES + ", size=" + size + "]";
+	}
+	
 }

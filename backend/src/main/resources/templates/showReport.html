@@ -7,7 +7,7 @@
 				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
 					<form action="" class="form-horizontal">
 						<br>
-						<a href="/reportesAdmin" class="btn btn-info">&lt;</a>
+						<a href="/reports" class="btn btn-info">&lt;</a>
 						<br>
 						{{#report}}
 						<h3 class="text-info">ID incidencia: {{ID_REPORT}}</h3>
@@ -33,8 +33,8 @@
 						<h3 class="text-info">Fichero adjunto por el usuario</h3>
 						<a href="{{ID_REPORT}}/image" download="">Download</a>
 						<p class="text-center">
-							<a class="btn btn-success" href="/VisualizaReporte/{{ID_REPORT}}/deleteArticle" >ACEPTAR REPORTE</a>
-							<a class="btn btn-danger" href="/VisualizaReporte/{{ID_REPORT}}/delete">RECHAZAR REPORTE</a> 	                     
+							<a class="btn btn-success" href="/showReport/{{ID_REPORT}}/deleteArticle" >ACEPTAR REPORTE</a>
+							<a class="btn btn-danger" href="/showReport/{{ID_REPORT}}/delete">RECHAZAR REPORTE</a> 	                     
 						</p>
 						{{/report}}
 					</form>
