@@ -11,7 +11,7 @@ import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
 import es.codeurjc.wallypop.model.User;
 
-//@EnableJpaRepositories
+
 public interface ArticleRepository extends JpaRepository<Article, Long>, CrudRepository<Article, Long>  {
 	Page<Article> findAll(Pageable pageable);
 	List<Article> findAll();

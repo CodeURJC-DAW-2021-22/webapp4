@@ -128,4 +128,10 @@ public class Category {
 	public int getSize() {
 		return size;
 	}
+
+	@Override
+	public String toString() {
+		return "Category [ID_CATEGORY=" + ID_CATEGORY + ", TITLE=" + TITLE + ", DESCRIPTION=" + DESCRIPTION + ", PHOTO="
+				+ PHOTO + ", ICON=" + ICON + ", ARTICLES=" + ARTICLES + ", size=" + size + "]";
+	}
 }
