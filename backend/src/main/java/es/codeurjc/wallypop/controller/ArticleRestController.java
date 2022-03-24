@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Pageable;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,13 +30,15 @@ public class ArticleRestController {
     @Autowired
     private ArticleRepository articleRepository;
     
-    public ResponseEntity<Map<String, Object>> getAllArticlesByUser(@PathVariable User user) {
+    @GetMapping("/yourcommercial")
+    public ResponseEntity<Map<String, Object>> getAllArticlesByUser(@RequestBody User user) {
         try {
           List<Article> articles = new LinkedList<Article>();
           Pageable paging = (Pageable) PageRequest.of(0, 10);
           Page<Article> pageTuts;
                     
           pageTuts = articleService.findAll(paging);
+          //pageTuts = articleService.findByUSERS(user, paging);
           articles = user.getARTICLES();
           Map<String, Object> response = new HashMap<>();
           response.put("articles", articles);

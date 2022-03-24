@@ -6,11 +6,9 @@ import java.util.Optional;
 import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import es.codeurjc.wallypop.model.Article;
-import es.codeurjc.wallypop.model.Category;
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.repository.ArticleRepository;
 import es.codeurjc.wallypop.repository.UserRepository;
@@ -41,15 +39,20 @@ public class ArticleService {
 		return articleRepository.existsById(id);
 	}
 	
-	public Page<Article> findAll( Pageable pageable) {
-		return articleRepository.findAll(pageable);
+	/*
+	public Page<Article> findByUSERS(User user, Pageable pageable) {
+		return articleRepository.findByUSERS(user, pageable);
 	}
-	
+	*/
 	/*
 	public List<Category> findCategorierByID_ARTICLE(long id_article) {
 		return articleRepository.findCategorierByID_ARTICLE(id_article);
 	}
 	*/
+	
+	public Page<Article> findAll(Pageable pageable) {
+		return articleRepository.findAll(pageable);
+	}
 	public List<Article> findAll() {
 		return articleRepository.findAll();
 	}
