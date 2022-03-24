@@ -112,8 +112,4 @@ public class Report {
 		return "Report [ID_REPORT=" + ID_REPORT + ", ARTICLE=" + ARTICLE + ", EMAIL=" + EMAIL + ", DESCRIPTION="
 				+ DESCRIPTION + ", PROOF=" + PROOF + "]";
 	}
-
-	public void setID_REPORT(long ID_REPORT) {
-		this.ID_REPORT = ID_REPORT;
-	}
 }
