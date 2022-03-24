@@ -47,15 +47,16 @@ public class ReportRestController {
 
 	    @PostMapping("")
 	    @ResponseStatus(HttpStatus.CREATED)
-	    public Report createReport(@RequestBody Report report) {
+	    public ResponseEntity<Report> createReport(@RequestBody Report report) {
 	        reportService.save(report);
-	        return report;
+			return new ResponseEntity<>(report, HttpStatus.OK);
 	    }
 	    
 	    @PutMapping("/{id}")
 	    public ResponseEntity<Report> updateReport(@PathVariable long id, @RequestBody Report updatedReport) throws SQLException {
 	        if (reportService.exist(id)) {
-	            return reportService.updateReport(id, updatedReport);
+				reportService.updateReport(id, updatedReport);
+				return new ResponseEntity<>(reportService.findById(id).get(), HttpStatus.OK);
 	        } else {
 	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	        }
