@@ -8,16 +8,23 @@ import es.codeurjc.wallypop.security.jwt.ArticleRequest;
 import es.codeurjc.wallypop.service.ArticleService;
 import es.codeurjc.wallypop.service.CategoryService;
 import es.codeurjc.wallypop.service.UserService;
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.net.URI;
 import java.security.Principal;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -25,6 +32,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 @RestController
 @RequestMapping("/api/articles")
@@ -67,6 +76,21 @@ public class ArticleRestController {
         }
     }
 
+    @GetMapping("/{id}/image")
+    public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
+        Article article = articleService.findById(id).orElseThrow();
+        if (article.getPHOTO() != null) {
+
+            Resource file = new InputStreamResource(article.getPHOTO().getBinaryStream());
+
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                    .contentLength(article.getPHOTO().length()).body(file);
+
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Article> createArticle(HttpServletRequest request, @RequestBody ArticleRequest articleRequest) {
@@ -93,6 +117,20 @@ public class ArticleRestController {
             }
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/{id}/image")
+    public ResponseEntity<Object> uploadImage(@PathVariable long id, @RequestParam MultipartFile imageFile)
+            throws IOException {
+
+        Article article = articleService.findById(id).orElseThrow();
+
+        URI location = fromCurrentRequest().build().toUri();
+
+        article.setPHOTO(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
+        articleService.save(article);
+
+        return ResponseEntity.created(location).build();
     }
 
     private ResponseEntity<Article> getArticleResponseEntity(@RequestBody ArticleRequest articleRequest, Article article) {
@@ -128,6 +166,18 @@ public class ArticleRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
+    }
+
+    @DeleteMapping("/{id}/image")
+    public ResponseEntity<Object> deleteImage(@PathVariable long id) throws IOException {
+
+        Article article = articleService.findById(id).orElseThrow();
+
+        article.setPHOTO(null);
+
+        articleService.save(article);
+
+        return ResponseEntity.noContent().build();
     }
 
     /*@PutMapping("/{id}")
