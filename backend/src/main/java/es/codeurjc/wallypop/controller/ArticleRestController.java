@@ -44,6 +44,17 @@ public class ArticleRestController {
         return articleService.findAll();
     }
 
+    @GetMapping("/me")
+    public ResponseEntity<List<Article>> me(HttpServletRequest request) {
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            User user = userService.findByNAME(principal.getName()).get();
+            return new ResponseEntity<>(user.getARTICLES(), HttpStatus.OK);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Article> getArticle(@PathVariable long id) {
 

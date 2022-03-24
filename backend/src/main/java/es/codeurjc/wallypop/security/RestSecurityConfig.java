@@ -57,6 +57,8 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/categories/**");
 		// Reports
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/reports");
+		// Articles
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/articles/**");
 
 		// Only for admin
 		// Admin Users
@@ -76,10 +78,14 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 		// All user registered
-
+		// User
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/me/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/me/**").hasRole("USER");
+		// Articles
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/articles/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/articles/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/articles/**").hasRole("USER");
 
 
 
