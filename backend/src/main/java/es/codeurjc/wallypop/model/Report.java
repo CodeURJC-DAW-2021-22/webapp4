@@ -103,10 +103,6 @@ public class Report {
 		PROOF = pROOF;
 	}	
 
-	public void setID_REPORT(long iD_REPORT) {
-		ID_REPORT = iD_REPORT;
-	}
-
 	@Override
 	public String toString() {
 		return "Report [ID_REPORT=" + ID_REPORT + ", ARTICLE=" + ARTICLE + ", EMAIL=" + EMAIL + ", DESCRIPTION="

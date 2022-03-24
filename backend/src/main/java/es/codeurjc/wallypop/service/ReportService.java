@@ -43,24 +43,6 @@ public class ReportService {
 		reportRepository.save(report);
 	}
 	
-    public ResponseEntity<Report> updateReport(@PathVariable long id, @RequestBody Report updatedReport){
-    	Report rep = findById(id).get();
-    	if (updatedReport.getARTICLE() == null) {
-        updatedReport.setARTICLE(rep.getARTICLE());
-        }
-        if (updatedReport.getEMAIL() == null) {
-        	updatedReport.setEMAIL(rep.getEMAIL());
-        }
-        if (updatedReport.getDESCRIPTION() == null) {
-        	updatedReport.setDESCRIPTION(rep.getDESCRIPTION());
-        }
-        if (updatedReport.getPROOF() == null) {
-        	updatedReport.setPROOF(rep.getPROOF());
-        }
-        updatedReport.setID_REPORT(id);
-        save(updatedReport);
-        return new ResponseEntity<>(updatedReport, HttpStatus.OK);
-}
 
 	/*
 	 * public List<Report> findAllReportsByArticle(long article_id) {
