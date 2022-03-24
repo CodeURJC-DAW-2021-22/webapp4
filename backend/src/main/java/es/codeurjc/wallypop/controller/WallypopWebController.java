@@ -217,7 +217,7 @@ public class WallypopWebController {
 
 	@GetMapping("/showReport/{id}/delete")
 	public String deleteReport(Model model, @PathVariable long id) {
-		reportService.delete(id);
+		reportService.deleteById(id);
 		model.addAttribute("report", reportService.findAll());
 		return "report";
 	}

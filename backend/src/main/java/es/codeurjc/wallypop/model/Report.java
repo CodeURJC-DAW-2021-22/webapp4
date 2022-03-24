@@ -81,8 +81,8 @@ public class Report {
 	public long getID_REPORT() {
 		return ID_REPORT;
 	}
-
-	@JsonIgnore
+     
+    @JsonIgnore
 	public Blob getPROOF() {
 		return PROOF;
 	}
@@ -101,9 +101,15 @@ public class Report {
 
 	public void setPROOF(Blob pROOF) {
 		PROOF = pROOF;
+	}	
+
+	public void setID_REPORT(long iD_REPORT) {
+		ID_REPORT = iD_REPORT;
 	}
 
-	public void setID_REPORT(long ID_REPORT) {
-		this.ID_REPORT = ID_REPORT;
+	@Override
+	public String toString() {
+		return "Report [ID_REPORT=" + ID_REPORT + ", ARTICLE=" + ARTICLE + ", EMAIL=" + EMAIL + ", DESCRIPTION="
+				+ DESCRIPTION + ", PROOF=" + PROOF + "]";
 	}
 }

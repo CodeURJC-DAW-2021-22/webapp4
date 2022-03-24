@@ -50,30 +50,46 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.antMatcher("/api/**");
 
+		// All user
 		// New account
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users");
+		// Categories
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/categories/**");
+		// Reports
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/reports");
+
+		// Only for admin
+		// Admin Users
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/admin/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/admin/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/admin/**").hasRole("ADMIN");
+
+		// Admin Categories
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/categories/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/categories/**").hasRole("ADMIN");
+
+		// Admin Reports
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/reports/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/reports/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/reports/**").hasRole("ADMIN");
+
+
+		// All user registered
+
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/me/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/me/**").hasRole("USER");
+
+
+
+
 		// Login
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/auth/login");
 		// Logout only logged users
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/auth/logout").hasRole("USER");
 		// Refresh token only logged users
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/auth/refresh").hasRole("USER");
-
-		// Only for admin
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/admin/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/admin/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/admin/**").hasRole("ADMIN");
-
-		// Categories
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/categories/**");
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/categories/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/categories/**").hasRole("ADMIN");
-
-		// All users - No post - user registered
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/me/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/me/**").hasRole("USER");
 		
 		// Other URLs can be accessed without authentication
 		http.authorizeRequests().anyRequest().permitAll();
