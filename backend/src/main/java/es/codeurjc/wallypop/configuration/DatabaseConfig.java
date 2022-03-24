@@ -1,4 +1,4 @@
-package es.codeurjc.wallypop.security;
+package es.codeurjc.wallypop.configuration;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
