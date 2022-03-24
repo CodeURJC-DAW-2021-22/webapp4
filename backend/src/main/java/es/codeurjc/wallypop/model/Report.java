@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.lang.NonNull;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -109,6 +112,8 @@ public class Report {
 		return "Report [ID_REPORT=" + ID_REPORT + ", ARTICLE=" + ARTICLE + ", EMAIL=" + EMAIL + ", DESCRIPTION="
 				+ DESCRIPTION + ", PROOF=" + PROOF + "]";
 	}
-	
-	
+
+	public void setID_REPORT(long ID_REPORT) {
+		this.ID_REPORT = ID_REPORT;
+	}
 }

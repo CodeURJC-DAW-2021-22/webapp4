@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.lang.NonNull;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -150,6 +153,8 @@ public class User {
 		}
 	}
 
+	public void setID_USER(long iD_USER) { ID_USER = iD_USER; }
+
 	public void setARTICLES(List<Article> aRTICLES) {
 		ARTICLES = aRTICLES;
 	}
@@ -187,4 +192,16 @@ public class User {
 		N_SELL = ARTICLES.size() - N_SOLD;
 	}
 
+	public void setID_USER(@NonNull Long ID_USER) {
+		this.ID_USER = ID_USER;
+	}
+
+	public void setIS_ADMIN(boolean IS_ADMIN) {
+		this.IS_ADMIN = IS_ADMIN;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + ID_USER + ", full_name=" + FULL_NAME + ", email=" + NAME + ", tel=" + TEL + ", nSell=" + N_SELL + ", nSold=" + N_SOLD + ", admin=" + IS_ADMIN + "]";
+	}
 }
