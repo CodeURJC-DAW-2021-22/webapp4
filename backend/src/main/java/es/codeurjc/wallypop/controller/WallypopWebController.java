@@ -104,7 +104,7 @@ public class WallypopWebController {
 		}
 		return "redirect:/commercial/";
 	}
-	
+
 	@RequestMapping("/search/commercial")
 	public String commercialFiltered(Model model, String id_category) {
 		if (id_category == null) {
@@ -132,14 +132,14 @@ public class WallypopWebController {
 	 * article.getUSER().deleteArticle(); userService.save(article.getUSER()); }
 	 */
 
-	
+
 	@RequestMapping("/modifyDataUser")
 	public String modifyDataUser(Model model) {
 		model.addAttribute("old_user", usLogged);
 		model.addAttribute("user", new User());
 		return "modifyDataUser";
 	}
-	
+
 	@PostMapping("/modifyData")
 	public String modifyData(Model model, User user) {
 		User user2 = userService.findById(usLogged.getID_USER()).get();
@@ -149,7 +149,7 @@ public class WallypopWebController {
 		userService.save(user2);
 		return "redirect:/profile";
 	}
-	
+
 	@RequestMapping("/commercial")
 	public String commercial(Model model) {
 		model.addAttribute("Articles", articleService.findBySOLDFalse());
@@ -291,6 +291,14 @@ public class WallypopWebController {
 		return "formularioReporte";
 	}
 
+	// Este es el método que se llama cuando agragamos un nuevo anuncio y toto va
+	// bien
+	@RequestMapping("/yourcommercial_success")
+	public String mensajeCreadoExito(Model model) {
+		model.addAttribute("exito_creacion_nuevo_anuncio", "Enhorabuena! El nuevo anuncio ha sido creado con éxito");
+		model.addAttribute("Articles", usLogged.getARTICLES());
+		return "yourcommercial";
+	}
 
 	private void newArticle() {
 		usLogged.newArticle();
@@ -310,34 +318,18 @@ public class WallypopWebController {
 
 	@PostMapping("/newcommercial")
 	public String newCommercial(Model model, Article article, MultipartFile imageField) throws IOException {
-		model.addAttribute("exito_creacion_nuevo_anuncio", "Enhorabuena! El nuevo anuncio ha sido creado con éxito");
-		List<Article> listArticles  = new LinkedList<Article>();
-		boolean encontradoIguales = false;
+		if (!imageField.isEmpty()) {
+			article.setPHOTO(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
+		}
 		article.setUSER(usLogged);
-		listArticles = usLogged.getARTICLES();
-		for (int i = 0; i < listArticles.size();i++) {
-			if(listArticles.get(i).getUserID() == article.getUserID() && listArticles.get(i).getDESCRIPTION().equals(article.getDESCRIPTION()) && listArticles.get(i).getPRICE_s().equals(article.getPRICE_s()) && listArticles.get(i).getPOSTAL_CODE().equals(article.getPOSTAL_CODE()) && listArticles.get(i).getTITLE().equals(article.getTITLE())) {
-				encontradoIguales = true;
-			}		
-		}
-		listArticles = usLogged.getFirstTenARTICLES();
-		if(!encontradoIguales) {
-			if (!imageField.isEmpty()) {
-				article.setPHOTO(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
-			}
-			
-			newArticle(); // SUM 1 to N_SELL
-			articleService.save(article);
-			listArticles.remove(listArticles.size()-1);
-			listArticles.add(0, article);
-		}
-		model.addAttribute("Articles", listArticles);
-		return "yourcommercial";
+		newArticle(); // SUM 1 to N_SELL
+		articleService.save(article);
+		return "yourcommercial_success";
 	}
 
 	@PostMapping("/newformularioReporte/{id_article}")
 	public String newformularioReporte(Model model, Report report, MultipartFile imageField,
-			@PathVariable long id_article) throws IOException {
+									   @PathVariable long id_article) throws IOException {
 		if (!imageField.isEmpty()) {
 			report.setPROOF(BlobProxy.generateProxy(imageField.getInputStream(), imageField.getSize()));
 		}
@@ -355,7 +347,7 @@ public class WallypopWebController {
 
 	@RequestMapping(value = "/post/{id_article}", method = RequestMethod.GET, produces = "application/json")
 	public String postID(Model model, @PathVariable long id_article,
-			@RequestParam(required = false, defaultValue = "") String r) {
+						 @RequestParam(required = false, defaultValue = "") String r) {
 		Optional<Article> article = articleService.findById(id_article);
 		if (!r.isEmpty()) {
 			model.addAttribute("emailSended", true);
@@ -379,7 +371,7 @@ public class WallypopWebController {
 				if (id_user_logged == a.getUserID() || usLogged.isIS_ADMIN()) {
 					model.addAttribute("Owner", true);
 				} else {
-					// Only sum a visit if is not the owner o an admin
+					// Only sum a visit if im not the owner o an admin
 					visit(a);
 					model.addAttribute("ID_BUYER", id_user_logged);
 					model.addAttribute("To", a.getUserEmail());
@@ -388,7 +380,7 @@ public class WallypopWebController {
 					model.addAttribute("Mail", new Mail());
 				}
 			} else {
-				// Visit because is not registered user
+				// Visit because im not registered user
 				visit(a);
 			}
 
@@ -465,7 +457,7 @@ public class WallypopWebController {
 		model.addAttribute("lcategory", categoryservice.findAll());
 		return "commercial";
 	}
-	
+
 	@RequestMapping("/graphic")
 	public String graphic(Model model) {
 		List<Category> lCategory = categoryservice.findAll();
@@ -486,11 +478,11 @@ public class WallypopWebController {
 		return "showReport";
 	}
 
-	// This method is called when user click TUS ANUNCIOS
+	// Este es el método que se llama cuando vamos al apartado TUS ANUNCIOS
 	@RequestMapping("/yourcommercial")
 	public String yourcommercial(Model model) {
 		model.addAttribute("exito_creacion_nuevo_anuncio", "");
-		model.addAttribute("Articles", usLogged.getFirstTenARTICLES());
+		model.addAttribute("Articles", usLogged.getARTICLES());
 		return "yourcommercial";
 	}
 
