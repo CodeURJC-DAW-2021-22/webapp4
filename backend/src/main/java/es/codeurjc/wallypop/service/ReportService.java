@@ -19,7 +19,7 @@ public class ReportService {
 	@Autowired
 	private ReportRepository reportRepository;
 
-	public void delete(long id) {
+	public void deleteById(long id) {
 		reportRepository.deleteById(id);
 	}
 

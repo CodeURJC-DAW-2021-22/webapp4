@@ -65,7 +65,7 @@ public class ReportRestController {
 	    public ResponseEntity<Report> deleteReport(@PathVariable long id) {
 
 	        try {
-	            reportService.delete(id);
+	            reportService.deleteById(id);
 	            return new ResponseEntity<>(null, HttpStatus.OK);
 
 	        } catch (EmptyResultDataAccessException e) {
