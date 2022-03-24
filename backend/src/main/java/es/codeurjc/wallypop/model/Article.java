@@ -23,7 +23,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
-
 @Entity
 @Table(name = "ARTICLE")
 @JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_article")
@@ -87,7 +86,7 @@ public class Article {
 	}
 
 	public Article(User uSER, String tITLE, String dESCRIPTION, String cITY, String pOSTAL_CODE, float pRICE,
-			Blob pHOTO, List<Category> lISTcATEGORYS) {
+				   Blob pHOTO, List<Category> lISTcATEGORYS) {
 		super();
 		USERS = uSER;
 		TITLE = tITLE;
@@ -159,10 +158,6 @@ public class Article {
 	public boolean isRESERVED() {
 		return RESERVED;
 	}
-	
-	
-	
-	
 
 	public boolean isSOLD() {
 		return SOLD;
@@ -210,10 +205,6 @@ public class Article {
 
 	public void visit() {
 		N_VISITS += 1;
-	}
-	
-	public void setID_ARTICLE(@NonNull Long ID_ARTICLE) {
-		this.ID_ARTICLE = ID_ARTICLE;
 	}
 
 	public void setID_ARTICLE(long ID_ARTICLE) {

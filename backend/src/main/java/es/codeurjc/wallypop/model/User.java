@@ -88,20 +88,8 @@ public class User {
 		N_SELL -= 1;
 	}
 	
-	public List<Article> getFirstTenARTICLES() {
-		List<Article> listArticles1  = new LinkedList<Article>();
-		List<Article> listArticles2  = new LinkedList<Article>();
-		listArticles1 = ARTICLES;
-		Collections.reverse(listArticles1);
-		for (int i = 0; i < 10;i++) {
-			listArticles2.add(listArticles1.get(i));
-		}
-		return listArticles2;
-		
-	}
-
 	public List<Article> getARTICLES() {
-		return ARTICLES;	
+		return ARTICLES;
 	}
 
 	public List<Article> getARTICLESSold() {
