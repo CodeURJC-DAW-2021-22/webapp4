@@ -51,24 +51,28 @@ public class FavoritesRestController {
 
 	@PostMapping("/{idArticle}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<Favorites> createFavorites(HttpServletRequest request, @PathVariable long idUser, @PathVariable long idArticle) {
+	public ResponseEntity<Favorites> createFavorites(HttpServletRequest request, @PathVariable long idArticle) {
 		Principal principal = request.getUserPrincipal();
 		if(principal != null) {
-			Optional<User> us = userService.findById(idUser);
-			Optional<Article> art = articleService.findById(idArticle);
-			if (art.isPresent()) {
-				Favorites fav = new Favorites(us.get(),art.get());
-				favoritesService.save(fav);
-				return new ResponseEntity<>(fav, HttpStatus.OK);
-			}
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			Optional<User> us = userService.findByNAME(principal.getName());
+			return getFavoritesResponseEntity(idArticle, us, articleService, favoritesService);
 		} else {
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}
 
 	}
 
-    @DeleteMapping("/{idArticle}")
+	public static ResponseEntity<Favorites> getFavoritesResponseEntity(@PathVariable long idArticle, Optional<User> us, ArticleService articleService, FavoritesService favoritesService) {
+		Optional<Article> art = articleService.findById(idArticle);
+		if (art.isPresent()) {
+			Favorites fav = new Favorites(us.get(),art.get());
+			favoritesService.save(fav);
+			return new ResponseEntity<>(fav, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+
+	@DeleteMapping("/{idArticle}")
     public ResponseEntity<Favorites> deleteFavorites(HttpServletRequest request, @PathVariable long idArticle) {
 		Principal principal = request.getUserPrincipal();
 		if(principal != null) {

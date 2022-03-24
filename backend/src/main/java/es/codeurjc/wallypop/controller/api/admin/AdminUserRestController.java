@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/users/admin")
+@RequestMapping("/api/admin/users")
 public class AdminUserRestController {
     // ONLY FOR ADMINISTRATOR
     @Autowired

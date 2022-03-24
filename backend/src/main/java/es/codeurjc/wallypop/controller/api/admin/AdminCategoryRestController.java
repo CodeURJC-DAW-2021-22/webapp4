@@ -1,12 +1,13 @@
 package es.codeurjc.wallypop.controller.api.admin;
 
+import static es.codeurjc.wallypop.controller.api.CategoryRestController.getCategoryResponseEntity;
+import static es.codeurjc.wallypop.controller.api.CategoryRestController.getObjectResponseEntity;
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 import java.io.IOException;
 import java.net.URI;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,8 @@ import es.codeurjc.wallypop.model.Category;
 import es.codeurjc.wallypop.service.CategoryService;
 
 @RestController
-@RequestMapping("/api/categories/admin")
-public class CategoryRestController {
+@RequestMapping("/api/admin/categories")
+public class AdminCategoryRestController {
 
 	@Autowired
     private CategoryService categoryService;
@@ -46,13 +47,7 @@ public class CategoryRestController {
     @GetMapping("/{id}")
     public ResponseEntity<Category> getCategory(@PathVariable long id) {
 
-        Optional<Category> op = categoryService.findById(id);
-        if (op.isPresent()) {
-            Category category = op.get();
-            return new ResponseEntity<>(category, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return getCategoryResponseEntity(id, categoryService);
     }
 
     @PostMapping("")
@@ -101,20 +96,8 @@ public class CategoryRestController {
 
 	@GetMapping("/{id}/image")
 	public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
-
-		Category category = categoryService.findById(id).orElseThrow();
-
-		if (category.getPHOTO() != null) {
-
-			Resource file = new InputStreamResource(category.getPHOTO().getBinaryStream());
-
-			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-					.contentLength(category.getPHOTO().length()).body(file);
-
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
+        return getObjectResponseEntity(id, categoryService);
+    }
 
 	@DeleteMapping("/{id}/image")
 	public ResponseEntity<Object> deleteImage(@PathVariable long id) throws IOException {

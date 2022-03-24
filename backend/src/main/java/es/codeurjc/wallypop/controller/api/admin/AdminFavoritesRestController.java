@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/favorites/admin")
+@RequestMapping("/api/admin/favorites")
 public class AdminFavoritesRestController {
 
     @Autowired

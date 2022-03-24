@@ -51,42 +51,34 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.antMatcher("/api/**");
 
 		// All user
-		// New account
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users");
-		// Categories
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/categories/**");
-		// Reports
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/reports");
-		// Articles
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/articles/**");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/articles");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/articles/{id}");
 
 		// Only for admin
-		// Admin Users
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/admin/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/admin/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/admin/**").hasRole("ADMIN");
-
-		// Admin Categories
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/categories/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/categories/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/categories/**").hasRole("ADMIN");
-
-		// Admin Reports
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/reports/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/reports/**").hasRole("ADMIN");
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/reports/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/admin/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/admin/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/admin/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/admin/**").hasRole("ADMIN");
 
 
 		// All user registered
 		// User
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/me/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/me/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/me/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("USER");
 		// Articles
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/articles/me").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/articles/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/articles/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/articles/**").hasRole("USER");
-
+		// Favorites
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/favorites/me").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/articles/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/articles/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/articles/**").hasRole("USER");
 
 
 
@@ -98,7 +90,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/auth/refresh").hasRole("USER");
 		
 		// Other URLs can be accessed without authentication
-		http.authorizeRequests().anyRequest().permitAll();
+		// http.authorizeRequests().anyRequest().permitAll();
 
 		// Disable CSRF protection (it is difficult to implement in REST APIs)
 		http.csrf().disable();
