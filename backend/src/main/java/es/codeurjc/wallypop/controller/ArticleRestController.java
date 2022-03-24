@@ -1,6 +1,7 @@
 package es.codeurjc.wallypop.controller;
 
 import es.codeurjc.wallypop.model.Article;
+import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.repository.ArticleRepository;
 import es.codeurjc.wallypop.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +11,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Pageable;
 
-import java.awt.print.Pageable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -26,24 +28,17 @@ public class ArticleRestController {
     @Autowired
     private ArticleService articleService;
     
-    //@Autowired
-    //private ArticleRepository articleRepository;
-    /*
-    public ResponseEntity<Map<String, Object>> getAllArticles(
-            @RequestParam(required = false) String title,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
-          ) {
+    @Autowired
+    private ArticleRepository articleRepository;
+    
+    public ResponseEntity<Map<String, Object>> getAllArticlesByUser(@PathVariable User user) {
         try {
-          List<Article> articles = new ArrayList<Article>();
-          Pageable paging = (Pageable) PageRequest.of(page, size);
-          
+          List<Article> articles = new LinkedList<Article>();
+          Pageable paging = (Pageable) PageRequest.of(0, 10);
           Page<Article> pageTuts;
-          if (title == null)
-            pageTuts = articleService.findAllPageable(paging);
-          else
-            pageTuts = articleRepository.findByTitleContaining(title, paging);
-          articles = pageTuts.getContent();
+                    
+          pageTuts = articleService.findAll(paging);
+          articles = user.getARTICLES();
           Map<String, Object> response = new HashMap<>();
           response.put("articles", articles);
           response.put("currentPage", pageTuts.getNumber());
@@ -54,7 +49,7 @@ public class ArticleRestController {
           return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
       }
-    */
+    
     
     @GetMapping("/")
     List<Article> all() {

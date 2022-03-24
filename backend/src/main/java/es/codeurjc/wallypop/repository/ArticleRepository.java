@@ -2,15 +2,19 @@ package es.codeurjc.wallypop.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.repository.CrudRepository;
 
 import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
 
-@EnableJpaRepositories
-public interface ArticleRepository extends JpaRepository<Article, Long> {
-	//Page<Article> findAllPageable(Pageable pageable);
+//@EnableJpaRepositories
+public interface ArticleRepository extends JpaRepository<Article, Long>, CrudRepository<Article, Long>  {
+	Page<Article> findAll(Pageable pageable);
+	List<Article> findAll();
+
 	
 	//Page<Article> findByTitleContaining (String title, Pageable pageable);
 	
@@ -30,6 +34,7 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
 
 	List<Article> findByTITLEContainingIgnoreCaseOrDESCRIPTIONContainingIgnoreCaseOrCITYContainingIgnoreCaseAndSOLDFalse(
 			String title, String description, String city);
+
 	
 	//List<Category> findCategorierByID_ARTICLE(long id_article);
 }
