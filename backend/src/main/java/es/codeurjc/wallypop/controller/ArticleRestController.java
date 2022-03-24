@@ -1,9 +1,13 @@
 package es.codeurjc.wallypop.controller;
 
 import es.codeurjc.wallypop.model.Article;
+import es.codeurjc.wallypop.model.Category;
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.repository.ArticleRepository;
+import es.codeurjc.wallypop.security.jwt.ArticleRequest;
 import es.codeurjc.wallypop.service.ArticleService;
+import es.codeurjc.wallypop.service.CategoryService;
+import es.codeurjc.wallypop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -13,6 +17,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Pageable;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -28,31 +34,12 @@ public class ArticleRestController {
     private ArticleService articleService;
     
     @Autowired
-    private ArticleRepository articleRepository;
+    private UserService userService;
+
+    @Autowired
+    private CategoryService categoryService;
     
-    @GetMapping("/yourcommercial")
-    public ResponseEntity<Map<String, Object>> getAllArticlesByUser(@RequestBody User user) {
-        try {
-          List<Article> articles = new LinkedList<Article>();
-          Pageable paging = (Pageable) PageRequest.of(0, 10);
-          Page<Article> pageTuts;
-                    
-          pageTuts = articleService.findAll(paging);
-          //pageTuts = articleService.findByUSERS(user, paging);
-          articles = user.getARTICLES();
-          Map<String, Object> response = new HashMap<>();
-          response.put("articles", articles);
-          response.put("currentPage", pageTuts.getNumber());
-          response.put("totalItems", pageTuts.getTotalElements());
-          response.put("totalPages", pageTuts.getTotalPages());
-          return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (Exception e) {
-          return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-      }
-    
-    
-    @GetMapping("/")
+    @GetMapping("")
     List<Article> all() {
         return articleService.findAll();
     }
@@ -69,14 +56,70 @@ public class ArticleRestController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public Article createArticle(@RequestBody Article article) {
-    	articleService.save(article);
-        return article;
+    public ResponseEntity<Article> createArticle(HttpServletRequest request, @RequestBody ArticleRequest articleRequest) {
+        Principal principal = request.getUserPrincipal();
+        if(principal != null) {
+            Article article = new Article();
+            article.setUSER(userService.findByNAME(principal.getName()).get());
+            return getArticleResponseEntity(articleRequest, article);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping("/{id}")
+    public ResponseEntity<Article> createArticle(HttpServletRequest request, @RequestBody ArticleRequest articleRequest, @PathVariable long id) {
+        Principal principal = request.getUserPrincipal();
+        if(principal != null && articleService.findById(id).isPresent()) {
+            Article article = articleService.findById(id).get();
+            User user = userService.findByNAME(principal.getName()).get();
+            if (article.getUserID() == user.getID_USER() || user.isIS_ADMIN()) {
+                return getArticleResponseEntity(articleRequest, article);
+            } else {
+                return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    private ResponseEntity<Article> getArticleResponseEntity(@RequestBody ArticleRequest articleRequest, Article article) {
+        article.setTITLE(articleRequest.getTITLE());
+        article.setDESCRIPTION(articleRequest.getDESCRIPTION());
+        article.setCITY(articleRequest.getCITY());
+        article.setPOSTAL_CODE(articleRequest.getPOSTAL_CODE());
+        article.setPRICE(articleRequest.getPRICE());
+        for (int i : articleRequest.getCategories()) {
+            Optional<Category> c = categoryService.findById(i);
+            if (c.isPresent()) {
+                article.addCategory(c.get());
+            }
+        }
+        articleService.save(article);
+        return ResponseEntity.ok(article);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Article> deleteArticle(HttpServletRequest request, @PathVariable long id) {
+        try {
+            Principal principal = request.getUserPrincipal();
+            if(principal != null && articleService.findById(id).isPresent()) {
+                Article article = articleService.findById(id).get();
+                User user = userService.findByNAME(principal.getName()).get();
+                if (article.getUserID() == user.getID_USER() || user.isIS_ADMIN()) {
+                    articleService.deleteById(id);
+                    return new ResponseEntity<>(HttpStatus.OK);
+                }
+            }
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        } catch (EmptyResultDataAccessException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
+
+    /*@PutMapping("/{id}")
     public ResponseEntity<Article> updateArticleID(@PathVariable long id, @RequestBody Article updatedArticle) throws SQLException {
         if (articleService.exist(id)) {
         	Article cat = articleService.findById(id).get();
@@ -98,19 +141,29 @@ public class ArticleRestController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
+    }*/
+
+    /*@GetMapping("/yourcommercial")
+    public ResponseEntity<Map<String, Object>> getAllArticlesByUser(@RequestBody User user) {
+        try {
+            List<Article> articles = new LinkedList<Article>();
+            Pageable paging = (Pageable) PageRequest.of(0, 10);
+            Page<Article> pageTuts;
+
+            pageTuts = articleService.findAll(paging);
+            //pageTuts = articleService.findByUSERS(user, paging);
+            articles = user.getARTICLES();
+            Map<String, Object> response = new HashMap<>();
+            response.put("articles", articles);
+            response.put("currentPage", pageTuts.getNumber());
+            response.put("totalItems", pageTuts.getTotalElements());
+            response.put("totalPages", pageTuts.getTotalPages());
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }*/
     
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Article> deleteArticle(@PathVariable long id) {
 
-        try {
-        	articleService.deleteById(id);
-            return new ResponseEntity<>(null, HttpStatus.OK);
-
-        } catch (EmptyResultDataAccessException e) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }
-
-    }
 }

@@ -76,7 +76,7 @@ public class Article {
 
 	@ManyToMany
 	@JoinColumn(name = "CATEGORYS")
-	private List<Category> CATEGORYS;
+	private List<Category> CATEGORYS = new LinkedList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ARTICLE")
 	private List<Report> REPORTS = new LinkedList<>();
@@ -234,5 +234,9 @@ public class Article {
 
 	public void setREPORTS(List<Report> REPORTS) {
 		this.REPORTS = REPORTS;
+	}
+
+	public void addCategory(Category c) {
+		CATEGORYS.add(c);
 	}
 }
