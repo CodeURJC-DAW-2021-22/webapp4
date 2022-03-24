@@ -45,7 +45,7 @@ public class CategoryRestController {
         }
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public Category createCategory(@RequestBody Category category) {
         categoryService.save(category);
@@ -55,17 +55,7 @@ public class CategoryRestController {
     @PutMapping("/{id}")
     public ResponseEntity<Category> updateCategory(@PathVariable long id, @RequestBody Category updatedCategory) throws SQLException {
         if (categoryService.exist(id)) {
-        	Category cat = categoryService.findById(id).get();
-            updatedCategory.setARTICLES(cat.getARTICLES());
-            updatedCategory.setDESCRIPTION(cat.getDESCRIPTION());
-            updatedCategory.setICON(cat.getICON());
-            updatedCategory.setID_CATEGORY(id);
-            updatedCategory.setPHOTO(cat.getPHOTO());
-            updatedCategory.setSize(cat.getSize());
-            updatedCategory.setTITLE(cat.getTITLE());
-            categoryService.save(updatedCategory);
-
-            return new ResponseEntity<>(updatedCategory, HttpStatus.OK);
+            return categoryService.updateCategory(id, updatedCategory);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
