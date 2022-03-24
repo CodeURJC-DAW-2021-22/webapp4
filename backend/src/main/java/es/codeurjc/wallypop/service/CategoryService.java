@@ -59,7 +59,9 @@ public class CategoryService {
             	updatedCategory.setICON(cat.getICON());
             }
             updatedCategory.setID_CATEGORY(id);
-            updatedCategory.setPHOTO(cat.getPHOTO());
+            if (updatedCategory.getPHOTO() == null) {
+            	updatedCategory.setPHOTO(cat.getPHOTO());
+            }
             updatedCategory.setSize(cat.getSize());
             if (updatedCategory.getTITLE() == null) {
             	updatedCategory.setTITLE(cat.getTITLE());
