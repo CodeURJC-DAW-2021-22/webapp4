@@ -28,7 +28,7 @@ public class CategoryRestController {
 	@Autowired
     private CategoryService categoryService;
 
-    @GetMapping("/")
+    @GetMapping("")
     List<Category> all() {
         return categoryService.findAll();
     }
