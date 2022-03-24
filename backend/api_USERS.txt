@@ -1,0 +1,24 @@
+USER LOGGED:
+
+
+Login(/api/auth)
+POST /refresh
+POST /logout
+
+Article(/api/articles)
+GET me
+GET idArticle
+POST
+PUT idArticle
+DELETE idArticle
+
+
+Favorites(/api/favorites)
+GET
+POST idArticle
+DELETE idArticle
+
+User(/api/users)
+GET
+PUT
+DELETE

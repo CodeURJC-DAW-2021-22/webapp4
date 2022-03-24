@@ -1,0 +1,30 @@
+ADMIN:
+
+Users(/api/users/admin(
+GET
+GET idUser
+PUT idUser
+DELETE idUser
+
+Categories(/api/categories/admin)
+GET
+GET idCategory --> Category
+GET idCategory image
+POST
+POST idCategory image
+PUT idCategory
+DELETE idCategory
+DELETE idCategory image
+
+Report(/api/reports/admin)
+GET
+GET idReport --> Report
+PUT idReport
+DELETE idReport
+
+Favorites(/api/favorites/admin)
+GET
+GET idUser --> Lista<Articulo>
+GET idUser idArticle --> Favorito
+POST idUser idArticulo
+DELETE idUser idArticulo

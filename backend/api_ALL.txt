@@ -1,0 +1,18 @@
+ALL
+
+Login(/api/auth)
+POST /login
+
+Article(/api/articles)
+GET
+GET idArticle
+
+Report(/api/reports)
+POST
+
+User(/api/users)
+POST
+
+Category(/api/categories)
+GET
+GET idCategory --> List<Article>
