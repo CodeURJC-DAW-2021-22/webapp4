@@ -87,6 +87,10 @@ public class Report {
 		return PROOF;
 	}
 
+	public void setID_REPORT(long ID_REPORT) {
+		this.ID_REPORT = ID_REPORT;
+	}
+
 	public void setARTICLE(Article aRTICLE) {
 		ARTICLE = aRTICLE;
 	}
