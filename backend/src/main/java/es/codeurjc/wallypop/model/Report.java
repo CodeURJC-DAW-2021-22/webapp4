@@ -98,6 +98,10 @@ public class Report {
 
 	public void setPROOF(Blob pROOF) {
 		PROOF = pROOF;
+	}	
+
+	public void setID_REPORT(long iD_REPORT) {
+		ID_REPORT = iD_REPORT;
 	}
 
 	@Override
