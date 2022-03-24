@@ -1,4 +1,4 @@
-package es.codeurjc.wallypop.controller;
+package es.codeurjc.wallypop.controller.api.admin;
 
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.service.UserService;
@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users/admin")
-public class AdminRestController {
+public class AdminUserRestController {
     // ONLY FOR ADMINISTRATOR
     @Autowired
     private UserService userService;

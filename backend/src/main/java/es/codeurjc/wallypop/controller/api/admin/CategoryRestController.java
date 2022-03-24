@@ -1,4 +1,4 @@
-package es.codeurjc.wallypop.controller;
+package es.codeurjc.wallypop.controller.api.admin;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
@@ -32,7 +32,7 @@ import es.codeurjc.wallypop.model.Category;
 import es.codeurjc.wallypop.service.CategoryService;
 
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("/api/categories/admin")
 public class CategoryRestController {
 
 	@Autowired

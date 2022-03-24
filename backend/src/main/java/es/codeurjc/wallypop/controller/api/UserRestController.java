@@ -1,4 +1,4 @@
-package es.codeurjc.wallypop.controller;
+package es.codeurjc.wallypop.controller.api;
 
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.service.UserService;
@@ -29,12 +29,12 @@ public class UserRestController {
         return user;
     }
 
-    @GetMapping("")
+    /*@GetMapping("")
     public ResponseEntity<User> mew(HttpServletRequest request) {
         return me(request);
-    }
+    } */
 
-    @GetMapping("/me")
+    @GetMapping("")
     public ResponseEntity<User> me(HttpServletRequest request) {
 
         Principal principal = request.getUserPrincipal();
@@ -46,7 +46,7 @@ public class UserRestController {
         }
     }
 
-    @PutMapping("/me")
+    @PutMapping("")
     public ResponseEntity<User> updateUser(HttpServletRequest request, @RequestBody User updatedUser) throws SQLException {
         Principal principal = request.getUserPrincipal();
         if(principal != null) {
@@ -56,7 +56,7 @@ public class UserRestController {
         }
     }
 
-    @DeleteMapping("/me")
+    @DeleteMapping("")
     public ResponseEntity<User> deleteUser(HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
         if(principal != null) {

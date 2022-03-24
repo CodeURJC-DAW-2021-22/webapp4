@@ -1,4 +1,4 @@
-package es.codeurjc.wallypop.controller;
+package es.codeurjc.wallypop.controller.api;
 
 import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;

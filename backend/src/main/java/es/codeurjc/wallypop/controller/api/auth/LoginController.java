@@ -1,4 +1,4 @@
-package es.codeurjc.wallypop.controller.auth;
+package es.codeurjc.wallypop.controller.api.auth;
 
 import es.codeurjc.wallypop.security.jwt.AuthResponse;
 import es.codeurjc.wallypop.security.jwt.AuthResponse.Status;
