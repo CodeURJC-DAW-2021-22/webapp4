@@ -61,9 +61,14 @@ public class AdminFavoritesRestController {
     public ResponseEntity<Favorites> createFavorites(@PathVariable long idUser, @PathVariable long idArticle) {
         Optional<User> us = userService.findById(idUser);
         Optional<Article> art = articleService.findById(idArticle);
+        Favorites favorites = favoritesService.findByUSERAndARTICLE(us.get(), art.get());
         if (us.isPresent() && art.isPresent()) {
             Favorites fav = new Favorites(us.get(),art.get());
-            favoritesService.save(fav);
+            if (favorites != null) {
+            	favoritesService.delete(favorites);
+            } else {
+            	favoritesService.save(fav);
+            }
             return new ResponseEntity<>(fav, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
