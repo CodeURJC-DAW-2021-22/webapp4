@@ -1,6 +1,7 @@
 package es.codeurjc.wallypop.controller.api;
 
 import es.codeurjc.wallypop.model.User;
+import es.codeurjc.wallypop.dto.UserDTO;
 import es.codeurjc.wallypop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -21,8 +22,13 @@ public class UserRestController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@RequestBody User user) {
-        user.setPASSWORD(userService.encode(user.getPASSWORD()));
+    public User createUser(@RequestBody UserDTO newAccount) {
+        newAccount.setPASSWORD(userService.encode(newAccount.getPASSWORD()));
+        User user = new User();
+        user.setPASSWORD(newAccount.getPASSWORD());
+        user.setFULL_NAME(newAccount.getFULL_NAME());
+        user.setNAME(newAccount.getNAME());
+        user.setTEL(newAccount.getTEL());
         userService.save(user);
         return user;
     }
