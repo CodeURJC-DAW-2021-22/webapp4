@@ -44,6 +44,7 @@ public class Report {
 	@Column(name = "DESCRIPTION", columnDefinition = "text")
 	private String DESCRIPTION;
 
+	@JsonIgnore
 	@Column(name = "PROOF")
 	private Blob PROOF = null;
 
