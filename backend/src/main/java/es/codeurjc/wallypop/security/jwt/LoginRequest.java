@@ -2,18 +2,18 @@ package es.codeurjc.wallypop.security.jwt;
 
 public class LoginRequest {
 
-	private String email;
-	private String password;
+	//private String email;
+	private String token;
 
 	public LoginRequest() {
 	}
 
-	public LoginRequest(String email, String password) {
-		this.email = email;
-		this.password = password;
+	public LoginRequest(String token) { //, String email) {
+		//this.email = email;
+		this.token = token;
 	}
 
-	public String getEmail() {
+	/*public String getEmail() {
 		return email;
 	}
 
@@ -21,16 +21,21 @@ public class LoginRequest {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
+	 */
+
+	public String getToken() {
+		return token;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setToken(String token) {
+		this.token = token;
 	}
 
+/*
 	@Override
 	public String toString() {
-		return "LoginRequest [username=" + email + ", password=" + password + "]";
+		return "LoginRequest [username=" + email + ", password=" + token + "]";
 	}
+
+	 */
 }

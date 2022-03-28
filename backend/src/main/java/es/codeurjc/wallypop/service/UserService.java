@@ -81,4 +81,8 @@ public class UserService {
 		user.setTOKEN(token);
 		return token;
 	}
+
+	public Optional<User> findByTOKEN(String TOKEN) {
+		return userRepository.findByTOKEN(TOKEN);
+	}
 }

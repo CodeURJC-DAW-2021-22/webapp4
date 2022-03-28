@@ -6,4 +6,5 @@ import es.codeurjc.wallypop.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 	Optional<User> findByNAME(String EMAIL);
+	Optional<User> findByTOKEN(String TOKEN);
 }

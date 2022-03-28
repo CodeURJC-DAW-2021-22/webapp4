@@ -48,10 +48,32 @@
 			</div>
 		</form>
 
-		<div class="form-group">
+		<!--<div class="form-group">
+			{{#TOKEN}}
 			<p>Token: {{TOKEN}}</p>
+			{{/TOKEN}}
 			<a href="/token">Generar nuevo token</a>
+		</div> -->
+		<p><a href="javascript:show();">Mostrar token API</a></p>
+		<div class=""form-group id="token_div" style="display:none;">
+			<div id="close"><a href="javascript:close();">cerrar</a></div>
+			{{#TOKEN}}
+			<p>Token: {{TOKEN}}</p>
+			{{/TOKEN}}
+
 		</div>
+		<a href="/token">Generar nuevo token</a>
+		<script languague="javascript">
+			function show() {
+				div = document.getElementById('token_div');
+				div.style.display = '';
+			}
+
+			function close() {
+				div = document.getElementById('token_div');
+				div.style.display = 'none';
+			}
+		</script>
 	</div>
 </div>
 </div>

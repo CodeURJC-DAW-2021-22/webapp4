@@ -5,16 +5,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import es.codeurjc.wallypop.model.User;
+import es.codeurjc.wallypop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserLoginService {
@@ -31,48 +36,61 @@ public class UserLoginService {
 	@Autowired
 	private JwtCookieManager cookieUtil;
 
+	@Autowired
+	private UserService userService;
+
 	public ResponseEntity<AuthResponse> login(LoginRequest loginRequest, String encryptedAccessToken, String 
 			encryptedRefreshToken) {
 		
-		Authentication authentication = authenticationManager.authenticate(
+		/*Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
-		SecurityContextHolder.getContext().setAuthentication(authentication);
+		 */
 
-		String accessToken = SecurityCipher.decrypt(encryptedAccessToken);
-		String refreshToken = SecurityCipher.decrypt(encryptedRefreshToken);
-		
-		String username = loginRequest.getEmail();
-		UserDetails user = userDetailsService.loadUserByUsername(username);
-
-		Boolean accessTokenValid = jwtTokenProvider.validateToken(accessToken);
-		Boolean refreshTokenValid = jwtTokenProvider.validateToken(refreshToken);
-
+		//SecurityContextHolder.getContext().setAuthentication(authentication);
 		HttpHeaders responseHeaders = new HttpHeaders();
-		Token newAccessToken;
-		Token newRefreshToken;
-		if (!accessTokenValid && !refreshTokenValid) {
-			newAccessToken = jwtTokenProvider.generateToken(user);
-			newRefreshToken = jwtTokenProvider.generateRefreshToken(user);
-			addAccessTokenCookie(responseHeaders, newAccessToken);
-			addRefreshTokenCookie(responseHeaders, newRefreshToken);
-		}
+		Optional<User> us = userService.findByTOKEN(loginRequest.getToken());
+		if (us.isPresent()) {
 
-		if (!accessTokenValid && refreshTokenValid) {
-			newAccessToken = jwtTokenProvider.generateToken(user);
-			addAccessTokenCookie(responseHeaders, newAccessToken);
-		}
 
-		if (accessTokenValid && refreshTokenValid) {
-			newAccessToken = jwtTokenProvider.generateToken(user);
-			newRefreshToken = jwtTokenProvider.generateRefreshToken(user);
-			addAccessTokenCookie(responseHeaders, newAccessToken);
-			addRefreshTokenCookie(responseHeaders, newRefreshToken);
-		}
+			String accessToken = SecurityCipher.decrypt(encryptedAccessToken);
+			String refreshToken = SecurityCipher.decrypt(encryptedRefreshToken);
 
-		AuthResponse loginResponse = new AuthResponse(AuthResponse.Status.SUCCESS,
-				"Auth successful. Tokens are created in cookie.");
-		return ResponseEntity.ok().headers(responseHeaders).body(loginResponse);
+			String username = us.get().getNAME(); //loginRequest.getEmail();
+			UserDetails user = userDetailsService.loadUserByUsername(username);
+
+			Boolean accessTokenValid = jwtTokenProvider.validateToken(accessToken);
+			Boolean refreshTokenValid = jwtTokenProvider.validateToken(refreshToken);
+
+
+			Token newAccessToken;
+			Token newRefreshToken;
+			if (!accessTokenValid && !refreshTokenValid) {
+				newAccessToken = jwtTokenProvider.generateToken(user);
+				newRefreshToken = jwtTokenProvider.generateRefreshToken(user);
+				addAccessTokenCookie(responseHeaders, newAccessToken);
+				addRefreshTokenCookie(responseHeaders, newRefreshToken);
+			}
+
+			if (!accessTokenValid && refreshTokenValid) {
+				newAccessToken = jwtTokenProvider.generateToken(user);
+				addAccessTokenCookie(responseHeaders, newAccessToken);
+			}
+
+			if (accessTokenValid && refreshTokenValid) {
+				newAccessToken = jwtTokenProvider.generateToken(user);
+				newRefreshToken = jwtTokenProvider.generateRefreshToken(user);
+				addAccessTokenCookie(responseHeaders, newAccessToken);
+				addRefreshTokenCookie(responseHeaders, newRefreshToken);
+			}
+
+			AuthResponse loginResponse = new AuthResponse(AuthResponse.Status.SUCCESS,
+					"Autenticación correcta.");
+			return ResponseEntity.ok().headers(responseHeaders).body(loginResponse);
+		}
+		AuthResponse loginResponse = new AuthResponse(AuthResponse.Status.FAILURE,
+				"Token no válido !");
+		return ResponseEntity.ok().body(loginResponse);
 	}
 
 	public ResponseEntity<AuthResponse> refresh(String encryptedRefreshToken) {
@@ -83,7 +101,7 @@ public class UserLoginService {
 		
 		if (!refreshTokenValid) {
 			AuthResponse loginResponse = new AuthResponse(AuthResponse.Status.FAILURE,
-					"Invalid refresh token !");
+					"Sesión no válida !");
 			return ResponseEntity.ok().body(loginResponse);
 		}
 
@@ -96,7 +114,7 @@ public class UserLoginService {
 				.createAccessTokenCookie(newAccessToken.getTokenValue(), newAccessToken.getDuration()).toString());
 
 		AuthResponse loginResponse = new AuthResponse(AuthResponse.Status.SUCCESS,
-				"Auth successful. Tokens are created in cookie.");
+				"Autenticación correcta.");
 		return ResponseEntity.ok().headers(responseHeaders).body(loginResponse);
 	}
 
@@ -126,7 +144,7 @@ public class UserLoginService {
 			}
 		}
 
-		return "logout successfully";
+		return "Sesión finalizada con éxito";
 	}
 
 	private void addAccessTokenCookie(HttpHeaders httpHeaders, Token token) {
