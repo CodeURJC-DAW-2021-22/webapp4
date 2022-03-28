@@ -23,8 +23,8 @@ public class UserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	public String encodePassword(String password) {
-		return passwordEncoder.encode(password);
+	public String encode(String text) {
+		return passwordEncoder.encode(text);
 	}
 
 	public Optional<User> findById(long id) {
@@ -65,7 +65,7 @@ public class UserService {
 			updatedUser.setTEL(us.getTEL());
 		}
 		updatedUser.setIS_ADMIN(us.isIS_ADMIN());
-		updatedUser.setPASSWORD(encodePassword(updatedUser.getPASSWORD()));
+		updatedUser.setPASSWORD(encode(updatedUser.getPASSWORD()));
 		updatedUser.setN_SELL(us.getN_SELL());
 		updatedUser.setN_SOLD(us.getN_SOLD());
 		updatedUser.setARTICLES(us.getARTICLES());
@@ -74,5 +74,11 @@ public class UserService {
 		save(updatedUser);
 
 		return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+	}
+
+	public String newToken(User user) {
+		String token = "Wallypop_" + encode(user.getNAME() + "/" + new java.sql.Date(System.currentTimeMillis()));
+		user.setTOKEN(token);
+		return token;
 	}
 }

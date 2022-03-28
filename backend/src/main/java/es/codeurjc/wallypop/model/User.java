@@ -60,6 +60,10 @@ public class User {
 	@Column(name = "IS_ADMIN")
 	private boolean IS_ADMIN = false;
 
+	@JsonIgnore
+	@Column(name = "TOKEN")
+	private String TOKEN = null;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "USERS")
 	private List<Article> ARTICLES = new LinkedList<>();
 
@@ -199,6 +203,14 @@ public class User {
 
 	public void setIS_ADMIN(boolean IS_ADMIN) {
 		this.IS_ADMIN = IS_ADMIN;
+	}
+
+	public String getTOKEN() {
+		return TOKEN;
+	}
+
+	public void setTOKEN(String TOKEN) {
+		this.TOKEN = TOKEN;
 	}
 
 	@Override

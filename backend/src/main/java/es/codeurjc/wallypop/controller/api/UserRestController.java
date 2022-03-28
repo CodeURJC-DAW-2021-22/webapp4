@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -24,7 +22,7 @@ public class UserRestController {
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public User createUser(@RequestBody User user) {
-        user.setPASSWORD(userService.encodePassword(user.getPASSWORD()));
+        user.setPASSWORD(userService.encode(user.getPASSWORD()));
         userService.save(user);
         return user;
     }

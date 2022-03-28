@@ -44,7 +44,7 @@ public class UserController {
 
 	@PostMapping("/newaccount")
 	public String newUser(Model model, User us) throws IOException {
-		us.setPASSWORD(userService.encodePassword(us.getPASSWORD()));
+		us.setPASSWORD(userService.encode(us.getPASSWORD()));
 		if (userService.userExists(us)) {
 			return "newaccounterror";
 		} else {

@@ -84,6 +84,8 @@ public class WallypopWebController {
 				model.addAttribute("TEL", user.getTEL());
 				model.addAttribute("sell", user.getN_SELL());
 				model.addAttribute("sold", user.getN_SOLD());
+				model.addAttribute("TOKEN", user.getTOKEN());
+				model.addAttribute("usLogged", usLogged);
 			}
 			model.addAttribute("admin", request.isUserInRole("ADMIN"));
 
@@ -144,7 +146,7 @@ public class WallypopWebController {
 	public String modifyData(Model model, User user) {
 		User user2 = userService.findById(usLogged.getID_USER()).get();
 		user2.setFULL_NAME(user.getFULL_NAME());
-		user2.setPASSWORD(userService.encodePassword(user.getPASSWORD()));
+		user2.setPASSWORD(userService.encode(user.getPASSWORD()));
 		user2.setTEL(user.getTEL());
 		userService.save(user2);
 		return "redirect:/profile";
@@ -339,9 +341,10 @@ public class WallypopWebController {
 	}
 
 	@RequestMapping("/profile")
-	public String profile() {
+	public String profile(Model model) {
 		usLogged.updateN_Sell();
 		userService.save(usLogged);
+		model.addAttribute("TOKEN", usLogged.getTOKEN());
 		return "profile";
 	}
 
@@ -490,6 +493,15 @@ public class WallypopWebController {
 	public String yourcommercialsold(Model model) {
 		model.addAttribute("Articles", usLogged.getARTICLESSold());
 		return "yourcommercialsold";
+	}
+
+	@RequestMapping("/token")
+	public String createToken(Model model) {
+		User us = userService.findById(usLogged.getID_USER()).get();
+		userService.newToken(us);
+		usLogged = us;
+		userService.save(us);
+		return "redirect:/profile";
 	}
 
 }
