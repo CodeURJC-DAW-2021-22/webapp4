@@ -11,9 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import org.springframework.lang.NonNull;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -22,7 +20,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "REPORT")
-@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_report")
+//@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_report")
+@JsonIgnoreProperties(value = "article")
 public class Report {
 
 	@Id

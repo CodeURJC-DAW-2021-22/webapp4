@@ -13,9 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import org.springframework.lang.NonNull;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -23,7 +21,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "USERS")
-@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_user")
+@JsonIgnoreProperties(value = {"password", "favorites", "articlessold", "token"})
+//@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_user")
 public class User {
 
 	@Id

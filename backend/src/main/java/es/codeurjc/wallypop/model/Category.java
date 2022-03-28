@@ -15,12 +15,14 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.lang.NonNull;
 
 @Entity
 @Table(name = "CATEGORY")
-@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_category")
+@JsonIgnoreProperties(value = {"articles"})
+//@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_category")
 public class Category {
 
 	@Id
@@ -44,7 +46,8 @@ public class Category {
 
 	@ManyToMany(mappedBy = "CATEGORYS")
 	private List<Article> ARTICLES = new LinkedList<>();
-	
+
+	@JsonIgnore
 	@Column(name="SIZE")
 	private int size = 0;
 

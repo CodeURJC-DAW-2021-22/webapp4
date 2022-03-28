@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+import es.codeurjc.wallypop.model.Article;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -44,16 +45,16 @@ public class CategoryRestController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Category> getCategory(@PathVariable long id) {
+    public ResponseEntity<List<Article>> getCategory(@PathVariable long id) {
 
         return getCategoryResponseEntity(id, categoryService);
     }
 
-    public static ResponseEntity<Category> getCategoryResponseEntity(@PathVariable long id, CategoryService categoryService) {
+    public static ResponseEntity<List<Article>> getCategoryResponseEntity(@PathVariable long id, CategoryService categoryService) {
         Optional<Category> op = categoryService.findById(id);
         if (op.isPresent()) {
             Category category = op.get();
-            return new ResponseEntity<>(category, HttpStatus.OK);
+            return new ResponseEntity<>(category.getARTICLES(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

@@ -9,6 +9,7 @@ import java.net.URI;
 import java.sql.SQLException;
 import java.util.List;
 
+import es.codeurjc.wallypop.model.Article;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -45,7 +46,7 @@ public class AdminCategoryRestController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Category> getCategory(@PathVariable long id) {
+    public ResponseEntity<List<Article>> getCategory(@PathVariable long id) {
 
         return getCategoryResponseEntity(id, categoryService);
     }
