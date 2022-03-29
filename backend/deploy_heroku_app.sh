@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=registry.heroku.com/$1/web
+mvn spring-boot:build-image -Dspring-boot.build-image.imageName=registry.heroku.com/$1/web
 
 docker push registry.heroku.com/$1/web
 
