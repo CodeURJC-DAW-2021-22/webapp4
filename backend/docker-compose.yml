@@ -1,7 +1,8 @@
 version: "3.9"
 services: 
   web:
-    image: codeurjc/wallypop-web-app
+    image: jesusbarcia/codeurjc-2021-22-daw-webapp4
+    restart: always
     ports:
       - 8443:8443      
     environment:
@@ -15,4 +16,4 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=wallypop
     volumes:
-      - ./postgresql:/var/lib/postgresql/data
+      - ./postgresql:/var/lib/postgresql/dataº
