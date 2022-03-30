@@ -16,4 +16,4 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=wallypop
     volumes:
-      - ./postgresql:/var/lib/postgresql/dataº
+      - ./postgresql:/var/lib/postgresql/data
