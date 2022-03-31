@@ -310,8 +310,8 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 * JavaSE 17
 * Spring Boot
 * Docker (Base de datos PostgreSQL): docker run -d --name postgres-server -p 5433:5432 -e "POSTGRES_PASSWORD=password" postgres
-* Docker Hub: docker run -d --publish 8443:8443 jesusbarcia/wallypop
-* Heroku: https://wallypop-web.herokuapp.com/
+* Docker Hub: docker run -d --publish 8443:8443 jesusbarcia/codeurjc-daw-2021-22-webapp4
+* Heroku: https://codeurjc-daw-2021-22-webapp4.herokuapp.com/
 
 ## Dependencias Maven: 
 * **org.springframework.boot:**
