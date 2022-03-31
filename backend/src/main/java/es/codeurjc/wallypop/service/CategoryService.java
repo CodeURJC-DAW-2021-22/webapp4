@@ -1,5 +1,6 @@
 package es.codeurjc.wallypop.service;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,5 +70,12 @@ public class CategoryService {
             save(updatedCategory);
             return new ResponseEntity<>(updatedCategory, HttpStatus.OK);
     }
-
+    
+    public List<Category> graphic() throws SQLException {
+    	List<Category> lCategory = categoryrepository.findAll();
+    	for (Category c : lCategory) {
+    		c.setSize(c.getARTICLES().size());
+    	}
+    	return lCategory;
+    }
 }

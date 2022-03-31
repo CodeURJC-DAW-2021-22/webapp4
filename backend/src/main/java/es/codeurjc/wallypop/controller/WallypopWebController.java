@@ -462,11 +462,8 @@ public class WallypopWebController {
 	}
 
 	@RequestMapping("/graphic")
-	public String graphic(Model model) {
-		List<Category> lCategory = categoryservice.findAll();
-		for (Category c : lCategory) {
-			c.setSize(c.getARTICLES().size());
-		}
+	public String graphic(Model model) throws SQLException {
+		List<Category> lCategory = categoryservice.graphic();
 		model.addAttribute("Categories", lCategory);
 		return "graphic";
 	}
