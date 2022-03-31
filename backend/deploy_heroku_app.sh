@@ -1,8 +1,12 @@
 #!/bin/bash
 
-#mvn spring-boot:build-image -Dspring-boot.build-image.imageName=registry.heroku.com/$1/web
+docker build -f Dockerfile -t $1 .
 
-docker build -f heroku.Dockerfile -t $1 .
+docker tag $1 registry.heroku.com/$1/web
+
+heroku git:remote -a $1
+
+heroku container:login
 
 docker push registry.heroku.com/$1/web
 
