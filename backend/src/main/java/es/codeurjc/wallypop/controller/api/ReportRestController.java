@@ -32,9 +32,8 @@ public class ReportRestController {
 	    @PostMapping("/{idArticle}")
 	    @ResponseStatus(HttpStatus.CREATED)
 	    public ResponseEntity<Report> createReport(@PathVariable long idArticle,@RequestBody Report report) {
-	    	reportService.save(report);
-	    	reportService.findById(report.getID_REPORT()).get().setARTICLE(articleService.findById(idArticle).get());
-			reportService.flush();
+            report.setARTICLE(articleService.findById(idArticle).get());
+			reportService.save(report);
 	    	return new ResponseEntity<>(report, HttpStatus.OK);
 	    }
 
