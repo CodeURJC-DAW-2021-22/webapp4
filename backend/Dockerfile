@@ -1,36 +1,36 @@
 #################################################
-# Imagen base para el contenedor de compilación
+# Base image for compilation container
 #################################################
 FROM maven:3.8.4-openjdk-17 as builder
 
-# Define el directorio de trabajo donde ejecutar comandos
+# Choose working directory where we are going to execute commands
 WORKDIR /project
 
-# Copia las dependencias del proyecto
+# Copy project dependencies
 ADD ./pom.xml /project
 
-# Descarga las dependencias del proyecto
+# Download project dependencies
 RUN mvn clean verify --fail-never
 
-# Copia el código del proyecto
+# Copy project source
 ADD ./src/ /project/src
 
-# Compila proyecto
+# Compile project
 RUN mvn package -o -DskipTests=true
 
 #################################################
-# Imagen base para el contenedor de la aplicación
+# Base image for aplication container
 #################################################
 FROM openjdk:17.0.2
 
-# Define el directorio de trabajo donde se encuentra el JAR
+# Choose working directory where we can find JAR file
 WORKDIR /usr/app/
 
-# Copia el JAR del contenedor de compilación
+# Copy JAR from compilation container
 COPY --from=builder /project/target/*.jar /usr/app/
 
-# Indica el puerto que expone el contenedor
+# Start expose port from container
 EXPOSE 8443
 
-# Comando que se ejecuta al hacer docker run
+# Execute command
 CMD [ "java", "-jar", "wallypop1-0.0.1-SNAPSHOT.jar" ]

@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "0a0972ba-2dfb-4ff4-9d8a-daee3c8479e3",
+		"name": "Category",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:8443/api/admin/categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/admin/categories",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"admin",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/admin/categories/6",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/admin/categories/6",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"admin",
+						"categories",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/admin/categories",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"alimentación\",\r\n    \"description\": \"Encuentra productos de alimentación de todas partes del mundo\",\r\n    \"icon\": \"utensils\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/admin/categories",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"admin",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/admin/categories/8",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Cosmética\",\r\n    \"description\": \"Encuentra los mejores productos de cosmética del mercado en Wallypop\",\r\n    \"icon\": \"spa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/admin/categories/8",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"admin",
+						"categories",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/admin/categories/8",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/admin/categories/8",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"admin",
+						"categories",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/admin/categories/7/image",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/admin/categories/7/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"admin",
+						"categories",
+						"7",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/admin/categories/7/image",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/admin/categories/7/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"admin",
+						"categories",
+						"7",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/admin/categories/7/image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imageFile",
+							"type": "file",
+							"src": "/C:/Users/Sergio/Downloads/colonias.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/admin/categories/7/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"admin",
+						"categories",
+						"7",
+						"image"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
