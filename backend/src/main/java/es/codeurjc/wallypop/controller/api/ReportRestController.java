@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import es.codeurjc.wallypop.model.Report;
+import es.codeurjc.wallypop.service.ArticleService;
 import es.codeurjc.wallypop.service.ReportService;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,12 +26,16 @@ public class ReportRestController {
 	
 	@Autowired
 	private ReportService reportService;
-
-	    @PostMapping("")
+	@Autowired
+	private ArticleService articleService;
+	
+	    @PostMapping("/{idArticle}")
 	    @ResponseStatus(HttpStatus.CREATED)
-	    public ResponseEntity<Report> createReport(@RequestBody Report report) {
-	        reportService.save(report);
-			return new ResponseEntity<>(report, HttpStatus.OK);
+	    public ResponseEntity<Report> createReport(@PathVariable long idArticle,@RequestBody Report report) {
+	    	reportService.save(report);
+	    	reportService.findById(report.getID_REPORT()).get().setARTICLE(articleService.findById(idArticle).get());
+			reportService.flush();
+	    	return new ResponseEntity<>(report, HttpStatus.OK);
 	    }
 
 		@PostMapping("/{idReport}/image")
