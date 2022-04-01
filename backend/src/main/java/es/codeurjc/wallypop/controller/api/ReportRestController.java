@@ -38,9 +38,9 @@ public class ReportRestController {
 	    }
 
 		@PostMapping("/{idReport}/image")
-		public ResponseEntity<Object> uploadImage(@PathVariable long id, @RequestParam MultipartFile imageFile)
+		public ResponseEntity<Object> uploadImage(@PathVariable long idReport, @RequestParam MultipartFile imageFile)
 				throws IOException {
-			Report report = reportService.findById(id).orElseThrow();
+			Report report = reportService.findById(idReport).orElseThrow();
 
 			URI location = fromCurrentRequest().build().toUri();
 			report.setPROOF(BlobProxy.generateProxy(imageFile.getInputStream(), imageFile.getSize()));
