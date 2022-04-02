@@ -334,7 +334,7 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 * Docker (Base de datos PostgreSQL): docker run -d --name postgres-server -p 5433:5432 -e "POSTGRES_PASSWORD=password" postgres
 * Docker Hub: docker run -d --publish 8443:8443 jesusbarcia/codeurjc-daw-2021-22-webapp4
 * Heroku: https://codeurjc-daw-2021-22-webapp4.herokuapp.com/
-* 
+
 ### Usuarios
 * admin: j@j.es 1234
 * user: d@d.es 1234
