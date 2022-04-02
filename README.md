@@ -350,7 +350,7 @@ El segundo se encarga de crear la imagen docker a partir del Dockerfile, subirla
 
 ## Diagrama de clases y templates
 
-![](ScreenshotsFase3/diagramaClasesTemplatesWallypopModificado.jpg)
+![](ScreenshotsFase3/diagramaClasesTemplatesWallypopModificado.png)
 
 ## Contribución miembros equipo
 
