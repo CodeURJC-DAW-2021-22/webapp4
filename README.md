@@ -331,10 +331,13 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 # Fase 3
 
 ## Intrucciónes Docker, Docker compose y Heroku
-
 * Docker (Base de datos PostgreSQL): docker run -d --name postgres-server -p 5433:5432 -e "POSTGRES_PASSWORD=password" postgres
 * Docker Hub: docker run -d --publish 8443:8443 jesusbarcia/codeurjc-daw-2021-22-webapp4
 * Heroku: https://codeurjc-daw-2021-22-webapp4.herokuapp.com/
+* 
+### Usuarios
+* admin: j@j.es 1234
+* user: d@d.es 1234
 
 ### Docker:
 Para crear la imagen docker y subirla a Docker Hub hemos creado un script (create_docker_image.sh) que se encarga de crear la imagen a partir del Dockerfile y subirla a Docker Hub con el nombre que le hemos pasado como parámetro.
