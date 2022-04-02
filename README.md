@@ -327,6 +327,91 @@ https://trello.com/b/CO5xGXpN/daw-2021-2022
 * **com.sun.mail:**
    * javax.mail (v1.6.2)
 
+# Fase 3
+
+## Intrucciónes Docker, Docker compose y Heroku
+
+* Docker (Base de datos PostgreSQL): docker run -d --name postgres-server -p 5433:5432 -e "POSTGRES_PASSWORD=password" postgres
+* Docker Hub: docker run -d --publish 8443:8443 jesusbarcia/codeurjc-daw-2021-22-webapp4
+* Heroku: https://codeurjc-daw-2021-22-webapp4.herokuapp.com/
+
+### Docker:
+Para crear la imagen docker y subirla a Docker Hub hemos creado un script (create_docker_image.sh) que se encarga de crear la imagen a partir del Dockerfile y subirla a Docker Hub con el nombre que le hemos pasado como parámetro.
+
+### Docker compose
+Hemos creado un fichero docker-compose.yml para la ejecución de nuestra aplicación a partir de la imagen subida anteriormente a Docker Hub.
+Crea dos contenedores, uno para la aplicación y otro para la base de datos y sirve la web en el puerto 8443.
+También hay otro fichero docker-compose-local.yml que hace lo mismo que el anterior a excepción de que en lugar de descargar la imagen de Docker Hub la crea a partir de los ficheros que tenemos en local.
+
+### Heroku
+Hemos creado dos scripts, create_heroku_app.sh y deploy_heroku_app.sh. 
+El primero se encarga de generar el contenedor en Heroku, crear la base de datos PostgreSQL y configurar las variables de entorno necesarias.
+El segundo se encarga de crear la imagen docker a partir del Dockerfile, subirla y desplegar la aplicación totalmente operativa.
+
+## Diagrama de clases y templates
+
+![](ScreenshotsFase3/diagramaClasesTemplatesWallypopModificado.jpg)
+
+## Contribución miembros equipo
+
+### -> Contribución Iván:
+
+#### --> Descripción textual
+
+##### ---> He participado en la implementación de la funcionalidad de publicar nuevos anuncios de la API REST.
+##### ---> He participado en la implementación de la funcionalidad de cambiar el estado de un anuncio (vendido/reservado) anuncios de la API REST.
+##### ---> He participado en la implementación de la funcionalidad de borrar/modificar anuncios de la API REST.
+##### ---> He participado en la implementación de mostrar anuncios con métodos pageables de la API REST.
+##### ---> Realizado la modificación del diagrama de clases y templates para la FASE 3 (Ampliación del diagrama realizado en la FASE 2)
+
+#### --> 5 Commits más significativos:
+
+##### ---> Creación controlador de artículos para la API REST: https: //github.com/CodeURJC-DAW-2021-22/webapp4/commit/403889779c7e5dff1cd256979f5b602195bde1fd
+##### ---> Primer intento de implementación del método utilizado para módificar un árticulo de la API REST: https: //github.com/CodeURJC-DAW-2021-22/webapp4/commit/9a26c9a8862acfa22b162017d402d5a9be4a57dc2
+##### ---> Primer intento de implementación del método utilizado para mostrar árticulos con métodos pageables de la API REST: https: //github.com/CodeURJC-DAW-2021-22/webapp4/commit/622b30cfc56a22f9672a7a4538964c316e27b4ab
+##### ---> Pagination con métodos pageables: https: //github.com/CodeURJC-DAW-2021-22/webapp4/commit/6180d875fab39accce19592a21444b4e120d7cea
+##### ---> Crear/borrar/modificar anuncios funciona: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/a114494b0cb46c89deadc08778fc66c3831ca2cc
+
+
+#### --> 5 ficheros mayor participación:
+
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/API_Articles_Merge/backend/src/main/java/es/codeurjc/wallypop/controller/api/ArticleRestController.java
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/API_Articles/backend/src/main/java/es/codeurjc/wallypop/service/ArticleService.java
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/API_Articles/backend/src/main/java/es/codeurjc/wallypop/repository/ArticleRepository.java
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/API_Articles/backend/src/main/java/es/codeurjc/wallypop/model/Article.java
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/API_Articles_2/README.md
+
+### -> Contribución Jesús:
+
+#### --> Descripción textual
+
+##### ---> Creación de la api de usuarios (GET, POST, PUT y DELETE)
+##### ---> GET de artículos para un usuario propio
+##### ---> Creación de algunos métodos para las api de los administradores para los distintos modelos
+##### ---> Resolver problema con las recursión infinitas al hacer un GET debido a las relaciones entre modelos
+##### ---> Securizar todas las urls de la api
+##### ---> Añadir seguridad al uso de la api con JWT
+##### ---> Sustitución del envío de la contraseña en claro por la generación de un token único
+##### ---> Dockerizar aplicación y despliegue en Heroku
+##### ---> Clase java para coger la URI de la base de datos de Heroku
+##### ---> Reintentos de conexión a la base de datos cuando no está disponible
+
+#### --> 5 Commits más significativos:
+
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/d071b45d1cda31b9da07487b08b188f9c9c7fd22
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/bc5b798308f41ea9eda3b17ae0fe324ee684ae7d
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/6aab8e9657ced95d9ebbdcf9f4b49332bcbae429
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/f2cf8ed74c929cf1b546e2af6bc3032fce69f84f
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/846d01f4714a867533fac090bc28e4a92b859b13
+
+
+#### --> 5 ficheros mayor participación:
+
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/tree/main/backend/src/main/java/es/codeurjc/wallypop/dto
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/backend/src/main/java/es/codeurjc/wallypop/security/RestSecurityConfig.java
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/backend/src/main/java/es/codeurjc/wallypop/controller/api/UserRestController.java
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/backend/src/main/java/es/codeurjc/wallypop/controller/api/admin/AdminUserRestController.java
+##### ---> https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/backend/deploy_heroku_app.sh
 
 ## Licencia
 [APACHE](https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/26b1d22bc7625b0dd8cdb3a3b8eaf7bb5425833b/LICENSE)
