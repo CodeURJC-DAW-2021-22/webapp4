@@ -53,6 +53,74 @@ public class ArticleRestController {
         return articleService.findAll();
     }
 
+    @GetMapping(params = {"page"})
+    public ResponseEntity<Map<String, Object>> articlesPagination(HttpServletRequest request,@RequestParam("page") int page) {
+    	if (page != -1) { // with pagination
+        	int pageSize = 10;
+            Principal principal = request.getUserPrincipal();
+            if(principal != null) {
+                User user = userService.findByNAME(principal.getName()).get();
+                try {
+
+                    Map<String, Object> response = new HashMap<>();
+                    List<String> articles_info = new LinkedList<String>();
+                    Pageable paging = (Pageable) PageRequest.of(0, pageSize);
+                    Page<Article> pageTuts;
+                    
+                    pageTuts = articleService.findByUSERS(user, paging.withPage(page));
+                    if(pageTuts.getNumberOfElements() == 0) {
+                    	articles_info.add("Empty");
+                    }else {
+                    	for (int i = 0; i < pageTuts.getNumberOfElements();i++) {
+                           articles_info.add(pageTuts.getContent().get(i).toString());
+                        }
+                    }
+                    response.put("totalPages", pageTuts.getTotalPages());
+                    response.put("currentPage", page);
+                    response.put("totalItemsUser", pageTuts.getTotalElements());
+                    response.put("totalItemsThisPage", pageTuts.getNumberOfElements());
+                    response.put("articles", articles_info);
+                    
+               
+                    
+                    return new ResponseEntity<>(response, HttpStatus.OK);
+                } catch (Exception e) {
+                    return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+    	}else { // without pagination
+            Principal principal = request.getUserPrincipal();
+            if(principal != null) {
+                User user = userService.findByNAME(principal.getName()).get();
+                try {
+                	List<String> articles_info = new LinkedList<String>();
+                
+                	if(user.getARTICLES().size() == 0) {
+                		articles_info.add("Empty");
+                	}else {
+                		for (int i = 0; i < user.getARTICLES().size();i++) {
+                			articles_info.add(user.getARTICLES().get(i).toString());
+                		}	
+                	}
+
+                	Map<String, Object> response = new HashMap<>();
+                	
+                    response.put("totalItemsUser", articles_info.size());
+                    response.put("articles", articles_info);
+                	
+                	return new ResponseEntity<>(response, HttpStatus.OK);
+                } catch (Exception e) {
+                	return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            } else {
+            	return ResponseEntity.notFound().build();
+            }
+    	}
+
+    }
+
     @GetMapping("/me")
     public ResponseEntity<List<Article>> me(HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
@@ -180,51 +248,21 @@ public class ArticleRestController {
         return ResponseEntity.noContent().build();
     }
 
-    /*@PutMapping("/{id}")
-    public ResponseEntity<Article> updateArticleID(@PathVariable long id, @RequestBody Article updatedArticle) throws SQLException {
-        if (articleService.exist(id)) {
-        	Article cat = articleService.findById(id).get();
-        	updatedArticle.setCATEGORYS(cat.getCATEGORYS());
-        	updatedArticle.setTITLE(cat.getTITLE());
-        	updatedArticle.setDESCRIPTION(cat.getDESCRIPTION());
-        	updatedArticle.setID_ARTICLE(id);
-        	updatedArticle.setPHOTO(cat.getPHOTO());
-        	updatedArticle.setPOSTAL_CODE(cat.getPOSTAL_CODE());
-        	updatedArticle.setPRICE(cat.getPRICE());
-        	updatedArticle.setCITY(cat.getCITY());
-        	updatedArticle.setRESERVED(cat.isRESERVED());
-        	updatedArticle.setSOLD(cat.isSOLD());
-        	updatedArticle.setUSER(cat.getUSER());
-        	
-        	articleService.save(updatedArticle);
-
-            return new ResponseEntity<>(updatedArticle, HttpStatus.OK);
+    @GetMapping(value = "/search", params = {"query", "city"})
+    public ResponseEntity<List<Article>> search(@RequestParam("query") String query, @RequestParam("city") String city) {
+        List<Article> lArticles;
+        if (!city.equals("") && !query.equals("")) {
+            lArticles = articleService
+                    .findByTITLEContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalse(
+                            query, city);
+        } else if (city.equals("")) {
+            lArticles= articleService
+                    .findByTITLEContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndSOLDFalse(query);
+        } else if (query.equals("")) {
+            lArticles=articleService.findByCITYContainingIgnoreCaseAndSOLDFalse(city);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            lArticles = articleService.findAll();
         }
-    }*/
-
-    /*@GetMapping("/yourcommercial")
-    public ResponseEntity<Map<String, Object>> getAllArticlesByUser(@RequestBody User user) {
-        try {
-            List<Article> articles = new LinkedList<Article>();
-            Pageable paging = (Pageable) PageRequest.of(0, 10);
-            Page<Article> pageTuts;
-
-            pageTuts = articleService.findAll(paging);
-            //pageTuts = articleService.findByUSERS(user, paging);
-            articles = user.getARTICLES();
-            Map<String, Object> response = new HashMap<>();
-            response.put("articles", articles);
-            response.put("currentPage", pageTuts.getNumber());
-            response.put("totalItems", pageTuts.getTotalElements());
-            response.put("totalPages", pageTuts.getTotalPages());
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }*/
-    
-
-
+        return ResponseEntity.ok(lArticles);
+    }
 }

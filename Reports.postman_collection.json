@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "9c30e519-df5a-475e-be6e-7bd075b247e0",
+		"name": "Reports",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ReportsAdmin",
+			"item": [
+				{
+					"name": "https://localhost:8443/api/admin/reports",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/admin/reports",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"admin",
+								"reports"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://localhost:8443/api/admin/reports/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/admin/reports/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"admin",
+								"reports",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://localhost:8443/api/admin/reports/1/proof",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/admin/reports/1/proof",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"admin",
+								"reports",
+								"1",
+								"proof"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://localhost:8443/api/admin/reports/1/article",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/admin/reports/1/article",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"admin",
+								"reports",
+								"1",
+								"article"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://localhost:8443/api/admin/reports/40/article/image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/admin/reports/40/article/image",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"admin",
+								"reports",
+								"40",
+								"article",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://localhost:8443/api/admin/reports/1/rejectReport",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/admin/reports/1/rejectReport",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"admin",
+								"reports",
+								"1",
+								"rejectReport"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://localhost:8443/api/admin/reports/39/aceptReport",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:8443/api/admin/reports/39/aceptReport",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "8443",
+							"path": [
+								"api",
+								"admin",
+								"reports",
+								"39",
+								"aceptReport"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "https://localhost:8443/api/reports/5",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"juan@juan.es\",\r\n    \"description\":\"Se trata de una estafa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/reports/5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"reports",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/api/reports/1/image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imageFile",
+							"type": "file",
+							"src": "/C:/Users/juand/OneDrive/Documentos/Juan/3º SOFTW -1/Seguridad/web.zip"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/reports/1/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"reports",
+						"1",
+						"image"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
