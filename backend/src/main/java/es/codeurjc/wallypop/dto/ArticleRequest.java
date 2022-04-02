@@ -1,4 +1,4 @@
-package es.codeurjc.wallypop.security.jwt;
+package es.codeurjc.wallypop.dto;
 
 public class ArticleRequest {
     private String CITY;

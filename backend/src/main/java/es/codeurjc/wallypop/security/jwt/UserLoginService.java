@@ -5,14 +5,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import es.codeurjc.wallypop.dto.LoginRequest;
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,7 +38,7 @@ public class UserLoginService {
 	@Autowired
 	private UserService userService;
 
-	public ResponseEntity<AuthResponse> login(LoginRequest loginRequest, String encryptedAccessToken, String 
+	public ResponseEntity<AuthResponse> login(LoginRequest loginRequest, String encryptedAccessToken, String
 			encryptedRefreshToken) {
 		
 		/*Authentication authentication = authenticationManager.authenticate(
