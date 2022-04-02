@@ -2,7 +2,6 @@ package es.codeurjc.wallypop.configuration;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -11,13 +10,12 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @Configuration
 public class DatabaseConfig {
     @Value("${DATABASE_URL:null}")
     private String databaseUrl;
+
     @Bean
     @ConditionalOnProperty("DATABASE_URL")
     public DataSource dataSource() throws URISyntaxException {

@@ -1,80 +1,81 @@
 {{>header}}
 <!-- ====== Page content ======-->
 {{>nav_side}}
-<a href="/profile" class="list-group-item active">
-	<i class="fa fa-user fa-fw" aria-hidden="true"></i> TU PERFIL
+<a class="list-group-item active" href="/profile">
+    <i aria-hidden="true" class="fa fa-user fa-fw"></i> TU PERFIL
 </a>
-<a href="/yourcommercial" class="list-group-item">
-	<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS
+<a class="list-group-item" href="/yourcommercial">
+    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS
 </a>
-<a href="/yourcommercialsold" class="list-group-item">
-	<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS VENDIDOS
+<a class="list-group-item" href="/yourcommercialsold">
+    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS VENDIDOS
 </a>
-<a href="/favorites" class="list-group-item">
-	<i class="fa fa-heart-o fa-fw" aria-hidden="true"></i> FAVORITOS
+<a class="list-group-item" href="/favorites">
+    <i aria-hidden="true" class="fa fa-heart-o fa-fw"></i> FAVORITOS
 </a>
 {{#admin}}
-<a href="/category" class="list-group-item">
-	<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN CATEGORÍAS
+<a class="list-group-item" href="/category">
+    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN CATEGORÍAS
 </a>
-<a href="/reports" class="list-group-item">
-	<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN REPORTES
+<a class="list-group-item" href="/reports">
+    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN REPORTES
 </a>
 {{/admin}}
 </div>
 </div>
 </div>
 <div class="col-xs-12 col-sm-8 col-md-9">
-	<div class="full-width bar-info-user">
-		<i class="fa fa-user fa-fw" aria-hidden="true"></i>
-		<div>TU PERFIL</div>
-	</div>
-	<!-- Content-->
-	<div class="full-width" style="padding: 15px; border: 1px solid #E1E1E1;">
-		<form action="/updateProfile" method="POST">
-			<div class="form-group">
-				<h3>Nombre: {{FULL_NAME}}</h3>
-			</div>
-			<div class="form-group">
-				<h3>Contacto:</h3>
-				<h4> - Correo electrónico: {{NAME}}</h4>
-			</div>
-			<div class="form-group">
-				<h4> - Teléfono: {{TEL}}<small> (Éste será el teléfono de contacto en tus anuncios)</small></h4>
-			</div>
-			<br>
-			<div class="form-group">
-				<a href="modifyDataUser">Modificar Datos</a>
-			</div>
-		</form>
+    <div class="full-width bar-info-user">
+        <i aria-hidden="true" class="fa fa-user fa-fw"></i>
+        <div>TU PERFIL</div>
+    </div>
+    <!-- Content-->
+    <div class="full-width" style="padding: 15px; border: 1px solid #E1E1E1;">
+        <form action="/updateProfile" method="POST">
+            <div class="form-group">
+                <h3>Nombre: {{FULL_NAME}}</h3>
+            </div>
+            <div class="form-group">
+                <h3>Contacto:</h3>
+                <h4> - Correo electrónico: {{NAME}}</h4>
+            </div>
+            <div class="form-group">
+                <h4> - Teléfono: {{TEL}}<small> (Éste será el teléfono de contacto en tus anuncios)</small></h4>
+            </div>
+            <br>
+            <div class="form-group">
+                <a href="modifyDataUser">Modificar Datos</a>
+            </div>
+        </form>
 
-		<!--<div class="form-group">
-			{{#TOKEN}}
-			<p>Token: {{TOKEN}}</p>
-			{{/TOKEN}}
-			<a href="/token">Generar nuevo token</a>
-		</div> -->
-		<p><a href="javascript:show();">Mostrar token API</a></p>
-		<div class=""form-group id="token_div" style="display:none;">
-			<div id="close"><a href="javascript:close();">cerrar</a></div>
-			{{#TOKEN}}
-			<p>Token: {{TOKEN}}</p>
-			{{/TOKEN}}
+        <!--<div class="form-group">
+            {{#TOKEN}}
+            <p>Token: {{TOKEN}}</p>
+            {{/TOKEN}}
+            <a href="/token">Generar nuevo token</a>
+        </div> -->
+        <p><a href="javascript:show();">Mostrar token API</a></p>
+        <div class="" form-group id="token_div" style="display:none;">
+            <div id="close"><a href="javascript:close();">cerrar</a></div>
+            {{#TOKEN}}
+            <p>Token: {{TOKEN}}</p>
+            {{/TOKEN}}
 
-		</div>
-		<a href="/token">Generar nuevo token</a><small> Generar un nuevo token implica que el anterior será revocado</small>
-		<script languague="javascript">
-			function show() {
-				div = document.getElementById('token_div');
-				div.style.display = '';
-			}
+        </div>
+        <a href="/token">Generar nuevo token</a><small> Generar un nuevo token implica que el anterior será
+        revocado</small>
+        <script languague="javascript">
+            function show() {
+                div = document.getElementById('token_div');
+                div.style.display = '';
+            }
 
-			function close() {
-				div = document.getElementById('token_div');
-				div.style.display = 'none';
-			}
-		</script>
-	</div>
+            function close() {
+                div = document.getElementById('token_div');
+                div.style.display = 'none';
+            }
+        </script>
+    </div>
 </div>
 </div>
 </div>

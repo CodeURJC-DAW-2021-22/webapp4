@@ -1,35 +1,34 @@
 package es.codeurjc.wallypop.repository;
 
-import java.util.List;
-
-import org.springframework.data.domain.Pageable;
+import es.codeurjc.wallypop.model.Article;
+import es.codeurjc.wallypop.model.Category;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
-import es.codeurjc.wallypop.model.Article;
-import es.codeurjc.wallypop.model.Category;
-import es.codeurjc.wallypop.model.User;
+import java.util.List;
 
 
-public interface ArticleRepository extends JpaRepository<Article, Long>, CrudRepository<Article, Long>  {
-	Page<Article> findAll(Pageable pageable);
-	List<Article> findAll();
-	
-	List<Article> findByCATEGORYS(Category cat);
+public interface ArticleRepository extends JpaRepository<Article, Long>, CrudRepository<Article, Long> {
+    Page<Article> findAll(Pageable pageable);
 
-	List<Article> findByCITYContainingIgnoreCaseAndSOLDFalse(String city);
+    List<Article> findAll();
 
-	List<Article> findBySOLDFalse();
+    List<Article> findByCATEGORYS(Category cat);
 
-	List<Article> findBySOLDTrue();
+    List<Article> findByCITYContainingIgnoreCaseAndSOLDFalse(String city);
 
-	List<Article> findByTITLEContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalse(
-			String title, String city, String description, String city2);
+    List<Article> findBySOLDFalse();
 
-	List<Article> findByTITLEContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndSOLDFalse(String title,
-			String description);
+    List<Article> findBySOLDTrue();
 
-	List<Article> findByTITLEContainingIgnoreCaseOrDESCRIPTIONContainingIgnoreCaseOrCITYContainingIgnoreCaseAndSOLDFalse(
-			String title, String description, String city);
+    List<Article> findByTITLEContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalse(
+            String title, String city, String description, String city2);
+
+    List<Article> findByTITLEContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndSOLDFalse(String title,
+                                                                                                           String description);
+
+    List<Article> findByTITLEContainingIgnoreCaseOrDESCRIPTIONContainingIgnoreCaseOrCITYContainingIgnoreCaseAndSOLDFalse(
+            String title, String description, String city);
 }

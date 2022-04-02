@@ -1,10 +1,10 @@
 version: "3.9"
-services: 
+services:
   web:
     image: jesusbarcia/codeurjc-daw-2021-22-webapp4
     restart: always
     ports:
-      - 8443:8443      
+      - 8443:8443
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db/wallypop
       - SPRING_DATASOURCE_USERNAME=postgres

@@ -12,15 +12,6 @@ import java.util.stream.Stream;
 @SpringBootConfiguration
 public class DatabaseWaitConfigurator {
     @Bean
-    public DatabaseStartupValidator databaseStartupValidator(DataSource dataSource) {
-        DatabaseStartupValidator dsv = new DatabaseStartupValidator();
-        dsv.setDataSource(dataSource);
-// Configuration delay and timeout
-        dsv.setInterval(5);
-        dsv.setTimeout(120);
-        return dsv;
-    }
-    @Bean
     public static BeanFactoryPostProcessor dependsOnPostProcessor() {
         return bf ->
         {
@@ -31,5 +22,15 @@ public class DatabaseWaitConfigurator {
                     .map(bf::getBeanDefinition)
                     .forEach(it -> it.setDependsOn("databaseStartupValidator"));
         };
+    }
+
+    @Bean
+    public DatabaseStartupValidator databaseStartupValidator(DataSource dataSource) {
+        DatabaseStartupValidator dsv = new DatabaseStartupValidator();
+        dsv.setDataSource(dataSource);
+// Configuration delay and timeout
+        dsv.setInterval(5);
+        dsv.setTimeout(120);
+        return dsv;
     }
 }
