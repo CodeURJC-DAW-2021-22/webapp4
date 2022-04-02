@@ -57,16 +57,12 @@ public class ArticleRestController {
     	if (page != -1) { // with pagination
         	int pageSize = 10;
             Principal principal = request.getUserPrincipal();
-            if(principal != null) {
-                User user = userService.findByNAME(principal.getName()).get();
                 try {
-
                     Map<String, Object> response = new HashMap<>();
                     List<String> articles_info = new LinkedList<String>();
                     Pageable paging = (Pageable) PageRequest.of(0, pageSize);
                     Page<Article> pageTuts;
-                    
-                    pageTuts = articleService.findByUSERS(user, paging.withPage(page));
+                    pageTuts = articleService.findAllPageable(paging.withPage(page));
                     if(pageTuts.getNumberOfElements() == 0) {
                     	articles_info.add("Empty");
                     }else {
@@ -79,16 +75,10 @@ public class ArticleRestController {
                     response.put("totalItemsUser", pageTuts.getTotalElements());
                     response.put("totalItemsThisPage", pageTuts.getNumberOfElements());
                     response.put("articles", articles_info);
-                    
-               
-                    
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 } catch (Exception e) {
                     return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
                 }
-            } else {
-                return ResponseEntity.notFound().build();
-            }
     	}else { // without pagination
             Principal principal = request.getUserPrincipal();
             if(principal != null) {

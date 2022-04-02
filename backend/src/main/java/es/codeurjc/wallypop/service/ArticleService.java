@@ -38,7 +38,10 @@ public class ArticleService {
 	public boolean exist(long id) {
 		return articleRepository.existsById(id);
 	}
-	
+
+	public Page<Article> findAllPageable(Pageable pageable) {
+		return articleRepository.findAll(pageable);
+	}
 	/*
 	public Page<Article> findByUSERS(User user, Pageable pageable) {
 		return articleRepository.findByUSERS(user, pageable);
