@@ -180,51 +180,21 @@ public class ArticleRestController {
         return ResponseEntity.noContent().build();
     }
 
-    /*@PutMapping("/{id}")
-    public ResponseEntity<Article> updateArticleID(@PathVariable long id, @RequestBody Article updatedArticle) throws SQLException {
-        if (articleService.exist(id)) {
-        	Article cat = articleService.findById(id).get();
-        	updatedArticle.setCATEGORYS(cat.getCATEGORYS());
-        	updatedArticle.setTITLE(cat.getTITLE());
-        	updatedArticle.setDESCRIPTION(cat.getDESCRIPTION());
-        	updatedArticle.setID_ARTICLE(id);
-        	updatedArticle.setPHOTO(cat.getPHOTO());
-        	updatedArticle.setPOSTAL_CODE(cat.getPOSTAL_CODE());
-        	updatedArticle.setPRICE(cat.getPRICE());
-        	updatedArticle.setCITY(cat.getCITY());
-        	updatedArticle.setRESERVED(cat.isRESERVED());
-        	updatedArticle.setSOLD(cat.isSOLD());
-        	updatedArticle.setUSER(cat.getUSER());
-        	
-        	articleService.save(updatedArticle);
-
-            return new ResponseEntity<>(updatedArticle, HttpStatus.OK);
+    @GetMapping(value = "/search", params = {"query", "city"})
+    public ResponseEntity<List<Article>> search(@RequestParam("query") String query, @RequestParam("city") String city) {
+        List<Article> lArticles;
+        if (!city.equals("") && !query.equals("")) {
+            lArticles = articleService
+                    .findByTITLEContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndCITYContainingIgnoreCaseAndSOLDFalse(
+                            query, city);
+        } else if (city.equals("")) {
+            lArticles= articleService
+                    .findByTITLEContainingIgnoreCaseAndSOLDFalseOrDESCRIPTIONContainingIgnoreCaseAndSOLDFalse(query);
+        } else if (query.equals("")) {
+            lArticles=articleService.findByCITYContainingIgnoreCaseAndSOLDFalse(city);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            lArticles = articleService.findAll();
         }
-    }*/
-
-    /*@GetMapping("/yourcommercial")
-    public ResponseEntity<Map<String, Object>> getAllArticlesByUser(@RequestBody User user) {
-        try {
-            List<Article> articles = new LinkedList<Article>();
-            Pageable paging = (Pageable) PageRequest.of(0, 10);
-            Page<Article> pageTuts;
-
-            pageTuts = articleService.findAll(paging);
-            //pageTuts = articleService.findByUSERS(user, paging);
-            articles = user.getARTICLES();
-            Map<String, Object> response = new HashMap<>();
-            response.put("articles", articles);
-            response.put("currentPage", pageTuts.getNumber());
-            response.put("totalItems", pageTuts.getTotalElements());
-            response.put("totalPages", pageTuts.getTotalPages());
-            return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }*/
-    
-
-
+        return ResponseEntity.ok(lArticles);
+    }
 }
