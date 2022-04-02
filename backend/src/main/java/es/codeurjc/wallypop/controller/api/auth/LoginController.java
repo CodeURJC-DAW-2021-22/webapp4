@@ -2,7 +2,7 @@ package es.codeurjc.wallypop.controller.api.auth;
 
 import es.codeurjc.wallypop.security.jwt.AuthResponse;
 import es.codeurjc.wallypop.security.jwt.AuthResponse.Status;
-import es.codeurjc.wallypop.security.jwt.LoginRequest;
+import es.codeurjc.wallypop.dto.LoginRequest;
 import es.codeurjc.wallypop.security.jwt.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
