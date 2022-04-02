@@ -27,3 +27,6 @@ hs_err_pid*
 
 # Examples
 pruebas/
+
+# Docker compose database
+postgresql/
