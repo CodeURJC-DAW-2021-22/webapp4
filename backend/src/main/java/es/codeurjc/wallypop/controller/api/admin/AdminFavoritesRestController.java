@@ -63,11 +63,11 @@ public class AdminFavoritesRestController {
         Optional<Article> art = articleService.findById(idArticle);
         Favorites favorites = favoritesService.findByUSERAndARTICLE(us.get(), art.get());
         if (us.isPresent() && art.isPresent()) {
-            Favorites fav = new Favorites(us.get(),art.get());
+            Favorites fav = new Favorites(us.get(), art.get());
             if (favorites != null) {
-            	favoritesService.delete(favorites);
+                favoritesService.delete(favorites);
             } else {
-            	favoritesService.save(fav);
+                favoritesService.save(fav);
             }
             return new ResponseEntity<>(fav, HttpStatus.OK);
         }

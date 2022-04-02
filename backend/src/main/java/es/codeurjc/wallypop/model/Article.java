@@ -1,22 +1,5 @@
 package es.codeurjc.wallypop.model;
 
-import java.sql.Blob;
-import java.sql.Date;
-import java.util.LinkedList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -24,221 +7,227 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.NonNull;
 
+import javax.persistence.*;
+import java.sql.Blob;
+import java.sql.Date;
+import java.util.LinkedList;
+import java.util.List;
+
 @Entity
 @Table(name = "ARTICLE")
 @JsonIgnoreProperties(value = {"user", "users"})
-@JsonIdentityInfo(generator= ObjectIdGenerators.IntSequenceGenerator.class, property="@id_article")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@id_article")
 public class Article {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID_ARTICLE")
-	private long ID_ARTICLE;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID_ARTICLE")
+    private long ID_ARTICLE;
 
-	@ManyToOne
-	@NonNull
-	@JoinColumn(name = "USERS")
-	private User USERS;
+    @ManyToOne
+    @NonNull
+    @JoinColumn(name = "USERS")
+    private User USERS;
 
-	@NonNull
-	@Column(name = "CITY")
-	private String CITY;
+    @NonNull
+    @Column(name = "CITY")
+    private String CITY;
 
-	@NonNull
-	@Column(name = "POSTAL_CODE")
-	private String POSTAL_CODE;
+    @NonNull
+    @Column(name = "POSTAL_CODE")
+    private String POSTAL_CODE;
 
-	@NonNull
-	@Column(name = "TITLE")
-	private String TITLE;
+    @NonNull
+    @Column(name = "TITLE")
+    private String TITLE;
 
-	@NonNull
-	@Column(name = "DESCRIPTION", columnDefinition = "text")
-	private String DESCRIPTION = null;
+    @NonNull
+    @Column(name = "DESCRIPTION", columnDefinition = "text")
+    private String DESCRIPTION = null;
 
-	@NonNull
-	@Column(name = "PRICE")
-	private float PRICE;
+    @NonNull
+    @Column(name = "PRICE")
+    private float PRICE;
 
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "DATE")
-	private Date DATE = new java.sql.Date(System.currentTimeMillis());
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Column(name = "DATE")
+    private Date DATE = new java.sql.Date(System.currentTimeMillis());
 
-	@Column(name = "RESERVED")
-	private boolean RESERVED = false;
+    @Column(name = "RESERVED")
+    private boolean RESERVED = false;
 
-	@Column(name = "SOLD")
-	private boolean SOLD = false;
+    @Column(name = "SOLD")
+    private boolean SOLD = false;
 
-	@Column(name = "PHOTO_BLOB")
-	private Blob PHOTO;
+    @Column(name = "PHOTO_BLOB")
+    private Blob PHOTO;
 
-	@Column(name = "N_VISITS")
-	private int N_VISITS = 0;
+    @Column(name = "N_VISITS")
+    private int N_VISITS = 0;
 
-	@ManyToMany
-	@JoinColumn(name = "CATEGORYS")
-	private List<Category> CATEGORYS = new LinkedList<>();
+    @ManyToMany
+    @JoinColumn(name = "CATEGORYS")
+    private List<Category> CATEGORYS = new LinkedList<>();
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ARTICLE")
-	private List<Report> REPORTS = new LinkedList<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ARTICLE")
+    private List<Report> REPORTS = new LinkedList<>();
 
-	public Article() {
+    public Article() {
 
-	}
+    }
 
-	public Article(User uSER, String tITLE, String dESCRIPTION, String cITY, String pOSTAL_CODE, float pRICE,
-				   Blob pHOTO, List<Category> lISTcATEGORYS) {
-		super();
-		USERS = uSER;
-		TITLE = tITLE;
-		DESCRIPTION = dESCRIPTION;
-		PRICE = pRICE;
-		PHOTO = pHOTO;
-		CATEGORYS = lISTcATEGORYS;
-		CITY = cITY;
-		POSTAL_CODE = pOSTAL_CODE;
-	}
+    public Article(User uSER, String tITLE, String dESCRIPTION, String cITY, String pOSTAL_CODE, float pRICE,
+                   Blob pHOTO, List<Category> lISTcATEGORYS) {
+        super();
+        USERS = uSER;
+        TITLE = tITLE;
+        DESCRIPTION = dESCRIPTION;
+        PRICE = pRICE;
+        PHOTO = pHOTO;
+        CATEGORYS = lISTcATEGORYS;
+        CITY = cITY;
+        POSTAL_CODE = pOSTAL_CODE;
+    }
 
-	public List<Category> getCATEGORYS() {
-		return CATEGORYS;
-	}
+    public List<Category> getCATEGORYS() {
+        return CATEGORYS;
+    }
 
-	public String getCITY() {
-		return CITY;
-	}
+    public void setCATEGORYS(List<Category> cATEGORYS) {
+        CATEGORYS = cATEGORYS;
+    }
 
-	public Date getDATE() {
-		return DATE;
-	}
+    public String getCITY() {
+        return CITY;
+    }
 
-	public String getDESCRIPTION() {
-		return DESCRIPTION;
-	}
+    public void setCITY(String cITY) {
+        CITY = cITY;
+    }
 
-	public long getID_ARTICLE() {
-		return ID_ARTICLE;
-	}
+    public Date getDATE() {
+        return DATE;
+    }
 
-	public int getN_VISITS() {
-		return N_VISITS;
-	}
+    public void setDATE(Date DATE) {
+        this.DATE = DATE;
+    }
 
-	@JsonIgnore
-	public Blob getPHOTO() {
-		return PHOTO;
-	}
+    public String getDESCRIPTION() {
+        return DESCRIPTION;
+    }
 
-	public String getPOSTAL_CODE() {
-		return POSTAL_CODE;
-	}
+    public void setDESCRIPTION(String dESCRIPTION) {
+        DESCRIPTION = dESCRIPTION;
+    }
 
-	public float getPRICE() {
-		return PRICE;
-	}
+    public long getID_ARTICLE() {
+        return ID_ARTICLE;
+    }
 
-	public String getPRICE_s() {
-		return String.valueOf(getPRICE());
-	}
+    public void setID_ARTICLE(long ID_ARTICLE) {
+        this.ID_ARTICLE = ID_ARTICLE;
+    }
 
-	public String getTITLE() {
-		return TITLE;
-	}
+    public int getN_VISITS() {
+        return N_VISITS;
+    }
 
-	public User getUSER() {
-		return USERS;
-	}
+    public void setN_VISITS(int n_VISITS) {
+        N_VISITS = n_VISITS;
+    }
 
-	public String getUserEmail() {
-		return USERS.getNAME();
-	}
+    @JsonIgnore
+    public Blob getPHOTO() {
+        return PHOTO;
+    }
 
-	public Long getUserID() {
-		return USERS.getID_USER();
-	}
+    public void setPHOTO(Blob pHOTO) {
+        PHOTO = pHOTO;
+    }
 
-	public boolean isRESERVED() {
-		return RESERVED;
-	}
+    public String getPOSTAL_CODE() {
+        return POSTAL_CODE;
+    }
 
-	public boolean isSOLD() {
-		return SOLD;
-	}
+    public void setPOSTAL_CODE(String pOSTAL_CODE) {
+        POSTAL_CODE = pOSTAL_CODE;
+    }
 
-	public void setCATEGORYS(List<Category> cATEGORYS) {
-		CATEGORYS = cATEGORYS;
-	}
+    public float getPRICE() {
+        return PRICE;
+    }
 
-	public void setCITY(String cITY) {
-		CITY = cITY;
-	}
+    public void setPRICE(float pRICE) {
+        PRICE = pRICE;
+    }
 
-	public void setDESCRIPTION(String dESCRIPTION) {
-		DESCRIPTION = dESCRIPTION;
-	}
+    public String getPRICE_s() {
+        return String.valueOf(getPRICE());
+    }
 
-	public void setPHOTO(Blob pHOTO) {
-		PHOTO = pHOTO;
-	}
+    public String getTITLE() {
+        return TITLE;
+    }
 
-	public void setPOSTAL_CODE(String pOSTAL_CODE) {
-		POSTAL_CODE = pOSTAL_CODE;
-	}
+    public void setTITLE(String tITLE) {
+        TITLE = tITLE;
+    }
 
-	public void setPRICE(float pRICE) {
-		PRICE = pRICE;
-	}
+    public User getUSER() {
+        return USERS;
+    }
 
-	public void setRESERVED(boolean rESERVED) {
-		RESERVED = rESERVED;
-	}
+    public void setUSER(User uSER) {
+        USERS = uSER;
+    }
 
-	public void setSOLD(boolean sOLD) {
-		SOLD = sOLD;
-	}
+    public String getUserEmail() {
+        return USERS.getNAME();
+    }
 
-	public void setTITLE(String tITLE) {
-		TITLE = tITLE;
-	}
+    public Long getUserID() {
+        return USERS.getID_USER();
+    }
 
-	public void setUSER(User uSER) {
-		USERS = uSER;
-	}
+    public boolean isRESERVED() {
+        return RESERVED;
+    }
 
-	public void visit() {
-		N_VISITS += 1;
-	}
+    public void setRESERVED(boolean rESERVED) {
+        RESERVED = rESERVED;
+    }
 
-	public void setID_ARTICLE(long ID_ARTICLE) {
-		this.ID_ARTICLE = ID_ARTICLE;
-	}
+    public boolean isSOLD() {
+        return SOLD;
+    }
 
-	@NonNull
-	public User getUSERS() {
-		return USERS;
-	}
+    public void setSOLD(boolean sOLD) {
+        SOLD = sOLD;
+    }
 
-	public void setUSERS(@NonNull User USERS) {
-		this.USERS = USERS;
-	}
+    public void visit() {
+        N_VISITS += 1;
+    }
 
-	public void setDATE(Date DATE) {
-		this.DATE = DATE;
-	}
+    @NonNull
+    public User getUSERS() {
+        return USERS;
+    }
 
-	public void setN_VISITS(int n_VISITS) {
-		N_VISITS = n_VISITS;
-	}
+    public void setUSERS(@NonNull User USERS) {
+        this.USERS = USERS;
+    }
 
-	public List<Report> getREPORTS() {
-		return REPORTS;
-	}
+    public List<Report> getREPORTS() {
+        return REPORTS;
+    }
 
-	public void setREPORTS(List<Report> REPORTS) {
-		this.REPORTS = REPORTS;
-	}
+    public void setREPORTS(List<Report> REPORTS) {
+        this.REPORTS = REPORTS;
+    }
 
-	public void addCategory(Category c) {
-		CATEGORYS.add(c);
-	}
+    public void addCategory(Category c) {
+        CATEGORYS.add(c);
+    }
 }

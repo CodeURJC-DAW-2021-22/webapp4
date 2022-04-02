@@ -1,18 +1,18 @@
 <div class="full-width container-post">
-	{{#Articles}}
-	<div class="full-width post">
-		<figure class="full-width post-img">
-			<img src="/article/{{ID_ARTICLE}}/imagen" alt="" class="img-responsive">
-		</figure>
-		<div class="full-width post-info">
-			<a href="/post/{{ID_ARTICLE}}" class="full-width post-info-title">{{TITLE}}</a>
-			<p class="full-width post-info-price">{{PRICE_s}}€</p>
-			<span class="post-info-zone">{{CITY}}</span>
-			<span class="post-info-date">{{DATE}}</span>
-			{{#logged}}
-			<a href="/addFavorite/{{ID_ARTICLE}}"><i class="fa fa-heart-o post-info-like"></i></a>
-			{{/logged}}
-		</div>
-	</div>
-	{{/Articles}}
+    {{#Articles}}
+    <div class="full-width post">
+        <figure class="full-width post-img">
+            <img alt="" class="img-responsive" src="/article/{{ID_ARTICLE}}/imagen">
+        </figure>
+        <div class="full-width post-info">
+            <a class="full-width post-info-title" href="/post/{{ID_ARTICLE}}">{{TITLE}}</a>
+            <p class="full-width post-info-price">{{PRICE_s}}€</p>
+            <span class="post-info-zone">{{CITY}}</span>
+            <span class="post-info-date">{{DATE}}</span>
+            {{#logged}}
+            <a href="/addFavorite/{{ID_ARTICLE}}"><i class="fa fa-heart-o post-info-like"></i></a>
+            {{/logged}}
+        </div>
+    </div>
+    {{/Articles}}
 </div>

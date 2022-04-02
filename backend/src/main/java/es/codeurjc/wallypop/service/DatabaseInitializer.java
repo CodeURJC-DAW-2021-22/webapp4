@@ -48,7 +48,7 @@ public class DatabaseInitializer {
     @PostConstruct
     public void init() throws IOException, URISyntaxException {
 
-        if(userRepository.count() > 0) {
+        if (userRepository.count() > 0) {
             return;
         }
 

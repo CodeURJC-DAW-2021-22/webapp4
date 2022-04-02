@@ -1,63 +1,63 @@
-	{{>header}}
-	<!-- ====== Page content ======-->
-	{{>nav_side}}
-						  	<a href="/profile" class="list-group-item">
-						  		<i class="fa fa-user fa-fw" aria-hidden="true"></i> TU PERFIL
-						  	</a>
-						  	<a href="/yourcommercial" class="list-group-item">
-						  		<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS
-						  	</a>
-							  <a href="/yourcommercialsold" class="list-group-item">
-								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> TUS ANUNCIOS VENDIDOS
-							</a>
-						  	<a href="/favorites" class="list-group-item">
-						  		<i class="fa fa-heart-o fa-fw" aria-hidden="true"></i> FAVORITOS
-						  	</a>
-						  	{{#admin}}
-						  	<a href="/category" class="list-group-item">
-								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN CATEGORÍAS
-							</a>
-							<a href="/reports" class="list-group-item active">
-								<i class="fa fa-object-group fa-fw" aria-hidden="true"></i> GESTIÓN REPORTES
-							</a>
-							{{/admin}}
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-8 col-md-9">
-					<div class="full-width bar-info-user">
-						<div>GESTIÓN REPORTES</div>
-					</div>
-					<!-- Content-->
-					<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-8">
-					<div class="page-header">
-					</div>
-				  	<p>
-				  		Listado con todos los reportes enviados por los usuarios:
-				  	</p>
+{{>header}}
+<!-- ====== Page content ======-->
+{{>nav_side}}
+<a class="list-group-item" href="/profile">
+    <i aria-hidden="true" class="fa fa-user fa-fw"></i> TU PERFIL
+</a>
+<a class="list-group-item" href="/yourcommercial">
+    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS
+</a>
+<a class="list-group-item" href="/yourcommercialsold">
+    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS VENDIDOS
+</a>
+<a class="list-group-item" href="/favorites">
+    <i aria-hidden="true" class="fa fa-heart-o fa-fw"></i> FAVORITOS
+</a>
+{{#admin}}
+<a class="list-group-item" href="/category">
+    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN CATEGORÍAS
+</a>
+<a class="list-group-item active" href="/reports">
+    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN REPORTES
+</a>
+{{/admin}}
+</div>
+</div>
+</div>
+<div class="col-xs-12 col-sm-8 col-md-9">
+    <div class="full-width bar-info-user">
+        <div>GESTIÓN REPORTES</div>
+    </div>
+    <!-- Content-->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8">
+                <div class="page-header">
+                </div>
+                <p>
+                    Listado con todos los reportes enviados por los usuarios:
+                </p>
 
-        <table border=1>
+                <table border=1>
 
-          <th style="background-color:#337ab7 ;color:white">ID REPORT</th background="red">
-          <th style="background-color:#337ab7;color:white">EMAIL</th>
-          <th style="background-color:#337ab7;color:white">DESCRIPTION</th>
-		{{#report}}
+                    <th style="background-color:#337ab7 ;color:white">ID REPORT</th background="red">
+                    <th style="background-color:#337ab7;color:white">EMAIL</th>
+                    <th style="background-color:#337ab7;color:white">DESCRIPTION</th>
+                    {{#report}}
 
-        <tr onclick="location.href='/showReport/{{ID_REPORT}}'">
-            <td> {{ID_REPORT}}</a></td>
-            <td>{{EMAIL}}</td>
-            <td>{{DESCRIPTION}}</td>
-        </tr >
+                    <tr onclick="location.href='/showReport/{{ID_REPORT}}'">
+                        <td> {{ID_REPORT}}</a></td>
+                        <td>{{EMAIL}}</td>
+                        <td>{{DESCRIPTION}}</td>
+                    </tr>
 
-            {{/report}}
-    </table>
+                    {{/report}}
+                </table>
 
-				</div>
-			</div>
-		</div>
-			</div>
-		</div>
-	</section>
-	{{>footer}}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+{{>footer}}

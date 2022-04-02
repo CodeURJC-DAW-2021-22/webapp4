@@ -1,50 +1,53 @@
 {{>header}}
-	<!-- ====== Page content ======-->
-	<section class="section">
-		<h2 class="text-center text-light">Formulario para reportar una incidencia</h2>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
-				   
-					{{#report}}
-					<form method="post" action="/newformularioReporte/{{#id_article}}{{id_article}}{{/id_article}}" class="form-horizontal" enctype="multipart/form-data">
-						<br><br>
-						<h3 class="text-info">Formulario</h3>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Email</label>
-						    <div class="col-sm-7">
-						      	<input type="email" class="form-control" placeholder=" email"  name="EMAIL" required="">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Descripción de la incidencia</label>
-						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder=" Descripción incidencia"  name="DESCRIPTION" required="">
-						    </div>
-						</div>
-						<br><br>
-						<h3 class="text-info">Ficheros</h3>
-						<p>¡Toda la información que nos proporcione nos ayudará, gracias!</p>
-						<div class="form-group">
-						    <div class="custom-input-file">
-						    	<input type="file" size="1" class="input-file" name="imageField" />
-							    <i class="fa fa-picture-o" aria-hidden="true"></i>
-							</div>
-							<br>
-							<p  class="text-muted text-center archivo">Fichero...</p>
-						</div>
-						<input type="hidden" name="_csrf" value="{{token}}"/>
-						<p class="text-center">
-							Al enviarnos un reporte de una incidencia, aceptas las <a href="#!">condiciones de uso y la Política de Privacidad</a>
-						</p>
-						<p class="text-center">
-							<input class="btn btn-info" type="submit" value="Continuar"></input>
-						</p>
-					</form>
-						{{/report}}
-				</div>
-			</div>
-		</div>
+<!-- ====== Page content ======-->
+<section class="section">
+    <h2 class="text-center text-light">Formulario para reportar una incidencia</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
 
-	</section>
-	{{>footer}}
+                {{#report}}
+                <form action="/newformularioReporte/{{#id_article}}{{id_article}}{{/id_article}}" class="form-horizontal"
+                      enctype="multipart/form-data" method="post">
+                    <br><br>
+                    <h3 class="text-info">Formulario</h3>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" name="EMAIL" placeholder=" email" required="" type="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Descripción de la incidencia</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" name="DESCRIPTION" placeholder=" Descripción incidencia"
+                                   required="" type="text">
+                        </div>
+                    </div>
+                    <br><br>
+                    <h3 class="text-info">Ficheros</h3>
+                    <p>¡Toda la información que nos proporcione nos ayudará, gracias!</p>
+                    <div class="form-group">
+                        <div class="custom-input-file">
+                            <input class="input-file" name="imageField" size="1" type="file"/>
+                            <i aria-hidden="true" class="fa fa-picture-o"></i>
+                        </div>
+                        <br>
+                        <p class="text-muted text-center archivo">Fichero...</p>
+                    </div>
+                    <input name="_csrf" type="hidden" value="{{token}}"/>
+                    <p class="text-center">
+                        Al enviarnos un reporte de una incidencia, aceptas las <a href="#!">condiciones de uso y la
+                        Política de Privacidad</a>
+                    </p>
+                    <p class="text-center">
+                        <input class="btn btn-info" type="submit" value="Continuar"></input>
+                    </p>
+                </form>
+                {{/report}}
+            </div>
+        </div>
+    </div>
+
+</section>
+{{>footer}}

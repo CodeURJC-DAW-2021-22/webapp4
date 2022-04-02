@@ -1,80 +1,84 @@
+{{>header}}    <!-- ====== Page content ======-->
+<section class="section">
+    <h2 class="text-center text-light">Pon tu anuncio gratis</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
+                <form action=/newcommercial class="form-horizontal" enctype="multipart/form-data" method="post">
+                    <h3 class="text-info">Busca la categoría donde verán tu anuncio</h3>
+                    <div class="form-group">
+                        <div class="col-sm-3 control-label">
+                            <label>¿Qué anuncias?<small>Pulsando Ctrl puedes seleccionar varias
+                                catgorías</small></label>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <select class="form-control" multiple name="CATEGORYS">
+                                    {{#lcategory}}
+                                    <option name="CATEGORY" value="{{ID_CATEGORY}}">{{TITLE}}</option>
+                                    {{/lcategory}}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <h3 class="text-info">Detalles de tu anuncio</h3>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Título del anuncio</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" name="tITLE" placeholder="Título del anuncio" required=""
+                                   type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Descripción</label>
+                        <div class="col-sm-7">
+                            <textarea NAME="dESCRIPTION" class="form-control" placeholder="Descripción" required=""
+                                      rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Precio</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" name="pRICE" placeholder="Precio" required="" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Ciudad</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" name="cITY" placeholder="Ciudad" required="" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Código postal</label>
+                        <div class="col-sm-7">
+                            <input class="form-control" name="pOSTAL_CODE" placeholder="Código postal" required=""
+                                   type="text">
+                        </div>
+                    </div>
+                    <br><br>
+                    <h3 class="text-info">Foto</h3>
+                    <p>¡los anuncios con fotos reciben 7 veces más contactos!</p>
+                    <div class="form-group">
+                        <div class="custom-input-file">
+                            <input accept=".jpg, .jpeg" class="input-file" name="imageField" size="1" type="file"/>
+                            <i aria-hidden="true" class="fa fa-picture-o"></i>
+                        </div>
+                        <br>
+                        <p class="text-muted text-center archivo">Archivo...</p>
+                    </div>
+                    <p class="text-center">
+                        Al publicar un anuncio, aceptas las <a href="#!">condiciones de uso y la Política de
+                        Privacidad</a>
+                    </p>
+                    <input name="_csrf" type="hidden" value="{{token}}"/>
+                    <p class="text-center">
+                        <input class="btn btn-info" type="submit" value="Guardar"></input>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
 
-{{>header}}	<!-- ====== Page content ======-->
-	<section class="section">
-		<h2 class="text-center text-light">Pon tu anuncio gratis</h2>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
-					<form method="post" action=/newcommercial class="form-horizontal" enctype="multipart/form-data">
-						<h3 class="text-info">Busca la categoría donde verán tu anuncio</h3>
-						<div class="form-group">
-							<div class="col-sm-3 control-label">
-						    	<label>¿Qué anuncias?<small>Pulsando Ctrl puedes seleccionar varias catgorías</small></label>
-							</div>
-							<div class="col-sm-7">
-							  	<div class="form-group">
-							    	<select name="CATEGORYS" class="form-control" multiple>
-							  			{{#lcategory}}
-										<option name="CATEGORY" value="{{ID_CATEGORY}}">{{TITLE}}</option>
-										{{/lcategory}}
-									</select>
-							  	</div>
-							</div>
-						</div>
-						<br><br>
-						<h3 class="text-info">Detalles de tu anuncio</h3>
-						<div class="form-group">
-						    <label  class="col-sm-3 control-label">Título del anuncio</label>
-						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder="Título del anuncio" name ="tITLE" required="">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Descripción</label>
-						    <div class="col-sm-7">
-						    	<textarea class="form-control" rows="3" placeholder="Descripción" NAME ="dESCRIPTION" required=""></textarea>
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Precio</label>
-						    <div class="col-sm-7">
-						    	<input type="text" class="form-control" placeholder="Precio" name="pRICE" required="">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Ciudad</label>
-						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder="Ciudad" name="cITY" required="">
-						    </div>
-						</div>
-						<div class="form-group">
-						    <label class="col-sm-3 control-label">Código postal</label>
-						    <div class="col-sm-7">
-						      	<input type="text" class="form-control" placeholder="Código postal" name="pOSTAL_CODE" required="">
-						    </div>
-						</div>
-						<br><br>
-						<h3 class="text-info">Foto</h3>
-						<p>¡los anuncios con fotos reciben 7 veces más contactos!</p>
-						<div class="form-group">
-						    <div class="custom-input-file">
-						    	<input type="file" size="1" class="input-file" name="imageField" accept=".jpg, .jpeg"/>
-							    <i class="fa fa-picture-o" aria-hidden="true"></i>
-							</div>
-							<br>
-							<p  class="text-muted text-center archivo">Archivo...</p>
-						</div>
-						<p class="text-center">
-							Al publicar un anuncio, aceptas las <a href="#!">condiciones de uso y la Política de Privacidad</a>
-						</p>
-						<input type="hidden" name="_csrf" value="{{token}}"/>
-						<p class="text-center">
-							<input  type="submit" value="Guardar" class="btn btn-info"></input>
-						</p>
-					</form>
-				</div>
-			</div>
-		</div>
-
-	</section>
-	{{>footer}}
+</section>
+{{>footer}}

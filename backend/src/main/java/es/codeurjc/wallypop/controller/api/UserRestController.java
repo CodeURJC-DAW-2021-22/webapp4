@@ -1,7 +1,7 @@
 package es.codeurjc.wallypop.controller.api;
 
-import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.dto.UserDTO;
+import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -43,7 +43,7 @@ public class UserRestController {
 
         Principal principal = request.getUserPrincipal();
 
-        if(principal != null) {
+        if (principal != null) {
             return ResponseEntity.ok(userService.findByNAME(principal.getName()).orElseThrow());
         } else {
             return ResponseEntity.notFound().build();
@@ -53,7 +53,7 @@ public class UserRestController {
     @PutMapping("")
     public ResponseEntity<User> updateUser(HttpServletRequest request, @RequestBody User updatedUser) throws SQLException {
         Principal principal = request.getUserPrincipal();
-        if(principal != null) {
+        if (principal != null) {
             return userService.updateUser(userService.findByNAME(principal.getName()).get().getID_USER(), updatedUser);
         } else {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -63,7 +63,7 @@ public class UserRestController {
     @DeleteMapping("")
     public ResponseEntity<User> deleteUser(HttpServletRequest request) {
         Principal principal = request.getUserPrincipal();
-        if(principal != null) {
+        if (principal != null) {
             try {
                 userService.deleteById(userService.findByNAME(principal.getName()).get().getID_USER());
                 return new ResponseEntity<>(null, HttpStatus.OK);
