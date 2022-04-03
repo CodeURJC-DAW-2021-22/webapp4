@@ -441,7 +441,6 @@ El segundo se encarga de crear la imagen docker a partir del Dockerfile, subirla
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/develop/backend/src/main/java/es/codeurjc/wallypop/controller/api/ReportRestController.java
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/develop/backend/src/main/java/es/codeurjc/wallypop/service/ReportService.java
 
-=======
 ### -> Contribución Sergio:
 
 #### Descripción textual
