@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "0d0ea52c-75fc-40a3-ac9e-d4bbbc7b6859",
+		"name": "Graphic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:8443/api/graphic",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"probandojeje\",\r\n    \"email\": \"juan@juan.es\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/graphic",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"graphic"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

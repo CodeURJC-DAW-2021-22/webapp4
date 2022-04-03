@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   web:
-    image: jesusbarcia/codeurjc-daw-2021-22-webapp4
+    build: .
     restart: always
     ports:
       - 8443:8443
@@ -16,4 +16,4 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=wallypop
     volumes:
-      - ./postgresql:/var/lib/postgresql/data
+      - ./project/postgresql:/var/lib/postgresql/data
