@@ -417,5 +417,37 @@ El segundo se encarga de crear la imagen docker a partir del Dockerfile, subirla
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/backend/src/main/java/es/codeurjc/wallypop/controller/api/admin/AdminUserRestController.java
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/backend/deploy_heroku_app.sh
 
+### -> Contribución Sergio:
+
+#### Descripción textual
+
+##### Creación de la api de categorias (GET, POST, PUT y DELETE para la informacion de la categorias y, GET, POST y DELETE para las imagenes de las categorias)
+##### Creación de la api de favoritos (GET, POST y DELETE)
+##### Creación de los ficheros POSTMAN de favoritos y categorias
+
+#### 5 Commits más significativos:
+
+##### Añadir ficheros POSTMAN de favoritos y categorias: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/d4edb9fe7892a78cb67b54265e9bc91832f52395
+##### Api de categorias: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/2323f112cca16532577c1fd26e728f8bf3d8cfb4
+##### Api de favoritos: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/ce44346df678963dc53cd22e0a999200664552dc
+##### Metodos para imagenes de categorias: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/ed7585802a7d125d585268e30355f805ad31d039
+##### Añadir favorito si no está y eliminar favorito si está con el metodo POST: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/3004e9de7f6ed5dbc135c2f6f747a257e04ba106
+
+#### 5 ficheros mayor participación:
+
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/main/backend/src/main/java/es/codeurjc/wallypop/controller/api/admin/AdminCategoryRestController.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/main/backend/src/main/java/es/codeurjc/wallypop/controller/api/admin/AdminFavoritesRestController.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/main/backend/src/main/java/es/codeurjc/wallypop/service/CategoryService.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/main/Category.postman_collection.json
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/main/Favorites.postman_collection.json
+
+### -> Contribución Juan:
+
+#### Descripción textual
+
+#### 5 Commits más significativos:
+
+#### 5 ficheros mayor participación:
+
 ## Licencia
 [APACHE](https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/26b1d22bc7625b0dd8cdb3a3b8eaf7bb5425833b/LICENSE)
