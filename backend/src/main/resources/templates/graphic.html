@@ -1,10 +1,9 @@
+
 <!-- ====== Contenido de pagina ======-->
 <section class="full-width">
     <div class="container">
         <div class="row">
-            <center>
-                <div id="container" style="width: 700px; height: 400px "></div>
-            </center>
+            <center><div id="container" style="width: 700px; height: 400px "></div></center>
         </div>
     </div>
 </section>
@@ -91,27 +90,16 @@
                 name: 'Brands',
                 colorByPoint: true,
                 data: [
-                    {{#Categories}
-            }
+                    {{#Categories}}
                 {
                     name: '{{TITLE}}',
-                    y: {{size}
-        },
-        sliced
-    :
-    true,
-        selected
-    :
-    true
+                    y: {{size}},
+        sliced: true,
+        selected: true
     },
-    {
-        {
-            /Categories}}
-        ]
-        }
+    {{/Categories}}
     ]
-    }
-    )
-    ;
+    }]
+    });
 </script>
 	
