@@ -56,7 +56,7 @@ public class ArticleRestController {
             try {
                 Map<String, Object> response = new HashMap<>();
                 List<String> articles_info = new LinkedList<String>();
-                Pageable paging = (Pageable) PageRequest.of(0, pageSize);
+                Pageable paging = PageRequest.of(0, pageSize);
                 Page<Article> pageTuts;
                 pageTuts = articleService.findAllPageable(paging.withPage(page));
                 if (pageTuts.getNumberOfElements() == 0) {

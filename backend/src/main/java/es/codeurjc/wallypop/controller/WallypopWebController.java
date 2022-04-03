@@ -151,7 +151,7 @@ public class WallypopWebController {
 
     @PostMapping("/commercialCategory")
     public String commercialCategory(Model model, long lcategories) {
-        return "redirect:/commercial/" + String.valueOf(lcategories);
+        return "redirect:/commercial/" + lcategories;
     }
 
     @RequestMapping("/search")

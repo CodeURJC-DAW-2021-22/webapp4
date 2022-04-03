@@ -22,7 +22,7 @@ public class DatabaseConfig {
         HikariConfig config = new HikariConfig();
         URI uri = new URI(databaseUrl);
         String url = "jdbc:" + new URI("postgresql", null, uri.getHost(), uri.getPort(), uri.getPath(),
-                uri.getQuery(), uri.getFragment()).toString();
+                uri.getQuery(), uri.getFragment());
         String[] userInfoParts = uri.getUserInfo().split(":");
         String username = userInfoParts[0];
         String password = userInfoParts[1];

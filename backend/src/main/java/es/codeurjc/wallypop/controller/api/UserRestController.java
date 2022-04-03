@@ -33,11 +33,6 @@ public class UserRestController {
         return user;
     }
 
-    /*@GetMapping("")
-    public ResponseEntity<User> mew(HttpServletRequest request) {
-        return me(request);
-    } */
-
     @GetMapping("")
     public ResponseEntity<User> me(HttpServletRequest request) {
 
