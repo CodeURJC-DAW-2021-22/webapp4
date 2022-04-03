@@ -417,5 +417,30 @@ El segundo se encarga de crear la imagen docker a partir del Dockerfile, subirla
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/backend/src/main/java/es/codeurjc/wallypop/controller/api/admin/AdminUserRestController.java
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/backend/deploy_heroku_app.sh
 
+### -> Contribución Juan:
+
+#### Descripción textual
+
+##### Creación de la api de reportes (GET, POST, PUT y DELETE para los reportes y/o los articulos reportados)
+##### Creación de la api del grafico (GET)
+##### Creación de los ficheros POSTMAN de reportes y grafico
+
+#### 5 Commits más significativos:
+
+##### Añadir ficheros POSTMAN de Grafico y Reportes: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/46e16c22cf629a60cd824c4570c222ec3115a102
+##### API del Grafico:https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/54ef9eb5e6a57b702cbab2a9667688aaa59f7c02
+##### Descarga de archivos de reportes en API:https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/d43b39a463ac7630f6749d3b86ba384e6c8b6c46
+##### API de Reportes:https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/51dee9c9c8f9386a10c6ada74051a1c6462bd9c3
+##### Solucion de errores y adicion de metodos en los reportes:https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/e5b0ae058a9f5b87b4719a75c29617eb438dc413
+
+#### 5 ficheros mayor participación:
+
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/develop/Graphic.postman_collection.json
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/develop/Reports.postman_collection.json
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/develop/backend/src/main/java/es/codeurjc/wallypop/controller/api/GraphicRestController.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/develop/backend/src/main/java/es/codeurjc/wallypop/controller/api/ReportRestController.java
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/develop/backend/src/main/java/es/codeurjc/wallypop/service/ReportService.java
+
+
 ## Licencia
 [APACHE](https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/26b1d22bc7625b0dd8cdb3a3b8eaf7bb5425833b/LICENSE)
