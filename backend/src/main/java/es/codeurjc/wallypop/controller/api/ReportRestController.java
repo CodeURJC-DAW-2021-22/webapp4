@@ -19,6 +19,7 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 @RequestMapping("/api/reports")
 public class ReportRestController {
 
+
     @Autowired
     private ReportService reportService;
     @Autowired
@@ -43,6 +44,5 @@ public class ReportRestController {
 
         return ResponseEntity.created(location).build();
     }
-
 
 }

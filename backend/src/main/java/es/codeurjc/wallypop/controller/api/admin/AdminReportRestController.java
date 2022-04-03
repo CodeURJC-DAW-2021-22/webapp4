@@ -53,7 +53,7 @@ public class AdminReportRestController {
 
             Resource file = new InputStreamResource(report.getPROOF().getBinaryStream());
 
-            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/zip")
                     .contentLength(report.getPROOF().length()).body(file);
 
         } else {
@@ -89,16 +89,6 @@ public class AdminReportRestController {
         }
     }
 
-    @PutMapping("/{idReport}")
-    public ResponseEntity<Report> updateReport(@PathVariable long idReport, @RequestBody Report updatedReport) throws SQLException {
-        if (reportService.exist(idReport)) {
-            reportService.updateReport(idReport, updatedReport);
-            return new ResponseEntity<>(reportService.findById(idReport).get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
     @DeleteMapping("/{id}/rejectReport")
     public ResponseEntity<Report> deleteReport(@PathVariable long id) {
 
@@ -112,7 +102,7 @@ public class AdminReportRestController {
 
     }
 
-    @DeleteMapping("/{id}/acceptReport")
+    @DeleteMapping("/{id}/aceptReport")
     public ResponseEntity<Article> deleteArticleReported(@PathVariable long id) {
 
         try {
