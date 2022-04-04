@@ -1,22 +1,23 @@
 {
 	"info": {
-		"_postman_id": "0a0972ba-2dfb-4ff4-9d8a-daee3c8479e3",
+		"_postman_id": "356dd8a8-2971-4428-bf05-767d42b412e4",
 		"name": "Category",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "https://localhost:8443/api/admin/categories",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/admin/categories",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"admin",
@@ -27,17 +28,18 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/admin/categories/6",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories/6",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/admin/categories/6",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories/6",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"admin",
@@ -49,7 +51,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/admin/categories",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -63,12 +65,13 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/admin/categories",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"admin",
@@ -79,7 +82,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/admin/categories/8",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories/8",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -93,12 +96,13 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/admin/categories/8",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories/8",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"admin",
@@ -110,17 +114,18 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/admin/categories/8",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories/8",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/admin/categories/8",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories/8",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"admin",
@@ -132,17 +137,18 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/admin/categories/7/image",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories/7/image",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/admin/categories/7/image",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories/7/image",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"admin",
@@ -155,17 +161,18 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/admin/categories/7/image",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories/7/image",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/admin/categories/7/image",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories/7/image",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"admin",
@@ -178,7 +185,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/admin/categories/7/image",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories/7/image",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -193,12 +200,13 @@
 					]
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/admin/categories/7/image",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/categories/7/image",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"admin",

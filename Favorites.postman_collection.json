@@ -1,22 +1,23 @@
 {
 	"info": {
-		"_postman_id": "a04e85ab-7327-42fa-8402-65d388cc2311",
+		"_postman_id": "3ca6b6b0-e83d-4e2c-a9ae-154c0aa88601",
 		"name": "Favorites",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "https://localhost:8443/api/favorites",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/favorites",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/favorites",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/favorites",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"favorites"
@@ -26,17 +27,18 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/admin/favorites",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/favorites",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/admin/favorites",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/favorites",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"admin",
@@ -47,17 +49,18 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/admin/favorites/1/14",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/favorites/1/14",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/admin/favorites/1/14",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/favorites/1/14",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"admin",
@@ -70,17 +73,18 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/admin/favorites/2/14",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/favorites/2/14",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/admin/favorites/2/14",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/favorites/2/14",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"admin",
@@ -93,7 +97,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/admin/favorites/1/14",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/favorites/1/14",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -107,12 +111,13 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/admin/favorites/1/14",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/admin/favorites/1/14",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"admin",
@@ -125,17 +130,18 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/favorites/14",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/favorites/14",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/favorites/13",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/favorites/13",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"favorites",
@@ -146,17 +152,18 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/favorites/13",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/favorites/13",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/favorites/13",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/favorites/13",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"favorites",

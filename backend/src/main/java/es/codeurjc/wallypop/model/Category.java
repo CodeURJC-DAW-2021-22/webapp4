@@ -36,8 +36,7 @@ public class Category {
 
     @ManyToMany(mappedBy = "CATEGORYS")
     private List<Article> ARTICLES = new LinkedList<>();
-
-    @JsonIgnore
+    
     @Column(name = "SIZE")
     private int size = 0;
 

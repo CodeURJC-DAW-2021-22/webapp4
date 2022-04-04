@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "0d0ea52c-75fc-40a3-ac9e-d4bbbc7b6859",
+		"_postman_id": "26259fb7-8408-4b00-be11-147d0f49cff0",
 		"name": "Graphic",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "https://localhost:8443/api/graphic",
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/graphic",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -23,12 +23,13 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/graphic",
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/graphic",
 					"protocol": "https",
 					"host": [
-						"localhost"
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-					"port": "8443",
 					"path": [
 						"api",
 						"graphic"

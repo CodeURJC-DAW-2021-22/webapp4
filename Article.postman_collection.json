@@ -1,716 +1,395 @@
 {
-
 	"info": {
-
-		"_postman_id": "dca10921-3263-431d-8938-99309ef2bc48",
-
+		"_postman_id": "d8c1082f-39c0-4bd5-be0c-976b60836868",
 		"name": "Article",
-
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-
 	},
-
 	"item": [
-
 		{
-
-			"name": "https://localhost:8443/api/articles",
-
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles",
 			"request": {
-
 				"method": "GET",
-
 				"header": [],
-
 				"url": {
-
-					"raw": "https://localhost:8443/api/articles",
-
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles",
 					"protocol": "https",
-
 					"host": [
-
-						"localhost"
-
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-
-					"port": "8443",
-
 					"path": [
-
 						"api",
-
 						"articles"
-
 					]
-
 				}
-
 			},
-
 			"response": []
-
 		},
-
 		{
-
-			"name": "https://localhost:8443/api/articles/6",
-
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/6",
 			"request": {
-
 				"method": "GET",
-
 				"header": [],
-
 				"url": {
-
-					"raw": "https://localhost:8443/api/articles/6",
-
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/6",
 					"protocol": "https",
-
 					"host": [
-
-						"localhost"
-
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-
-					"port": "8443",
-
 					"path": [
-
 						"api",
-
 						"articles",
-
 						"6"
-
 					]
-
 				}
-
 			},
-
 			"response": []
-
 		},
-
 		{
-
-			"name": "https://localhost:8443/api/articles",
-
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles",
 			"request": {
-
 				"method": "POST",
-
 				"header": [],
-
 				"body": {
-
 					"mode": "raw",
-
 					"raw": "{\r\n    \"title\": \"pulsera\",\r\n    \"description\": \"Las mejores pulseras del mundo\",\r\n    \"price\": \"9,99\",\r\n    \"city\": \"Barcelona\",\r\n    \"postal_code\": \"28754\",\r\n}",
-
 					"options": {
-
 						"raw": {
-
 							"language": "json"
-
 						}
-
 					}
-
 				},
-
 				"url": {
-
-					"raw": "https://localhost:8443/api/articles",
-
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles",
 					"protocol": "https",
-
 					"host": [
-
-						"localhost"
-
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-
-					"port": "8443",
-
 					"path": [
-
 						"api",
-
 						"articles"
-
 					]
-
 				}
-
 			},
-
 			"response": []
-
 		},
-
 		{
-
-			"name": "https://localhost:844/api/articles/8",
-
+			"name": "https://codeurjc-daw-2021-22-daw:844/api/articles/8",
 			"request": {
-
 				"method": "PUT",
-
 				"header": [],
-
 				"body": {
-
 					"mode": "raw",
-
 					"raw": "{\r\n    \"title\": \"Llaves allen\",\r\n    \"description\": \"Llaves allen especiales\",\r\n    \"price\": \"29,99\",\r\n    \"city\": \"Islas Canarias\",\r\n    \"postal_code\": \"20923\",\r\n}",
-
 					"options": {
-
 						"raw": {
-
 							"language": "json"
-
 						}
-
 					}
-
 				},
-
 				"url": {
-
-					"raw": "https://localhost:8443/api/articles/8",
-
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/8",
 					"protocol": "https",
-
 					"host": [
-
-						"localhost"
-
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-
-					"port": "8443",
-
 					"path": [
-
 						"api",
-
 						"articles",
-
 						"8"
-
 					]
-
 				}
-
 			},
-
 			"response": []
-
 		},
-
 		{
-
-			"name": "https://localhost:8443/api/articles/8",
-
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/8",
 			"request": {
-
 				"method": "DELETE",
-
 				"header": [],
-
 				"url": {
-
-					"raw": "https://localhost:8443/api/articles/8",
-
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/8",
 					"protocol": "https",
-
 					"host": [
-
-						"localhost"
-
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-
-					"port": "8443",
-
 					"path": [
-
 						"api",
-
 						"articles",
-
 						"8"
-
 					]
-
 				}
-
 			},
-
 			"response": []
-
 		},
-
 		{
-
-			"name": "https://localhost:8443/api/articles/7/image",
-
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/7/image",
 			"request": {
-
 				"method": "GET",
-
 				"header": [],
-
 				"url": {
-
-					"raw": "https://localhost:8443/api/articles/7/image",
-
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/7/image",
 					"protocol": "https",
-
 					"host": [
-
-						"localhost"
-
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-
-					"port": "8443",
-
 					"path": [
-
 						"api",
-
 						"articles",
-
 						"7",
-
 						"image"
-
 					]
-
 				}
-
 			},
-
 			"response": []
-
 		},
-
 		{
-
-			"name": "https://localhost:8443/api/articles/7/image",
-
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/7/image",
 			"request": {
-
 				"method": "DELETE",
-
 				"header": [],
-
 				"url": {
-
-					"raw": "https://localhost:8443/api/articles/7/image",
-
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/7/image",
 					"protocol": "https",
-
 					"host": [
-
-						"localhost"
-
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-
-					"port": "8443",
-
 					"path": [
-
 						"api",
-
 						"articles",
-
 						"7",
-
 						"image"
-
 					]
-
 				}
-
 			},
-
 			"response": []
-
 		},
-
 		{
-
-			"name": "https://localhost:8443/api/articles/7/image",
-
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/7/image",
 			"request": {
-
 				"method": "POST",
-
 				"header": [],
-
 				"body": {
-
 					"mode": "formdata",
-
 					"formdata": [
-
 						{
-
 							"key": "imageFile",
-
 							"type": "file",
-
 							"src": "/C:/Users/Usuario/Desktop/DAW/DESPERDICIOS/linterna.jpg"
-
 						}
-
 					]
-
 				},
-
 				"url": {
-
-					"raw": "https://localhost:8443/api/articles/7/image",
-
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/7/image",
 					"protocol": "https",
-
 					"host": [
-
-						"localhost"
-
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
 					],
-
-					"port": "8443",
-
 					"path": [
-
 						"api",
-
 						"articles",
-
 						"7",
-
 						"image"
-
 					]
-
 				}
-
 			},
-
 			"response": []
-
 		},
-{
-
-			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/search?query=zapatilla&city=madrid",
-
+		{
+			"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com.herokuapp.com/api/articles/search?query=zapatilla&city=madrid",
 			"request": {
-
 				"method": "GET",
-
 				"header": [],
-
 				"url": {
-
-					"raw": ""
-
+					"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/search?query=zapatilla&city=madrid",
+					"protocol": "https",
+					"host": [
+						"codeurjc-daw-2021-22-webapp4",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"articles",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "zapatilla"
+						},
+						{
+							"key": "city",
+							"value": "madrid"
+						}
+					]
 				}
-
 			},
-
 			"response": [
-
 				{
-
-					"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/search?query=zapatilla&city=madrid",
-
+					"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com.herokuapp.com/api/articles/search?query=zapatilla&city=madrid",
 					"originalRequest": {
-
 						"method": "GET",
-
 						"header": [],
-
 						"url": {
-
-							"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/search?query=&city=madrid",
-
+							"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com.herokuapp.com/api/articles/search?query=&city=madrid",
 							"protocol": "https",
-
 							"host": [
-
 								"codeurjc-daw-2021-22-webapp4",
-
 								"herokuapp",
-
+								"com",
+								"herokuapp",
 								"com"
-
 							],
-
 							"path": [
-
 								"api",
-
 								"articles",
-
 								"search"
-
 							],
-
 							"query": [
-
 								{
-
 									"key": "query",
-
 									"value": ""
-
 								},
-
 								{
-
 									"key": "city",
-
 									"value": "madrid"
-
 								}
-
 							]
-
 						}
-
 					},
-
-					"_postman_previewlanguage": null,
-
-					"header": null,
-
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-
-					"body": null
-
+					"body": ""
 				},
-
 				{
-
-					"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/search?query=zapatilla&city=",
-
+					"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com.herokuapp.com/api/articles/search?query=zapatilla&city=",
 					"originalRequest": {
-
 						"method": "GET",
-
 						"header": [],
-
 						"url": {
-
-							"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/search?query=zapatilla&city=",
-
+							"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com.herokuapp.com/api/articles/search?query=zapatilla&city=",
 							"protocol": "https",
-
 							"host": [
-
 								"codeurjc-daw-2021-22-webapp4",
-
 								"herokuapp",
-
+								"com",
+								"herokuapp",
 								"com"
-
 							],
-
 							"path": [
-
 								"api",
-
 								"articles",
-
 								"search"
-
 							],
-
 							"query": [
-
 								{
-
 									"key": "query",
-
 									"value": "zapatilla"
-
 								},
-
 								{
-
 									"key": "city",
-
 									"value": ""
-
 								}
-
 							]
-
 						}
-
 					},
-
-					"_postman_previewlanguage": null,
-
-					"header": null,
-
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-
-					"body": null
-
+					"body": ""
 				},
-
 				{
-
-					"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/search?query=&city=",
-
+					"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com.herokuapp.com/api/articles/search?query=&city=",
 					"originalRequest": {
-
 						"method": "GET",
-
 						"header": [],
-
 						"url": {
-
-							"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/search?query=&city=",
-
+							"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com.herokuapp.com/api/articles/search?query=&city=",
 							"protocol": "https",
-
 							"host": [
-
 								"codeurjc-daw-2021-22-webapp4",
-
 								"herokuapp",
-
+								"com",
+								"herokuapp",
 								"com"
-
 							],
-
 							"path": [
-
 								"api",
-
 								"articles",
-
 								"search"
-
 							],
-
 							"query": [
-
 								{
-
 									"key": "query",
-
 									"value": ""
-
 								},
-
 								{
-
 									"key": "city",
-
 									"value": ""
-
 								}
-
 							]
-
 						}
-
 					},
-
-					"_postman_previewlanguage": null,
-
-					"header": null,
-
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-
-					"body": null
-
+					"body": ""
 				},
-
 				{
-
-					"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/search?query=zapatilla&city=madrid",
-
+					"name": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com.herokuapp.com/api/articles/search?query=zapatilla&city=madrid",
 					"originalRequest": {
-
 						"method": "GET",
-
 						"header": [],
-
 						"url": {
-
-							"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com/api/articles/search?query=zapatilla&city=madrid",
-
+							"raw": "https://codeurjc-daw-2021-22-webapp4.herokuapp.com.herokuapp.com/api/articles/search?query=zapatilla&city=madrid",
 							"protocol": "https",
-
 							"host": [
-
 								"codeurjc-daw-2021-22-webapp4",
-
 								"herokuapp",
-
+								"com",
+								"herokuapp",
 								"com"
-
 							],
-
 							"path": [
-
 								"api",
-
 								"articles",
-
 								"search"
-
 							],
-
 							"query": [
-
 								{
-
 									"key": "query",
-
 									"value": "zapatilla"
-
 								},
-
 								{
-
 									"key": "city",
-
 									"value": "madrid"
-
 								}
-
 							]
-
 						}
-
 					},
-
-					"_postman_previewlanguage": null,
-
-					"header": null,
-
+					"_postman_previewlanguage": "Text",
+					"header": [],
 					"cookie": [],
-
-					"body": null
-
+					"body": ""
 				}
-
 			]
-
 		}
-
-]
-
+	]
 }
-
-

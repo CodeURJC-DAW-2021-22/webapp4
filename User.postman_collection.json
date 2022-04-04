@@ -6,12 +6,12 @@
 	},
 	"item": [
 		{
-			"name": "https://localhost:8443/api/admin/users/1",
+			"name": "https://codeurjc-daw-2021-22-webapp4/api/admin/users/1",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/admin/users/1",
+					"raw": "https://codeurjc-daw-2021-22-webapp4/api/admin/users/1",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -28,7 +28,7 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/admin/users/2",
+			"name": "https://codeurjc-daw-2021-22-webapp4/api/admin/users/2",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -42,7 +42,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:8443/api/admin/users/2",
+					"raw": "https://codeurjc-daw-2021-22-webapp4/api/admin/users/2",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -59,12 +59,12 @@
 			"response": []
 		},
 		{
-			"name": "https://localhost:8443/api/admin/users/2",
+			"name": "https://codeurjc-daw-2021-22-webapp4/api/admin/users/2",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/admin/users/2",
+					"raw": "https://codeurjc-daw-2021-22-webapp4/api/admin/users/2",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -79,6 +79,6 @@
 				}
 			},
 			"response": []
-		},	
+		}	
 	]
 }
