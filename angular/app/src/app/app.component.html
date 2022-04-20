@@ -1,0 +1,103 @@
+<!-- ====== Nav Bar ======-->
+<div class="full-width NavBar">
+  <div class="full-width text-semi-bold NavBar-logo">
+    <a href="/">
+      <img src="/src/assets/img/LogoAPP.png"/>
+    </a>
+    <!-- Company -->
+  </div>
+  <nav class=" full-width NavBar-Nav">
+    <div class="full-width NavBar-Nav-bg hidden-md hidden-lg show-menu-mobile"></div>
+    <ul class="list-unstyled full-width menu-mobile-c">
+      <div class="full-width hidden-md hidden-lg header-menu-mobile">
+        <i aria-hidden="true" class="fa fa-times header-menu-mobile-close-btn show-menu-mobile"></i>
+        <!-- {{#logged}} -->
+        <a href="/profile">
+          <i aria-hidden="true" class="fa fa-user NavBar-Nav-icon header-menu-mobile-icon"></i>
+        </a>
+        <!-- {{/logged}}
+        {{^logged}} -->
+        <a href="/login">
+          <i aria-hidden="true" class="fa fa-user NavBar-Nav-icon header-menu-mobile-icon"></i>
+        </a>
+        <!-- </br> -->
+        <a class="btn btn-info header-menu-mobile-btn" href="/login">INICIAR SESIÓN</a>
+        <div class="divider"></div>
+        <a class="btn btn-primary header-menu-mobile-btn" href="/newaccount">CRÉATE UNA CUENTA</a>
+        <!-- {{/logged}} {{#logged}} -->
+        <p>
+          <!-- <center>{{NAME}}</center> -->
+        </p>
+        <form action="/logout" method="post">
+          <button class="btn btn-default navbar-btn" type="submit">Log Out</button>
+          <input name="_csrf" type="hidden" value=""/> <!-- {{token}} -->
+        </form>
+        <!-- {{/logged}} -->
+      </div>
+      <li>
+        <a href="/">
+          <i aria-hidden="true" class="fa fa-home fa-fw hidden-md hidden-lg"></i> INICIO
+        </a>
+      </li>
+      <li>
+        <a href="/commercial">
+          <i aria-hidden="true" class="fa fa-object-group fa-fw hidden-md hidden-lg"></i> ANUNCIOS
+        </a>
+      </li>
+      <li>
+        <a href="/sold">
+          <i aria-hidden="true" class="fa fa-object-group fa-fw hidden-md hidden-lg"></i> ANUNCIOS VENDIDOS
+        </a>
+      </li>
+      <!-- {{#logged}} -->
+      <li>
+        <a href="/adcommercial">
+          <i aria-hidden="true" class="fa fa-pencil-square-o fa-fw hidden-md hidden-lg"></i> PON TU ANUNCIO
+        </a>
+      </li>
+      <li>
+        <a href="/favorites">
+          <i aria-hidden="true" class="fa fa-heart-o fa-fw hidden-md hidden-lg"></i> FAVORITOS
+        </a>
+      </li>
+      <!-- {{/logged}}
+      {{#logged}} -->
+      <li class="hidden-xs hidden-sm">
+        <a href="/profile">
+          <!-- {{FULL_NAME}} --> <i aria-hidden="true" class="fa fa-user NavBar-Nav-icon"></i>
+        </a>
+      </li>
+      <!-- {{/logged}}
+      {{^logged}} -->
+      <li>
+        <a href="/newaccount">
+          <i aria-hidden="true" class="fa fa-life-ring fa-fw hidden-md hidden-lg"></i> CREAR CUENTA
+        </a>
+      </li>
+      <li>
+        <a href="/login">
+          <i aria-hidden="true" class="fa fa-life-ring fa-fw hidden-md hidden-lg"></i> INICIAR SESIÓN
+        </a>
+      </li>
+      <li class="hidden-xs hidden-sm">
+        <a href="/login">
+          <i aria-hidden="true" class="fa fa-user NavBar-Nav-icon"></i>
+        </a>
+      </li>
+      <!-- {{/logged}} -->
+      <!-- {{#logged}} -->
+      <li>
+        <form action="/logout" class="visible-md visible-lg" method="post">
+          <button class="btn btn-default navbar-btn" type="submit">Log Out</button>
+          <input name="_csrf" type="hidden" value=""/><!-- {{token}} -->
+        </form>
+      </li>
+    </ul>
+    <!-- {{/logged}} -->
+  </nav>
+  <i aria-hidden="true" class="fa fa-bars hidden-md hidden-lg btn-mobile-menu show-menu-mobile"></i>
+  <i aria-hidden="true" class="fa fa-search hidden-md hidden-lg btn-mobile-menu btn-search-mobile"></i>
+</div>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
