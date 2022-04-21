@@ -1,12 +1,14 @@
 package es.codeurjc.wallypop.security.jwt;
 
 import es.codeurjc.wallypop.dto.LoginRequest;
+import es.codeurjc.wallypop.dto.LoginRequest2;
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,7 +41,7 @@ public class UserLoginService {
 
     public ResponseEntity<AuthResponse> login(LoginRequest loginRequest, String encryptedAccessToken, String
             encryptedRefreshToken) {
-		
+
 		/*Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
@@ -89,6 +91,49 @@ public class UserLoginService {
         AuthResponse loginResponse = new AuthResponse(AuthResponse.Status.FAILURE,
                 "Token no válido !");
         return ResponseEntity.ok().body(loginResponse);
+    }
+
+    public ResponseEntity<AuthResponse> login2(LoginRequest2 loginRequest, String encryptedAccessToken, String
+            encryptedRefreshToken) {
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        String accessToken = SecurityCipher.decrypt(encryptedAccessToken);
+        String refreshToken = SecurityCipher.decrypt(encryptedRefreshToken);
+
+        String email = loginRequest.getEmail();
+        UserDetails user = userDetailsService.loadUserByUsername(email);
+
+        Boolean accessTokenValid = jwtTokenProvider.validateToken(accessToken);
+        Boolean refreshTokenValid = jwtTokenProvider.validateToken(refreshToken);
+
+        HttpHeaders responseHeaders = new HttpHeaders();
+        Token newAccessToken;
+        Token newRefreshToken;
+        if (!accessTokenValid && !refreshTokenValid) {
+            newAccessToken = jwtTokenProvider.generateToken(user);
+            newRefreshToken = jwtTokenProvider.generateRefreshToken(user);
+            addAccessTokenCookie(responseHeaders, newAccessToken);
+            addRefreshTokenCookie(responseHeaders, newRefreshToken);
+        }
+
+        if (!accessTokenValid && refreshTokenValid) {
+            newAccessToken = jwtTokenProvider.generateToken(user);
+            addAccessTokenCookie(responseHeaders, newAccessToken);
+        }
+
+        if (accessTokenValid && refreshTokenValid) {
+            newAccessToken = jwtTokenProvider.generateToken(user);
+            newRefreshToken = jwtTokenProvider.generateRefreshToken(user);
+            addAccessTokenCookie(responseHeaders, newAccessToken);
+            addRefreshTokenCookie(responseHeaders, newRefreshToken);
+        }
+
+        AuthResponse loginResponse = new AuthResponse(AuthResponse.Status.SUCCESS,
+                "Autenticación correcta.");
+        return ResponseEntity.ok().headers(responseHeaders).body(loginResponse);
     }
 
     public ResponseEntity<AuthResponse> refresh(String encryptedRefreshToken) {
