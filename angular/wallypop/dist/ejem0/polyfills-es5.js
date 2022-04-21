@@ -499,7 +499,7 @@
     /***/
     function _(module, exports, __webpack_require__) {
       __webpack_require__(
-      /*! /home/jesus/Documentos/Universidad/webapp4/angular/sample-project-phase4/node_modules/@angular-devkit/build-angular/src/webpack/es5-polyfills.js */
+      /*! C:\Users\JESUSBA-PC\Documents\GitHub\webapp4\angular\wallypop\node_modules\@angular-devkit\build-angular\src\webpack\es5-polyfills.js */
       "voQr");
 
       __webpack_require__(
@@ -507,7 +507,7 @@
       "R0gw");
 
       module.exports = __webpack_require__(
-      /*! /home/jesus/Documentos/Universidad/webapp4/angular/sample-project-phase4/src/polyfills.ts */
+      /*! C:\Users\JESUSBA-PC\Documents\GitHub\webapp4\angular\wallypop\src\polyfills.ts */
       "hN/g");
       /***/
     },

@@ -24,11 +24,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/JESUSBA-PC/IdeaProjects/webapp4/angular/sample-project-phase4",
+    "last_opened_file_path": "C:/Users/JESUSBA-PC/Documents/GitHub/webapp4/angular/wallypop",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.protractor.protractor_package": "C:/Users/JESUSBA-PC/IdeaProjects/webapp4/angular/sample-project-phase4/node_modules/protractor",
+    "nodejs.protractor.protractor_package": "C:/Users/JESUSBA-PC/Documents/GitHub/webapp4/angular/wallypop/node_modules/protractor",
     "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\JESUSBA-PC\\Documents\\GitHub\\webapp4\\angular\\wallypop\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -79,6 +80,7 @@
       <option name="presentableId" value="Default" />
       <updated>1650536119243</updated>
       <workItem from="1650536122191" duration="294000" />
+      <workItem from="1650541831418" duration="5432000" />
     </task>
     <servers />
   </component>

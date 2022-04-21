@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/jesus/Documentos/Universidad/webapp4/angular/sample-project-phase4/src/polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! C:\Users\JESUSBA-PC\Documents\GitHub\webapp4\angular\wallypop\src\polyfills.ts */"hN/g");
 
 
 /***/ }),
