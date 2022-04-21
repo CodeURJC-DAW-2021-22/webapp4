@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
+import {Subscription} from 'rxjs';
 
 const BASE_URL = '/api/auth';
 
@@ -14,52 +15,52 @@ export class LoginService {
         this.reqIsLogged();
     }
 
-    reqIsLogged() {
+    reqIsLogged(): void {
 
-        this.http.get('/api/users/me', { withCredentials: true }).subscribe(
+        this.http.get('/api/users', { withCredentials: true }).subscribe(
             response => {
                 this.user = response as User;
                 this.logged = true;
             },
             error => {
-                if (error.status != 404) {
-                    console.error('Error when asking if logged: ' + JSON.stringify(error));
+                if (error.status !== 404) {
+                    console.error('Error inicio sesión: ' + JSON.stringify(error));
                 }
             }
         );
 
     }
 
-    logIn(user: string, pass: string) {
+    logIn(email: string, pass: string): void {
 
-        this.http.post(BASE_URL + "/login", { username: user, password: pass }, { withCredentials: true })
+        this.http.post(BASE_URL + '/login', { email, password: pass }, { withCredentials: true })
             .subscribe(
                 (response) => this.reqIsLogged(),
-                (error) => alert("Wrong credentials")
+                (error) => alert('Usuario y/o contraseña no válidos')
             );
 
     }
 
-    logOut() {
+    logOut(): Subscription{
 
         return this.http.post(BASE_URL + '/logout', { withCredentials: true })
             .subscribe((resp: any) => {
-                console.log("LOGOUT: Successfully");
+                console.log('Sesión finalizada con éxito');
                 this.logged = false;
                 this.user = undefined;
             });
 
     }
 
-    isLogged() {
+    isLogged(): boolean {
         return this.logged;
     }
 
-    isAdmin() {
-        return this.user && this.user.roles.indexOf('ADMIN') !== -1;
+    isAdmin(): boolean {
+        return this.user.is_ADMIN;
     }
 
-    currentUser() {
+    currentUser(): User {
         return this.user;
     }
 }

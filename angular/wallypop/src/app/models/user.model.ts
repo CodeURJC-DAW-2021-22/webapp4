@@ -1,12 +1,12 @@
 export interface User {
-    id?: number;
-    full_name: string;
+    id_USER?: number;
+    full_NAME: string;
     password: string;
-    email: string;
+    name: string;
     tel: string;
-    n_sold: number;
-    n_sell: number;
-    is_admin: boolean;
-    //articles: Article[];
-    //favorites: Favorites[];
+    n_SOLD: number;
+    n_SELL: number;
+    is_ADMIN: boolean;
+    // articles: Article[];
+    // favorites: Favorites[];
 }

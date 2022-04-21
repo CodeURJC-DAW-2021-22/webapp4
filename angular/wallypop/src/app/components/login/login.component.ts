@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LoginService} from '../../services/login.service';
 
 @Component({
   selector: 'login',
@@ -6,17 +7,17 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  /*constructor(public loginService: LoginService) { }
+  constructor(public loginService: LoginService) { }
 
-  logIn(event: any, user: string, pass: string) {
+  logIn(event: any, email: string, password: string): void {
 
     event.preventDefault();
 
-    this.loginService.logIn(user, pass);
+    this.loginService.logIn(email, password);
   }
 
-  logOut() {
+  logOut(): void {
     this.loginService.logOut();
-  } */
+  }
 
 }
