@@ -12,6 +12,7 @@ export class LoginService {
     user: User;
 
     constructor(private http: HttpClient) {
+        this.logged = false;
         this.reqIsLogged();
     }
 
@@ -25,6 +26,7 @@ export class LoginService {
             error => {
                 if (error.status !== 404) {
                     console.error('Error inicio sesión: ' + JSON.stringify(error));
+                    this.user = undefined;
                 }
             }
         );

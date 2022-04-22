@@ -11,18 +11,18 @@
 	<button type="submit" (click)="logIn($event, user.value, pass.value)" class="btn btn-default">Sign In</button>
 
 </form>
-
-<div *ngIf="loginService.isLogged()" class="nav navbar-nav navbar-right">
-
-	<ul class="nav navbar-nav">
-		<div class="navbar-nav mr-auto">
-			<a class="navbar-brand" href="/">Current user: {{loginService.currentUser().name}}</a>
-		</div>
-		<li>
-			<button class="btn btn-default navbar-btn" (click)="logOut()" type="button">Log Out</button>
-		</li>
-	</ul>
-
+-->
+<!-- <div *ngIf="loginService.isLogged()" style="text-align: center">
+	Current user: {{loginService.currentUser().name}}
+</div>
+<div *ngIf="loginService.isLogged() && loginService.isAdmin()" style="text-align: center">
+	ROLE: ADMIN
+</div>
+<div *ngIf="loginService.isLogged() && !loginService.isAdmin()" style="text-align: center">
+	ROLE: USER
+</div>
+<div *ngIf="!loginService.isLogged()" style="text-align: center">
+	Current user: NULL
 </div> -->
 
 <!-- ====== Page content ======-->

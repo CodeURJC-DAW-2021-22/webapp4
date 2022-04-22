@@ -94,3 +94,15 @@
 <section>
     <router-outlet></router-outlet>
 </section>
+<!-- <div *ngIf="loginService.isLogged()" style="text-align: center">
+    Current user: {{loginService.currentUser().name}}
+</div>
+<div *ngIf="loginService.isLogged() && loginService.isAdmin()" style="text-align: center">
+    ROLE: ADMIN
+</div>
+<div *ngIf="loginService.isLogged() && !loginService.isAdmin()" style="text-align: center">
+    ROLE: USER
+</div>
+<div *ngIf="!loginService.isLogged()" style="text-align: center">
+    Current user: NULL
+</div> -->
