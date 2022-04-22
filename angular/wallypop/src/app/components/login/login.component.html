@@ -41,9 +41,16 @@
 			<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 				<div class="full-width container-login">
 					<i aria-hidden="true" class="fa fa-user container-login-icon"></i>
-					<h4 class="text-center text-light">INICIAR SESIÓN</h4>
+					<div *ngIf="!loginService.isLogged(); then thenBlockLogin else elseBlockLogin" ></div>
+					<ng-template #thenBlockLogin>
+						<h4 class="text-center text-light">INICIAR SESIÓN</h4>
+					</ng-template>
+					<ng-template #elseBlockLogin>
+						<h4 class="text-center text-light">BIENVENIDO {{loginService.currentUser().full_NAME}}</h4>
+						<a href="/">Inicio</a><a href="/profile">Mi perfil</a>
+					</ng-template>
 					<br>
-					<form action="/login" method="POST">
+					<form *ngIf="!loginService.isLogged()">
 						<div class="form-group">
 							<input #email class="form-control input-lg" name="email" placeholder="Email" required=""
 								   type="email">
