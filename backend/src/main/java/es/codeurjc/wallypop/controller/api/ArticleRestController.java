@@ -52,7 +52,7 @@ public class ArticleRestController {
     public ResponseEntity<Map<String, Object>> articlesPagination(HttpServletRequest request, @RequestParam("page") int page) {
         if (page != -1) { // with pagination
             int pageSize = 10;
-            Principal principal = request.getUserPrincipal();
+            //Principal principal = request.getUserPrincipal();
             try {
                 Map<String, Object> response = new HashMap<>();
                 List<String> articles_info = new LinkedList<String>();
@@ -63,14 +63,17 @@ public class ArticleRestController {
                     articles_info.add("Empty");
                 } else {
                     for (int i = 0; i < pageTuts.getNumberOfElements(); i++) {
+                    	response.put("Article",pageTuts.getContent().get(i));
                         articles_info.add(pageTuts.getContent().get(i).toString());
                     }
                 }
+                /*
                 response.put("totalPages", pageTuts.getTotalPages());
                 response.put("currentPage", page);
                 response.put("totalItemsUser", pageTuts.getTotalElements());
                 response.put("totalItemsThisPage", pageTuts.getNumberOfElements());
                 response.put("articles", articles_info);
+                */
                 return new ResponseEntity<>(response, HttpStatus.OK);
             } catch (Exception e) {
                 return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
