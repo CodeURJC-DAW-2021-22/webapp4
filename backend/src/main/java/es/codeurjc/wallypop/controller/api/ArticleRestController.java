@@ -48,65 +48,25 @@ public class ArticleRestController {
         return articleService.findAll();
     }
 
-    @GetMapping(params = {"page"})
-    public ResponseEntity<Map<String, Object>> articlesPagination(HttpServletRequest request, @RequestParam("page") int page) {
+    @GetMapping("/{page}")
+    public List<Article> articlesPagination(@PathVariable long page) {
+        List<Article> articlesList = new LinkedList<Article>();
         if (page != -1) { // with pagination
             int pageSize = 10;
-            //Principal principal = request.getUserPrincipal();
-            try {
-                Map<String, Object> response = new HashMap<>();
-                List<String> articles_info = new LinkedList<String>();
                 Pageable paging = PageRequest.of(0, pageSize);
                 Page<Article> pageTuts;
-                pageTuts = articleService.findAllPageable(paging.withPage(page));
+                pageTuts = articleService.findAllPageable(paging.withPage((int)page));
                 if (pageTuts.getNumberOfElements() == 0) {
-                    articles_info.add("Empty");
+                	articlesList.add(null);
                 } else {
                     for (int i = 0; i < pageTuts.getNumberOfElements(); i++) {
-                    	response.put("Article",pageTuts.getContent().get(i));
-                        articles_info.add(pageTuts.getContent().get(i).toString());
+                    	articlesList.add(pageTuts.getContent().get(i));
                     }
                 }
-                /*
-                response.put("totalPages", pageTuts.getTotalPages());
-                response.put("currentPage", page);
-                response.put("totalItemsUser", pageTuts.getTotalElements());
-                response.put("totalItemsThisPage", pageTuts.getNumberOfElements());
-                response.put("articles", articles_info);
-                */
-                return new ResponseEntity<>(response, HttpStatus.OK);
-            } catch (Exception e) {
-                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+                return articlesList;
         } else { // without pagination
-            Principal principal = request.getUserPrincipal();
-            if (principal != null) {
-                User user = userService.findByNAME(principal.getName()).get();
-                try {
-                    List<String> articles_info = new LinkedList<String>();
-
-                    if (user.getARTICLES().size() == 0) {
-                        articles_info.add("Empty");
-                    } else {
-                        for (int i = 0; i < user.getARTICLES().size(); i++) {
-                            articles_info.add(user.getARTICLES().get(i).toString());
-                        }
-                    }
-
-                    Map<String, Object> response = new HashMap<>();
-
-                    response.put("totalItemsUser", articles_info.size());
-                    response.put("articles", articles_info);
-
-                    return new ResponseEntity<>(response, HttpStatus.OK);
-                } catch (Exception e) {
-                    return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-                }
-            } else {
-                return ResponseEntity.notFound().build();
-            }
+        	return articleService.findAll();
         }
-
     }
 
     @GetMapping("/me")
@@ -120,17 +80,6 @@ public class ArticleRestController {
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Article> getArticle(@PathVariable long id) {
-
-        Optional<Article> op = articleService.findById(id);
-        if (op.isPresent()) {
-            Article article = op.get();
-            return new ResponseEntity<>(article, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
 
     @GetMapping("/{id}/image")
     public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
@@ -161,7 +110,7 @@ public class ArticleRestController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Article> createArticle(HttpServletRequest request, @RequestBody ArticleRequest articleRequest, @PathVariable long id) {
+    public ResponseEntity<Article> uploadArticle(HttpServletRequest request, @RequestBody ArticleRequest articleRequest, @PathVariable long id) {
         Principal principal = request.getUserPrincipal();
         if (principal != null && articleService.findById(id).isPresent()) {
             Article article = articleService.findById(id).get();
