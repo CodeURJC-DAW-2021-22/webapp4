@@ -48,24 +48,32 @@ public class ArticleRestController {
         return articleService.findAll();
     }
 
-    @GetMapping("/{page}")
-    public List<Article> articlesPagination(@PathVariable long page) {
-        List<Article> articlesList = new LinkedList<Article>();
+    @GetMapping(params = {"page"})
+    public ResponseEntity<List<Article>> articlesPagination(HttpServletRequest request, @RequestParam("page") int page) {
         if (page != -1) { // with pagination
-            int pageSize = 10;
+            int pageSize = 4;
+            try {
+                List<Article> lArticlesPageable = new LinkedList<>();
                 Pageable paging = PageRequest.of(0, pageSize);
-                Page<Article> pageTuts;
-                pageTuts = articleService.findAllPageable(paging.withPage((int)page));
-                if (pageTuts.getNumberOfElements() == 0) {
-                	articlesList.add(null);
+                Page<Article> articlePage;
+                articlePage = articleService.findAllPageable(paging.withPage(page));
+                if (articlePage.getNumberOfElements() == 0) {
+                    // Empty
                 } else {
-                    for (int i = 0; i < pageTuts.getNumberOfElements(); i++) {
-                    	articlesList.add(pageTuts.getContent().get(i));
+                    for (Article a : articlePage) {
+                        lArticlesPageable.add(a);
                     }
                 }
-                return articlesList;
+                return new ResponseEntity<>(lArticlesPageable, HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
         } else { // without pagination
-        	return articleService.findAll();
+            try {
+                return new ResponseEntity<>(articleService.findAll(), HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
         }
     }
 
@@ -80,6 +88,17 @@ public class ArticleRestController {
         }
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Article> getArticle(@PathVariable long id) {
+
+        Optional<Article> op = articleService.findById(id);
+        if (op.isPresent()) {
+            Article article = op.get();
+            return new ResponseEntity<>(article, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @GetMapping("/{id}/image")
     public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
@@ -110,7 +129,7 @@ public class ArticleRestController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Article> uploadArticle(HttpServletRequest request, @RequestBody ArticleRequest articleRequest, @PathVariable long id) {
+    public ResponseEntity<Article> createArticle(HttpServletRequest request, @RequestBody ArticleRequest articleRequest, @PathVariable long id) {
         Principal principal = request.getUserPrincipal();
         if (principal != null && articleService.findById(id).isPresent()) {
             Article article = articleService.findById(id).get();
