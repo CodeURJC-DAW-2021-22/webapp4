@@ -49,61 +49,32 @@ public class ArticleRestController {
     }
 
     @GetMapping(params = {"page"})
-    public ResponseEntity<Map<String, Object>> articlesPagination(HttpServletRequest request, @RequestParam("page") int page) {
+    public ResponseEntity<List<Article>> articlesPagination(HttpServletRequest request, @RequestParam("page") int page) {
         if (page != -1) { // with pagination
-            int pageSize = 10;
-            Principal principal = request.getUserPrincipal();
+            int pageSize = 4;
             try {
-                Map<String, Object> response = new HashMap<>();
-                List<String> articles_info = new LinkedList<String>();
+                List<Article> lArticlesPageable = new LinkedList<>();
                 Pageable paging = PageRequest.of(0, pageSize);
-                Page<Article> pageTuts;
-                pageTuts = articleService.findAllPageable(paging.withPage(page));
-                if (pageTuts.getNumberOfElements() == 0) {
-                    articles_info.add("Empty");
+                Page<Article> articlePage;
+                articlePage = articleService.findAllPageable(paging.withPage(page));
+                if (articlePage.getNumberOfElements() == 0) {
+                    // Empty
                 } else {
-                    for (int i = 0; i < pageTuts.getNumberOfElements(); i++) {
-                        articles_info.add(pageTuts.getContent().get(i).toString());
-                    }
+                   for (Article a : articlePage) {
+                       lArticlesPageable.add(a);
+                   }
                 }
-                response.put("totalPages", pageTuts.getTotalPages());
-                response.put("currentPage", page);
-                response.put("totalItemsUser", pageTuts.getTotalElements());
-                response.put("totalItemsThisPage", pageTuts.getNumberOfElements());
-                response.put("articles", articles_info);
-                return new ResponseEntity<>(response, HttpStatus.OK);
+                return new ResponseEntity<>(lArticlesPageable, HttpStatus.OK);
             } catch (Exception e) {
                 return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
             }
         } else { // without pagination
-            Principal principal = request.getUserPrincipal();
-            if (principal != null) {
-                User user = userService.findByNAME(principal.getName()).get();
-                try {
-                    List<String> articles_info = new LinkedList<String>();
-
-                    if (user.getARTICLES().size() == 0) {
-                        articles_info.add("Empty");
-                    } else {
-                        for (int i = 0; i < user.getARTICLES().size(); i++) {
-                            articles_info.add(user.getARTICLES().get(i).toString());
-                        }
-                    }
-
-                    Map<String, Object> response = new HashMap<>();
-
-                    response.put("totalItemsUser", articles_info.size());
-                    response.put("articles", articles_info);
-
-                    return new ResponseEntity<>(response, HttpStatus.OK);
-                } catch (Exception e) {
-                    return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-                }
-            } else {
-                return ResponseEntity.notFound().build();
+            try {
+                return new ResponseEntity<>(articleService.findAll(), HttpStatus.OK);
+            } catch (Exception e) {
+                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
-
     }
 
     @GetMapping("/me")
