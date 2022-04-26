@@ -1,3 +1,5 @@
+import { Article } from "./article.model";
+
 export interface Category {
     id_CATEGORY?: number;
     title: string;
