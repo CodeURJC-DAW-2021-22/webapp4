@@ -12,8 +12,8 @@ const appRoutes = [
     { path: 'login', component: LoginComponent },
     { path: 'newaccount', component: NewaccountComponent },
     { path: 'profile', component: ProfileComponent },
-    { path: '**', component: NotFoundComponent},
-    { path: 'category', component: CategoryComponent}
+    { path: 'category', component: CategoryComponent},
+    { path: '**', component: NotFoundComponent}
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
