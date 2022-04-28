@@ -12,9 +12,10 @@ import {NotFoundComponent} from './components/404/NotFound.component';
 import {NewaccountComponent} from './components/login/newaccount.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CategoryComponent } from './components/category/category.component';
+import { formReportComponent } from './components/report/formReport.component';
 
 @NgModule({
-  declarations: [AppComponent, IndexComponent, LoginComponent, SearchComponent, NotFoundComponent, NewaccountComponent, ProfileComponent, CategoryComponent],
+  declarations: [AppComponent, IndexComponent, LoginComponent, SearchComponent, NotFoundComponent, NewaccountComponent, ProfileComponent, CategoryComponent, formReportComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, routing],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,48 @@
+<!-- ====== Page content ======-->
+<section class="section">
+    <h2 class="text-center text-light">Formulario para reportar una incidencia</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
+
+                <form class="form-horizontal"
+                      enctype="multipart/form-data" method="post">
+                    <br><br>
+                    <h3 class="text-info">Formulario</h3>
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-7">
+                            <input #email class="form-control" name="email" placeholder=" email" required="" type="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Descripción de la incidencia</label>
+                        <div class="col-sm-7">
+                            <input #description class="form-control" name="description" placeholder=" Descripción incidencia"
+                                   required="" type="text">
+                        </div>
+                    </div>
+                    <br><br>
+                    <h3 class="text-info">Ficheros</h3>
+                    <p>¡Toda la información que nos proporcione nos ayudará, gracias!</p>
+                    <div class="form-group">
+                        <div class="custom-input-file">
+                            <input #proof class="input-file" name="imageField" size="1" type="file"/>
+                            <i aria-hidden="true" class="fa fa-picture-o"></i>
+                        </div>
+                        <br>
+                        <p class="text-muted text-center archivo">Fichero...</p>
+                    </div>
+                    <p class="text-center">
+                        Al enviarnos un reporte de una incidencia, aceptas las <a href="#!">condiciones de uso y la
+                        Política de Privacidad</a>
+                    </p>
+                    <p class="text-center">
+                        <button (click)="NewFormReport($event, email.value, description.value)" class="btn btn-info" type="submit" value="Continuar"></button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
