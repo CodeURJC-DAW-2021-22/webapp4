@@ -14,9 +14,10 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CategoryComponent } from './components/category/category.component';
 import { FormReportComponent } from './components/report/formReport.component';
 import { ReportsComponent } from './components/report/reports.component';
+import { ShowReportComponent } from './components/report/showReport.component';
 
 @NgModule({
-  declarations: [AppComponent, IndexComponent, LoginComponent, SearchComponent, NotFoundComponent, NewaccountComponent, ProfileComponent, CategoryComponent, FormReportComponent, ReportsComponent],
+  declarations: [AppComponent, IndexComponent, LoginComponent, SearchComponent, NotFoundComponent, NewaccountComponent, ProfileComponent, CategoryComponent, FormReportComponent, ReportsComponent, ShowReportComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, routing],
   bootstrap: [AppComponent]
 })
