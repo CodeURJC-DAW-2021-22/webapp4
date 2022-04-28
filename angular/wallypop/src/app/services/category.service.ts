@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { Category } from '../models/category.model';
 
-const BASE_URL = '/api/categories/';
+const BASE_URL = '/api/admin/categories/';
 
 @Injectable({ providedIn: 'root' })
 export class CategoryService {
@@ -24,18 +24,12 @@ export class CategoryService {
 		) as Observable<Category>;
 	}
 
-	addCategory(category: Category) {
+	addCategory(title:string,description:string,icon:string) {
 
-		if (!category.id_CATEGORY) {
-			return this.httpClient.post(BASE_URL, category)
-				.pipe(
-					catchError(error => this.handleError(error))
-				);
-		} else {
-			return this.httpClient.put(BASE_URL + category.id_CATEGORY, category).pipe(
+		return this.httpClient.post(BASE_URL + '', { title,description,icon })
+			.pipe(
 				catchError(error => this.handleError(error))
 			);
-		}
 	}
 
 	setCategoryImage(category: Category, formData: FormData) {

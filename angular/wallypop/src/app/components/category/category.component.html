@@ -129,7 +129,7 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="form-group">
-                                    <textarea class="form-control" name="DESCRIPTION" placeholder="Descripción"
+                                    <textarea #description class="form-control" name="DESCRIPTION" placeholder="Descripción"
                                               rows="3"></textarea>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="form-group">
-                                    <input class="form-control" name="ICON" placeholder="Icono" type="text">
+                                    <input #icon class="form-control" name="ICON" placeholder="Icono" type="text">
                                     <p>Busca aquí el icono que quieres utilizar: <a
                                             href="https://fontawesome.com/search?m=free&s=solid%2Cbrands">Fontawesome</a>
                                     </p>
@@ -162,7 +162,7 @@
                     -->
                         <!--<input name="_csrf" type="hidden" value="{{token}}"/>-->
                         <p class="text-center">
-                            <button (click)="addCategory($event, title.value)" class="btn btn-danger btn-lg" type="submit">Guardar</button>
+                            <button (click)="addCategory($event, title.value, description.value, icon.value)" class="btn btn-danger btn-lg" type="submit">Guardar</button>
                         </p>
                     </form>
                 </div>

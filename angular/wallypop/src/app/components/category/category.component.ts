@@ -11,8 +11,8 @@ export class CategoryComponent {
     constructor(public categoryService: CategoryService, public loginService: LoginService) {
     }
 
-    addCategory(event: any, category: Category): void {
+    addCategory(event: any, title: string, description: string, icon: string): void {
         event.preventDefault();
-        this.categoryService.addCategory(category);
+        this.categoryService.addCategory(title,description,icon);
     }
 }
