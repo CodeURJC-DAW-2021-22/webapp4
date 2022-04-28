@@ -1,0 +1,58 @@
+
+<!-- ====== Page content ======-->
+<section>
+<a class="list-group-item" href="/profile">
+    <i aria-hidden="true" class="fa fa-user fa-fw"></i> TU PERFIL
+</a>
+<a class="list-group-item" href="/yourcommercial">
+    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS
+</a>
+<a class="list-group-item" href="/yourcommercialsold">
+    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS VENDIDOS
+</a>
+<a class="list-group-item" href="/favorites">
+    <i aria-hidden="true" class="fa fa-heart-o fa-fw"></i> FAVORITOS
+</a>
+<!--{{#admin}}-->
+<a class="list-group-item" href="/category">
+    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN CATEGORÍAS
+</a>
+<a class="list-group-item active" href="/reports">
+    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN REPORTES
+</a>
+<!--{{/admin}}-->
+<div class="col-xs-12 col-sm-8 col-md-9">
+    <div class="full-width bar-info-user">
+        <div>GESTIÓN REPORTES</div>
+    </div>
+    <!-- Content-->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8">
+                <div class="page-header">
+                </div>
+                <p>
+                    Listado con todos los reportes enviados por los usuarios:
+                </p>
+
+                <table border=1>
+
+                    <th style="background-color:#337ab7 ;color:white">ID REPORT</th>
+                    <th style="background-color:#337ab7;color:white">EMAIL</th>
+                    <th style="background-color:#337ab7;color:white">DESCRIPTION</th>
+                    <!--{{#report}}-->
+
+                    <tr ><!--ESTABA DENTRO DEL TR onclick="location.href='/showReport/{{ID_REPORT}}'"-->
+                        <td><!-- {{ID_REPORT}}--></td>
+                        <td><!--{{EMAIL}}--></td>
+                        <td><!--{{DESCRIPTION}}--></td>
+                    </tr>
+
+                   <!-- {{/report}}-->
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+</section>

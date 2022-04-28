@@ -5,9 +5,11 @@ import {Component} from '@angular/core';
   selector: 'formReport',
   templateUrl: './formReport.component.html'
 })
-export class formReportComponent {
+export class FormReportComponent {
 
-  constructor(public reportService: ReportService) { }
+  constructor(public reportService: ReportService) {
+
+   }
 
     NewFormReport(event: any, email: string, description: string): void {
   
