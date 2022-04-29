@@ -6,6 +6,9 @@ import {NotFoundComponent} from './components/404/NotFound.component';
 import {NewaccountComponent} from './components/login/newaccount.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import { CategoryComponent } from './components/category/category.component';
+import { FormReportComponent } from './components/report/formReport.component';
+import { ReportsComponent } from './components/report/reports.component';
+import { ShowReportComponent } from './components/report/showReport.component';
 
 const appRoutes = [
     { path: '', component: IndexComponent },
@@ -13,6 +16,9 @@ const appRoutes = [
     { path: 'newaccount', component: NewaccountComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'category', component: CategoryComponent},
+    { path: 'formReport', component: FormReportComponent},
+    { path: 'reports', component: ReportsComponent},
+    { path: 'showReport', component: ShowReportComponent},
     { path: '**', component: NotFoundComponent}
 ];
 
