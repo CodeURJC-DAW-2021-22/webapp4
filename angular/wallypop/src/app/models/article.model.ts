@@ -1,7 +1,7 @@
 export interface Article {
     id_ARTICLE?: number;
     city: string;
-    postal_Code:: string;
+    postal_code: string;
     title: string;
     description: string;
     date: number;
