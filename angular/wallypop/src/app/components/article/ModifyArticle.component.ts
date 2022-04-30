@@ -4,10 +4,10 @@ import {ArticleService} from '../../services/article.service';
 import {LoginService} from '../../services/login.service';
 
 @Component({
-    selector: 'modifyArticle',
-    templateUrl: 'modifyArticle.component.html'
+    selector: 'ModifyArticle',
+    templateUrl: 'ModifyArticle.component.html'
 })
-export class modifyArticleComponent {
+export class ModifyArticle {
     constructor(public articleService: ArticleService, public loginService: LoginService) {
     }
     
