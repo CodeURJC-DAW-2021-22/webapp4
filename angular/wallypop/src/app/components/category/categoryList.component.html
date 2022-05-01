@@ -76,7 +76,7 @@
             
             <div *ngFor="let category of categories" class="full-width post">
                 <figure class="full-width post-img">
-                    <img alt="" class="img-responsive" src="category/{{category.id_CATEGORY}}/imagen">
+                    <img alt="" class="img-responsive" src="/api/categories/{{category.id_CATEGORY}}/image">
                 </figure>
                 <div class="full-width post-info">
                     <a class="full-width post-info-price" href="/commercial/{{category.id_CATEGORY}}">{{category.title}}</a>
