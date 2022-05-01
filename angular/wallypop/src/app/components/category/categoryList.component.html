@@ -73,21 +73,19 @@
             <i class="fa fa-angle-right btn btn-default"></i>
         </div>
         <div class="full-width container-post">
-            <!--
-            {{#category}}
-            <div class="full-width post">
+            
+            <div *ngFor="let category of categories" class="full-width post">
                 <figure class="full-width post-img">
-                    <img alt="" class="img-responsive" src="category/{{ID_CATEGORY}}/imagen">
+                    <img alt="" class="img-responsive" src="category/{{category.id_CATEGORY}}/imagen">
                 </figure>
                 <div class="full-width post-info">
-                    <a class="full-width post-info-price" href="/commercial/{{ID_CATEGORY}}">{{TITLE}}</a>
-                    <span class="post-info-zone">{{DESCRIPTION}}</span>
-                    <a class="post-info-date" href="/categoryList/{{ID_CATEGORY}}/delete">x</a>
+                    <a class="full-width post-info-price" href="/commercial/{{category.id_CATEGORY}}">{{category.title}}</a>
+                    <span class="post-info-zone">{{category.description}}</span>
+                    <a class="post-info-date" href="/categoryList/{{category.id_CATEGORY}}/delete">x</a>
 
                 </div>
             </div>
-            {{/category}}
-        -->
+       
         </div>
     </div>
 </div>

@@ -37,7 +37,7 @@ export class CategoryService {
         this.httpClient.post(BASE_URL + 'admin/categories', {title, description, icon}, {withCredentials: true})
             .subscribe(
                 (response) => this.router.navigate(['profile']),
-                (error) => alert('Usuario ya existe, inicie sesión')
+                (error) => alert('Error al añadir categoria')
             );
         /*return this.httpClient.post(BASE_URL + 'admin/categories', {title, description, icon}, {withCredentials: true})
             .pipe(
