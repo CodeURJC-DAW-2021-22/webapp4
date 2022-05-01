@@ -1,84 +1,84 @@
-<!--{{>header}}-->
-<!-- ====== Page content ======-->
+<!-- {{>header}}  -->   <!-- ====== Page content ======-->
 <section class="section">
-    <!--{{>search}}-->
-    <!--{{#ERROR}}-->
-    <br>
+    <h2 class="text-center text-light">Pon tu anuncio gratis</h2>
     <div class="container">
-        <div class="alert alert-danger" role="alert">
-             <!-- 1)<center>El artículo que buscas no existe o ya no está disponible</center>  -->
-        </div>
-    </div>
-    <!--{{/ERROR}}-->
-    <hr>
-    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-3 col-md-2">
-                <div class="full-width" style="border: 1px solid #E1E1E1; border-radius: 4px; padding: 5px;">
-                    <button class="btn btn-default btn-block hidden-sm hidden-md hidden-lg btn-dropdown-conatiner"
-                            data-drop-cont=".menu-commercial">
-                        FILTROS <i aria-hidden="true" class="fa fa-sort pull-right"></i>
-                    </button>
-                    <form action="/search/commercial" class="full-width menu-commercial" method="GET">
-                        <h4 class="text-light">CATEGOR�-A</h4>
-                        <div class="form-group">
-                            <select class="form-control" name="id_category">
-                                <option disabled selected>Selecciona una categoría</option>
-                               <!-- {{#lcategory}}-->
-                               <!-- 2) <option name="CATEGORY" value="{{ID_CATEGORY}}">{{TITLE}}</option>-->
-                                <!--{{/lcategory}}-->
-                            </select>
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
+                <form action=/newcommercial class="form-horizontal" enctype="multipart/form-data" method="post">
+                    <h3 class="text-info">Busca la categoría donde verán tu anuncio</h3>
+                    <div class="form-group">
+                        <div class="col-sm-3 control-label">
+                            <label>¿Qué anuncias?<small>Pulsando Ctrl puedes seleccionar varias
+                                catgorías</small></label>
                         </div>
-                        <p class="text-center">
-                            <button class="btn btn-success btn-block">APLICAR</button>
-                        </p>
-                        <p class="text-center">
-                            <a class="btn btn-info btn-block" href="/commercial" onclick="" type="reset">BORRAR
-                                FILTROS</a>
-                        </p>
-                        <p>
-                            <small>Anuncios segunda mano. Las mejores ofertas en de segunda mano y de ocasión solo
-                                en </small>
-                        </p>
-                    </form>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-9 col-md-10">
-                <div class="full-width">
-                    <ol class="breadcrumb">
-                        <!--{{#lcategory}}-->
-                        <!-- 3)<li><a href="/commercial/{{ID_CATEGORY}}">{{TITLE}}</a></li>-->
-                       <!-- {{/lcategory}}-->
-                    </ol>
-                </div>
-                <div class="full-widht">
-                    <i class="fa fa-th-large btn btn-default hidden-xs btn-change-post"></i>
-                    <i class="fa fa-refresh btn btn-default"></i>
-                    <i class="fa fa-angle-right btn btn-default"></i>
-                </div>
-                <!--{{>article}}-->
-                <div class="clearfix"></div>
-                <nav class="text-center">
-                    <ul class="pagination">
-                        <li>
-                            <a aria-label="Previous" href="#">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a aria-label="Next" href="#">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <select class="form-control" multiple name="CATEGORYS">
+                                    <!-- {{#lcategory}}-->
+                                    <option name="CATEGORY" value="uploadCategories($event)">"uploadCategories($event)"</option>
+                                    <!-- {{/lcategory}} -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <h3 class="text-info">Detalles de tu anuncio</h3>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Título del anuncio</label>
+                        <div class="col-sm-7">
+                            <input #title class="form-control" name="TITLE" placeholder="Título del anuncio" required=""
+                                   type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Descripción</label>
+                        <div class="col-sm-7">
+                            <textarea #description NAME="DESCRIPTION" class="form-control" placeholder="Descripción" required=""
+                                      rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Precio</label>
+                        <div class="col-sm-7">
+                            <input #price class="form-control" name="PRICE" placeholder="Precio" required="" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Ciudad</label>
+                        <div class="col-sm-7">
+                            <input #city class="form-control" name="CITY" placeholder="Ciudad" required="" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Código postal</label>
+                        <div class="col-sm-7">
+                            <input #postal_code class="form-control" name="POSTAL_CODE" placeholder="Código postal" required=""
+                                   type="text">
+                        </div>
+                    </div>
+                    <br><br>
+                    <h3 class="text-info">Foto</h3>
+                    <p>¡los anuncios con fotos reciben 7 veces más contactos!</p>
+                    <div class="form-group">
+                        <div class="custom-input-file">
+                            <input accept=".jpg, .jpeg" class="input-file" name="imageField" size="1" type="file"/>
+                            <i aria-hidden="true" class="fa fa-picture-o"></i>
+                        </div>
+                        <br>
+                        <p class="text-muted text-center archivo">Archivo...</p>
+                    </div>
+                    <p class="text-center">
+                        Al publicar un anuncio, aceptas las <a href="#!">condiciones de uso y la Política de
+                        Privacidad</a>
+                    </p>
+                    <input name="_csrf" type="hidden" value="{{token}}"/>
+                    <p class="text-center">
+                        <button (click)="addArticle($event, title.value, description.value, city.value, price.value, postal_doce.value)" class="btn btn-danger btn-lg" type="submit">Guardar</button>                
+                    </p>
+                </form>
             </div>
         </div>
     </div>
+
 </section>
-<!--{{>footer}}-->
+{{>footer}}
