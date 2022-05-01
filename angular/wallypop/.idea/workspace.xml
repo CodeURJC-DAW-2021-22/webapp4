@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e9ccb1b-be0c-4cbf-b4aa-3182718163a8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/services/register.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/services/security.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.routing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routing.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/login/newaccount.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/login/newaccount.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/login/newaccount.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/login/newaccount.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/login.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/login.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/category.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/category.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +32,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs.protractor.protractor_package": "C:/Users/JESUSBA-PC/Documents/GitHub/webapp4/angular/wallypop/node_modules/protractor",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "D:\\Documents\\Universidad\\webapp4\\angular\\wallypop\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\JESUSBA-PC\\Documents\\GitHub\\webapp4\\angular\\wallypop\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>

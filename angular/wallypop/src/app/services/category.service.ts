@@ -32,17 +32,17 @@ export class CategoryService {
         ) as Observable<Category>;
     }
 
-    addCategory(title: string, description: string, icon: string): Observable<any> {
+    addCategory(title: string, description: string, icon: string): void {
 
-        /*this.httpClient.post(BASE_URL + 'admin/categories', {title, description, icon}, {withCredentials: true})
+        this.httpClient.post(BASE_URL + 'admin/categories', {title, description, icon}, {withCredentials: true})
             .subscribe(
                 (response) => this.router.navigate(['profile']),
                 (error) => alert('Usuario ya existe, inicie sesión')
-            );*/
-        return this.httpClient.post(BASE_URL + 'admin/categories', {title, description, icon}, {withCredentials: true})
+            );
+        /*return this.httpClient.post(BASE_URL + 'admin/categories', {title, description, icon}, {withCredentials: true})
             .pipe(
                 catchError(error => CategoryService.handleError(error))
-            );
+            );*/
     }
 
     setCategoryImage(category: Category, formData: FormData): Observable<any> {
