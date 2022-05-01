@@ -109,6 +109,7 @@ export class ArticleService {
     }
     
     listArticlesUserPagination (user: User){
+        // MIRAR TRANSPARENCIAS 14  APIS REST Y SERVICIOS
         return this.httpClient.get(BASE_URL + user.articles).pipe(
                 catchError(error => this.handleError(error))
             ) as Observable<string>;
@@ -121,38 +122,7 @@ export class ArticleService {
             
     }
     
-    /*
-     * AQUÍ LA PAGINACIÓN QUE HICIMOS PARA LA API REST. HAY QUE TRADUCIR ESTE MÉTODO DE JAVA A TYPESCRIPT
-    @GetMapping(params = {"page"})
-    public ResponseEntity<List<Article>> articlesPagination(HttpServletRequest request, @RequestParam("page") int page) {
-        if (page != -1) { // with pagination
-            
-            int pageSize = 4;
-            try {
-                List<Article> lArticlesPageable = new LinkedList<>();
-                Pageable paging = PageRequest.of(0, pageSize);
-                Page<Article> articlePage;
-                articlePage = articleService.findAllPageable(paging.withPage(page));
-                if (articlePage.getNumberOfElements() == 0) {
-                    // Empty
-                } else {
-                    for (Article a : articlePage) {
-                        lArticlesPageable.add(a);
-                    }
-                }
-                return new ResponseEntity<>(lArticlesPageable, HttpStatus.OK);
-            } catch (Exception e) {
-                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        } else { // without pagination
-            try {
-                return new ResponseEntity<>(articleService.findAll(), HttpStatus.OK);
-            } catch (Exception e) {
-                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-    }
-*/
+   
     
     
 }

@@ -1,15 +1,15 @@
-{{>header}}
+<!-- {>header}} -->{
 <!-- ====== Page content ======-->
 <section class="section">
-    {{>search}}
-    {{#ERROR}}
+    <!--{{>search}}-->
+    <!--{{#ERROR}}-->
     <br>
     <div class="container">
         <div class="alert alert-danger" role="alert">
             <center>El artículo que buscas no existe o ya no está disponible</center>
         </div>
     </div>
-    {{/ERROR}}
+    <!--{{/ERROR}}-->
     <hr>
     <div class="container-fluid">
         <div class="row">
@@ -20,13 +20,13 @@
                         FILTROS <i aria-hidden="true" class="fa fa-sort pull-right"></i>
                     </button>
                     <form action="/search/commercial" class="full-width menu-commercial" method="GET">
-                        <h4 class="text-light">CATEGORÍA</h4>
+                        <h4 class="text-light">CATEGOR�A</h4>
                         <div class="form-group">
                             <select class="form-control" name="id_category">
                                 <option disabled selected>Selecciona una categoría</option>
-                                {{#lcategory}}
+                                <!--{{#lcategory}}-->
                                 <option name="CATEGORY" value="{{ID_CATEGORY}}">{{TITLE}}</option>
-                                {{/lcategory}}
+                               <!-- {{/lcategory}-->
                             </select>
                         </div>
                         <p class="text-center">
@@ -46,9 +46,9 @@
             <div class="col-xs-12 col-sm-9 col-md-10">
                 <div class="full-width">
                     <ol class="breadcrumb">
-                        {{#lcategory}}
+                       <!-- {{#lcategory}}-->
                         <li><a href="/commercial/{{ID_CATEGORY}}">{{TITLE}}</a></li>
-                        {{/lcategory}}
+                        <!--{{/lcategory}}-->
                     </ol>
                 </div>
                 <div class="full-widht">
@@ -56,7 +56,7 @@
                     <i class="fa fa-refresh btn btn-default"></i>
                     <i class="fa fa-angle-right btn btn-default"></i>
                 </div>
-                {{>article}}
+                <!--{{>article}}-->
                 <div class="clearfix"></div>
                 <nav class="text-center">
                     <ul class="pagination">
