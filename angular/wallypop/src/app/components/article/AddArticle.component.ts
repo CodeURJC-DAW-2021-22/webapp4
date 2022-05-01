@@ -18,7 +18,7 @@ export class AddArticle {
     }
     /*
      * ESTE METODO HAY QUE DESCOMENTARLO CUANDO SE HAGA EL MERGE CON LA RAMA CATEGORY
-    uploadCategories(event: any): Observable<Category[]> {
+    showCategories(event: any): Observable<Category[]> {
         event.preventDefault();
         this.articleService.addArticle(title,description,city, price, postal_code);
     }

@@ -20,4 +20,11 @@ export class ModifyArticle {
         event.preventDefault();
         this.articleService.updateArticle(article);
     }
+   /**
+ ESTE METODO HAY QUE DESCOMENTARLO CUANDO SE HAGA EL MERGE CON LA RAMA CATEGORY
+    getCategoriesArticle(event: any, article: Article): void {
+        event.preventDefault();
+        this.articleService.getCategoriesArticle(article);
+    }
+    */
 }

@@ -15,6 +15,8 @@
     <i aria-hidden="true" class="fa fa-heart-o fa-fw"></i> FAVORITOS
 </a>
 <!--{{#admin}}-->
+<p class="full-width"><small *ngIf="loginService.isLogged() && loginService.isAdmin()">ADMIN</small></p>
+
 <a class="list-group-item" href="/category">
     <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN CATEGOR�-AS
 </a>
@@ -22,6 +24,8 @@
     <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN REPORTES
 </a>
 <!--{{/admin}}-->
+<p class="full-width"><small *ngIf="loginService.isLogged() && loginService.isAdmin()">ADMIN</small></p>
+
 <div></div>
 <div></div>
 <!--<p style="color: forestgreen;"> 
@@ -66,9 +70,11 @@
 <!--</div>-->
 <!--</div>-->
 <!--</section>-->
+<!--
 <script>
     $(document).ready(function () {
         $('.full-width container-post').load('./paginacionArticulosPublicados.html');
     });
 </script>
+-->
 <!--{{>footer}}-->
