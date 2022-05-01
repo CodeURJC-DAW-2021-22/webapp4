@@ -14,60 +14,60 @@ export class CategoryService {
     constructor(private httpClient: HttpClient, private router: Router) {
     }
 
+    static handleError(error: any): Observable<never> {
+        console.log('ERROR:');
+        console.error(error);
+        return throwError('Server error (' + error.status + '): ' + error.text());
+    }
+
     getCategories(): Observable<Category[]> {
-        return this.httpClient.get(BASE_URL).pipe(
-            catchError(error => this.handleError(error))
+        return this.httpClient.get(BASE_URL + 'categories').pipe(
+            catchError(error => CategoryService.handleError(error))
         ) as Observable<Category[]>;
     }
 
     getCategory(id: number | string): Observable<Category> {
-        return this.httpClient.get(BASE_URL + id).pipe(
-            catchError(error => this.handleError(error))
+        return this.httpClient.get(BASE_URL + 'categories/' + id).pipe(
+            catchError(error => CategoryService.handleError(error))
         ) as Observable<Category>;
     }
 
-    addCategory(title: string, description: string, icon: string) {
+    addCategory(title: string, description: string, icon: string): Observable<any> {
 
-        this.httpClient.post(BASE_URL + 'admin/categories', {title, description, icon}, {withCredentials: true})
+        /*this.httpClient.post(BASE_URL + 'admin/categories', {title, description, icon}, {withCredentials: true})
             .subscribe(
                 (response) => this.router.navigate(['profile']),
                 (error) => alert('Usuario ya existe, inicie sesión')
-            );
-        /*return this.httpClient.post(BASE_URL + 'admin/categories', {title, description, icon})
-            .pipe(
-                catchError(error => this.handleError(error))
             );*/
-    }
-
-    setCategoryImage(category: Category, formData: FormData) {
-        return this.httpClient.post(BASE_URL + category.id_CATEGORY + '/image', formData)
+        return this.httpClient.post(BASE_URL + 'admin/categories', {title, description, icon}, {withCredentials: true})
             .pipe(
-                catchError(error => this.handleError(error))
+                catchError(error => CategoryService.handleError(error))
             );
     }
 
-    deleteCategoryImage(category: Category) {
-        return this.httpClient.delete(BASE_URL + category.id_CATEGORY + '/image')
+    setCategoryImage(category: Category, formData: FormData): Observable<any> {
+        return this.httpClient.post(BASE_URL + 'admin/categories/' + category.id_CATEGORY + '/image', formData)
             .pipe(
-                catchError(error => this.handleError(error))
+                catchError(error => CategoryService.handleError(error))
             );
     }
 
-    deleteCategory(category: Category) {
-        return this.httpClient.delete(BASE_URL + category.id_CATEGORY).pipe(
-            catchError(error => this.handleError(error))
+    deleteCategoryImage(category: Category): Observable<any> {
+        return this.httpClient.delete(BASE_URL + 'admin/categories/' + category.id_CATEGORY + '/image')
+            .pipe(
+                catchError(error => CategoryService.handleError(error))
+            );
+    }
+
+    deleteCategory(category: Category): Observable<any> {
+        return this.httpClient.delete(BASE_URL + 'admin/categories/' + category.id_CATEGORY).pipe(
+            catchError(error => CategoryService.handleError(error))
         );
     }
 
-    updateCategory(category: Category) {
-        return this.httpClient.put(BASE_URL + category.id_CATEGORY, category).pipe(
-            catchError(error => this.handleError(error))
+    updateCategory(category: Category): Observable<any> {
+        return this.httpClient.put(BASE_URL + 'admin/categories/' +  category.id_CATEGORY, category).pipe(
+            catchError(error => CategoryService.handleError(error))
         );
-    }
-
-    private handleError(error: any) {
-        console.log('ERROR:');
-        console.error(error);
-        return throwError('Server error (' + error.status + '): ' + error.text());
     }
 }
