@@ -81,7 +81,7 @@
                 <div class="full-width post-info">
                     <a class="full-width post-info-price" href="/commercial/{{category.id_CATEGORY}}">{{category.title}}</a>
                     <span class="post-info-zone">{{category.description}}</span>
-                    <a class="post-info-date" href="/categoryList/{{category.id_CATEGORY}}/delete">x</a>
+                    <a class="post-info-date" (click)="removeCategory(category)" href="/categoryList">x</a>
 
                 </div>
             </div>
