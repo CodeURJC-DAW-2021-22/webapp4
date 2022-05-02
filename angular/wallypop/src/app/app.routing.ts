@@ -7,6 +7,7 @@ import {NewaccountComponent} from './components/login/newaccount.component';
 import {ProfileComponent} from './components/profile/profile.component';
 import { CategoryComponent } from './components/category/category.component';
 import { CategoryListComponent } from './components/category/categoryList.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 const appRoutes = [
     { path: '', component: IndexComponent },
@@ -15,6 +16,7 @@ const appRoutes = [
     { path: 'profile', component: ProfileComponent },
     { path: 'category', component: CategoryComponent},
     { path: 'categoryList', component: CategoryListComponent},
+    { path: 'favorites', component: FavoritesComponent},
     { path: '**', component: NotFoundComponent}
 ];
 
