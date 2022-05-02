@@ -62,7 +62,8 @@ public class ArticleRestController {
                 } else {
                    for (Article a : articlePage) {
                        lArticlesPageable.add(a);
-                   }      }
+                   }
+                }
                 return new ResponseEntity<>(lArticlesPageable, HttpStatus.OK);
             } catch (Exception e) {
                 return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

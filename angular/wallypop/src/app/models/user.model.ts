@@ -1,5 +1,3 @@
-import { Article } from 'src/app/models/article.model';
-
 export interface User {
     id_USER?: number;
     full_NAME: string;
@@ -9,6 +7,6 @@ export interface User {
     n_SOLD: number;
     n_SELL: number;
     is_ADMIN: boolean;
-     articles: Article[];
+    // articles: Article[];
     // favorites: Favorites[];
 }
