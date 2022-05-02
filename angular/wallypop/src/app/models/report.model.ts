@@ -3,4 +3,5 @@ export interface Report {
    // article: Article;
     email: string;
     description: string;
+    proof: boolean
 }

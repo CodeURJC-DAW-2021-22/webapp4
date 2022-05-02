@@ -10,9 +10,6 @@ const BASE_URL = '/api/reports/';
 export class ReportService {
     constructor(private http: HttpClient) {}
 
-    newReport(email: string, description: string): void {
-    }
-
 	getReports(): Observable<Report[]> {
 		return this.http.get(BASE_URL).pipe(
 			catchError(error => this.handleError(error))
@@ -23,6 +20,34 @@ export class ReportService {
 		return this.http.get(BASE_URL + id).pipe(
 			catchError(error => this.handleError(error))
 		) as Observable<Report>;
+	}
+
+	deleteReport(report: Report) {
+		return this.http.delete(BASE_URL + report.id_REPORT).pipe(
+			catchError(error => this.handleError(error))
+		);
+	}
+
+
+	addReport(report: Report) {
+
+		if (!report.id_REPORT) {
+			return this.http.post(BASE_URL, report)
+				.pipe(
+					catchError(error => this.handleError(error))
+				);
+		} else {
+			return this.http.put(BASE_URL + +report.id_REPORT, report).pipe(
+				catchError(error => this.handleError(error))
+			);
+		}
+	}
+
+	setReportProof(report: Report, formData: FormData) {
+		return this.http.post(BASE_URL + report.id_REPORT + '/proof', formData)
+			.pipe(
+				catchError(error => this.handleError(error))
+			);
 	}
 
 	private handleError(error: any) {
