@@ -90,17 +90,14 @@
                                 <label>Busca categoría</label>
                             </div>
                             <div class="col-sm-7">
-                                <!--
+                                
                                 <div class="form-group">
                                     <select class="form-control" name="lcategories">
-                                        {{#lcategory}}
-                                        <option name="ID_CATEGORY" value="{{ID_CATEGORY}}">{{TITLE}}</option>
-                                        {{/lcategory}}
+                                        <option *ngFor="let category of categories" name="ID_CATEGORY" value="{{category.id_CATEGORY}}">{{category.title}}</option>
                                     </select>
-                                    <input name="_csrf" type="hidden" value="{{token}}"/>
-                                    <input class="btn btn-default" type="submit" value="Buscar Categoria"></input>
+                                    <input class="btn btn-default" type="submit" value="Buscar Categoria">
                                 </div>
-                            -->
+                            
                                 <div class="form-group">
                                     <a href="categoryList">VER LISTADO CATEGORÍAS</a>
                                 </div>
