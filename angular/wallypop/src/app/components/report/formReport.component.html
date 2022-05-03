@@ -1,7 +1,7 @@
 <!-- ====== Page content ======-->
 <section class="section">
     <h2 class="text-center text-light">Formulario para reportar una incidencia</h2>
-    <div class="container" *ngIf="report">
+    <div class="container" >
         <div class="row">
             <div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
 
@@ -18,8 +18,8 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Descripción de la incidencia</label>
                         <div class="col-sm-7">
-                            <input class="form-control" [(ngModel)]="report.description" placeholder="description"
-                                   required="" type="text">
+                            <textarea class="form-control" [(ngModel)]="report.description" placeholder="description"
+                                   required="" type="text"></textarea>
                         </div>
                     </div>
                     <br><br>
@@ -27,7 +27,7 @@
                     <p>¡Toda la información que nos proporcione nos ayudará, gracias!</p>
                     <div class="form-group">
                         <div class="custom-input-file">
-                            <input #proof class="input-file" name="imageFile" size="1" type="file"/>
+                            <input #proof class="input-file" name="imageFile" size="1" type="file" accept=".jpg, .jpeg"/>
                             <i aria-hidden="true" class="fa fa-picture-o"></i>
                         </div>
                         <br>
@@ -38,7 +38,7 @@
                         Política de Privacidad</a>
                     </p>
                     <p class="text-center">
-                        <button (click)="save()" class="btn btn-info" type="submit" value="Continuar"></button>
+                        <button (click)="save()" class="btn btn-info" type="submit" value="Continuar">Continuar</button>
                     </p>
                 </form>
             </div>
