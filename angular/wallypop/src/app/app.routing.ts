@@ -18,6 +18,7 @@ const appRoutes = [
     { path: 'category', component: CategoryComponent},
     { path: 'categoryList', component: CategoryListComponent},
     { path: 'commercial', component: CommercialComponent },
+    { path: 'commercial/:id', component: CommercialComponent },
     { path: 'post', component: PostComponent },
     { path: 'post/:id', component: PostComponent },
     { path: '**', component: NotFoundComponent}

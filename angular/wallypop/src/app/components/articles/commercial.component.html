@@ -35,8 +35,8 @@
                                 FILTROS</a>
                         </p>
                         <p>
-                            <small>Anuncios segunda mano . Las mejores ofertas en de segunda mano y de ocasión solo
-                                en </small>
+                            <small>Anuncios segunda mano. Las mejores ofertas en de segunda mano y de ocasión solo
+                                en Wallypop</small>
                         </p>
                     </form>
                 </div>
@@ -64,7 +64,7 @@
                                 <p class="full-width post-info-price">{{article.price}}€</p>
                                 <span class="post-info-zone">{{article.city}}</span>
                                 <span class="post-info-date">{{article.date}}</span>
-                                <a *ngIf="this.loginService.isLogged" href="/addFavorite/{{article.id_ARTICLE}}"><i class="fa fa-heart-o post-info-like"></i></a>
+                                <a *ngIf="this.loginService.isLogged()" href="/addFavorite/{{article.id_ARTICLE}}"><i class="fa fa-heart-o post-info-like"></i></a>
                             </div>
                         </ng-template>
                     </div>
