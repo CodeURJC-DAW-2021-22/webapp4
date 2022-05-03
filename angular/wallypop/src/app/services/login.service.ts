@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
 import {Subscription} from 'rxjs';
+import {retry} from 'rxjs/operators';
 
 const BASE_URL = '/api/auth';
 
@@ -64,5 +65,16 @@ export class LoginService {
 
     currentUser(): User {
         return this.user;
+    }
+
+    getUser(id: bigint): User {
+        // tslint:disable-next-line:variable-name
+        let user_: User;
+        this.http.post('/api/users/', { id }, { withCredentials: true })
+            .subscribe(
+                (response) => user_ = response as User,
+                (error) => alert('Usuario y/o contraseña no válidos')
+            );
+        return user_;
     }
 }

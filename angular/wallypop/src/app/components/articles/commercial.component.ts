@@ -4,6 +4,7 @@ import {ArticleService} from '../../services/article.service';
 import {Article} from '../../models/article.model';
 import {Category} from '../../models/category.model';
 import {CategoryService} from '../../services/category.service';
+import {User} from '../../models/user.model';
 
 @Component({
     selector: 'commercial',
@@ -32,5 +33,12 @@ export class CommercialComponent implements OnInit {
             article => this.articles = article,
             error => console.log(error)
         );
+        this.articles.forEach(value => {
+            value.user = this.getUser(value.userID);
+        });
+    }
+
+    getUser(id: bigint): User {
+        return this.loginService.getUser(id);
     }
 }
