@@ -20,7 +20,7 @@ export class ReportService {
 	}
 
 	getReport(id: number | string): Observable<Report> {
-		return this.httpClient.get(BASE_URL +"admin/reports"+ id).pipe(
+		return this.httpClient.get(BASE_URL +"admin/reports/"+ id).pipe(
 			catchError(error => this.handleError(error))
 		) as Observable<Report>;
 	}
@@ -33,7 +33,7 @@ export class ReportService {
 
 
 	addReport(report: Report) {
-        
+    //Deberia ser (id_article:number) y abajo BASE_URL+"reports/"+id_article   
         if (!report.id_REPORT) {
 			return this.httpClient.post(BASE_URL + "reports/3", report)
 				.pipe(

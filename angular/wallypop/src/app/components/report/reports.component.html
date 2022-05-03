@@ -85,8 +85,8 @@
                                 <tr *ngFor="let report of reports" (click)="showReport($event, ID_REPORT.value)">
                                     <!--ESTABA DENTRO DEL TR onclick="location.href='/showReport/{{ID_REPORT}}'"-->
                                     <td #ID_REPORT name="ID_REPORT" value="{{report.id_REPORT}}">{{report.id_REPORT}}</td>
-                                    <td name="ID_REPORT" value="{{report.id_REPORT}}">{{report.email}}</td>
-                                    <td name="ID_REPORT" value="{{report.id_REPORT}}">{{report.description}}</td>
+                                    <td name="ID_REPORT" value="{{report.email}}">{{report.email}}</td>
+                                    <td name="ID_REPORT" value="{{report.description}}">{{report.description}}</td>
                                 </tr>
 
                                 <!-- {{/report}}-->

@@ -18,7 +18,7 @@ const appRoutes = [
     { path: 'category', component: CategoryComponent},
     { path: 'formReport', component: FormReportComponent},
     { path: 'reports', component: ReportsComponent},
-    { path: 'showReport', component: ShowReportComponent},
+    { path: 'showReport/:id', component: ShowReportComponent},
     { path: '**', component: NotFoundComponent}
 ];
 
