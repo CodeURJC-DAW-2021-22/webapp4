@@ -6,6 +6,7 @@ import {Category} from '../../models/category.model';
 import {CategoryService} from '../../services/category.service';
 import {User} from '../../models/user.model';
 import {Observable} from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'post',
@@ -15,12 +16,21 @@ export class PostComponent implements OnInit {
     article: Article;
     user: User;
     categories: Category[];
-    constructor(private articleService: ArticleService, private categoryService: CategoryService, public loginService: LoginService) {
+    idArticle: number;
+    // tslint:disable-next-line:max-line-length
+    constructor(private articleService: ArticleService, private categoryService: CategoryService, public loginService: LoginService, private routing: ActivatedRoute, private router: Router) {
+        this.idArticle = -1;
     }
 
     ngOnInit(): void {
         this.getCategories();
-        this.getArticle(3);
+        this.idArticle = this.routing.snapshot.params.id;
+        if (this.idArticle !== -1) {
+            this.getArticle(this.idArticle);
+            /* if (this.article === undefined) {
+                this.router.navigate(['commercial']);
+            } */
+        }
     }
 
     getCategories(): void {

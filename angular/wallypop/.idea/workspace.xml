@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e9ccb1b-be0c-4cbf-b4aa-3182718163a8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/components/articles/post.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/components/articles/post.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.routing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routing.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/articles/commercial.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/articles/commercial.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/models/article.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/article.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/article.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/article.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/login.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/login.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../backend/src/main/java/es/codeurjc/wallypop/security/RestSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/src/main/java/es/codeurjc/wallypop/security/RestSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/articles/post.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/articles/post.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
