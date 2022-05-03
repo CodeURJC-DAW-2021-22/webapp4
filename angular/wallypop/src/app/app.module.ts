@@ -13,9 +13,11 @@ import {NewaccountComponent} from './components/login/newaccount.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CategoryComponent } from './components/category/category.component';
 import { CategoryListComponent } from './components/category/categoryList.component';
+import {CommercialComponent} from './components/articles/commercial.component';
 
 @NgModule({
-  declarations: [AppComponent, IndexComponent, LoginComponent, SearchComponent, NotFoundComponent, NewaccountComponent, ProfileComponent, CategoryComponent, CategoryListComponent],
+  // tslint:disable-next-line:max-line-length
+  declarations: [AppComponent, IndexComponent, LoginComponent, SearchComponent, NotFoundComponent, NewaccountComponent, ProfileComponent, CategoryComponent, CategoryListComponent, CommercialComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, routing],
   bootstrap: [AppComponent]
 })
