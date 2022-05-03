@@ -82,9 +82,9 @@
                                 <th style="background-color:#337ab7;color:white">DESCRIPTION</th>
                                 <!--{{#report}}-->
 
-                                <tr *ngFor="let report of reports">
+                                <tr *ngFor="let report of reports" (click)="showReport($event, ID_REPORT.value)">
                                     <!--ESTABA DENTRO DEL TR onclick="location.href='/showReport/{{ID_REPORT}}'"-->
-                                    <td name="ID_REPORT" value="{{report.id_REPORT}}">{{report.id_REPORT}}</td>
+                                    <td #ID_REPORT name="ID_REPORT" value="{{report.id_REPORT}}">{{report.id_REPORT}}</td>
                                     <td name="ID_REPORT" value="{{report.id_REPORT}}">{{report.email}}</td>
                                     <td name="ID_REPORT" value="{{report.id_REPORT}}">{{report.description}}</td>
                                 </tr>
