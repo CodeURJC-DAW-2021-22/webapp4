@@ -1,72 +1,73 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
-import { Category } from '../models/category.model';
+import {Category} from '../models/category.model';
+import {Router} from '@angular/router';
 
-const BASE_URL = '/api/categories/';
+const BASE_URL = '/api/';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class CategoryService {
 
-	constructor(private httpClient: HttpClient) { }
+    constructor(private httpClient: HttpClient, private router: Router) {
+    }
 
-	getCategories(): Observable<Category[]> {
-		return this.httpClient.get(BASE_URL).pipe(
-			catchError(error => this.handleError(error))
-		) as Observable<Category[]>;
-	}
+    static handleError(error: any): Observable<never> {
+        console.log('ERROR:');
+        console.error(error);
+        return throwError('Server error (' + error.status + '): ' + error.text());
+    }
 
-	getCategory(id: number | string): Observable<Category> {
-		return this.httpClient.get(BASE_URL + id).pipe(
-			catchError(error => this.handleError(error))
-		) as Observable<Category>;
-	}
+    getCategories(): Observable<Category[]> {
+        return this.httpClient.get(BASE_URL + 'categories').pipe(
+            catchError(error => CategoryService.handleError(error))
+        ) as Observable<Category[]>;
+    }
 
-	addCategory(category: Category) {
+    getCategory(id: number | string): Observable<Category> {
+        return this.httpClient.get(BASE_URL + 'categories/' + id).pipe(
+            catchError(error => CategoryService.handleError(error))
+        ) as Observable<Category>;
+    }
 
-		if (!category.id_CATEGORY) {
-			return this.httpClient.post(BASE_URL, category)
-				.pipe(
-					catchError(error => this.handleError(error))
-				);
-		} else {
-			return this.httpClient.put(BASE_URL + category.id_CATEGORY, category).pipe(
-				catchError(error => this.handleError(error))
-			);
-		}
-	}
+    addCategory(title: string, description: string, icon: string): void {
 
-	setCategoryImage(category: Category, formData: FormData) {
-		return this.httpClient.post(BASE_URL + category.id_CATEGORY + '/image', formData)
-			.pipe(
-				catchError(error => this.handleError(error))
-			);
-	}
+        this.httpClient.post(BASE_URL + 'admin/categories', {title, description, icon}, {withCredentials: true})
+            .subscribe(
+                (response) => this.router.navigate(['profile']),
+                (error) => alert('Error al añadir categoria')
+            );
+        /*return this.httpClient.post(BASE_URL + 'admin/categories', {title, description, icon}, {withCredentials: true})
+            .pipe(
+                catchError(error => CategoryService.handleError(error))
+            );*/
+    }
 
-	deleteCategoryImage(category: Category) {
-		return this.httpClient.delete(BASE_URL + category.id_CATEGORY + '/image')
-			.pipe(
-				catchError(error => this.handleError(error))
-			);
-	}
+    setCategoryImage(category: Category, formData: FormData): Observable<any> {
+        return this.httpClient.post(BASE_URL + 'admin/categories/' + category.id_CATEGORY + '/image', formData)
+            .pipe(
+                catchError(error => CategoryService.handleError(error))
+            );
+    }
 
-	deleteCategory(category: Category) {
-		return this.httpClient.delete(BASE_URL + category.id_CATEGORY).pipe(
-			catchError(error => this.handleError(error))
-		);
-	}
+    deleteCategoryImage(category: Category): Observable<any> {
+        return this.httpClient.delete(BASE_URL + 'admin/categories/' + category.id_CATEGORY + '/image')
+            .pipe(
+                catchError(error => CategoryService.handleError(error))
+            );
+    }
 
-	updateCategory(category: Category) {
-		return this.httpClient.put(BASE_URL + category.id_CATEGORY, category).pipe(
-			catchError(error => this.handleError(error))
-		);
-	}
+    deleteCategory(category: Category): Observable<any> {
+        return this.httpClient.delete(BASE_URL + 'admin/categories/' + category.id_CATEGORY).pipe(
+            catchError(error => CategoryService.handleError(error))
+        );
+    }
 
-	private handleError(error: any) {
-		console.log("ERROR:");
-		console.error(error);
-		return throwError("Server error (" + error.status + "): " + error.text())
-	}
+    updateCategory(category: Category): Observable<any> {
+        return this.httpClient.put(BASE_URL + 'admin/categories/' +  category.id_CATEGORY, category).pipe(
+            catchError(error => CategoryService.handleError(error))
+        );
+    }
 }

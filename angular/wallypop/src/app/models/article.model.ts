@@ -1,3 +1,5 @@
+import {User} from './user.model';
+
 export interface Article {
     id_ARTICLE?: number;
     city: string;
@@ -8,9 +10,10 @@ export interface Article {
     price: number;
     n_visit: number;
     reserved: boolean;
-    sold: boolean;
-
-	// photo: Blob;
-    // user: User;
+    userID: number;
+    user: User;
     // categories: Category[];
+    // photo: Blob;
+    // categories: Category[];
+    sold: boolean;
 }

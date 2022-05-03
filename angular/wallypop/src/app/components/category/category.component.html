@@ -90,17 +90,14 @@
                                 <label>Busca categoría</label>
                             </div>
                             <div class="col-sm-7">
-                                <!--
+                                
                                 <div class="form-group">
                                     <select class="form-control" name="lcategories">
-                                        {{#lcategory}}
-                                        <option name="ID_CATEGORY" value="{{ID_CATEGORY}}">{{TITLE}}</option>
-                                        {{/lcategory}}
+                                        <option *ngFor="let category of categories" name="ID_CATEGORY" value="{{category.id_CATEGORY}}">{{category.title}}</option>
                                     </select>
-                                    <input name="_csrf" type="hidden" value="{{token}}"/>
-                                    <input class="btn btn-default" type="submit" value="Buscar Categoria"></input>
+                                    <input class="btn btn-default" type="submit" value="Buscar Categoria">
                                 </div>
-                            -->
+                            
                                 <div class="form-group">
                                     <a href="categoryList">VER LISTADO CATEGORÍAS</a>
                                 </div>
@@ -129,7 +126,7 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="form-group">
-                                    <textarea class="form-control" name="DESCRIPTION" placeholder="Descripción"
+                                    <textarea #description class="form-control" name="DESCRIPTION" placeholder="Descripción"
                                               rows="3"></textarea>
                                 </div>
                             </div>
@@ -140,7 +137,7 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="form-group">
-                                    <input class="form-control" name="ICON" placeholder="Icono" type="text">
+                                    <input #icon class="form-control" name="ICON" placeholder="Icono" type="text">
                                     <p>Busca aquí el icono que quieres utilizar: <a
                                             href="https://fontawesome.com/search?m=free&s=solid%2Cbrands">Fontawesome</a>
                                     </p>
@@ -148,21 +145,20 @@
                             </div>
                         </div>
                         <br><br><br>
-                        <!--
+                        
                         <h3 class="text-info">Foto</h3>
                         <p>¡Añade una foto a la categoría!</p>
                         <div class="form-group">
                             <div class="custom-input-file">
-                                <input accept=".jpg, .jpeg" class="input-file" name="imageField" size="1" type="file"/>
+                                <input #file accept=".jpg, .jpeg" class="input-file" name="imageField" size="1" type="file"/>
                                 <i aria-hidden="true" class="fa fa-picture-o"></i>
                             </div>
                             <br>
                             <p class="text-muted text-center archivo">Archivo...</p>
                         </div>
-                    -->
-                        <!--<input name="_csrf" type="hidden" value="{{token}}"/>-->
+                    
                         <p class="text-center">
-                            <button (click)="addCategory($event, title.value)" class="btn btn-danger btn-lg" type="submit">Guardar</button>
+                            <button (click)="addCategory($event, title.value, description.value, icon.value)" class="btn btn-danger btn-lg" type="submit">Guardar</button>
                         </p>
                     </form>
                 </div>
