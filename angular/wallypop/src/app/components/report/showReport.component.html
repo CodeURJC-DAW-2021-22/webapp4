@@ -9,11 +9,11 @@
                     <a class="btn btn-info" href="/reports">&lt;</a>
                     <br>
                     <!-- {{#report}} -->
-                    <h3 class="text-info"><!--ID incidencia: {{ID_REPORT}}--></h3>
+                    <h3 class="text-info">{{report.id_REPORT}}</h3>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Email</label>
                         <label class="col-sm-7">
-                            <a class="form-control" type="text"><!--{{EMAIL}}--></a>
+                            <a class="form-control" type="text">{{report.email}}</a>
                         </label>
                     </div>
                     <div class="form-group">
@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Descripción de la incidencia</label>
                         <label class="col-md-7">
-                            <textarea class="form-control"></textarea><!--DENTRO DEL TEXTARES {{DESCRIPTION}}-->
+                            <textarea class="form-control">{{report.description}}</textarea><!--DENTRO DEL TEXTARES {{DESCRIPTION}}-->
                         </label>
                     </div>
                     <br><br>

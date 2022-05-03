@@ -23,6 +23,7 @@ const appRoutes = [
     { path: 'showReport', component: ShowReportComponent},
     { path: 'categoryList', component: CategoryListComponent},
     { path: 'commercial', component: CommercialComponent },
+    { path: 'showReport/:id', component: ShowReportComponent},
     { path: '**', component: NotFoundComponent}
 ];
 

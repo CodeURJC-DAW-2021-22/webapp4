@@ -22,7 +22,7 @@ export class ReportsComponent implements OnInit {
 
   showReport(event: any, id: number) {
     event.preventDefault();
-    this.router.navigate(['/api/admin/reports/'+id.toString]);
+    this.router.navigate(['./showReport/'+id]);
   }
 
   }
