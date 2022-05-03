@@ -67,7 +67,7 @@ export class LoginService {
         return this.user;
     }
 
-    getUser(id: bigint): User {
+    getUser(id: number): User {
         // tslint:disable-next-line:variable-name
         let user_: User;
         this.http.post('/api/users/', { id }, { withCredentials: true })

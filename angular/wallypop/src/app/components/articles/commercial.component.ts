@@ -38,7 +38,7 @@ export class CommercialComponent implements OnInit {
         });
     }
 
-    getUser(id: bigint): User {
+    getUser(id: number): User {
         return this.loginService.getUser(id);
     }
 }
