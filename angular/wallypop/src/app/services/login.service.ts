@@ -1,20 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
-import {Subscription} from 'rxjs';
-import {retry} from 'rxjs/operators';
+import {Observable, Subscription, throwError} from 'rxjs';
+import {catchError, retry} from 'rxjs/operators';
+import {Article} from '../models/article.model';
 
 const BASE_URL = '/api/auth';
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
 
-    logged: boolean;
-    user: User;
-
     constructor(private http: HttpClient) {
         this.logged = false;
         this.reqIsLogged();
+    }
+
+    logged: boolean;
+    user: User;
+
+    static handleError(error: any): Observable<never> {
+        console.log('ERROR:');
+        console.error(error);
+        return throwError('Server error (' + error.status + '): ' + error.text());
     }
 
     reqIsLogged(): void {
@@ -65,16 +72,5 @@ export class LoginService {
 
     currentUser(): User {
         return this.user;
-    }
-
-    getUser(id: bigint): User {
-        // tslint:disable-next-line:variable-name
-        let user_: User;
-        this.http.post('/api/users/', { id }, { withCredentials: true })
-            .subscribe(
-                (response) => user_ = response as User,
-                (error) => alert('Usuario y/o contraseña no válidos')
-            );
-        return user_;
     }
 }

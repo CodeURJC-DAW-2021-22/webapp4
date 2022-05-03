@@ -33,12 +33,6 @@ export class CommercialComponent implements OnInit {
             article => this.articles = article,
             error => console.log(error)
         );
-        this.articles.forEach(value => {
-            value.user = this.getUser(value.userID);
-        });
     }
 
-    getUser(id: bigint): User {
-        return this.loginService.getUser(id);
-    }
 }

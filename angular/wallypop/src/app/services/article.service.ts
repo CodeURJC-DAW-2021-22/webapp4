@@ -33,7 +33,11 @@ export class ArticleService {
         ) as Observable<Article>;
     }
 
-
+    getUserArticle(id: number | string): Observable<User> {
+        return this.httpClient.get(BASE_URL + 'articles/user/' + id).pipe(
+            catchError(error => this.handleError(error))
+        ) as Observable<User>;
+    }
 
     addArticle(title: string, description: string, city: string, price: number, postal_code: number) {
 
