@@ -113,7 +113,7 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="form-group">
-                                    <input #title class="form-control" name="TITLE" placeholder="Añade nueva categoría"
+                                    <input [(ngModel)]="category.title" class="form-control" name="TITLE" placeholder="Añade nueva categoría"
                                            type="text">
                                 </div>
                             </div>
@@ -126,7 +126,7 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="form-group">
-                                    <textarea #description class="form-control" name="DESCRIPTION" placeholder="Descripción"
+                                    <textarea [(ngModel)]="category.description" class="form-control" name="DESCRIPTION" placeholder="Descripción"
                                               rows="3"></textarea>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="form-group">
-                                    <input #icon class="form-control" name="ICON" placeholder="Icono" type="text">
+                                    <input [(ngModel)]="category.icon" class="form-control" name="ICON" placeholder="Icono" type="text">
                                     <p>Busca aquí el icono que quieres utilizar: <a
                                             href="https://fontawesome.com/search?m=free&s=solid%2Cbrands">Fontawesome</a>
                                     </p>
@@ -150,7 +150,7 @@
                         <p>¡Añade una foto a la categoría!</p>
                         <div class="form-group">
                             <div class="custom-input-file">
-                                <input #file accept=".jpg, .jpeg" class="input-file" name="imageField" size="1" type="file"/>
+                                <input #file accept=".jpg, .jpeg" class="input-file" name="imageFile" size="1" type="file"/>
                                 <i aria-hidden="true" class="fa fa-picture-o"></i>
                             </div>
                             <br>
@@ -158,7 +158,7 @@
                         </div>
                     
                         <p class="text-center">
-                            <button (click)="addCategory($event, title.value, description.value, icon.value)" class="btn btn-danger btn-lg" type="submit">Guardar</button>
+                            <button (click)="save()" class="btn btn-danger btn-lg" type="submit">Guardar</button>
                         </p>
                     </form>
                 </div>
