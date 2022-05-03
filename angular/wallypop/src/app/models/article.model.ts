@@ -10,10 +10,10 @@ export interface Article {
     price: number;
     n_visit: number;
     reserved: boolean;
-    sold: boolean;
-
-	// photo: Blob;
-    userID: bigint;
+    userID: number;
     user: User;
     // categories: Category[];
+    // photo: Blob;
+    // categories: Category[];
+    sold: boolean;
 }
