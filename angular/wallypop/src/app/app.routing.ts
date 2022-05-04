@@ -8,6 +8,7 @@ import {ProfileComponent} from './components/profile/profile.component';
 import { CategoryComponent } from './components/category/category.component';
 import { CategoryListComponent } from './components/category/categoryList.component';
 import {CommercialComponent} from './components/articles/commercial.component';
+import {PostComponent} from './components/articles/post.component';
 
 const appRoutes = [
     { path: '', component: IndexComponent },
@@ -17,6 +18,9 @@ const appRoutes = [
     { path: 'category', component: CategoryComponent},
     { path: 'categoryList', component: CategoryListComponent},
     { path: 'commercial', component: CommercialComponent },
+    { path: 'commercial/:id', component: CommercialComponent },
+    { path: 'post', component: PostComponent },
+    { path: 'post/:id', component: PostComponent },
     { path: '**', component: NotFoundComponent}
 ];
 

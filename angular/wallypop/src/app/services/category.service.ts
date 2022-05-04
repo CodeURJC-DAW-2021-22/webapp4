@@ -5,6 +5,7 @@ import {catchError} from 'rxjs/operators';
 
 import {Category} from '../models/category.model';
 import {Router} from '@angular/router';
+import {Article} from '../models/article.model';
 
 const BASE_URL = '/api/';
 
@@ -26,10 +27,10 @@ export class CategoryService {
         ) as Observable<Category[]>;
     }
 
-    getCategory(id: number | string): Observable<Category> {
+    getCategory(id: number | string): Observable<Article[]> {
         return this.httpClient.get(BASE_URL + 'categories/' + id).pipe(
             catchError(error => CategoryService.handleError(error))
-        ) as Observable<Category>;
+        ) as Observable<Article[]>;
     }
 
     addCategory(category: Category) {

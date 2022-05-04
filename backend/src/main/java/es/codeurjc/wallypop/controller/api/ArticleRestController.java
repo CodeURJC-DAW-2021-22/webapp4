@@ -100,6 +100,18 @@ public class ArticleRestController {
         }
     }
 
+    @GetMapping("user/{id}")
+    public ResponseEntity<User> getUserArticle(@PathVariable long id) {
+
+        Optional<User> op = userService.findById(articleService.findById(id).get().getUserID());
+        if (op.isPresent()) {
+            User user = op.get();
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @GetMapping("/{id}/image")
     public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
         Article article = articleService.findById(id).orElseThrow();
