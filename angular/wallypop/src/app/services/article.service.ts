@@ -86,4 +86,9 @@ export class ArticleService {
         return throwError('Server error (' + error.status + '): ' + error.text());
     }
 
+    getFilteredArticles(query: string, city: string): Observable<Article[]> {
+        return this.httpClient.get(BASE_URL + 'articles/search?query=' + query + '&city=' + city).pipe(
+            catchError(error => this.handleError(error))
+        ) as Observable<Article[]>;
+    }
 }

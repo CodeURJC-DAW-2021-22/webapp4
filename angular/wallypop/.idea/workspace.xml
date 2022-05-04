@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6e9ccb1b-be0c-4cbf-b4aa-3182718163a8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/report/reports.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/report/reports.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/report/showReport.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/report/showReport.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/report/showReport.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/report/showReport.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/report.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/report.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/articles/commercial.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/articles/commercial.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/search/search.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/search/search.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/article.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/article.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
