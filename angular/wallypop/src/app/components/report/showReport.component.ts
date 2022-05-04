@@ -10,30 +10,32 @@ import { Report } from 'src/app/models/report.model';
 export class ShowReportComponent implements OnInit{
   report:Report;
 
-  constructor(private reportService: ReportService,private activatedRoute: ActivatedRoute,private router: Router) {
+  constructor(private reportService: ReportService, private activatedRoute: ActivatedRoute, private router: Router) {
    }
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params['id'];
+    const id = this.activatedRoute.snapshot.params.id;
     this.reportService.getReport(id).subscribe(
         report => this.report = report,
         error => console.error(error)
-    );    
-  console.log(this.report);
+    );
+    console.log(this.report);
   }
 
-  rejectReport() {
+  rejectReport(): void {
         this.reportService.deleteReport(this.report).subscribe(
             _ => this.router.navigate(['/reports']),
             error => console.error(error)
         );
+        this.router.navigate(['reports']);
     }
 
-    aceptReport() {
-      this.reportService.aceptReport(this.report).subscribe(
+    aceptReport(): void {
+        this.reportService.aceptReport(this.report).subscribe(
           _ => this.router.navigate(['/reports']),
           error => console.error(error)
-      );
+        );
+        this.router.navigate(['reports']);
   }
 
    downloadProof() {

@@ -9,7 +9,7 @@
                     <a class="btn btn-info" href="/reports">&lt;</a>
                     <br>
                     <!-- {{#report}} -->
-                    <h3 class="text-info">{{report.id_REPORT}}</h3>
+                    <h3 class="text-info">ID Report: {{report.id_REPORT}}</h3>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Email</label>
                         <label class="col-sm-7">
@@ -19,7 +19,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Articlo Denunciado</label>
                         <label class="col-sm-7">
-                            <a class="form-control" >Pulsa para acceder
+                            <a href="/post/{{report.article.id_ARTICLE}}" class="form-control" >Pulsa para acceder
                                 al articulo denunciado</a> <!--onclick="location.href='/showPost/{{ID_REPORT}}'"-->
                         </label>
                     </div>
