@@ -5,6 +5,7 @@ import {Article} from '../../models/article.model';
 import {Category} from '../../models/category.model';
 import {CategoryService} from '../../services/category.service';
 import {User} from '../../models/user.model';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'commercial',
@@ -13,12 +14,21 @@ import {User} from '../../models/user.model';
 export class CommercialComponent implements OnInit {
     articles: Article[];
     categories: Category[];
-    constructor(private articleService: ArticleService, private categoryService: CategoryService, private loginService: LoginService) {
+    category: Category;
+    idCategory: number;
+    constructor(private articleService: ArticleService, private categoryService: CategoryService, private loginService: LoginService, private routing: ActivatedRoute) {
+        this.idCategory = -1;
     }
 
     ngOnInit(): void {
         this.getCategories();
-        this.getArticles();
+
+        this.idCategory = this.routing.snapshot.params.id;
+        if (this.idCategory !== undefined) {
+            this.getArticlesFromCategory(this.idCategory);
+        } else {
+            this.getAllArticles();
+        }
     }
 
     getCategories(): void {
@@ -28,17 +38,17 @@ export class CommercialComponent implements OnInit {
         );
     }
 
-    getArticles(): void {
+    getArticlesFromCategory(id: number | string): void {
+        this.categoryService.getCategory(id).subscribe(
+            articles => this.articles = articles,
+            error => console.log(error)
+        );
+    }
+
+    getAllArticles(): void {
         this.articleService.getArticles().subscribe(
             article => this.articles = article,
             error => console.log(error)
         );
-        this.articles.forEach(value => {
-            value.user = this.getUser(value.userID);
-        });
-    }
-
-    getUser(id: number): User {
-        return this.loginService.getUser(id);
     }
 }

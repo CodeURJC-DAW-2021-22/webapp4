@@ -20,7 +20,7 @@
                         FILTROS <i aria-hidden="true" class="fa fa-sort pull-right"></i>
                     </button>
                     <form action="/search/commercial" class="full-width menu-commercial" method="GET">
-                        <h4 class="text-light">CATEGORÍA</h4>
+                        <!--<h4 class="text-light">CATEGORÍA</h4>
                         <div class="form-group">
                             <select class="form-control" name="id_category">
                                 <option disabled selected>Selecciona una categoría</option>
@@ -29,14 +29,14 @@
                         </div>
                         <p class="text-center">
                             <button class="btn btn-success btn-block">APLICAR</button>
+                        </p> -->
+                        <p>
+                            <small>Anuncios segunda mano. Las mejores ofertas en de segunda mano y de ocasión solo
+                                en Wallypop</small>
                         </p>
                         <p class="text-center">
-                            <a class="btn btn-info btn-block" href="/commercial" onclick="" type="reset">BORRAR
-                                FILTROS</a>
-                        </p>
-                        <p>
-                            <small>Anuncios segunda mano . Las mejores ofertas en de segunda mano y de ocasión solo
-                                en </small>
+                        <a class="btn btn-info btn-block" href="/commercial" onclick="" type="reset">BORRAR
+                        FILTROS</a>
                         </p>
                     </form>
                 </div>
@@ -47,11 +47,11 @@
                         <li *ngFor="let category of categories"><a href="/commercial/{{category.id_CATEGORY}}">{{category.title}}</a></li>
                     </ol>
                 </div>
-                <div class="full-widht">
+                <!-- <div class="full-widht">
                     <i class="fa fa-th-large btn btn-default hidden-xs btn-change-post"></i>
                     <i class="fa fa-refresh btn btn-default"></i>
                     <i class="fa fa-angle-right btn btn-default"></i>
-                </div>
+                </div> -->
                 <!-- Article -->
                 <div class="full-width container-post">
                     <div class="full-width post" *ngFor="let article of articles">
@@ -64,7 +64,7 @@
                                 <p class="full-width post-info-price">{{article.price}}€</p>
                                 <span class="post-info-zone">{{article.city}}</span>
                                 <span class="post-info-date">{{article.date}}</span>
-                                <a *ngIf="this.loginService.isLogged" href="/addFavorite/{{article.id_ARTICLE}}"><i class="fa fa-heart-o post-info-like"></i></a>
+                                <a *ngIf="this.loginService.isLogged()" href="/addFavorite/{{article.id_ARTICLE}}"><i class="fa fa-heart-o post-info-like"></i></a>
                             </div>
                         </ng-template>
                     </div>

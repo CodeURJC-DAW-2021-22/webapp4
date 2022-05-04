@@ -11,6 +11,7 @@ import { ReportsComponent } from './components/report/reports.component';
 import { ShowReportComponent } from './components/report/showReport.component';
 import { CategoryListComponent } from './components/category/categoryList.component';
 import {CommercialComponent} from './components/articles/commercial.component';
+import {PostComponent} from './components/articles/post.component';
 
 const appRoutes = [
     { path: '', component: IndexComponent },
@@ -24,6 +25,9 @@ const appRoutes = [
     { path: 'categoryList', component: CategoryListComponent},
     { path: 'commercial', component: CommercialComponent },
     { path: 'showReport/:id', component: ShowReportComponent},
+    { path: 'commercial/:id', component: CommercialComponent },
+    { path: 'post', component: PostComponent },
+    { path: 'post/:id', component: PostComponent },
     { path: '**', component: NotFoundComponent}
 ];
 
