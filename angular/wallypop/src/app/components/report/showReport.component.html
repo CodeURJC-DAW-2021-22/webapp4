@@ -33,8 +33,8 @@
                     <h3 class="text-info">Fichero adjunto por el usuario</h3>
                     <a download="" >Download</a><!--href="{{ID_REPORT}}/image"-->
                     <p class="text-center">
-                        <a class="btn btn-success" >ACEPTAR REPORTE</a><!--href="/showReport/{{ID_REPORT}}/deleteArticle" -->
-                        <a class="btn btn-danger" >RECHAZAR REPORTE</a> <!--href="/showReport/{{ID_REPORT}}/delete"> -->
+                        <a (click)="aceptReport()" class="btn btn-success" >ACEPTAR REPORTE</a><!--href="/showReport/{{ID_REPORT}}/deleteArticle" -->
+                        <a (click)="rejectReport()" class="btn btn-danger" >RECHAZAR REPORTE</a> <!--href="/showReport/{{ID_REPORT}}/delete"> -->
                     </p>
                     <!-- {{/report}} -->
                 </form>

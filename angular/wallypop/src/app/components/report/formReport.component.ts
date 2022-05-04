@@ -2,6 +2,8 @@ import {ReportService} from '../../services/report.service';
 import {Component, ViewChild} from '@angular/core';
 import { Report } from 'src/app/models/report.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ArticleService } from 'src/app/services/article.service';
+import { Article } from 'src/app/models/article.model';
 
 @Component({
   selector: 'formReport',
@@ -9,21 +11,32 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class FormReportComponent {
   report: Report;
+  article:Article;
   @ViewChild("file")
   file: any;
+
   
 
-  constructor(public reportService: ReportService,private router: Router,activatedRoute: ActivatedRoute) {    
-    this.report = { article:null,email:'', description: ''};
+  constructor(public reportService: ReportService,private router: Router,private activatedRoute: ActivatedRoute,private articleService:ArticleService) {    
 }
-  
+id_article:number;
+ngOnInit(): void {
+  this.id_article = this.activatedRoute.snapshot.params['id'];
+  this.articleService.getArticle(this.id_article).subscribe(
+      article => this.article = article,
+      error => console.error(error)
+  );    
+    this.report = { article:this.article ,email:'', description: ''};  
+}
 
 
-  save() {
-    this.reportService.addReport(this.report).subscribe(
+  save(event:any,email:string,description:string) {
+    console.log('report.save');
+    this.reportService.addReport(email,description,this.id_article);
+    /*this.reportService.addReport(this.report).subscribe(
       (report: Report) => this.uploadImage(report),
       error => alert('Error creating new report: ' + error)
-    );
+    );*/
   }
 
   uploadImage(reportProof: Report): void {

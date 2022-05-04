@@ -7,6 +7,7 @@ import {CategoryService} from '../../services/category.service';
 import {User} from '../../models/user.model';
 import {Observable} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
+import { ReportService } from 'src/app/services/report.service';
 
 @Component({
     selector: 'post',
@@ -18,7 +19,7 @@ export class PostComponent implements OnInit {
     categories: Category[];
     idArticle: number;
     // tslint:disable-next-line:max-line-length
-    constructor(private articleService: ArticleService, private categoryService: CategoryService, public loginService: LoginService, private routing: ActivatedRoute, private router: Router) {
+    constructor(private reportService:ReportService,private articleService: ArticleService, private categoryService: CategoryService, public loginService: LoginService, private routing: ActivatedRoute, private router: Router) {
         this.idArticle = -1;
     }
 
@@ -66,4 +67,9 @@ export class PostComponent implements OnInit {
     isReserved(): boolean {
         return this.article.reserved;
     }
+
+    newForm() {
+        this.router.navigate(['/formReport/'+this.article.id_ARTICLE]);
+      }
+    
 }

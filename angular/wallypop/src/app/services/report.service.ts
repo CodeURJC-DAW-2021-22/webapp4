@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable , throwError} from "rxjs";
 import { catchError } from "rxjs/operators";
+import { Article } from "../models/article.model";
 import { Report } from "../models/report.model";
 
 
@@ -26,27 +27,38 @@ export class ReportService {
 	}
 
 	deleteReport(report: Report) {
-		return this.httpClient.delete(BASE_URL + report.id_REPORT).pipe(
+		this.httpClient.delete(BASE_URL +"admin/reports/"+report.id_REPORT+"/rejectReport").pipe(
+			catchError(error => this.handleError(error))
+		);
+		this.router.navigate(['reports']);
+	}
+
+	aceptReport(report: Report) {
+		this.httpClient.delete(BASE_URL +"admin/reports/"+report.id_REPORT+"/aceptReport").pipe(
+			catchError(error => this.handleError(error))
+		);
+		this.router.navigate(['reports']);
+	}
+
+	proof(report: Report) {
+		return this.httpClient.get(BASE_URL +"admin/reports/"+report.id_REPORT+"/proof").pipe(
 			catchError(error => this.handleError(error))
 		);
 	}
 
 
-	addReport(report: Report) {
-    //Deberia ser (id_article:number) y abajo BASE_URL+"reports/"+id_article   
-        if (!report.id_REPORT) {
-			return this.httpClient.post(BASE_URL + "reports/3", report)
-				.pipe(
-					catchError(error => this.handleError({ error }))
-				);
-		} else {
-			return this.httpClient.put(BASE_URL + "reports" + report.id_REPORT, report).pipe(
-				catchError(error => this.handleError({ error }))
-			);
-		}
+	addReport(email:string,description:string,id:number) {        
+			this.httpClient.post(BASE_URL + "reports/"+id, {email,description})
+            .subscribe(
+                (response) => this.router.navigate(['post/'+id]),
+                (error) => alert('Ha ocurrido un error en el reporte')
+            );
 		
 	}
 	
+	createForm(article:Article){
+			return this.httpClient.post(BASE_URL + "reports/" +article.id_ARTICLE,article);	
+	}
     
 	setReportProof(report: Report, formData: FormData) {
 		return this.httpClient.post(BASE_URL +'reports/'+ report.id_REPORT + '/proof', formData)

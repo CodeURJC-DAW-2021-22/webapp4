@@ -1,6 +1,6 @@
 import {ReportService} from '../../services/report.service';
 import {Component, OnInit} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Report } from 'src/app/models/report.model';
 
 @Component({
@@ -10,7 +10,7 @@ import { Report } from 'src/app/models/report.model';
 export class ShowReportComponent implements OnInit{
   report:Report;
 
-  constructor(private reportService: ReportService,private activatedRoute: ActivatedRoute) {
+  constructor(private reportService: ReportService,private activatedRoute: ActivatedRoute,private router: Router) {
    }
 
   ngOnInit(): void {
@@ -22,5 +22,24 @@ export class ShowReportComponent implements OnInit{
   console.log(this.report);
   }
 
+  rejectReport() {
+        this.reportService.deleteReport(this.report).subscribe(
+            _ => this.router.navigate(['/reports']),
+            error => console.error(error)
+        );
+    }
 
+    aceptReport() {
+      this.reportService.aceptReport(this.report).subscribe(
+          _ => this.router.navigate(['/reports']),
+          error => console.error(error)
+      );
   }
+
+   downloadProof() {
+    this.reportService.proof(this.report).subscribe(
+        error => console.error(error)
+     );
+  }
+
+}
