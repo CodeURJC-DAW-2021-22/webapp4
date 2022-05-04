@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6e9ccb1b-be0c-4cbf-b4aa-3182718163a8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.routing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routing.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/articles/commercial.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/articles/commercial.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/articles/commercial.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/articles/commercial.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/category.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/category.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/search/search.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/search/search.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/article.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/article.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
