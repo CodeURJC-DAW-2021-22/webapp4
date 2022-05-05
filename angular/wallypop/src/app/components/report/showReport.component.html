@@ -31,7 +31,7 @@
                     </div>
                     <br><br>
                     <h3 class="text-info">Fichero adjunto por el usuario</h3>
-                    <a download="" >Download</a><!--href="{{ID_REPORT}}/image"-->
+                    <a href="/api/admin/reports/{{report.id_REPORT}}/proof" download="" >Download</a><!--href="{{ID_REPORT}}/image"-->
                     <p class="text-center">
                         <a (click)="aceptReport()" class="btn btn-success" >ACEPTAR REPORTE</a><!--href="/showReport/{{ID_REPORT}}/deleteArticle" -->
                         <a (click)="rejectReport()" class="btn btn-danger" >RECHAZAR REPORTE</a> <!--href="/showReport/{{ID_REPORT}}/delete"> -->

@@ -45,11 +45,11 @@ export class ReportService {
 
 
 	addReport(email:string,description:string,id:number) {
-		this.httpClient.post(BASE_URL + "reports/"+id, {email,description})
-			.subscribe(
-				(response) => this.router.navigate(['post/'+id]),
-				(error) => alert('Ha ocurrido un error en el reporte')
+		return this.httpClient.post(BASE_URL + "reports/"+id, {email,description})
+			.pipe(
+				catchError(error => this.handleError(error))
 			);
+
 
 	}
 
@@ -57,12 +57,14 @@ export class ReportService {
 		return this.httpClient.post(BASE_URL + "reports/" +article.id_ARTICLE,article);
 	}
 
-	setReportProof(report: Report, formData: FormData) {
-		return this.httpClient.post(BASE_URL +'reports/'+ report.id_REPORT + '/proof', formData)
+	setReportProof(report: Report, formData: FormData): Observable<any>  {
+		console.log(formData);
+		return this.httpClient.post(BASE_URL +'reports/'+ report.id_REPORT + '/image', {formData})
 			.pipe(
 				catchError(error => this.handleError(error))
 			);
 	}
+
 
 	private handleError(error: any): Observable<never> {
 		console.log('ERROR:');

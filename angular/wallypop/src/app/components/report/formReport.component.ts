@@ -12,6 +12,7 @@ import { Article } from 'src/app/models/article.model';
 export class FormReportComponent {
   report: Report;
   article:Article;
+
   @ViewChild("file")
   file: any;
 
@@ -31,33 +32,34 @@ ngOnInit(): void {
 
 
   save(event:any,email:string,description:string) {
-    console.log('report.save');
-    this.reportService.addReport(email,description,this.id_article);
+    this.reportService.addReport(email,description,this.id_article).subscribe(
+      (report: Report) => this.uploadImage(report),
+      error => alert('Error creating new report: ' + error)
+    );
     /*this.reportService.addReport(this.report).subscribe(
       (report: Report) => this.uploadImage(report),
       error => alert('Error creating new report: ' + error)
     );*/
   }
 
-  uploadImage(reportProof: Report): void {
+  
+  uploadImage(reportImage: Report): void {
 
-    const proof = this.file.nativeElement.files[0];
-    if (proof) {
-      let formData = new FormData();
-      formData.append("imageFile", proof);
-      this.reportService.setReportProof(reportProof, formData).subscribe(
-        _ => this.afterUploadProof(reportProof),
-        error => alert('Error uploading report proof: ' + error)
+    const image = this.file.nativeElement.files[0];
+    if (image) {
+      let form = new FormData();     
+      form.append("imageFile", image);
+      this.reportService.setReportProof(reportImage, form).subscribe(
+        _ => this.afterUploadImage(reportImage),
+        error => alert('Error uploading category image: ' + error)
       );
-    } 
-     else {
-      this.afterUploadProof(reportProof);
+    } else {
+      this.afterUploadImage(reportImage);
     }
   }
 
-
-  private afterUploadProof(afterReportProof: Report){
-    this.router.navigate(['./commercial',afterReportProof.id_REPORT]);
+  private afterUploadImage(afterReportProof: Report){
+    this.router.navigate(['/post/'+afterReportProof.article.id_ARTICLE]);
   }
   
   }
