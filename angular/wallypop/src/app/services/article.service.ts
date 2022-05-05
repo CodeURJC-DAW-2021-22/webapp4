@@ -91,4 +91,11 @@ export class ArticleService {
             catchError(error => this.handleError(error))
         ) as Observable<Article[]>;
     }
+
+    sendEmail(message: string, from: number, articleId: number): void {
+        this.httpClient.post(BASE_URL + 'mail/' + from + '/' + articleId, {message}, {withCredentials: true}).subscribe(
+            (response) => this.router.navigate(['/post/' + articleId], {queryParams: {e: 1}}),
+            (error) => this.router.navigate(['/post/' + articleId], {queryParams: {e: 0}})
+        );
+    }
 }

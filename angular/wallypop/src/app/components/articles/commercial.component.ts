@@ -4,8 +4,7 @@ import {ArticleService} from '../../services/article.service';
 import {Article} from '../../models/article.model';
 import {Category} from '../../models/category.model';
 import {CategoryService} from '../../services/category.service';
-import {User} from '../../models/user.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'commercial',
@@ -19,9 +18,8 @@ export class CommercialComponent implements OnInit {
     filtered: boolean;
     query: string;
     city: string;
-    noArticles = false;
     // tslint:disable-next-line:max-line-length
-    constructor(private articleService: ArticleService, private categoryService: CategoryService, private loginService: LoginService, private routing: ActivatedRoute) {
+    constructor(private articleService: ArticleService, private categoryService: CategoryService, public loginService: LoginService, private routing: ActivatedRoute, private router: Router) {
         this.idCategory = -1;
         this.filtered = false;
     }
@@ -63,7 +61,11 @@ export class CommercialComponent implements OnInit {
     getArticlesFromCategory(id: number | string): void {
         this.categoryService.getCategory(id).subscribe(
             articles => this.articles = articles,
-            error => console.log(error)
+            error => {
+                console.log(error);
+                alert('No existe esta categoría o no hay artículos disponibles');
+                this.router.navigate(['commercial']);
+            }
         );
     }
 
