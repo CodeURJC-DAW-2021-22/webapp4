@@ -2,6 +2,7 @@ import {ReportService} from '../../services/report.service';
 import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Report } from 'src/app/models/report.model';
+import {LoginService} from '../../services/login.service';
 
 @Component({
   selector: 'showReport',
@@ -10,7 +11,7 @@ import { Report } from 'src/app/models/report.model';
 export class ShowReportComponent implements OnInit{
   report:Report;
 
-  constructor(private reportService: ReportService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private reportService: ReportService, private activatedRoute: ActivatedRoute, private router: Router, public loginService: LoginService) {
    }
 
   ngOnInit(): void {
