@@ -1,0 +1,195 @@
+
+<!-- ====== Contenido de pagina ======-->
+<section class="section">
+    <search></search>
+    <hr>
+    <!-- Article -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8">
+                <ol class="breadcrumb"> <!-- Mostrar todas las categorías a las que pertenece el artículo -->
+                    <li *ngFor="let category of categories"><a href="/commercial/{{category.id_CATEGORY}}">{{category.title}}</a></li>
+                    <li class="active">Id: #{{article.id_ARTICLE}}</li>
+                </ol>
+                <!-- Reserved -->
+                <ng-template [ngIf]="article.reserved">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert alert-info" role="alert" style="text-align: center;">
+                                    <b>Este artículo se encuentra reservado</b>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <!-- END Reserved -->
+                <!-- Sold -->
+                <ng-template [ngIf]="article.sold">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="alert alert-success" role="alert" style="text-align: center;">
+                                    <b>Artículo vendido</b>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <!-- END Sold -->
+                <!-- {{#emailSended}} -->
+                <div class="row" *ngIf="emailSent === 1">
+                    <div class="col-xs-12">
+                        <div class="alert alert-success" role="alert" style="text-align: center;">
+                                <b>Correo enviado correctamente</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="emailSent === 0">
+                    <div class="col-xs-12">
+                        <div class="alert alert-warning" role="alert" style="text-align: center;">
+                            <b>Ha ocurrido un error al enviar el correo. Inténtelo de nuevo más tarde</b>
+                        </div>
+                    </div>
+                </div>
+                <!-- {{/emailSended}} -->
+
+                <div class="col-xs-12">
+                    <img alt="" height="auto" src="/api/articles/{{article.id_ARTICLE}}/image" width="500px">
+                </div>
+                <h3>Descripción: </h3>
+                <p class="lead text-justify">
+                    {{article.description}}
+                </p>
+                <p class="lead">
+                    <strong>Publicado: {{article.date}}</strong>
+                    <!-- &nbsp; <strong>Visto {{article.n_VISITS}} veces</strong> -->
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="full-width div-table">
+                    <div class="full-width div-table-row">
+                        <div class="div-table-cell div-table-cell-xs">
+                            <a class="btn btn-default btn-block" href="/commercial"><i aria-hidden="true" class="fa fa-angle-left"></i> Volver al listado</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="full-width" style="padding:10px; background-color: #F5F5F5; margin: 7px 0;">
+                    <p class="lead text-center"><strong>{{article.title}}</strong></p>
+                    <p class="lead text-center" style="color: #F09000;"><strong>{{article.price}}€</strong></p>
+                </div>
+                <div class="full-width post-user-info" style="text-align: center">
+                    <i aria-hidden="true" class="fa fa-user NavBar-Nav-icon"></i>
+                    <!-- User -->
+                    <div>
+                        <p class="full-width lead">{{user.full_NAME}}</p>
+                        <p class="full-width lead">{{user.name}}</p>
+                       <ng-template [ngIf]="loginService.isLogged()">
+                            <p class="full-width"><i aria-hidden="true" class="fa fa-mobile"></i> {{user.tel}}</p>
+                       </ng-template>
+                    </div>
+                    <!-- END User -->
+                </div>
+                <div class="clearfix"></div>
+                <ng-template [ngIf]="!loginService.isLogged()">
+                    <a class="btn btn-success btn-block" href="/login">ENVIAR MENSAJE</a>
+                    <a class="btn btn-success btn-block" href="/login">LLAMAR</a>
+                </ng-template>
+                <!-- {{#logged}} -->
+                <ng-template [ngIf]="loginService.isLogged()">
+                    <ng-template [ngIf]="isOwner() || isAdmin()">
+                        <a *ngIf="!isReserved() && !isSold(); else reserved" class="btn btn-primary btn-block" href="/reserve/{{article.id_ARTICLE}}/1">RESERVAR</a>
+                        <ng-template #reserved>
+                            <a *ngIf="!isSold()" class="btn btn-primary btn-block" href="/reserve/{{article.id_ARTICLE}}/0">ANULAR RESERVAR</a>
+                        </ng-template>
+                        <a *ngIf="!isSold(); else sold" class="btn btn-primary btn-block" href="/sell/{{article.id_ARTICLE}}/1">VENDIDO</a>
+                        <ng-template #sold>
+                            <a class="btn btn-primary btn-block" href="/sell/{{article.id_ARTICLE}}/0">ANULAR VENTA</a>
+                        </ng-template>
+                        <a class="btn btn-danger btn-block" href="/delete/{{article.id_ARTICLE}}">ELIMINAR</a>
+                    </ng-template> <!-- ONLY FOR OWNER OR ADMIN -->
+                    <ng-template [ngIf]="!isOwner()">
+                        <a aria-controls="collapseExample" aria-expanded="false" class="btn btn-success btn-block" data-toggle="collapse"
+                           href="#collapseEmail" role="button">ENVIAR MENSAJE</a>
+                        <a class="btn btn-success btn-block" href="tel: {{user.tel}}">LLAMAR</a>
+                        <div class="collapse" id="collapseEmail">
+                            <div class="card card-body">
+                                <br>
+                                <form class="form-horizontal" enctype="multipart/form-data"
+                                      method="post">
+                                    <h3 class="text-info">Envía tu mensaje</h3>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Mensaje</label>
+                                        <div class="col-sm-7">
+                                            <textarea #message NAME="message" class="form-control input-lg" placeholder="Mensaje"
+                                                      required="" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <p class="text-center">
+                                         <input (click)="sendEmail($event, message.value, this.loginService.currentUser().id_USER, this.article.id_ARTICLE)" class="btn btn-info" type="submit" value="Enviar"/>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-template>
+                <p class="lead text-light" style="margin: 7px 0; background-color: #F5F5F5;">
+                    <i aria-hidden="true" class="fa fa-map-marker fa-fw"></i> {{article.city}} ({{article.postal_CODE}})
+                </p>
+                <div id="map"></div>
+                <br>
+                <a (click)="newForm()">¿ES INAPROPIADO? REPORTAR ESTE ANUNCIO</a>
+                <div class="page-header">
+                    <h2 class="text-light text-center"><small>Comparte este anuncio</small></h2>
+                </div>
+                <ul class="list-unstyled fullwidth text-center footer-social social-post">
+                    <li>
+                        <a href="https://twitter.com/intent/tweet?text={{article.title}}&url=https://localhost/post/{{article.id_ARTICLE}}"
+                           target="_BLANK">
+                            <i aria-hidden="true" class="fa fa-twitter"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- {{/Article}} -->
+</section>
+<!-- MAP -->
+<ng-template>
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    .leaflet-container {
+        height: 400px;
+        width: 600px;
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
+<script>
+    // Errors because of mustache, works ok in html
+    //var lat = {{lat}};
+    //var lon = {{lon}};
+    var map = L.map('map').setView([lat, lon], 13);
+
+    var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+        maxZoom: 18,
+        attribution: 'Map data &copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+            'Imagery © <a target="_blank" href="https://www.mapbox.com/">Mapbox</a>',
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
+    }).addTo(map);
+
+    //var marker = L.marker([40.43958863903831, -3.5973164885885343]).addTo(map);
+
+    var circle = L.circle([lat, lon], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 700
+    }).addTo(map);
+
+
+</script>
+</ng-template>
