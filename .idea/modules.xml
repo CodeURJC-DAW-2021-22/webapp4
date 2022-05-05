@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/angular/wallypop/.idea/wallypop.iml" filepath="$PROJECT_DIR$/angular/wallypop/.idea/wallypop.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/webapp4.iml" filepath="$PROJECT_DIR$/.idea/webapp4.iml" />
     </modules>
   </component>
