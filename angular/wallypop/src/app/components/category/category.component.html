@@ -1,6 +1,8 @@
 
+<!-- ====== Security ====== -->
+<NotFound *ngIf="!loginService.isLogged() || !loginService.isAdmin()"></NotFound>
+
 <!-- ====== Page content ======-->
-<!-- {{>nav_side}} -->
 <section class="full-width section" *ngIf="loginService.isAdmin()">
     <div class="container">
         <div class="row">
@@ -169,3 +171,4 @@
 </div>
     </div>
 </section>
+

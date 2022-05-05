@@ -5,8 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/category/category.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/category/category.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/category/categoryList.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/category/categoryList.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/report/reports.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/report/reports.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/report/showReport.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/report/showReport.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/report/showReport.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/report/showReport.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../backend/src/main/java/es/codeurjc/wallypop/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/src/main/java/es/codeurjc/wallypop/service/EmailService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
