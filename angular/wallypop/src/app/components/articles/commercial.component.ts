@@ -5,6 +5,7 @@ import {Article} from '../../models/article.model';
 import {Category} from '../../models/category.model';
 import {CategoryService} from '../../services/category.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { FavoriteService } from 'src/app/services/favorites.service';
 
 @Component({
     selector: 'commercial',
@@ -16,10 +17,11 @@ export class CommercialComponent implements OnInit {
     category: Category;
     idCategory: number;
     filtered: boolean;
+    favorite: Article;
     query: string;
     city: string;
     // tslint:disable-next-line:max-line-length
-    constructor(private articleService: ArticleService, private categoryService: CategoryService, public loginService: LoginService, private routing: ActivatedRoute, private router: Router) {
+    constructor(private articleService: ArticleService, private categoryService: CategoryService, private favoriteService:FavoriteService, public loginService: LoginService, private routing: ActivatedRoute, private router: Router) {
         this.idCategory = -1;
         this.filtered = false;
     }
@@ -79,6 +81,19 @@ export class CommercialComponent implements OnInit {
     getFilteredArticles(query: string, city: string): void {
         this.articleService.getFilteredArticles(query, city).subscribe(
             article => this.articles = article,
+            error => console.log(error)
+        );
+    }
+
+    addFavorite(id:number|string) {
+        this.articleService.getArticle(id).subscribe(
+            favorite => {
+                console.log("hola");
+                this.favorite = favorite;
+                console.log("adios");
+                this.favoriteService.addFavorite(favorite,id);
+                console.log("Sigo aqui");
+            },
             error => console.log(error)
         );
     }

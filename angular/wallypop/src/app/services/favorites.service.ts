@@ -4,6 +4,7 @@ import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import { Favorites } from '../models/favorites.model';
+import { Article } from '../models/article.model';
 
 const BASE_URL = '/api/';
 
@@ -31,17 +32,12 @@ export class FavoriteService {
         ) as Observable<Favorites>;
     }
 
-    /*
-    addFavorite(title: string, description: string, icon: string): void {
-
-        this.httpClient.post(BASE_URL + 'favorites', {title, description, icon}, {withCredentials: true})
-            .subscribe(
-                (response) => this.router.navigate(['profile']),
-                (error) => alert('Error al añadir favorito')
-            );
-     
+    addFavorite(favorite: Article, id:number|string) {
+			return this.httpClient.post(BASE_URL + "favorites/" + id, favorite)
+				.pipe(
+					catchError(error => FavoriteService.handleError(error))
+				);
     }
-    */
 
 
     deleteFavorite(favorite: Favorites): Observable<any> {
