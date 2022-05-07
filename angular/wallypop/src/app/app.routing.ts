@@ -16,6 +16,7 @@ const appRoutes = [
     { path: 'newaccount', component: NewaccountComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'category', component: CategoryComponent},
+    { path: 'category/:id', component: CategoryComponent},
     { path: 'categoryList', component: CategoryListComponent},
     { path: 'commercial', component: CommercialComponent },
     { path: 'commercial/:id', component: CommercialComponent },

@@ -63,7 +63,7 @@ export class ArticleService {
     }
 
     deleteArticle(article: Article) {
-        return this.httpClient.delete(BASE_URL + article.id_ARTICLE).pipe(
+        return this.httpClient.delete(BASE_URL + "articles/" + article.id_ARTICLE).pipe(
             catchError(error => this.handleError(error))
         );
     }
