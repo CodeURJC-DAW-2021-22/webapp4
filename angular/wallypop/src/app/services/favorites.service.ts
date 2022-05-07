@@ -20,29 +20,22 @@ export class FavoriteService {
         return throwError('Server error (' + error.status + '): ' + error.text());
     }
 
-    getFavorites(): Observable<Favorites[]> {
-        return this.httpClient.get(BASE_URL + 'favorites').pipe(
+    getFavorites(idUser: number|string): Observable<Favorites[]> {
+        return this.httpClient.get(BASE_URL + 'favorites/' + idUser).pipe(
             catchError(error => FavoriteService.handleError(error))
         ) as Observable<Favorites[]>;
     }
 
-    getFavorite(id: number | string): Observable<Favorites> {
-        return this.httpClient.get(BASE_URL + 'favorites/' + id).pipe(
+    getFavorite(idUser: number|string, idArticle: number|string): Observable<Favorites> {
+        return this.httpClient.get(BASE_URL + 'favorites/' + idUser + '/' + idArticle).pipe(
             catchError(error => FavoriteService.handleError(error))
         ) as Observable<Favorites>;
     }
 
-    addFavorite(idArticle:number|string, idUser:number|string) {
-			return this.httpClient.post(BASE_URL + "favorites/" + idUser + "/" + idArticle,"")
-				.pipe(
-					catchError(error => FavoriteService.handleError(error))
-				);
-    }
-
-
-    deleteFavorite(favorite: Favorites): Observable<any> {
-        return this.httpClient.delete(BASE_URL + 'favorites/' + favorite.id_CATEGORY).pipe(
-            catchError(error => FavoriteService.handleError(error))
-        );
+    addFavorite(idUser: number|string, idArticle: number|string) {
+        return this.httpClient.post(BASE_URL + 'favorites/' + idUser + '/' + idArticle, null)
+            .pipe(
+                catchError(error => FavoriteService.handleError(error))
+            );
     }
 }
