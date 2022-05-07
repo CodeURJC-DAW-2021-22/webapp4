@@ -52,7 +52,7 @@ export class CategoryComponent implements OnInit{
       }
     
       private afterUploadImage(afterCategoryImage: Category){
-        this.router.navigate(['/category/', afterCategoryImage.id_CATEGORY]);
+        this.router.navigate(['/categoryList']);
       }
 
       save() {
