@@ -102,7 +102,7 @@
                         <ng-template #sold>
                             <a class="btn btn-primary btn-block" href="/sell/{{article.id_ARTICLE}}/0">ANULAR VENTA</a>
                         </ng-template>
-                        <a class="btn btn-danger btn-block" (click)="removeArticle(article)" href="/commercial">ELIMINAR</a>
+                        <a class="btn btn-danger btn-block" href="/delete/{{article.id_ARTICLE}}">ELIMINAR</a>
                     </ng-template> <!-- ONLY FOR OWNER OR ADMIN -->
                     <ng-template [ngIf]="!isOwner()">
                         <a aria-controls="collapseExample" aria-expanded="false" class="btn btn-success btn-block" data-toggle="collapse"
