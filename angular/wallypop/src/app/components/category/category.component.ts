@@ -12,6 +12,8 @@ export class CategoryComponent implements OnInit{
 
     categories: Category[];
 
+    category: Category;
+
     @ViewChild("file")
     file: any;
 
@@ -21,31 +23,28 @@ export class CategoryComponent implements OnInit{
     }
 
     ngOnInit(): void {
+        this.category = {id_CATEGORY: null, title: "", description: "", icon: "", categorys: null, size: 0};
         this.categoryService.getCategories().subscribe(
             category => this.categories = category,
             error => console.log(error)
           );
     }
     
+    /*
     addCategory(event: any, title: string, description: string, icon: string): void {
         event.preventDefault();
         this.categoryService.addCategory(title,description,icon);
-    }
+    }*/
 
     uploadImage(categoryImage: Category): void {
 
         const image = this.file.nativeElement.files[0];
         if (image) {
           let formData = new FormData();
-          formData.append("imageField", image);
+          formData.append("imageFile", image);
           this.categoryService.setCategoryImage(categoryImage, formData).subscribe(
             _ => this.afterUploadImage(categoryImage),
             error => alert('Error uploading category image: ' + error)
-          );
-        } else if(this.removeImage){
-          this.categoryService.deleteCategoryImage(categoryImage).subscribe(
-            _ => this.afterUploadImage(categoryImage),
-            error => alert('Error deleting book image: ' + error)
           );
         } else {
           this.afterUploadImage(categoryImage);
@@ -54,5 +53,12 @@ export class CategoryComponent implements OnInit{
     
       private afterUploadImage(afterCategoryImage: Category){
         this.router.navigate(['/category/', afterCategoryImage.id_CATEGORY]);
+      }
+
+      save() {
+        this.categoryService.addCategory(this.category).subscribe(
+          (category: Category) => this.uploadImage(category),
+          error => alert('Error creating new category: ' + error)
+        );
       }
 }
