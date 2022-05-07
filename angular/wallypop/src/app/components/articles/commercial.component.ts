@@ -85,13 +85,13 @@ export class CommercialComponent implements OnInit {
         );
     }
 
-    addFavorite(id:number|string) {
-        this.articleService.getArticle(id).subscribe(
+    addFavorite(idArticle:number|string, idUser:number|string) {
+        this.articleService.getArticle(idArticle).subscribe(
             favorite => {
-                console.log("hola");
+                console.log(idArticle);
                 this.favorite = favorite;
-                console.log("adios");
-                this.favoriteService.addFavorite(favorite,id);
+                console.log(idUser);
+                this.favoriteService.addFavorite(idArticle,idUser);
                 console.log("Sigo aqui");
             },
             error => console.log(error)

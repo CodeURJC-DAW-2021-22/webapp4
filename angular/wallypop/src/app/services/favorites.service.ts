@@ -32,8 +32,8 @@ export class FavoriteService {
         ) as Observable<Favorites>;
     }
 
-    addFavorite(favorite: Article, id:number|string) {
-			return this.httpClient.post(BASE_URL + "favorites/" + id, favorite)
+    addFavorite(idArticle:number|string, idUser:number|string) {
+			return this.httpClient.post(BASE_URL + "favorites/" + idUser + "/" + idArticle,"")
 				.pipe(
 					catchError(error => FavoriteService.handleError(error))
 				);
