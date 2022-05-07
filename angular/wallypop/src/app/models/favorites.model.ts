@@ -3,7 +3,7 @@ import { User } from "./user.model";
 
 
 export interface Favorites {
-    id_CATEGORY?: number;
-    users: User[];
-    articles: Article[];
+    id_FAVORITE?: number;
+    users: User;
+    article: Article;
 }

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
@@ -38,4 +38,11 @@ export class FavoriteService {
                 catchError(error => FavoriteService.handleError(error))
             );
     }
+
+    deleteFavorite(favorite: Favorites): Observable<any> {
+        return this.httpClient.delete(BASE_URL + 'favorites/' + favorite.id_FAVORITE).pipe(
+            catchError(error => FavoriteService.handleError(error))
+        );
+    }
 }
+
