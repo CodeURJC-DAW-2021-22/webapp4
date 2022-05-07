@@ -86,16 +86,4 @@ export class ArticleService {
         return throwError('Server error (' + error.status + '): ' + error.text());
     }
 
-    getFilteredArticles(query: string, city: string): Observable<Article[]> {
-        return this.httpClient.get(BASE_URL + 'articles/search?query=' + query + '&city=' + city).pipe(
-            catchError(error => this.handleError(error))
-        ) as Observable<Article[]>;
-    }
-
-    sendEmail(message: string, from: number, articleId: number): void {
-        this.httpClient.post(BASE_URL + 'mail/' + from + '/' + articleId, {message}, {withCredentials: true}).subscribe(
-            (response) => this.router.navigate(['/post/' + articleId], {queryParams: {e: 1}}),
-            (error) => this.router.navigate(['/post/' + articleId], {queryParams: {e: 0}})
-        );
-    }
 }

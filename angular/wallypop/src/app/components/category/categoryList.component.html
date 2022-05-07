@@ -1,9 +1,7 @@
 
-<!-- ====== Security ====== -->
-<NotFound *ngIf="!loginService.isLogged() || !loginService.isAdmin()"></NotFound>
-
 <!-- ====== Page content ======-->
-<section class="full-width section" *ngIf="loginService.isAdmin()">
+<!-- {{>nav_side}} -->
+<section class="full-width section">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-3">

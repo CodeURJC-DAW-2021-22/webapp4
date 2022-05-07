@@ -2,6 +2,14 @@
 <!-- ====== Page content ======-->
 <section class="section">
     <search></search>
+    <!--{{#ERROR}}
+    <br>
+    <div class="container">
+        <div class="alert alert-danger" role="alert">
+            <center>El artículo que buscas no existe o ya no está disponible</center>
+        </div>
+    </div>
+    {{/ERROR}} -->
     <hr>
     <div class="container-fluid">
         <div class="row">
@@ -11,14 +19,26 @@
                             data-drop-cont=".menu-commercial">
                         FILTROS <i aria-hidden="true" class="fa fa-sort pull-right"></i>
                     </button>
-                    <p>
-                        <small>Anuncios segunda mano. Las mejores ofertas en de segunda mano y de ocasión solo
-                            en Wallypop</small>
-                    </p>
-                    <p class="text-center">
-                    <a class="btn btn-info btn-block" href="/commercial" onclick="" type="reset">BORRAR
-                    FILTROS</a>
-                    </p>
+                    <form action="/search/commercial" class="full-width menu-commercial" method="GET">
+                        <!--<h4 class="text-light">CATEGORÍA</h4>
+                        <div class="form-group">
+                            <select class="form-control" name="id_category">
+                                <option disabled selected>Selecciona una categoría</option>
+                                <option *ngFor="let category of categories" name="CATEGORY" value="{{category.id_CATEGORY}}">{{category.title}}</option>
+                            </select>
+                        </div>
+                        <p class="text-center">
+                            <button class="btn btn-success btn-block">APLICAR</button>
+                        </p> -->
+                        <p>
+                            <small>Anuncios segunda mano. Las mejores ofertas en de segunda mano y de ocasión solo
+                                en Wallypop</small>
+                        </p>
+                        <p class="text-center">
+                        <a class="btn btn-info btn-block" href="/commercial" onclick="" type="reset">BORRAR
+                        FILTROS</a>
+                        </p>
+                    </form>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-9 col-md-10">
@@ -27,26 +47,31 @@
                         <li *ngFor="let category of categories"><a href="/commercial/{{category.id_CATEGORY}}">{{category.title}}</a></li>
                     </ol>
                 </div>
+                <!-- <div class="full-widht">
+                    <i class="fa fa-th-large btn btn-default hidden-xs btn-change-post"></i>
+                    <i class="fa fa-refresh btn btn-default"></i>
+                    <i class="fa fa-angle-right btn btn-default"></i>
+                </div> -->
                 <!-- Article -->
                 <div class="full-width container-post">
-                    <div *ngFor="let article of articles">
-                        <div class="full-width post" *ngIf="!article.sold">
-                                <figure class="full-width post-img">
-                                    <img alt="" class="img-responsive" src="/api/articles/{{article.id_ARTICLE}}/image">
-                                </figure>
-                                <div class="full-width post-info">
-                                    <a class="full-width post-info-title" href="/post/{{article.id_ARTICLE}}">{{article.title}}</a>
-                                    <p class="full-width post-info-price">{{article.price}}€</p>
-                                    <span class="post-info-zone">{{article.city}}</span>
-                                    <span class="post-info-date">{{article.date}}</span>
-                                    <a *ngIf="this.loginService.isLogged()" href="/addFavorite/{{article.id_ARTICLE}}"><i class="fa fa-heart-o post-info-like"></i></a>
-                                </div>
-                        </div>
+                    <div class="full-width post" *ngFor="let article of articles">
+                        <ng-template [ngIf]="!article.sold">
+                            <figure class="full-width post-img">
+                                <img alt="" class="img-responsive" src="/api/articles/{{article.id_ARTICLE}}/image">
+                            </figure>
+                            <div class="full-width post-info">
+                                <a class="full-width post-info-title" href="/post/{{article.id_ARTICLE}}">{{article.title}}</a>
+                                <p class="full-width post-info-price">{{article.price}}€</p>
+                                <span class="post-info-zone">{{article.city}}</span>
+                                <span class="post-info-date">{{article.date}}</span>
+                                <a *ngIf="this.loginService.isLogged()" href="/addFavorite/{{article.id_ARTICLE}}"><i class="fa fa-heart-o post-info-like"></i></a>
+                            </div>
+                        </ng-template>
                     </div>
                 </div>
 
                 <!-- End Article -->
-                <!-- <div class="clearfix"></div>
+                <div class="clearfix"></div>
                 <nav class="text-center">
                     <ul class="pagination">
                         <li>
@@ -65,7 +90,7 @@
                             </a>
                         </li>
                     </ul>
-                </nav> -->
+                </nav>
             </div>
         </div>
     </div>
