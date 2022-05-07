@@ -124,10 +124,14 @@
                         <!-- {{/RESERVED}}
                         {{/SOLD}}
                         {{^SOLD}} -->
+                        <ng-template [ngIf]="!isSold()">
                         <a class="btn btn-primary btn-block" href="/sell/{{article.id_ARTICLE}}/1">VENDIDO</a>
+                    </ng-template>
                         <!-- {{/SOLD}}
                         {{#SOLD}} -->
+                        <ng-template [ngIf]="isSold()">
                         <a class="btn btn-primary btn-block" href="/sell/{{article.id_ARTICLE}}/0">ANULAR VENTA</a>
+                    </ng-template>
                         <!-- {{/SOLD}}-->
                         <a class="btn btn-danger btn-block" (click)="removeArticle(article)" href="/commercial">ELIMINAR</a>
                     </ng-template> <!-- ONLY FOR OWNER OR ADMIN -->

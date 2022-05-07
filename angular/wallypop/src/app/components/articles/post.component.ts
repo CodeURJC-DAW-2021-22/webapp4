@@ -67,6 +67,10 @@ export class PostComponent implements OnInit {
         return this.article.reserved;
     }
 
+    isSold(): boolean{
+        return this.article.sold;
+    }
+
     removeArticle(removeArticleSelected: Article): void {
         const okResponse = window.confirm('Do you want to remove this article?');
         if (okResponse) {
