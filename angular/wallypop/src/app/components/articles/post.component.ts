@@ -5,21 +5,25 @@ import {Article} from '../../models/article.model';
 import {Category} from '../../models/category.model';
 import {CategoryService} from '../../services/category.service';
 import {User} from '../../models/user.model';
-import {Observable} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
+import { ReportService } from 'src/app/services/report.service';
+
 
 @Component({
     selector: 'post',
     templateUrl: './post.component.html'
 })
 export class PostComponent implements OnInit {
+
     article: Article;
     user: User;
     categories: Category[];
     idArticle: number;
+    emailSent = -1;
     // tslint:disable-next-line:max-line-length
-    constructor(private articleService: ArticleService, private categoryService: CategoryService, public loginService: LoginService, private routing: ActivatedRoute, private router: Router) {
+    constructor(private reportService: ReportService, private articleService: ArticleService, private categoryService: CategoryService, public loginService: LoginService, public routing: ActivatedRoute, private router: Router) {
         this.idArticle = -1;
+        this.emailSent = -1;
     }
 
     ngOnInit(): void {
@@ -31,6 +35,14 @@ export class PostComponent implements OnInit {
                 this.router.navigate(['commercial']);
             } */
         }
+        this.routing.queryParams.subscribe(params => {
+            if (params.e === '1') {
+                this.emailSent = 1;
+            }
+            if (params.e === '0') {
+                this.emailSent = 0;
+            }
+        });
     }
 
     getCategories(): void {
@@ -43,7 +55,10 @@ export class PostComponent implements OnInit {
     getArticle(id: number | string): void {
         this.articleService.getArticle(id).subscribe(
             article => this.article = article,
-            error => console.log(error)
+            error => {
+                alert('No existe este artículo o no está disponible en estos momentos');
+                this.router.navigate(['commercial']);
+            }
         );
         this.getUserArticle(id);
     }
@@ -67,10 +82,6 @@ export class PostComponent implements OnInit {
         return this.article.reserved;
     }
 
-    isSold(): boolean{
-        return this.article.sold;
-    }
-
     removeArticle(removeArticleSelected: Article): void {
         const okResponse = window.confirm('Do you want to remove this article?');
         if (okResponse) {
@@ -79,5 +90,17 @@ export class PostComponent implements OnInit {
                 error => console.error(error)
             );
         }
+      
+    newForm(): void {
+        this.router.navigate(['/formReport/' + this.article.id_ARTICLE]);
+      }
+
+    // tslint:disable-next-line:variable-name
+    sendEmail($event: any, message: string, id_USER: number, id_ARTICLE: number): void {
+        this.articleService.sendEmail(message, id_USER, id_ARTICLE);
+    }
+
+    isSold(): boolean {
+        return this.article.sold;
     }
 }

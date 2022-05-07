@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Array;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,8 +19,22 @@ public class GraphicRestController {
     private CategoryService categoryservice;
 
     @GetMapping("")
-    public List<Category> graphic() throws SQLException {
+    public List<Data> graphic() throws SQLException {
         List<Category> lCategory = categoryservice.graphic();
-        return lCategory;
+        List<Data> result = new ArrayList<>();
+        for (Category c : lCategory) {
+            result.add(new Data(c.getTITLE(), c.getSize()));
+        }
+        return result;
+    }
+}
+
+class Data {
+    public String name;
+    public int y;
+
+    public Data(String name, int y){
+        this.name = name;
+        this.y = y;
     }
 }
