@@ -94,4 +94,14 @@ export class PostComponent implements OnInit {
     isSold(): boolean {
         return this.article.sold;
     }
+
+    reserve($event: any) {
+        console.log("RESERVE");
+        this.articleService.reserve(this.idArticle);
+    }
+
+    sell($event: any) {
+        console.log("SELL");
+        this.articleService.sell(this.idArticle);
+    }
 }

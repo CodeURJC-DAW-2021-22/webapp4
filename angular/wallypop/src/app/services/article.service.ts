@@ -98,4 +98,18 @@ export class ArticleService {
             (error) => this.router.navigate(['/post/' + articleId], {queryParams: {e: 0}})
         );
     }
+
+    reserve(idArticle: number): void {
+        this.httpClient.post(BASE_URL + 'articles/' +  idArticle + '/reserve', null).subscribe(
+            response => location.reload(),
+            error => console.log(error)
+        );
+    }
+
+    sell(idArticle: number): void {
+        this.httpClient.post(BASE_URL + 'articles/' +  idArticle + '/sell', null).subscribe(
+            response => location.reload(),
+            error => console.log(error)
+        );
+    }
 }
