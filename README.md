@@ -521,5 +521,32 @@ El segundo se encarga de crear la imagen docker a partir del Dockerfile, subirla
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/angular_categories/angular/wallypop/src/app/components/category/categoryList.component.html
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/angular_categories/angular/wallypop/src/app/components/category/category.component.ts
 
+
+### -> Contribución Juan
+
+#### Descripción textual
+
+##### Implementación del formulario de reportes
+##### Implementación de la lista de reportes para el admin
+##### Implementación del ver reporte para el admin
+##### Participacion en la funcionalidad de crear nuevos anuncios
+
+#### 5 Commits más significativos
+
+##### Finalizacion de Formulario de reportes y ver reportes:https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/2535b9267d65ddf4179d5f2c6b1105b28a9dab0c
+##### Lista de reportes para el admin:https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/06f6e6e7c11cc5bd52e5842b653446590b12fbe9
+##### Report service y creacion del formulario de reportes:https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/711668c629f92bcc59662882111643b566a3033c
+##### Lista de reportes creacion:https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/7a7627696261e8f7d31c988d0f8a3abe116655ab
+##### Modelo de reportes:https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/e45206e3aa9688469d7c77b01c71bd3cbd37a242
+
+#### 5 ficheros mayor participación
+
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular/angular/wallypop/src/app/components/report/formReport.component.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular/angular/wallypop/src/app/components/report/formReport.component.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular/angular/wallypop/src/app/components/report/reports.component.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular/angular/wallypop/src/app/components/report/reports.component.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular/angular/wallypop/src/app/components/report/showReport.component.ts
+
+
 ## Licencia
 [APACHE](https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/26b1d22bc7625b0dd8cdb3a3b8eaf7bb5425833b/LICENSE)
