@@ -467,6 +467,31 @@ El segundo se encarga de crear la imagen docker a partir del Dockerfile, subirla
 
 # Fase 4
 
+### -> Contribución Iván
+
+#### Descripción textual
+
+##### He participado en la creación de la estructura de directorios relacionada con Article (Componentes, Modelo y Servicio)
+##### He participado en la implementación de la funcionalidad de publicar nuevos anuncios en la SPA con Angular.
+##### He participado en la implementación de la funcionalidad de listar anuncios de un User en la SPA con Angular.
+##### He participado en la realización del diagrama de la Fase 4.
+
+#### 5 Commits más significativos
+
+##### Creación estructura para articles (componentes, servicio y modelo): https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/fa779fbe59f0226a4ee688fb119019e0ccf563bd
+##### Añadido componente 1: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/5cdab28e03139bf20fb9e9b5d82d9e04837660cb
+##### Mejoras componente 1: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/0aa57c24ebe141d8fbf83d0f95dd5f6e9914b2e4
+##### Añadido componente 3: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/8618d7a58afac806e0133e3ef1e7409bb538a1cd
+##### Arreglar errores componente 1: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/02514adf392a169f8bf7f473134a6d0009d92c73
+
+#### 5 ficheros mayor participación
+
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular_article/angular/wallypop/src/app/components/article/AddArticle.component.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular_article/angular/wallypop/src/app/components/article/AddArticle.component.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular_article/angular/wallypop/src/app/components/article/ArticlesUserPagination.component.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular_article/angular/wallypop/src/app/components/article/ArticlesUserPagination.component.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular_article/angular/wallypop/src/app/services/article.service.ts
+
 ### -> Contribución Sergio
 
 #### Descripción textual
