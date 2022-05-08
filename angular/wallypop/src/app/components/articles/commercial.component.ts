@@ -21,7 +21,7 @@ export class CommercialComponent implements OnInit {
     query: string;
     city: string;
     // tslint:disable-next-line:max-line-length
-    constructor(private articleService: ArticleService, private categoryService: CategoryService, private favoriteService:FavoriteService, public loginService: LoginService, private routing: ActivatedRoute, private router: Router) {
+    constructor(private articleService: ArticleService, private categoryService: CategoryService, private favoriteService: FavoriteService, public loginService: LoginService, private routing: ActivatedRoute, private router: Router) {
         this.idCategory = -1;
         this.filtered = false;
     }
@@ -85,16 +85,7 @@ export class CommercialComponent implements OnInit {
         );
     }
 
-    addFavorite(idArticle:number|string, idUser:number|string) {
-        this.articleService.getArticle(idArticle).subscribe(
-            favorite => {
-                console.log(idArticle);
-                this.favorite = favorite;
-                console.log(idUser);
-                this.favoriteService.addFavorite(idArticle,idUser);
-                console.log("Sigo aqui");
-            },
-            error => console.log(error)
-        );
+    addFavorite(idUser: number|string, idArticle: number|string): void {
+        this.favoriteService.addFavorite(idUser, idArticle);
     }
 }

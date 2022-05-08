@@ -71,17 +71,17 @@
         <i class="fa fa-angle-right btn btn-default"></i>
     </div>
     <div class="full-width container-post">
-            <div *ngFor="let favorite of favorites">
-                <div class="full-width post" >
+            <div *ngFor="let favorite of favorites; index as i">
+                <div class="full-width post">
                         <figure class="full-width post-img">
-                            <img alt="" class="img-responsive" src="/api/articles/{{favorite.article.id_ARTICLE}}/image">
+                            <img alt="" class="img-responsive" src="/api/favorites/{{favorite.id_FAVORITE}}/image">
                         </figure>
                         <div class="full-width post-info">
-                            <a class="full-width post-info-title" href="/post/{{favorite.article.id_ARTICLE}}">{{favorite.article.title}}</a>
-                            <p class="full-width post-info-price">{{favorite.article.price}}€</p>
-                            <span class="post-info-zone">{{favorite.article.city}}</span>
-                            <span class="post-info-date">{{favorite.article.date}}</span>
-                            <a (click)="addFavorite(favorite.article.id_ARTICLE, favorite.users.id_USER)"><i class="fa fa-heart-o post-info-like"></i></a>
+                            <a class="full-width post-info-title" href="/post/{{articles[i].id_ARTICLE}}">{{articles[i].title}}</a>
+                            <p class="full-width post-info-price">{{articles[i].price}}€</p>
+                            <span class="post-info-zone">{{articles[i].city}}</span>
+                            <span class="post-info-date">{{articles[i].date}}</span>
+                            <a (click)="addFavorite(user.id_USER, articles[i].id_ARTICLE)"><i class="fa fa-heart-o post-info-like"></i></a>
                         </div>
                 </div>
             </div>

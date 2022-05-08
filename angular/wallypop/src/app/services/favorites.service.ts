@@ -32,11 +32,11 @@ export class FavoriteService {
         ) as Observable<Favorites>;
     }
 
-    addFavorite(idUser: number|string, idArticle: number|string) {
-        return this.httpClient.post(BASE_URL + 'favorites/' + idUser + '/' + idArticle, null)
-            .pipe(
-                catchError(error => FavoriteService.handleError(error))
-            );
+    addFavorite(idUser: number|string, idArticle: number|string): void {
+        this.httpClient.post(BASE_URL + 'favorites/' + idUser + '/' + idArticle, null).subscribe(
+            response => this.router.navigate(['favorites']),
+            error => this.router.navigate(['favorites'])
+        );
     }
 
     deleteFavorite(favorite: Favorites): Observable<any> {
