@@ -39,7 +39,7 @@
                                     <p class="full-width post-info-price">{{article.price}}€</p>
                                     <span class="post-info-zone">{{article.city}}</span>
                                     <span class="post-info-date">{{article.date}}</span>
-                                    <a *ngIf="this.loginService.isLogged()" href="/addFavorite/{{article.id_ARTICLE}}"><i class="fa fa-heart-o post-info-like"></i></a>
+                                    <a *ngIf="this.loginService.isLogged()" (click)="addFavorite(this.loginService.currentUser().id_USER, article.id_ARTICLE)"><i class="fa fa-heart-o post-info-like"></i></a>
                                 </div>
                         </div>
                     </div>

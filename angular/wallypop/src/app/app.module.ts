@@ -17,12 +17,14 @@ import { FormReportComponent } from './components/report/formReport.component';
 import { ReportsComponent } from './components/report/reports.component';
 import { ShowReportComponent } from './components/report/showReport.component';
 import { CategoryListComponent } from './components/category/categoryList.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 import {CommercialComponent} from './components/articles/commercial.component';
 import {PostComponent} from './components/articles/post.component';
 
+
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  declarations: [AppComponent, IndexComponent, LoginComponent, SearchComponent, NotFoundComponent, NewaccountComponent, ProfileComponent, CategoryComponent, CategoryListComponent, CommercialComponent, PostComponent, FormReportComponent, ReportsComponent, ShowReportComponent],
+  declarations: [AppComponent, IndexComponent, LoginComponent, SearchComponent, NotFoundComponent, NewaccountComponent, ProfileComponent, CategoryComponent, CategoryListComponent, CommercialComponent, PostComponent, FormReportComponent, ReportsComponent, ShowReportComponent, FavoritesComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, routing],
   bootstrap: [AppComponent]
 })

@@ -10,6 +10,7 @@ import { FormReportComponent } from './components/report/formReport.component';
 import { ReportsComponent } from './components/report/reports.component';
 import { ShowReportComponent } from './components/report/showReport.component';
 import { CategoryListComponent } from './components/category/categoryList.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 import {CommercialComponent} from './components/articles/commercial.component';
 import {PostComponent} from './components/articles/post.component';
 
@@ -23,6 +24,7 @@ const appRoutes = [
     { path: 'reports', component: ReportsComponent},
     { path: 'showReport', component: ShowReportComponent},
     { path: 'categoryList', component: CategoryListComponent},
+    { path: 'favorites', component: FavoritesComponent},
     { path: 'commercial', component: CommercialComponent },
     { path: 'showReport/:id', component: ShowReportComponent},
     { path: 'commercial/:id', component: CommercialComponent },
