@@ -465,5 +465,32 @@ El segundo se encarga de crear la imagen docker a partir del Dockerfile, subirla
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/main/Category.postman_collection.json
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/main/Favorites.postman_collection.json
 
+# Fase 4
+
+### -> Contribución Sergio
+
+#### Descripción textual
+
+##### Implementación del añadir una nueva categoria con foto
+##### Implementación de mostrar las categorias creadas en la pagina de categoryList
+##### Implementación del eliminar articulo
+##### Implementacion del modelo y servicio de categorias
+
+#### 5 Commits más significativos
+
+##### Eliminar una categoria: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/a0e3b89da8450466d52728080360ceac759a5b7f
+##### Añadir una categoria con foto: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/dac9f17a83ee26b317a89dbda8f682fafe622d58
+##### Eliminar un articulo: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/f026ec8838e236b2af6161deb86b3dbb0a93fea0
+##### Mostrar la lista de categorias en categoryList sin foto: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/4d6902cb723a7fa5bcc2a3ab2e6db9ab96317099
+##### Modelo de categorias: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/c55a35c0c527c14676af0280ca5fe87e8119a8f6
+
+#### 5 ficheros mayor participación
+
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/angular_categories/angular/wallypop/src/app/services/category.service.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/angular_categories/angular/wallypop/src/app/components/category/categoryList.component.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/angular_categories/angular/wallypop/src/app/components/category/category.component.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/angular_categories/angular/wallypop/src/app/components/category/categoryList.component.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/angular_categories/angular/wallypop/src/app/components/category/category.component.ts
+
 ## Licencia
 [APACHE](https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/26b1d22bc7625b0dd8cdb3a3b8eaf7bb5425833b/LICENSE)
