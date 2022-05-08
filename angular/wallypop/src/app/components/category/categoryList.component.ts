@@ -21,11 +21,6 @@ export class CategoryListComponent implements OnInit{
           );
     }
 
-    addCategory(event: any, title: string, description: string, icon: string): void {
-        event.preventDefault();
-        this.categoryService.addCategory(title,description,icon);
-    }
-
     removeCategory(removeCategorySelected: Category): void {
         const okResponse = window.confirm('Do you want to remove this category?');
         if (okResponse) {
