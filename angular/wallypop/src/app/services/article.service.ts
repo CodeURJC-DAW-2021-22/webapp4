@@ -39,17 +39,15 @@ export class ArticleService {
         ) as Observable<User>;
     }
 
-    addArticle(title: string, description: string, city: string, price: number, postal_code: number) {
-
-        this.httpClient.post(BASE_URL + 'admin/articles', {title, description, city, price, postal_code}, {withCredentials: true})
-            .subscribe(
-                (response) => this.router.navigate(['profile']),
-                (error) => alert('Usuario ya existe, inicie sesi�n')
-            );
+    // tslint:disable-next-line:variable-name
+    addArticle(TITLE: string, DESCRIPTION: string, CITY: string, p: string, POSTAL_CODE: string, categories: number[]) {
+        // tslint:disable-next-line:max-line-length
+        const PRICE = Number.parseFloat(p);
+        return this.httpClient.post(BASE_URL + 'articles', {TITLE, DESCRIPTION, CITY, PRICE, POSTAL_CODE, categories}, {withCredentials: true});
     }
 
     setArticleImage(article: Article, formData: FormData) {
-        return this.httpClient.post(BASE_URL + article.id_ARTICLE + '/image', formData)
+        return this.httpClient.post(BASE_URL + 'articles/' + article.id_ARTICLE + '/image', formData)
             .pipe(
                 catchError(error => this.handleError(error))
             );
@@ -63,7 +61,7 @@ export class ArticleService {
     }
 
     deleteArticle(article: Article) {
-        return this.httpClient.delete(BASE_URL + article.id_ARTICLE).pipe(
+        return this.httpClient.delete(BASE_URL + 'articles/' + article.id_ARTICLE).pipe(
             catchError(error => this.handleError(error))
         );
     }

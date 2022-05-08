@@ -16,6 +16,7 @@ import {PostComponent} from './components/articles/post.component';
 import {YourcommercialComponent} from './components/articles/yourcommercial.component';
 import {YourcommercialSoldComponent} from './components/articles/yourcommercialsold.component';
 import {SoldComponent} from './components/articles/sold.component';
+import {AddcommercialComponent} from './components/articles/addcommercial.component';
 
 const appRoutes = [
     { path: '', component: IndexComponent },
@@ -37,6 +38,7 @@ const appRoutes = [
     { path: 'yourcommercialsold', component: YourcommercialSoldComponent },
     { path: 'sold', component: SoldComponent },
     { path: 'sold/:id', component: SoldComponent },
+    { path: 'adcommercial', component: AddcommercialComponent },
     { path: '**', component: NotFoundComponent}
 ];
 

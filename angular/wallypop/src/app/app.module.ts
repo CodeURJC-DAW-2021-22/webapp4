@@ -23,11 +23,12 @@ import {PostComponent} from './components/articles/post.component';
 import {YourcommercialComponent} from './components/articles/yourcommercial.component';
 import {YourcommercialSoldComponent} from './components/articles/yourcommercialsold.component';
 import {SoldComponent} from './components/articles/sold.component';
+import {AddcommercialComponent} from './components/articles/addcommercial.component';
 
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  declarations: [AppComponent, IndexComponent, LoginComponent, SearchComponent, NotFoundComponent, NewaccountComponent, ProfileComponent, CategoryComponent, CategoryListComponent, CommercialComponent, PostComponent, FormReportComponent, ReportsComponent, ShowReportComponent, FavoritesComponent, YourcommercialComponent, YourcommercialSoldComponent, SoldComponent],
+  declarations: [AppComponent, IndexComponent, LoginComponent, SearchComponent, NotFoundComponent, NewaccountComponent, ProfileComponent, CategoryComponent, CategoryListComponent, CommercialComponent, PostComponent, FormReportComponent, ReportsComponent, ShowReportComponent, FavoritesComponent, YourcommercialComponent, YourcommercialSoldComponent, SoldComponent, AddcommercialComponent],
   imports: [BrowserModule, FormsModule, HttpClientModule, routing],
   bootstrap: [AppComponent]
 })
