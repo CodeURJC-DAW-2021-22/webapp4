@@ -95,13 +95,11 @@ export class PostComponent implements OnInit {
         return this.article.sold;
     }
 
-    reserve($event: any) {
-        console.log("RESERVE");
+    reserve($event: any): void {
         this.articleService.reserve(this.idArticle);
     }
 
-    sell($event: any) {
-        console.log("SELL");
+    sell($event: any): void {
         this.articleService.sell(this.idArticle);
     }
 }
