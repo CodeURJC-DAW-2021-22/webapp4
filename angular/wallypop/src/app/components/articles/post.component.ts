@@ -94,4 +94,14 @@ export class PostComponent implements OnInit {
     isSold(): boolean {
         return this.article.sold;
     }
+
+    removeArticle(removeArticleSelected: Article): void {
+        const okResponse = window.confirm('Do you want to remove this article?');
+        if (okResponse) {
+            this.articleService.deleteArticle(removeArticleSelected).subscribe(
+                _ => this.router.navigate(['/commercial']),
+                error => console.error(error)
+            );
+        }
+    }
 }
