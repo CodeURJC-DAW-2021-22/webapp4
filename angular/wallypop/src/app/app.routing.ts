@@ -13,6 +13,9 @@ import { CategoryListComponent } from './components/category/categoryList.compon
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import {CommercialComponent} from './components/articles/commercial.component';
 import {PostComponent} from './components/articles/post.component';
+import {YourcommercialComponent} from './components/articles/yourcommercial.component';
+import {YourcommercialSoldComponent} from './components/articles/yourcommercialsold.component';
+import {SoldComponent} from './components/articles/sold.component';
 
 const appRoutes = [
     { path: '', component: IndexComponent },
@@ -30,6 +33,10 @@ const appRoutes = [
     { path: 'commercial/:id', component: CommercialComponent },
     { path: 'post', component: PostComponent },
     { path: 'post/:id', component: PostComponent },
+    { path: 'yourcommercial', component: YourcommercialComponent },
+    { path: 'yourcommercialsold', component: YourcommercialSoldComponent },
+    { path: 'sold', component: SoldComponent },
+    { path: 'sold/:id', component: SoldComponent },
     { path: '**', component: NotFoundComponent}
 ];
 
