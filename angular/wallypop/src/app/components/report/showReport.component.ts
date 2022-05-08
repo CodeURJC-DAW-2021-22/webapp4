@@ -20,7 +20,6 @@ export class ShowReportComponent implements OnInit{
         report => this.report = report,
         error => console.error(error)
     );
-    console.log(this.report);
   }
 
   rejectReport(): void {

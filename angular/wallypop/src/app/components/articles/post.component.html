@@ -94,17 +94,17 @@
                 <!-- {{#logged}} -->
                 <ng-template [ngIf]="loginService.isLogged()">
                     <ng-template [ngIf]="isOwner() || isAdmin()">
-                        <a *ngIf="!isReserved() && !isSold(); else reserved" class="btn btn-primary btn-block" href="/reserve/{{article.id_ARTICLE}}/1">RESERVAR</a>
+                        <button *ngIf="!isReserved() && !isSold(); else reserved" (click)="reserve($event)" class="btn btn-primary btn-block">RESERVAR</button>
                         <ng-template #reserved>
-                            <a *ngIf="!isSold()" class="btn btn-primary btn-block" href="/reserve/{{article.id_ARTICLE}}/0">ANULAR RESERVAR</a>
+                            <button *ngIf="!isSold()" class="btn btn-primary btn-block" (click)="reserve($event)">ANULAR RESERVAR</button>
                         </ng-template>
-                        <a *ngIf="!isSold(); else sold" class="btn btn-primary btn-block" href="/sell/{{article.id_ARTICLE}}/1">VENDIDO</a>
+                        <a *ngIf="!isSold(); else sold" class="btn btn-primary btn-block" (click)="sell($event)">VENDIDO</a>
                         <ng-template #sold>
-                            <a class="btn btn-primary btn-block" href="/sell/{{article.id_ARTICLE}}/0">ANULAR VENTA</a>
+                            <a class="btn btn-primary btn-block" (click)="sell($event)">ANULAR VENTA</a>
                         </ng-template>
-                        <a class="btn btn-danger btn-block" href="/delete/{{article.id_ARTICLE}}">ELIMINAR</a>
+                        <a class="btn btn-danger btn-block" (click)="removeArticle(article)" href="/commercial">ELIMINAR</a>
                     </ng-template> <!-- ONLY FOR OWNER OR ADMIN -->
-                    <ng-template [ngIf]="!isOwner()">
+                    <ng-template [ngIf]="!isOwner() && !isAdmin()">
                         <a aria-controls="collapseExample" aria-expanded="false" class="btn btn-success btn-block" data-toggle="collapse"
                            href="#collapseEmail" role="button">ENVIAR MENSAJE</a>
                         <a class="btn btn-success btn-block" href="tel: {{user.tel}}">LLAMAR</a>
@@ -132,7 +132,11 @@
                 <p class="lead text-light" style="margin: 7px 0; background-color: #F5F5F5;">
                     <i aria-hidden="true" class="fa fa-map-marker fa-fw"></i> {{article.city}} ({{article.postal_CODE}})
                 </p>
-                <div id="map"></div>
+                <div class="map-container">
+                    <div class="map-frame">
+                        <div id="map"></div>
+                    </div>
+                </div>
                 <br>
                 <a (click)="newForm()">¿ES INAPROPIADO? REPORTAR ESTE ANUNCIO</a>
                 <div class="page-header">
@@ -152,44 +156,19 @@
     <!-- {{/Article}} -->
 </section>
 <!-- MAP -->
-<ng-template>
 <style>
-    html, body {
-        height: 100%;
-        margin: 0;
-    }
-
-    .leaflet-container {
+    .map-container {
         height: 400px;
         width: 600px;
         max-width: 100%;
         max-height: 100%;
     }
+
+    .map-frame {
+        height: 100%;
+    }
+
+    #map {
+        height: 100%;
+    }
 </style>
-<script>
-    // Errors because of mustache, works ok in html
-    //var lat = {{lat}};
-    //var lon = {{lon}};
-    var map = L.map('map').setView([lat, lon], 13);
-
-    var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-        maxZoom: 18,
-        attribution: 'Map data &copy; <a target="_blank" href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-            'Imagery © <a target="_blank" href="https://www.mapbox.com/">Mapbox</a>',
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        zoomOffset: -1
-    }).addTo(map);
-
-    //var marker = L.marker([40.43958863903831, -3.5973164885885343]).addTo(map);
-
-    var circle = L.circle([lat, lon], {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        radius: 700
-    }).addTo(map);
-
-
-</script>
-</ng-template>

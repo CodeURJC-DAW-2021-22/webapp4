@@ -6,12 +6,14 @@ import {Category} from '../../models/category.model';
 import {CategoryService} from '../../services/category.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { FavoriteService } from 'src/app/services/favorites.service';
+import {User} from '../../models/user.model';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
-    selector: 'commercial',
-    templateUrl: './commercial.component.html'
+    selector: 'yourcommercialsold',
+    templateUrl: './yourcommercialsold.component.html'
 })
-export class CommercialComponent implements OnInit {
+export class YourcommercialSoldComponent implements OnInit {
     articles: Article[];
     categories: Category[];
     category: Category;
@@ -21,24 +23,23 @@ export class CommercialComponent implements OnInit {
     query: string;
     city: string;
     // tslint:disable-next-line:max-line-length
-    constructor(private articleService: ArticleService, private categoryService: CategoryService, private favoriteService: FavoriteService, public loginService: LoginService, private routing: ActivatedRoute, private router: Router) {
+    constructor(private articleService: ArticleService, private categoryService: CategoryService, private favoriteService: FavoriteService, public loginService: LoginService, private routing: ActivatedRoute, private router: Router, private http: HttpClient) {
         this.idCategory = -1;
         this.filtered = false;
     }
 
     ngOnInit(): void {
         this.getCategories();
-        this.idCategory = this.routing.snapshot.params.id;
-        if (this.idCategory !== undefined) {
-            this.getArticlesFromCategory(this.idCategory);
-        } else {
-            this.queryParams();
-            if (this.filtered) {
-                this.getFilteredArticles(this.query, this.city);
-            } else {
-                this.getAllArticles();
+        this.getUserArticles();
+    }
+
+    getUserArticles(): void {
+        this.http.get('/api/users', { withCredentials: true }).subscribe(
+            response => {
+                const us = response as User;
+                this.articles = us.articles;
             }
-        }
+        );
     }
 
     queryParams(): void {
