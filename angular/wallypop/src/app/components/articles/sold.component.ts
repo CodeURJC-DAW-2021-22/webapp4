@@ -17,7 +17,6 @@ export class SoldComponent implements OnInit {
     category: Category;
     idCategory: number;
     filtered: boolean;
-    favorite: Article;
     query: string;
     city: string;
     // tslint:disable-next-line:max-line-length
@@ -28,29 +27,7 @@ export class SoldComponent implements OnInit {
 
     ngOnInit(): void {
         this.getCategories();
-        this.idCategory = this.routing.snapshot.params.id;
-        if (this.idCategory !== undefined) {
-            this.getArticlesFromCategory(this.idCategory);
-        } else {
-            this.queryParams();
-            if (this.filtered) {
-                this.getFilteredArticles(this.query, this.city);
-            } else {
-                this.getAllArticles();
-            }
-        }
-    }
-
-    queryParams(): void {
-        this.routing.queryParams.subscribe(params => {
-            if (params.query !== undefined && params.city !== undefined) {
-                this.filtered = true;
-                this.query = params.query;
-                this.city = params.city;
-            } else {
-                this.filtered = false;
-            }
-        });
+        this.getAllArticles();
     }
 
     getCategories(): void {
@@ -60,26 +37,8 @@ export class SoldComponent implements OnInit {
         );
     }
 
-    getArticlesFromCategory(id: number | string): void {
-        this.categoryService.getCategory(id).subscribe(
-            articles => this.articles = articles,
-            error => {
-                console.log(error);
-                alert('No existe esta categoría o no hay artículos disponibles');
-                this.router.navigate(['commercial']);
-            }
-        );
-    }
-
     getAllArticles(): void {
         this.articleService.getArticles().subscribe(
-            article => this.articles = article,
-            error => console.log(error)
-        );
-    }
-
-    getFilteredArticles(query: string, city: string): void {
-        this.articleService.getFilteredArticles(query, city).subscribe(
             article => this.articles = article,
             error => console.log(error)
         );
