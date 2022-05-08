@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {LoginService} from '../../services/login.service';
 import {ArticleService} from '../../services/article.service';
 import {Article} from '../../models/article.model';
@@ -8,22 +8,59 @@ import {User} from '../../models/user.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import { ReportService } from 'src/app/services/report.service';
 
+import * as L from 'leaflet';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
     selector: 'post',
     templateUrl: './post.component.html'
 })
-export class PostComponent implements OnInit {
+export class PostComponent implements OnInit, AfterViewInit {
 
     article: Article;
     user: User;
     categories: Category[];
     idArticle: number;
     emailSent = -1;
+
+    private map;
+
+
+    private initMap(lat: number, lon: number): void {
+        this.map = L.map('map', {
+            center: [ lat, lon ],
+            zoom: 13
+        });
+        const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            minZoom: 3,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            titleSize: 512
+        });
+
+        const circle = L.circle([ lat, lon ], {
+            color:  'red',
+            fillColor:  '#f03',
+            fillOpacity:  0.5,
+            radius:  700
+        });
+
+        tiles.addTo(this.map);
+        circle.addTo(this.map);
+    }
+
     // tslint:disable-next-line:max-line-length
-    constructor(private reportService: ReportService, private articleService: ArticleService, private categoryService: CategoryService, public loginService: LoginService, public routing: ActivatedRoute, private router: Router) {
+    constructor(private reportService: ReportService, private articleService: ArticleService, private categoryService: CategoryService, public loginService: LoginService, public routing: ActivatedRoute, private router: Router, private httpClient: HttpClient) {
         this.idArticle = -1;
         this.emailSent = -1;
+    }
+
+    ngAfterViewInit(): void {
+        this.httpClient.get('/api/articles/' + this.idArticle + '/map').subscribe(response => {
+            const lat = response[0];
+            const lon = response[1];
+            this.initMap(lat, lon);
+        });
     }
 
     ngOnInit(): void {
