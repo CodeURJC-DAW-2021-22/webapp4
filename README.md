@@ -467,6 +467,10 @@ El segundo se encarga de crear la imagen docker a partir del Dockerfile, subirla
 
 # Fase 4
 
+## Diagrama de clases y templates
+
+![](ScreenshotsFase4/diagramaFase4.jpg)
+
 ### -> Contribución Iván
 
 #### Descripción textual
