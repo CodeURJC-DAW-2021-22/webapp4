@@ -10,5 +10,4 @@ export interface User {
     n_SELL: number;
     is_ADMIN: boolean;
     articles: Article[];
-    // favorites: Favorites[];
 }

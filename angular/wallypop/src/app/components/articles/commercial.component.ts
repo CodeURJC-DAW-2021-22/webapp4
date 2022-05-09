@@ -5,7 +5,7 @@ import {Article} from '../../models/article.model';
 import {Category} from '../../models/category.model';
 import {CategoryService} from '../../services/category.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import { FavoriteService } from 'src/app/services/favorites.service';
+import {FavoriteService} from 'src/app/services/favorites.service';
 
 @Component({
     selector: 'commercial',
@@ -20,6 +20,7 @@ export class CommercialComponent implements OnInit {
     favorite: Article;
     query: string;
     city: string;
+
     // tslint:disable-next-line:max-line-length
     constructor(private articleService: ArticleService, private categoryService: CategoryService, private favoriteService: FavoriteService, public loginService: LoginService, private routing: ActivatedRoute, private router: Router) {
         this.idCategory = -1;
@@ -85,7 +86,7 @@ export class CommercialComponent implements OnInit {
         );
     }
 
-    addFavorite(idUser: number|string, idArticle: number|string): void {
+    addFavorite(idUser: number | string, idArticle: number | string): void {
         this.favoriteService.addFavorite(idUser, idArticle);
     }
 }

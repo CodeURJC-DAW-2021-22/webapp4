@@ -1,4 +1,3 @@
-
 <!-- ====== Security ====== -->
 <NotFound *ngIf="!loginService.isLogged() || !loginService.isAdmin()"></NotFound>
 
@@ -7,11 +6,6 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-3">
-                <!--<buttom class="btn btn-default btn-block visible-xs btn-dropdown-conatiner"
-                        data-drop-cont=".user-menu-xs">
-                    <i aria-hidden="true" class="fa fa-user fa-fw"></i> MOSTRAR MENÚ <i aria-hidden="true"
-                                                                                        class="fa fa-sort pull-right"></i>
-                </buttom> -->
                 <div class="full-width user-menu-xs" style="text-align: center">
                     <div class="full-width post-user-info" style="margin: 0 !important;">
                         <!-- {{#admin}} -->
@@ -20,17 +14,17 @@
                         <!-- {{/admin}} -->
                         <p class="full-width"><small>{{loginService.currentUser().full_NAME}}</small></p>
                         <img alt="User" class="" height="auto" src="/assets/img/user.png" style="border:1px;top:0px;"
-                            width="90px">
+                             width="90px">
                         <p class="full-width"><small>{{loginService.currentUser().name}}</small></p>
                         <div class="full-width div-table">
                             <div class="full-width div-table-row">
                                 <div class="div-table-cell div-table-cell-xs"
-                                    style="height: auto !important; line-height: inherit; border:none;">
+                                     style="height: auto !important; line-height: inherit; border:none;">
                                     {{loginService.currentUser().n_SELL}} <br>
                                     <small>En venta</small>
                                 </div>
                                 <div class="div-table-cell div-table-cell-xs"
-                                    style="height: auto !important; line-height: inherit; border:none;">
+                                     style="height: auto !important; line-height: inherit; border:none;">
                                     {{loginService.currentUser().n_SOLD}} <br>
                                     <small>Vendidos</small>
                                 </div>
@@ -87,7 +81,8 @@
 
                                 <tr *ngFor="let report of reports" (click)="showReport($event, ID_REPORT.value)">
                                     <!--ESTABA DENTRO DEL TR onclick="location.href='/showReport/{{ID_REPORT}}'"-->
-                                    <td #ID_REPORT name="ID_REPORT" value="{{report.id_REPORT}}">{{report.id_REPORT}}</td>
+                                    <td #ID_REPORT name="ID_REPORT"
+                                        value="{{report.id_REPORT}}">{{report.id_REPORT}}</td>
                                     <td name="ID_REPORT" value="{{report.email}}">{{report.email}}</td>
                                     <td name="ID_REPORT" value="{{report.description}}">{{report.description}}</td>
                                 </tr>

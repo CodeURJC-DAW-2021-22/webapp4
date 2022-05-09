@@ -1,4 +1,3 @@
-
 <!-- ====== Security ====== -->
 <NotFound *ngIf="!loginService.isLogged() || !loginService.isAdmin()"></NotFound>
 
@@ -23,22 +22,21 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Articlo Denunciado</label>
                         <label class="col-sm-7">
-                            <a href="/new/post/{{report.article.id_ARTICLE}}" class="form-control" >Pulsa para acceder
-                                al articulo denunciado</a> <!--onclick="location.href='/showPost/{{ID_REPORT}}'"-->
+                            <a href="/new/post/{{report.article.id_ARTICLE}}" class="form-control">Pulsa para acceder
+                                al articulo denunciado</a>
                         </label>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Descripción de la incidencia</label>
                         <label class="col-md-7">
-                            <textarea class="form-control">{{report.description}}</textarea><!--DENTRO DEL TEXTARES {{DESCRIPTION}}-->
+                            <textarea class="form-control">{{report.description}}</textarea>
+                            <!--DENTRO DEL TEXTARES {{DESCRIPTION}}-->
                         </label>
                     </div>
                     <br><br>
-                    <h3 class="text-info">Fichero adjunto por el usuario</h3>
-                    <a href="/api/admin/reports/{{report.id_REPORT}}/proof" download="" >Download</a><!--href="{{ID_REPORT}}/image"-->
                     <p class="text-center">
-                        <a (click)="aceptReport()" class="btn btn-success" >ACEPTAR REPORTE</a><!--href="/showReport/{{ID_REPORT}}/deleteArticle" -->
-                        <a (click)="rejectReport()" class="btn btn-danger" >RECHAZAR REPORTE</a> <!--href="/showReport/{{ID_REPORT}}/delete"> -->
+                        <a (click)="aceptReport()" class="btn btn-success">ACEPTAR REPORTE</a>
+                        <a (click)="rejectReport()" class="btn btn-danger">RECHAZAR REPORTE</a>
                     </p>
                     <!-- {{/report}} -->
                 </form>

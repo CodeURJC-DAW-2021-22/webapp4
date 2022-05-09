@@ -11,8 +11,5 @@ export interface Article {
     n_VISITS: number;
     reserved: boolean;
     user: User;
-    // categories: Category[];
-    // photo: Blob;
-    // categories: Category[];
     sold: boolean;
 }

@@ -1,4 +1,4 @@
-import {Component, VERSION, OnInit, AfterViewInit} from '@angular/core';
+import {Component} from '@angular/core';
 import * as Highcharts from 'highcharts';
 import {CategoryService} from "../../services/category.service";
 
@@ -19,13 +19,14 @@ Accessibility(Highcharts);
     selector: 'graphic',
     templateUrl: './graphic.component.html'
 })
-export class GraphicComponent  {
+export class GraphicComponent {
 
     Highcharts: typeof Highcharts = Highcharts;
     updateFlag = false;
 
 
     public content = [];
+
     constructor(public categoryService: CategoryService) {
         this.getGraphicData();
         this.inited(this.content);
@@ -33,13 +34,14 @@ export class GraphicComponent  {
 
     getGraphicData(): void {
         this.categoryService.getGraphicContent().subscribe(value => {
-            value.forEach(d =>{
+            value.forEach(d => {
                 this.content.push([d.name.toString(), d.y.valueOf()])
             })
         })
     }
 
     chartOptions: Highcharts.Options;
+
     inited(content: any): void {
         this.chartOptions = {
             chart: {

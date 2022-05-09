@@ -1,4 +1,3 @@
-
 <!-- ====== Contenido de pagina ======-->
 <section class="section">
     <search></search>
@@ -8,7 +7,8 @@
         <div class="row">
             <div class="col-xs-12 col-sm-8">
                 <ol class="breadcrumb"> <!-- Mostrar todas las categorías a las que pertenece el artículo -->
-                    <li *ngFor="let category of categories"><a href="/new/commercial/{{category.id_CATEGORY}}">{{category.title}}</a></li>
+                    <li *ngFor="let category of categories"><a
+                            href="/new/commercial/{{category.id_CATEGORY}}">{{category.title}}</a></li>
                     <li class="active">Id: #{{article.id_ARTICLE}}</li>
                 </ol>
                 <!-- Reserved -->
@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="alert alert-info" role="alert" style="text-align: center;">
-                                    <b>Este artículo se encuentra reservado</b>
+                                <b>Este artículo se encuentra reservado</b>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="alert alert-success" role="alert" style="text-align: center;">
-                                    <b>Artículo vendido</b>
+                                <b>Artículo vendido</b>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                 <div class="row" *ngIf="emailSent === 1">
                     <div class="col-xs-12">
                         <div class="alert alert-success" role="alert" style="text-align: center;">
-                                <b>Correo enviado correctamente</b>
+                            <b>Correo enviado correctamente</b>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,9 @@
                 <div class="full-width div-table">
                     <div class="full-width div-table-row">
                         <div class="div-table-cell div-table-cell-xs">
-                            <a class="btn btn-default btn-block" href="/new/commercial"><i aria-hidden="true" class="fa fa-angle-left"></i> Volver al listado</a>
+                            <a class="btn btn-default btn-block" href="/new/commercial"><i aria-hidden="true"
+                                                                                           class="fa fa-angle-left"></i>
+                                Volver al listado</a>
                         </div>
                     </div>
                 </div>
@@ -80,9 +82,9 @@
                     <div>
                         <p class="full-width lead">{{user.full_NAME}}</p>
                         <p class="full-width lead">{{user.name}}</p>
-                       <ng-template [ngIf]="loginService.isLogged()">
+                        <ng-template [ngIf]="loginService.isLogged()">
                             <p class="full-width"><i aria-hidden="true" class="fa fa-mobile"></i> {{user.tel}}</p>
-                       </ng-template>
+                        </ng-template>
                     </div>
                     <!-- END User -->
                 </div>
@@ -94,18 +96,24 @@
                 <!-- {{#logged}} -->
                 <ng-template [ngIf]="loginService.isLogged()">
                     <ng-template [ngIf]="isOwner() || isAdmin()">
-                        <button *ngIf="!isReserved() && !isSold(); else reserved" (click)="reserve($event)" class="btn btn-primary btn-block">RESERVAR</button>
+                        <button *ngIf="!isReserved() && !isSold(); else reserved" (click)="reserve($event)"
+                                class="btn btn-primary btn-block">RESERVAR
+                        </button>
                         <ng-template #reserved>
-                            <button *ngIf="!isSold()" class="btn btn-primary btn-block" (click)="reserve($event)">ANULAR RESERVAR</button>
+                            <button *ngIf="!isSold()" class="btn btn-primary btn-block" (click)="reserve($event)">ANULAR
+                                RESERVAR
+                            </button>
                         </ng-template>
-                        <a *ngIf="!isSold(); else sold" class="btn btn-primary btn-block" (click)="sell($event)">VENDIDO</a>
+                        <a *ngIf="!isSold(); else sold" class="btn btn-primary btn-block"
+                           (click)="sell($event)">VENDIDO</a>
                         <ng-template #sold>
                             <a class="btn btn-primary btn-block" (click)="sell($event)">ANULAR VENTA</a>
                         </ng-template>
                         <a class="btn btn-danger btn-block" (click)="removeArticle(article)" href="/new/commercial">ELIMINAR</a>
                     </ng-template> <!-- ONLY FOR OWNER OR ADMIN -->
                     <ng-template [ngIf]="!isOwner() && !isAdmin()">
-                        <a aria-controls="collapseExample" aria-expanded="false" class="btn btn-success btn-block" data-toggle="collapse"
+                        <a aria-controls="collapseExample" aria-expanded="false" class="btn btn-success btn-block"
+                           data-toggle="collapse"
                            href="#collapseEmail" role="button">ENVIAR MENSAJE</a>
                         <a class="btn btn-success btn-block" href="tel: {{user.tel}}">LLAMAR</a>
                         <div class="collapse" id="collapseEmail">
@@ -117,12 +125,14 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">Mensaje</label>
                                         <div class="col-sm-7">
-                                            <textarea #message NAME="message" class="form-control input-lg" placeholder="Mensaje"
+                                            <textarea #message NAME="message" class="form-control input-lg"
+                                                      placeholder="Mensaje"
                                                       required="" rows="3"></textarea>
                                         </div>
                                     </div>
                                     <p class="text-center">
-                                         <input (click)="sendEmail($event, message.value, this.loginService.currentUser().id_USER, this.article.id_ARTICLE)" class="btn btn-info" type="submit" value="Enviar"/>
+                                        <input (click)="sendEmail($event, message.value, this.loginService.currentUser().id_USER, this.article.id_ARTICLE)"
+                                               class="btn btn-info" type="submit" value="Enviar"/>
                                     </p>
                                 </form>
                             </div>

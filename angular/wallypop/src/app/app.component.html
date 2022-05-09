@@ -10,17 +10,17 @@
         <ul class="list-unstyled full-width">
             <li>
                 <a href="/new/">
-                     INICIO
+                    INICIO
                 </a>
             </li>
             <li>
                 <a href="/new/commercial">
-                     ANUNCIOS
+                    ANUNCIOS
                 </a>
             </li>
             <li>
                 <a href="/new/sold">
-                     ANUNCIOS VENDIDOS
+                    ANUNCIOS VENDIDOS
                 </a>
             </li>
             <span *ngIf="loginService.isLogged()">
@@ -36,7 +36,8 @@
                 </li>
                 <li>
                     <a href="/new/profile">
-                        {{loginService.currentUser().full_NAME}} <i aria-hidden="true" class="fa fa-user NavBar-Nav-icon"></i>
+                        {{loginService.currentUser().full_NAME}} <i aria-hidden="true"
+                                                                    class="fa fa-user NavBar-Nav-icon"></i>
                     </a>
                 </li>
             </span>
@@ -68,15 +69,3 @@
 <section>
     <router-outlet></router-outlet>
 </section>
-<!-- <div *ngIf="loginService.isLogged()" style="text-align: center">
-    Current user: {{loginService.currentUser().name}}
-</div>
-<div *ngIf="loginService.isLogged() && loginService.isAdmin()" style="text-align: center">
-    ROLE: ADMIN
-</div>
-<div *ngIf="loginService.isLogged() && !loginService.isAdmin()" style="text-align: center">
-    ROLE: USER
-</div>
-<div *ngIf="!loginService.isLogged()" style="text-align: center">
-    Current user: NULL
-</div> -->

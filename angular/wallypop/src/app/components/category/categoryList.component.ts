@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
-import { Category } from 'src/app/models/category.model';
+import {Router} from '@angular/router';
+import {Category} from 'src/app/models/category.model';
 import {CategoryService} from '../../services/category.service';
 import {LoginService} from '../../services/login.service';
 
@@ -8,17 +8,18 @@ import {LoginService} from '../../services/login.service';
     selector: 'categoryList',
     templateUrl: './categoryList.component.html'
 })
-export class CategoryListComponent implements OnInit{
+export class CategoryListComponent implements OnInit {
 
     categories: Category[];
 
     constructor(public categoryService: CategoryService, public loginService: LoginService, private router: Router) {
     }
+
     ngOnInit(): void {
         this.categoryService.getCategories().subscribe(
             category => this.categories = category,
             error => console.log(error)
-          );
+        );
     }
 
     removeCategory(removeCategorySelected: Category): void {

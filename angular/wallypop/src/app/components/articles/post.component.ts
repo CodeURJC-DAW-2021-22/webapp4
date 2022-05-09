@@ -6,7 +6,7 @@ import {Category} from '../../models/category.model';
 import {CategoryService} from '../../services/category.service';
 import {User} from '../../models/user.model';
 import {ActivatedRoute, Router} from '@angular/router';
-import { ReportService } from 'src/app/services/report.service';
+import {ReportService} from 'src/app/services/report.service';
 
 import * as L from 'leaflet';
 import {HttpClient} from '@angular/common/http';
@@ -28,7 +28,7 @@ export class PostComponent implements OnInit, AfterViewInit {
 
     private initMap(lat: number, lon: number): void {
         this.map = L.map('map', {
-            center: [ lat, lon ],
+            center: [lat, lon],
             zoom: 13
         });
         const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -38,11 +38,11 @@ export class PostComponent implements OnInit, AfterViewInit {
             titleSize: 512
         });
 
-        const circle = L.circle([ lat, lon ], {
-            color:  'red',
-            fillColor:  '#f03',
-            fillOpacity:  0.5,
-            radius:  700
+        const circle = L.circle([lat, lon], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 700
         });
 
         tiles.addTo(this.map);
@@ -121,7 +121,7 @@ export class PostComponent implements OnInit, AfterViewInit {
 
     newForm(): void {
         this.router.navigate(['/formReport/' + this.article.id_ARTICLE]);
-      }
+    }
 
     // tslint:disable-next-line:variable-name
     sendEmail($event: any, message: string, id_USER: number, id_ARTICLE: number): void {
@@ -138,7 +138,7 @@ export class PostComponent implements OnInit, AfterViewInit {
 
     sell($event: any): void {
         this.articleService.sell(this.idArticle);
-	}
+    }
 
     removeArticle(removeArticleSelected: Article): void {
         const okResponse = window.confirm('Do you want to remove this article?');

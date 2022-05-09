@@ -13,7 +13,8 @@
                     <div class="col-sm-7">
                         <div class="form-group">
                             <select #categories class="form-control" multiple name="CATEGORYS">
-                                <option *ngFor="let category of categorys" name="CATEGORY" value="{{category.id_CATEGORY}}">{{category.title}}</option>
+                                <option *ngFor="let category of categorys" name="CATEGORY"
+                                        value="{{category.id_CATEGORY}}">{{category.title}}</option>
                             </select>
                         </div>
                     </div>
@@ -30,7 +31,8 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Descripción</label>
                     <div class="col-sm-7">
-                        <textarea #description NAME="dESCRIPTION" class="form-control" placeholder="Descripción" required=""
+                        <textarea #description NAME="dESCRIPTION" class="form-control" placeholder="Descripción"
+                                  required=""
                                   rows="3"></textarea>
                     </div>
                 </div>
@@ -49,7 +51,8 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Código postal</label>
                     <div class="col-sm-7">
-                        <input #postal_CODE class="form-control" name="pOSTAL_CODE" placeholder="Código postal" required=""
+                        <input #postal_CODE class="form-control" name="pOSTAL_CODE" placeholder="Código postal"
+                               required=""
                                type="text">
                     </div>
                 </div>
@@ -69,7 +72,8 @@
                     Privacidad</a>
                 </p>
                 <p class="text-center">
-                    <input (click)="save($event, title.value, description.value, city.value, price.value, postal_CODE.value, categories.selectedOptions)" class="btn btn-info" type="submit" value="Guardar" />
+                    <input (click)="save($event, title.value, description.value, city.value, price.value, postal_CODE.value, categories.selectedOptions)"
+                           class="btn btn-info" type="submit" value="Guardar"/>
                 </p>
             </div>
         </div>

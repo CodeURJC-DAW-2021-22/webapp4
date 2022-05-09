@@ -1,13 +1,11 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { User } from '../models/user.model';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {User} from '../models/user.model';
 import {Observable, Subscription, throwError} from 'rxjs';
-import {catchError, retry} from 'rxjs/operators';
-import {Article} from '../models/article.model';
 
 const BASE_URL = '/api/auth';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class LoginService {
 
     constructor(private http: HttpClient) {
@@ -26,7 +24,7 @@ export class LoginService {
 
     reqIsLogged(): void {
 
-        this.http.get('/api/users', { withCredentials: true }).subscribe(
+        this.http.get('/api/users', {withCredentials: true}).subscribe(
             response => {
                 this.user = response as User;
                 this.logged = true;
@@ -43,7 +41,7 @@ export class LoginService {
 
     logIn(email: string, pass: string): void {
 
-        this.http.post(BASE_URL + '/login', { email, password: pass }, { withCredentials: true })
+        this.http.post(BASE_URL + '/login', {email, password: pass}, {withCredentials: true})
             .subscribe(
                 (response) => this.reqIsLogged(),
                 (error) => alert('Usuario y/o contraseña no válidos')
@@ -51,9 +49,9 @@ export class LoginService {
 
     }
 
-    logOut(): Subscription{
+    logOut(): Subscription {
 
-        return this.http.post(BASE_URL + '/logout', { withCredentials: true })
+        return this.http.post(BASE_URL + '/logout', {withCredentials: true})
             .subscribe((resp: any) => {
                 console.log('Sesión finalizada con éxito');
                 this.logged = false;

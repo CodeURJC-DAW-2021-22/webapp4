@@ -6,7 +6,7 @@ import {catchError} from 'rxjs/operators';
 import {Category} from '../models/category.model';
 import {Router} from '@angular/router';
 import {Article} from '../models/article.model';
-import { Data } from '../models/data.model';
+import {Data} from '../models/data.model';
 
 const BASE_URL = '/api/';
 
@@ -42,28 +42,21 @@ export class CategoryService {
 
     addCategory(category: Category) {
 
-        
+
         if (!category.id_CATEGORY) {
-			return this.httpClient.post(BASE_URL + "admin/categories", category)
-				.pipe(
-					catchError(error => CategoryService.handleError(error))
-				);
-		} else {
-			return this.httpClient.put(BASE_URL + "admin/categories/" + category.id_CATEGORY, category).pipe(
-				catchError(error => CategoryService.handleError(error))
-			);
-		}
+            return this.httpClient.post(BASE_URL + "admin/categories", category)
+                .pipe(
+                    catchError(error => CategoryService.handleError(error))
+                );
+        } else {
+            return this.httpClient.put(BASE_URL + "admin/categories/" + category.id_CATEGORY, category).pipe(
+                catchError(error => CategoryService.handleError(error))
+            );
+        }
     }
 
     setCategoryImage(category: Category, formData: FormData): Observable<any> {
         return this.httpClient.post(BASE_URL + 'admin/categories/' + category.id_CATEGORY + '/image', formData)
-            .pipe(
-                catchError(error => CategoryService.handleError(error))
-            );
-    }
-
-    deleteCategoryImage(category: Category): Observable<any> {
-        return this.httpClient.delete(BASE_URL + 'admin/categories/' + category.id_CATEGORY + '/image')
             .pipe(
                 catchError(error => CategoryService.handleError(error))
             );
@@ -75,9 +68,4 @@ export class CategoryService {
         );
     }
 
-    updateCategory(category: Category): Observable<any> {
-        return this.httpClient.put(BASE_URL + 'admin/categories/' +  category.id_CATEGORY, category).pipe(
-            catchError(error => CategoryService.handleError(error))
-        );
-    }
 }

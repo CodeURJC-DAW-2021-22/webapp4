@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import { LoginService } from './services/login.service';
-import {User} from './models/user.model';
+import {Component} from '@angular/core';
+import {LoginService} from './services/login.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html'
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 export class AppComponent {
-    constructor(public loginService: LoginService) { }
+    constructor(public loginService: LoginService) {
+    }
 
     logOut(): void {
         this.loginService.logOut();

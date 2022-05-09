@@ -16,27 +16,19 @@
                     <i aria-hidden="true" class="fa fa-user container-login-icon"></i>
                     <h4 class="text-center text-light">CREA UNA CUENTA</h4>
                     <br>
-                    <!-- {{#ERROR}} -->
-                    <!-- <div class="row">
-                        <div class="col-xs-12 col-sm-12">
-                            <div style="text-align: center" class="alert alert-warning" role="alert">
-                                    El correo electrónico ha sido utilizado<br>
-                                    <a href="login">Intente iniciar sesión</a>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- {{/ERROR}} -->
                     <form>
                         <div class="form-group">
                             <input #fullName class="form-control input-lg" class="form-control" name="FULL_NAME"
                                    placeholder="Nombre y apellidos" type="text">
                         </div>
                         <div class="form-group">
-                            <input #email class="form-control input-lg" class="form-control" name="NAME" placeholder="Email"
+                            <input #email class="form-control input-lg" class="form-control" name="NAME"
+                                   placeholder="Email"
                                    type="email">
                         </div>
                         <div class="form-group">
-                            <input #tel class="form-control input-lg" class="form-control" name="TEL" placeholder="Teléfono"
+                            <input #tel class="form-control input-lg" class="form-control" name="TEL"
+                                   placeholder="Teléfono"
                                    type="text">
                         </div>
                         <div class="form-group">
@@ -45,7 +37,9 @@
                         </div>
                         <p>Al registrarte aceptas las <a href="#!" style="display: inline-block;">condiciones de uso y
                             la Política de Privacidad</a></p>
-                        <button (click)="register($event, fullName.value, email.value, tel.value, password.value)" class="btn btn-danger btn-lg" type="submit">CREAR CUENTA</button>
+                        <button (click)="register($event, fullName.value, email.value, tel.value, password.value)"
+                                class="btn btn-danger btn-lg" type="submit">CREAR CUENTA
+                        </button>
                         <a class="text-center" href="/new/login">Ya tengo una cuenta</a>
                     </form>
                 </div>

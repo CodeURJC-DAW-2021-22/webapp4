@@ -1,4 +1,3 @@
-
 <!-- ====== Page content ======-->
 <section class="section">
     <div class="container-fluid">
@@ -12,10 +11,6 @@
                     <p>
                         <small>Anuncios segunda mano. Las mejores ofertas en de segunda mano y de ocasión solo
                             en Wallypop</small>
-                    </p>
-                    <p class="text-center">
-                        <!-- <a class="btn btn-info btn-block" href="/sold" onclick="" type="reset">BORRAR
-                            FILTROS</a> -->
                     </p>
                 </div>
             </div>
@@ -31,11 +26,14 @@
                                 <img alt="" class="img-responsive" src="/api/articles/{{article.id_ARTICLE}}/image">
                             </figure>
                             <div class="full-width post-info">
-                                <a class="full-width post-info-title" href="/new/post/{{article.id_ARTICLE}}">{{article.title}}</a>
+                                <a class="full-width post-info-title"
+                                   href="/new/post/{{article.id_ARTICLE}}">{{article.title}}</a>
                                 <p class="full-width post-info-price">{{article.price}}€</p>
                                 <span class="post-info-zone">{{article.city}}</span>
                                 <span class="post-info-date">{{article.date}}</span>
-                                <a *ngIf="this.loginService.isLogged()" (click)="addFavorite(this.loginService.currentUser().id_USER, article.id_ARTICLE)"><i class="fa fa-heart-o post-info-like"></i></a>
+                                <a *ngIf="this.loginService.isLogged()"
+                                   (click)="addFavorite(this.loginService.currentUser().id_USER, article.id_ARTICLE)"><i
+                                        class="fa fa-heart-o post-info-like"></i></a>
                             </div>
                         </div>
                     </div>

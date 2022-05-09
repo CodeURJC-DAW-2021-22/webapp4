@@ -3,12 +3,9 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
-import { User } from 'src/app/models/user.model';
+import {User} from 'src/app/models/user.model';
 import {Article} from '../models/article.model';
 import {Router} from '@angular/router';
-import {Category} from '../models/category.model';
-
-import {CategoryService} from '../services/category.service';
 
 
 const BASE_URL = '/api/';
@@ -24,7 +21,6 @@ export class ArticleService {
             catchError(error => this.handleError(error))
         ) as Observable<Article[]>;
     }
-
 
 
     getArticle(id: number | string): Observable<Article> {
@@ -43,18 +39,18 @@ export class ArticleService {
     addArticle(TITLE: string, DESCRIPTION: string, CITY: string, p: string, POSTAL_CODE: string, categories: number[]) {
         // tslint:disable-next-line:max-line-length
         const PRICE = Number.parseFloat(p);
-        return this.httpClient.post(BASE_URL + 'articles', {TITLE, DESCRIPTION, CITY, PRICE, POSTAL_CODE, categories}, {withCredentials: true});
+        return this.httpClient.post(BASE_URL + 'articles', {
+            TITLE,
+            DESCRIPTION,
+            CITY,
+            PRICE,
+            POSTAL_CODE,
+            categories
+        }, {withCredentials: true});
     }
 
     setArticleImage(article: Article, formData: FormData) {
         return this.httpClient.post(BASE_URL + 'articles/' + article.id_ARTICLE + '/image', formData)
-            .pipe(
-                catchError(error => this.handleError(error))
-            );
-    }
-
-    deleteArticleImage(article: Article) {
-        return this.httpClient.delete(BASE_URL + article.id_ARTICLE + '/image')
             .pipe(
                 catchError(error => this.handleError(error))
             );
@@ -66,17 +62,6 @@ export class ArticleService {
         );
     }
 
-    updateArticle(article: Article) {
-        return this.httpClient.put(BASE_URL + article.id_ARTICLE, article).pipe(
-            catchError(error => this.handleError(error))
-        );
-    }
-/*
-    getCategoriesArticle(article: Article): Observable<Category[]> {
-        return this.httpClient.get(BASE_URL + article.categories).pipe(
-            catchError(error => CategoryService.handleError(error))
-        ) as Observable<Category[]>;
-    } */
 
     private handleError(error: any): Observable<never> {
         console.log('ERROR:');
@@ -98,14 +83,14 @@ export class ArticleService {
     }
 
     reserve(idArticle: number): void {
-        this.httpClient.post(BASE_URL + 'articles/' +  idArticle + '/reserve', null).subscribe(
+        this.httpClient.post(BASE_URL + 'articles/' + idArticle + '/reserve', null).subscribe(
             response => location.reload(),
             error => console.log(error)
         );
     }
 
     sell(idArticle: number): void {
-        this.httpClient.post(BASE_URL + 'articles/' +  idArticle + '/sell', null).subscribe(
+        this.httpClient.post(BASE_URL + 'articles/' + idArticle + '/sell', null).subscribe(
             response => location.reload(),
             error => console.log(error)
         );

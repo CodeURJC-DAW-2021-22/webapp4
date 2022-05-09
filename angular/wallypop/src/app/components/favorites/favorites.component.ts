@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Article } from 'src/app/models/article.model';
-import { Favorites } from 'src/app/models/favorites.model';
-import { ArticleService } from 'src/app/services/article.service';
-import { FavoriteService } from '../../services/favorites.service';
-import { LoginService } from '../../services/login.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {Article} from 'src/app/models/article.model';
+import {Favorites} from 'src/app/models/favorites.model';
+import {ArticleService} from 'src/app/services/article.service';
+import {FavoriteService} from '../../services/favorites.service';
+import {LoginService} from '../../services/login.service';
 import {User} from '../../models/user.model';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
@@ -16,7 +16,7 @@ const BASE_URL = '/api/';
     selector: 'favorites',
     templateUrl: './favorites.component.html'
 })
-export class FavoritesComponent implements OnInit{
+export class FavoritesComponent implements OnInit {
 
     favorites: Favorites[];
     user: User;
@@ -26,7 +26,7 @@ export class FavoritesComponent implements OnInit{
     }
 
     ngOnInit(): void {
-        this.httpClient.get('/api/users', { withCredentials: true }).subscribe(
+        this.httpClient.get('/api/users', {withCredentials: true}).subscribe(
             user => {
                 this.user = user as User;
                 this.favoriteService.getFavorites(this.loginService.currentUser().id_USER).subscribe(
@@ -69,7 +69,7 @@ export class FavoritesComponent implements OnInit{
         window.location.reload();
     }
 
-    addFavorite(idArticle: number|string, idUser: number|string): void {
+    addFavorite(idArticle: number | string, idUser: number | string): void {
         this.favoriteService.addFavorite(idArticle, idUser);
         this.refresh();
 

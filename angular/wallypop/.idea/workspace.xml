@@ -19,19 +19,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;javascript.karma.karma_node_package_dir&quot;: &quot;C:/Users/JESUSBA-PC/WebstormProjects/untitled/node_modules/@angular/cli&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/JESUSBA-PC/WebstormProjects/untitled&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\Documents\\Universidad\\webapp4\\angular\\wallypop\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "javascript.karma.karma_node_package_dir": "C:/Users/JESUSBA-PC/WebstormProjects/untitled/node_modules/@angular/cli",
+    "last_opened_file_path": "C:/Users/JESUSBA-PC/WebstormProjects/untitled",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\JESUSBA-PC\\Documents\\GitHub\\webapp4\\angular\\wallypop\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\JESUSBA-PC\WebstormProjects\untitled" />
@@ -59,6 +59,11 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.Angular Application" />
+      <item itemvalue="Karma.Tests (untitled)" />
+      <item itemvalue="npm.Angular CLI Server" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
