@@ -38,23 +38,23 @@
                         </div>
                     <div class="full-width list-group" style="border-radius: 0;">
 <!-- {{>nav_side}} -->
-<a class="list-group-item" href="/profile">
+<a class="list-group-item" href="/new/profile">
     <i aria-hidden="true" class="fa fa-user fa-fw"></i> TU PERFIL
 </a>
-<a class="list-group-item" href="/yourcommercial">
+<a class="list-group-item" href="/new/yourcommercial">
     <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS
 </a>
-<a class="list-group-item" href="/yourcommercialsold">
+<a class="list-group-item" href="/new/yourcommercialsold">
     <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS VENDIDOS
 </a>
-<a class="list-group-item" href="/favorites">
+<a class="list-group-item" href="/new/favorites">
     <i aria-hidden="true" class="fa fa-heart-o fa-fw"></i> FAVORITOS
 </a>
 <span *ngIf="loginService.isAdmin()">
-    <a class="list-group-item" href="/category">
+    <a class="list-group-item" href="/new/category">
         <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN CATEGORÍAS
     </a>
-    <a class="list-group-item" href="/reports">
+    <a class="list-group-item" href="/new/reports">
         <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN REPORTES
     </a>
 </span>
@@ -81,9 +81,9 @@
                     <img alt="" class="img-responsive" src="/api/categories/{{category.id_CATEGORY}}/image">
                 </figure>
                 <div class="full-width post-info">
-                    <a class="full-width post-info-price" href="/commercial/{{category.id_CATEGORY}}">{{category.title}}</a>
+                    <a class="full-width post-info-price" href="/new/commercial/{{category.id_CATEGORY}}">{{category.title}}</a>
                     <span class="post-info-zone">{{category.description}}</span>
-                    <a class="post-info-date" (click)="removeCategory(category)" href="/categoryList">x</a>
+                    <a class="post-info-date" (click)="removeCategory(category)" href="/new/categoryList">x</a>
 
                 </div>
             </div>

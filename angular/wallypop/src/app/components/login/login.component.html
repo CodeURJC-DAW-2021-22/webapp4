@@ -47,7 +47,7 @@
 					</ng-template>
 					<ng-template #elseBlockLogin>
 						<h4 class="text-center text-light">BIENVENIDO {{loginService.currentUser().full_NAME}}</h4>
-						<a href="/">Inicio</a><a href="/profile">Mi perfil</a>
+						<a href="/new/">Inicio</a><a href="/new/profile">Mi perfil</a>
 					</ng-template>
 					<br>
 					<form *ngIf="!loginService.isLogged()">
@@ -60,7 +60,7 @@
 								   required="" type="password">
 						</div>
 						<button (click)="logIn($event, email.value, password.value)" class="btn btn-danger btn-lg" type="submit">INICIAR SESIÓN</button>
-						<a class="text-center" href="newaccount">Si eres nuevo ¡Crea una cuenta!</a>
+						<a class="text-center" href="/new/newaccount">Si eres nuevo ¡Crea una cuenta!</a>
 					</form>
 				</div>
 			</div>

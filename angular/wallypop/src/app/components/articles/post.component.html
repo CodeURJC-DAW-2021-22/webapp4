@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-8">
                 <ol class="breadcrumb"> <!-- Mostrar todas las categorías a las que pertenece el artículo -->
-                    <li *ngFor="let category of categories"><a href="/commercial/{{category.id_CATEGORY}}">{{category.title}}</a></li>
+                    <li *ngFor="let category of categories"><a href="/new/commercial/{{category.id_CATEGORY}}">{{category.title}}</a></li>
                     <li class="active">Id: #{{article.id_ARTICLE}}</li>
                 </ol>
                 <!-- Reserved -->
@@ -66,7 +66,7 @@
                 <div class="full-width div-table">
                     <div class="full-width div-table-row">
                         <div class="div-table-cell div-table-cell-xs">
-                            <a class="btn btn-default btn-block" href="/commercial"><i aria-hidden="true" class="fa fa-angle-left"></i> Volver al listado</a>
+                            <a class="btn btn-default btn-block" href="/new/commercial"><i aria-hidden="true" class="fa fa-angle-left"></i> Volver al listado</a>
                         </div>
                     </div>
                 </div>
@@ -88,8 +88,8 @@
                 </div>
                 <div class="clearfix"></div>
                 <ng-template [ngIf]="!loginService.isLogged()">
-                    <a class="btn btn-success btn-block" href="/login">ENVIAR MENSAJE</a>
-                    <a class="btn btn-success btn-block" href="/login">LLAMAR</a>
+                    <a class="btn btn-success btn-block" href="/new/login">ENVIAR MENSAJE</a>
+                    <a class="btn btn-success btn-block" href="/new/login">LLAMAR</a>
                 </ng-template>
                 <!-- {{#logged}} -->
                 <ng-template [ngIf]="loginService.isLogged()">
@@ -102,7 +102,7 @@
                         <ng-template #sold>
                             <a class="btn btn-primary btn-block" (click)="sell($event)">ANULAR VENTA</a>
                         </ng-template>
-                        <a class="btn btn-danger btn-block" (click)="removeArticle(article)" href="/commercial">ELIMINAR</a>
+                        <a class="btn btn-danger btn-block" (click)="removeArticle(article)" href="/new/commercial">ELIMINAR</a>
                     </ng-template> <!-- ONLY FOR OWNER OR ADMIN -->
                     <ng-template [ngIf]="!isOwner() && !isAdmin()">
                         <a aria-controls="collapseExample" aria-expanded="false" class="btn btn-success btn-block" data-toggle="collapse"

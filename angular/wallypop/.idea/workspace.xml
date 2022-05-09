@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56717199-5844-4213-b2a9-f4790e262348" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../backend/src/main/java/es/codeurjc/wallypop/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../backend/src/main/java/es/codeurjc/wallypop/service/EmailService.java" afterDir="false" />
-    </list>
+    <list default="true" id="56717199-5844-4213-b2a9-f4790e262348" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,19 +19,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "javascript.karma.karma_node_package_dir": "C:/Users/JESUSBA-PC/WebstormProjects/untitled/node_modules/@angular/cli",
-    "last_opened_file_path": "C:/Users/JESUSBA-PC/WebstormProjects/untitled",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "D:\\Documents\\Universidad\\webapp4\\angular\\wallypop\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.karma.karma_node_package_dir&quot;: &quot;C:/Users/JESUSBA-PC/WebstormProjects/untitled/node_modules/@angular/cli&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/JESUSBA-PC/WebstormProjects/untitled&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Documents\\Universidad\\webapp4\\angular\\wallypop\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\JESUSBA-PC\WebstormProjects\untitled" />
@@ -76,6 +74,7 @@
       <workItem from="1651837538238" duration="2470000" />
       <workItem from="1651843087154" duration="295000" />
       <workItem from="1651845607175" duration="2555000" />
+      <workItem from="1652054854394" duration="570000" />
     </task>
     <servers />
   </component>
