@@ -465,5 +465,88 @@ El segundo se encarga de crear la imagen docker a partir del Dockerfile, subirla
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/main/Category.postman_collection.json
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/main/Favorites.postman_collection.json
 
+# Fase 4
+
+## Diagrama de clases y templates
+
+![](ScreenshotsFase4/diagramaFase4.jpg)
+
+### -> Contribución Iván
+
+#### Descripción textual
+
+##### He participado en la creación de la estructura de directorios relacionada con Article (Componentes, Modelo y Servicio)
+##### He participado en la implementación de la funcionalidad de publicar nuevos anuncios en la SPA con Angular.
+##### He participado en la implementación de la funcionalidad de listar anuncios de un User en la SPA con Angular.
+##### He participado en la realización del diagrama de la Fase 4.
+
+#### 5 Commits más significativos
+
+##### Creación estructura para articles (componentes, servicio y modelo): https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/fa779fbe59f0226a4ee688fb119019e0ccf563bd
+##### Añadido componente 1: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/5cdab28e03139bf20fb9e9b5d82d9e04837660cb
+##### Mejoras componente 1: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/0aa57c24ebe141d8fbf83d0f95dd5f6e9914b2e4
+##### Añadido componente 3: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/8618d7a58afac806e0133e3ef1e7409bb538a1cd
+##### Arreglar errores componente 1: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/02514adf392a169f8bf7f473134a6d0009d92c73
+
+#### 5 ficheros mayor participación
+
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular_article/angular/wallypop/src/app/components/article/AddArticle.component.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular_article/angular/wallypop/src/app/components/article/AddArticle.component.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular_article/angular/wallypop/src/app/components/article/ArticlesUserPagination.component.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular_article/angular/wallypop/src/app/components/article/ArticlesUserPagination.component.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular_article/angular/wallypop/src/app/services/article.service.ts
+
+### -> Contribución Sergio
+
+#### Descripción textual
+
+##### Implementación del añadir una nueva categoria con foto
+##### Implementación de mostrar las categorias creadas en la pagina de categoryList
+##### Implementación del eliminar articulo
+##### Implementacion del modelo y servicio de categorias
+
+#### 5 Commits más significativos
+
+##### Eliminar una categoria: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/a0e3b89da8450466d52728080360ceac759a5b7f
+##### Añadir una categoria con foto: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/dac9f17a83ee26b317a89dbda8f682fafe622d58
+##### Eliminar un articulo: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/f026ec8838e236b2af6161deb86b3dbb0a93fea0
+##### Mostrar la lista de categorias en categoryList sin foto: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/4d6902cb723a7fa5bcc2a3ab2e6db9ab96317099
+##### Modelo de categorias: https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/c55a35c0c527c14676af0280ca5fe87e8119a8f6
+
+#### 5 ficheros mayor participación
+
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/angular_categories/angular/wallypop/src/app/services/category.service.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/angular_categories/angular/wallypop/src/app/components/category/categoryList.component.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/angular_categories/angular/wallypop/src/app/components/category/category.component.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/angular_categories/angular/wallypop/src/app/components/category/categoryList.component.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/angular_categories/angular/wallypop/src/app/components/category/category.component.ts
+
+
+### -> Contribución Juan
+
+#### Descripción textual
+
+##### Implementación del formulario de reportes
+##### Implementación de la lista de reportes para el admin
+##### Implementación del ver reporte para el admin
+##### Participacion en la funcionalidad de crear nuevos anuncios
+
+#### 5 Commits más significativos
+
+##### Finalizacion de Formulario de reportes y ver reportes:https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/2535b9267d65ddf4179d5f2c6b1105b28a9dab0c
+##### Lista de reportes para el admin:https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/06f6e6e7c11cc5bd52e5842b653446590b12fbe9
+##### Report service y creacion del formulario de reportes:https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/711668c629f92bcc59662882111643b566a3033c
+##### Lista de reportes creacion:https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/7a7627696261e8f7d31c988d0f8a3abe116655ab
+##### Modelo de reportes:https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/e45206e3aa9688469d7c77b01c71bd3cbd37a242
+
+#### 5 ficheros mayor participación
+
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular/angular/wallypop/src/app/components/report/formReport.component.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular/angular/wallypop/src/app/components/report/formReport.component.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular/angular/wallypop/src/app/components/report/reports.component.html
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular/angular/wallypop/src/app/components/report/reports.component.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular/angular/wallypop/src/app/components/report/showReport.component.ts
+
+
 ## Licencia
 [APACHE](https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/26b1d22bc7625b0dd8cdb3a3b8eaf7bb5425833b/LICENSE)
