@@ -1,0 +1,82 @@
+<!-- ====== Nav Bar ======-->
+<div class="full-width NavBar">
+    <div class="full-width text-semi-bold NavBar-logo">
+        <a href="/">
+            <img src="assets/img/LogoAPP.png" alt="Wallypop Corporation"/>
+        </a>
+        <!-- Company -->
+    </div>
+    <nav class=" full-width NavBar-Nav">
+        <ul class="list-unstyled full-width">
+            <li>
+                <a href="/">
+                     INICIO
+                </a>
+            </li>
+            <li>
+                <a href="/commercial">
+                     ANUNCIOS
+                </a>
+            </li>
+            <li>
+                <a href="/sold">
+                     ANUNCIOS VENDIDOS
+                </a>
+            </li>
+            <span *ngIf="loginService.isLogged()">
+                <li>
+                    <a href="/adcommercial">
+                         PON TU ANUNCIO
+                    </a>
+                </li>
+                <li>
+                    <a href="/favorites">
+                         FAVORITOS
+                    </a>
+                </li>
+                <li>
+                    <a href="/profile">
+                        {{loginService.currentUser().full_NAME}} <i aria-hidden="true" class="fa fa-user NavBar-Nav-icon"></i>
+                    </a>
+                </li>
+            </span>
+            <span *ngIf="!loginService.isLogged()">
+                <li>
+                    <a href="/newaccount">
+                         CREAR CUENTA
+                    </a>
+                </li>
+                <li>
+                    <a href="/login">
+                         INICIAR SESIÓN
+                    </a>
+                </li>
+                <li>
+                    <a href="/login">
+                        <i aria-hidden="true" class="fa fa-user NavBar-Nav-icon"></i>
+                    </a>
+                </li>
+            </span>
+            <span *ngIf="loginService.isLogged()">
+                <li>
+                    <button (click)="logOut()" class="btn btn-default navbar-btn" type="submit">Log Out</button>
+                </li>
+            </span>
+        </ul>
+    </nav>
+</div>
+<section>
+    <router-outlet></router-outlet>
+</section>
+<!-- <div *ngIf="loginService.isLogged()" style="text-align: center">
+    Current user: {{loginService.currentUser().name}}
+</div>
+<div *ngIf="loginService.isLogged() && loginService.isAdmin()" style="text-align: center">
+    ROLE: ADMIN
+</div>
+<div *ngIf="loginService.isLogged() && !loginService.isAdmin()" style="text-align: center">
+    ROLE: USER
+</div>
+<div *ngIf="!loginService.isLogged()" style="text-align: center">
+    Current user: NULL
+</div> -->

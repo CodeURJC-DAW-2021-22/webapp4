@@ -1,0 +1,70 @@
+<!-- <form *ngIf="!loginService.isLogged()" class="navbar-form navbar-right form-inline" role="search">
+
+	<div class="form-group">
+		<input #user type="text" class="form-control" name="username" placeholder="Username">
+	</div>
+
+	<div class="form-group">
+		<input #pass type="password" class="form-control" name="password" placeholder="Password">
+	</div>
+
+	<button type="submit" (click)="logIn($event, user.value, pass.value)" class="btn btn-default">Sign In</button>
+
+</form>
+-->
+<!-- <div *ngIf="loginService.isLogged()" style="text-align: center">
+	Current user: {{loginService.currentUser().name}}
+</div>
+<div *ngIf="loginService.isLogged() && loginService.isAdmin()" style="text-align: center">
+	ROLE: ADMIN
+</div>
+<div *ngIf="loginService.isLogged() && !loginService.isAdmin()" style="text-align: center">
+	ROLE: USER
+</div>
+<div *ngIf="!loginService.isLogged()" style="text-align: center">
+	Current user: NULL
+</div> -->
+
+<!-- ====== Page content ======-->
+<section class="full-width section">
+	<div class="container">
+		<!-- {{#ERROR}} -->
+		<!-- <div class="row">
+			<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+				<div class="alert alert-danger" role="alert">
+					Credenciales no válidas
+				</div>
+			</div>
+		</div> -->
+		<!-- {{/ERROR}} -->
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+				<div class="full-width container-login">
+					<i aria-hidden="true" class="fa fa-user container-login-icon"></i>
+					<div *ngIf="!loginService.isLogged(); then thenBlockLogin else elseBlockLogin" ></div>
+					<ng-template #thenBlockLogin>
+						<h4 class="text-center text-light">INICIAR SESIÓN</h4>
+					</ng-template>
+					<ng-template #elseBlockLogin>
+						<h4 class="text-center text-light">BIENVENIDO {{loginService.currentUser().full_NAME}}</h4>
+						<a href="/">Inicio</a><a href="/profile">Mi perfil</a>
+					</ng-template>
+					<br>
+					<form *ngIf="!loginService.isLogged()">
+						<div class="form-group">
+							<input #email class="form-control input-lg" name="email" placeholder="Email" required=""
+								   type="email">
+						</div>
+						<div class="form-group">
+							<input #password class="form-control input-lg" name="password" placeholder="Contraseña"
+								   required="" type="password">
+						</div>
+						<button (click)="logIn($event, email.value, password.value)" class="btn btn-danger btn-lg" type="submit">INICIAR SESIÓN</button>
+						<a class="text-center" href="newaccount">Si eres nuevo ¡Crea una cuenta!</a>
+					</form>
+				</div>
+			</div>
+		</div>
+		<br>
+	</div>
+</section>
