@@ -471,7 +471,7 @@ Para poder desarrollar la aplicación hemos necesitado de Node.js, Angular CLI, 
 Hemos usado las librerias de HighChart para poder mostrar los gráficos y la de Leaflet para poder mostrar el mapa.
 
 ## Intrucciónes Docker, Docker compose y Heroku
-* Docker (Base de datos PostgreSQL): docker run -d --name postgres-server -p 5433:5432 -e "POSTGRES_PASSWORD=password" postgres
+* Docker (Base de datos PostgreSQL): docker run -d --name postgres-server -p 5432:5432 -e "POSTGRES_PASSWORD=password" postgres
 * Docker Hub: docker run -d --publish 8443:8443 jesusbarcia/codeurjc-daw-2021-22-webapp4
 * Heroku: https://codeurjc-daw-2021-22-webapp4b.herokuapp.com/new/
 * Heroku - angular: https://codeurjc-daw-2021-22-webapp4b.herokuapp.com/new/
