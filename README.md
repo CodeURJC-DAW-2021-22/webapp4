@@ -467,6 +467,33 @@ El segundo se encarga de crear la imagen docker a partir del Dockerfile, subirla
 
 # Fase 4
 
+Para poder desarrollar la aplicación hemos necesitado de Node.js, Angular CLI, Java, Maven.
+Hemos usado las librerias de HighChart para poder mostrar los gráficos y la de Leaflet para poder mostrar el mapa.
+
+## Intrucciónes Docker, Docker compose y Heroku
+* Docker (Base de datos PostgreSQL): docker run -d --name postgres-server -p 5433:5432 -e "POSTGRES_PASSWORD=password" postgres
+* Docker Hub: docker run -d --publish 8443:8443 jesusbarcia/codeurjc-daw-2021-22-webapp4
+* Heroku: https://codeurjc-daw-2021-22-webapp4b.herokuapp.com/new/
+* Heroku - angular: https://codeurjc-daw-2021-22-webapp4b.herokuapp.com/new/
+
+### Usuarios
+* admin: j@j.es 1234
+* user: d@d.es 1234
+
+### Docker:
+Para crear la imagen docker y subirla a Docker Hub hemos creado un script (create_docker_image.sh) que se encarga de crear la imagen a partir del Dockerfile y subirla a Docker Hub con el nombre que le hemos pasado como parámetro.
+
+### Docker compose
+Hemos creado un fichero docker-compose.yml para la ejecución de nuestra aplicación a partir de la imagen subida anteriormente a Docker Hub.
+Crea dos contenedores, uno para la aplicación y otro para la base de datos y sirve la web en el puerto 8443.
+También hay otro fichero docker-compose-local.yml que hace lo mismo que el anterior a excepción de que en lugar de descargar la imagen de Docker Hub la crea a partir de los ficheros que tenemos en local.
+
+### Heroku
+Hemos creado dos scripts, create_heroku_app.sh y deploy_heroku_app.sh. 
+El primero se encarga de generar el contenedor en Heroku, crear la base de datos PostgreSQL y configurar las variables de entorno necesarias.
+El segundo se encarga de crear la imagen docker a partir del Dockerfile, subirla y desplegar la aplicación totalmente operativa.
+
+
 ## Diagrama de clases y templates
 
 ![](ScreenshotsFase4/diagramaFase4.jpg)
@@ -546,6 +573,36 @@ El segundo se encarga de crear la imagen docker a partir del Dockerfile, subirla
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular/angular/wallypop/src/app/components/report/reports.component.html
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular/angular/wallypop/src/app/components/report/reports.component.ts
 ##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/angular/angular/wallypop/src/app/components/report/showReport.component.ts
+
+### -> Contribución Jesús
+
+#### Descripción textual
+
+##### Modelo User
+##### Mostrar todos los anuncios disponibles, el detalle de cada anuncio, reservar, vender, enviar email de contacto
+##### Búsqueda de artículos tanto por título y descripción como por ciudad
+##### Iniciar sesión y registrarse
+##### Ver perfil del usuario
+##### Securizar aplicación para que los usuarios no logueados o que no son administradores accedan a páginas que no deben
+##### Añadir favoritos
+##### Mostrar en un mapa la localización del anuncio publicado
+
+#### 5 Commits más significativos
+
+##### Mis anuncios, mis anuncios vendidos y todos los anucios vendidos https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/c67aa02765c59eb46832ee8a326ceded63c3c6b5
+##### Mapa https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/54e0b632d1df5cbeeafbc4fae05de0eb367d3a86
+##### Filtrado de artículos por categoría https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/b4dc24c97d9588bf2df518232bb47820c29858b2
+##### Mostrar detalle de un artículo https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/46680aecd5476b784f2965b9de68460df5097581 || https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/0015b787330d1e880702184a0dbf094ced4d6b25
+##### Incluir frontend en Spring https://github.com/CodeURJC-DAW-2021-22/webapp4/commit/3269e8f43c6a7a9ec200fdeb9b97e83586020648
+
+
+#### 5 ficheros mayor participación
+
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/main/frontend/wallypop/src/app/services/article.service.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/frontend/wallypop/src/app/services/login.service.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/frontend/wallypop/src/app/components/articles/post.component.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blame/main/frontend/wallypop/src/app/components/articles/addcommercial.component.ts
+##### https://github.com/CodeURJC-DAW-2021-22/webapp4/blob/main/frontend/wallypop/src/app/components/articles/commercial.component.ts
 
 
 ## Licencia
