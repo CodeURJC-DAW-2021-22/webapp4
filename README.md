@@ -589,6 +589,7 @@ https://youtu.be/EoRRqiUNdjM
 ##### Securizar aplicación para que los usuarios no logueados o que no son administradores accedan a páginas que no deben
 ##### Añadir favoritos
 ##### Mostrar en un mapa la localización del anuncio publicado
+##### Dockerizar y desplegar la aplicación
 
 #### 5 Commits más significativos
 
