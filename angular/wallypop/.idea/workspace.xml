@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56717199-5844-4213-b2a9-f4790e262348" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../backend/src/main/java/es/codeurjc/wallypop/controller/SPAController.java" afterDir="false" />
-    </list>
+    <list default="true" id="56717199-5844-4213-b2a9-f4790e262348" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,7 +74,7 @@
       <workItem from="1651837538238" duration="2470000" />
       <workItem from="1651843087154" duration="295000" />
       <workItem from="1651845607175" duration="2555000" />
-      <workItem from="1652054854394" duration="844000" />
+      <workItem from="1652054854394" duration="1261000" />
     </task>
     <servers />
   </component>
