@@ -16,7 +16,7 @@
   <h2 class="text-center text-light">Todas las categorías que imaginas</h2>
   <div class="container">
     <div class="full-width container-category">
-      <a *ngFor="let category of categories" href="/commercial/{{category.id_CATEGORY}}" id="categori-{{category.id_CATEGORY}}">
+      <a *ngFor="let category of categories" href="/new/commercial/{{category.id_CATEGORY}}" id="categori-{{category.id_CATEGORY}}">
         <i aria-hidden="true" class="fa fa-{{category.icon}}"></i>
       <span>{{category.title}}</span>
       </a>
@@ -24,6 +24,7 @@
   </div>
 </section>
 <!--  {{>graphic}} -->
+<graphic></graphic>
 <section class="section" style="background-color: #F5F5F5">
   <div class="container">
     <div class="row">

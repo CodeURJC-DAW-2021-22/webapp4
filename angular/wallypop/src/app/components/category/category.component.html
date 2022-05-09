@@ -39,23 +39,23 @@
                     <div class="full-width list-group" style="border-radius: 0;">
 <!-- {{>nav_side}} -->
 
-<a class="list-group-item" href="profile">
+<a class="list-group-item" href="/new/profile">
     <i aria-hidden="true" class="fa fa-user fa-fw"></i> TU PERFIL
 </a>
-<a class="list-group-item" href="yourcommercial">
+<a class="list-group-item" href="/new/yourcommercial">
     <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS
 </a>
-<a class="list-group-item" href="yourcommercialsold">
+<a class="list-group-item" href="/new/yourcommercialsold">
     <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS VENDIDOS
 </a>
-<a class="list-group-item" href="favorites">
+<a class="list-group-item" href="/new/favorites">
     <i aria-hidden="true" class="fa fa-heart-o fa-fw"></i> FAVORITOS
 </a>
 <span *ngIf="loginService.isAdmin()">
-    <a class="list-group-item" href="/category">
+    <a class="list-group-item" href="/new/category">
         <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN CATEGORÍAS
     </a>
-    <a class="list-group-item" href="/reports">
+    <a class="list-group-item" href="/new/reports">
         <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN REPORTES
     </a>
 </span>
@@ -67,18 +67,7 @@
         <div>GESTIÓN CATEGORÍAS</div>
     </div>
     <!-- Content -->
-    <section class="full-width hidden-md hidden-lg Search-mobile">
-        <form action="commercial" style="padding-top: 15px;">
-            <div class="form-group">
-                <input class="form-control input-lg" placeholder="Estoy buscado..." required="" type="text">
-            </div>
-            <div class="form-group">
-                <input class="form-control input-lg" placeholder="Provincia, ciudad, distrito..." required=""
-                       type="text">
-            </div>
-            <button class="btn btn-danger btn-lg" type="submit">BUSCAR</button>
-        </form>
-    </section>
+    <search></search>
     <!-- ====== Page content ======-->
     <section class="section">
         <h2 class="text-center text-light">CATEGORÍAS</h2>
@@ -94,7 +83,7 @@
                             <div class="col-sm-7">
                             
                                 <div class="form-group">
-                                    <a href="categoryList">VER LISTADO CATEGORÍAS</a>
+                                    <a href="/new/categoryList">VER LISTADO CATEGORÍAS</a>
                                 </div>
                             </div>
                         </div>

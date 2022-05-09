@@ -23,12 +23,14 @@ import {PostComponent} from './components/articles/post.component';
 import {YourcommercialComponent} from './components/articles/yourcommercial.component';
 import {YourcommercialSoldComponent} from './components/articles/yourcommercialsold.component';
 import {SoldComponent} from './components/articles/sold.component';
-
+import {AddcommercialComponent} from './components/articles/addcommercial.component';
+import {GraphicComponent} from './components/graphic/graphic.component';
+import {HighchartsChartModule} from "highcharts-angular";
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  declarations: [AppComponent, IndexComponent, LoginComponent, SearchComponent, NotFoundComponent, NewaccountComponent, ProfileComponent, CategoryComponent, CategoryListComponent, CommercialComponent, PostComponent, FormReportComponent, ReportsComponent, ShowReportComponent, FavoritesComponent, YourcommercialComponent, YourcommercialSoldComponent, SoldComponent],
-  imports: [BrowserModule, FormsModule, HttpClientModule, routing],
+  declarations: [AppComponent, IndexComponent, LoginComponent, SearchComponent, NotFoundComponent, NewaccountComponent, ProfileComponent, CategoryComponent, CategoryListComponent, CommercialComponent, PostComponent, FormReportComponent, ReportsComponent, ShowReportComponent, FavoritesComponent, YourcommercialComponent, YourcommercialSoldComponent, SoldComponent, AddcommercialComponent, GraphicComponent],
+  imports: [BrowserModule, FormsModule, HttpClientModule, routing, HighchartsChartModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

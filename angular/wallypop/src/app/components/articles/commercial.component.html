@@ -16,7 +16,7 @@
                             en Wallypop</small>
                     </p>
                     <p class="text-center">
-                    <a class="btn btn-info btn-block" href="/commercial" onclick="" type="reset">BORRAR
+                    <a class="btn btn-info btn-block" href="/new/commercial" onclick="" type="reset">BORRAR
                     FILTROS</a>
                     </p>
                 </div>
@@ -24,7 +24,7 @@
             <div class="col-xs-12 col-sm-9 col-md-10">
                 <div class="full-width">
                     <ol class="breadcrumb">
-                        <li *ngFor="let category of categories"><a href="/commercial/{{category.id_CATEGORY}}">{{category.title}}</a></li>
+                        <li *ngFor="let category of categories"><a href="/new/commercial/{{category.id_CATEGORY}}">{{category.title}}</a></li>
                     </ol>
                 </div>
                 <!-- Article -->
@@ -35,7 +35,7 @@
                                     <img alt="" class="img-responsive" src="/api/articles/{{article.id_ARTICLE}}/image">
                                 </figure>
                                 <div class="full-width post-info">
-                                    <a class="full-width post-info-title" href="/post/{{article.id_ARTICLE}}">{{article.title}}</a>
+                                    <a class="full-width post-info-title" href="/new/post/{{article.id_ARTICLE}}">{{article.title}}</a>
                                     <p class="full-width post-info-price">{{article.price}}€</p>
                                     <span class="post-info-zone">{{article.city}}</span>
                                     <span class="post-info-date">{{article.date}}</span>

@@ -6,6 +6,7 @@ import {catchError} from 'rxjs/operators';
 import {Category} from '../models/category.model';
 import {Router} from '@angular/router';
 import {Article} from '../models/article.model';
+import { Data } from '../models/data.model';
 
 const BASE_URL = '/api/';
 
@@ -31,6 +32,12 @@ export class CategoryService {
         return this.httpClient.get(BASE_URL + 'categories/' + id).pipe(
             catchError(error => CategoryService.handleError(error))
         ) as Observable<Article[]>;
+    }
+
+    getGraphicContent(): Observable<Data[]> {
+        return this.httpClient.get(BASE_URL + 'graphic').pipe(
+            catchError(error => CategoryService.handleError(error))
+        ) as Observable<Data[]>;
     }
 
     addCategory(category: Category) {

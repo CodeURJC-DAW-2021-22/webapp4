@@ -1,0 +1,50 @@
+
+<!-- ====== Security ====== -->
+<NotFound *ngIf="!loginService.isLogged() || !loginService.isAdmin()"></NotFound>
+
+<!-- ====== Page content ======-->
+<section class="section" *ngIf="loginService.isAdmin()">
+    <h2 class="text-center text-light">INCIDENCIA</h2>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1" style="border: 1px solid #E1E1E1;">
+                <form action="" class="form-horizontal">
+                    <br>
+                    <a class="btn btn-info" href="/reports">&lt;</a>
+                    <br>
+                    <!-- {{#report}} -->
+                    <h3 class="text-info">ID Report: {{report.id_REPORT}}</h3>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Email</label>
+                        <label class="col-sm-7">
+                            <a class="form-control" type="text">{{report.email}}</a>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Articlo Denunciado</label>
+                        <label class="col-sm-7">
+                            <a href="/post/{{report.article.id_ARTICLE}}" class="form-control" >Pulsa para acceder
+                                al articulo denunciado</a> <!--onclick="location.href='/showPost/{{ID_REPORT}}'"-->
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Descripción de la incidencia</label>
+                        <label class="col-md-7">
+                            <textarea class="form-control">{{report.description}}</textarea><!--DENTRO DEL TEXTARES {{DESCRIPTION}}-->
+                        </label>
+                    </div>
+                    <br><br>
+                    <h3 class="text-info">Fichero adjunto por el usuario</h3>
+                    <a href="/api/admin/reports/{{report.id_REPORT}}/proof" download="" >Download</a><!--href="{{ID_REPORT}}/image"-->
+                    <p class="text-center">
+                        <a (click)="aceptReport()" class="btn btn-success" >ACEPTAR REPORTE</a><!--href="/showReport/{{ID_REPORT}}/deleteArticle" -->
+                        <a (click)="rejectReport()" class="btn btn-danger" >RECHAZAR REPORTE</a> <!--href="/showReport/{{ID_REPORT}}/delete"> -->
+                    </p>
+                    <!-- {{/report}} -->
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</section>
