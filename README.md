@@ -498,6 +498,9 @@ El segundo se encarga de crear la imagen docker a partir del Dockerfile, subirla
 
 ![](ScreenshotsFase4/diagramaFase4.jpg)
 
+## Vídeo
+https://youtu.be/EoRRqiUNdjM
+
 ### -> Contribución Iván
 
 #### Descripción textual
