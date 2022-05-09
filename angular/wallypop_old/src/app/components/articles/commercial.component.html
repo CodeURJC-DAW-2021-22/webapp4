@@ -1,0 +1,72 @@
+
+<!-- ====== Page content ======-->
+<section class="section">
+    <search></search>
+    <hr>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-2">
+                <div class="full-width" style="border: 1px solid #E1E1E1; border-radius: 4px; padding: 5px;">
+                    <button class="btn btn-default btn-block hidden-sm hidden-md hidden-lg btn-dropdown-conatiner"
+                            data-drop-cont=".menu-commercial">
+                        FILTROS <i aria-hidden="true" class="fa fa-sort pull-right"></i>
+                    </button>
+                    <p>
+                        <small>Anuncios segunda mano. Las mejores ofertas en de segunda mano y de ocasión solo
+                            en Wallypop</small>
+                    </p>
+                    <p class="text-center">
+                    <a class="btn btn-info btn-block" href="/commercial" onclick="" type="reset">BORRAR
+                    FILTROS</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-10">
+                <div class="full-width">
+                    <ol class="breadcrumb">
+                        <li *ngFor="let category of categories"><a href="/commercial/{{category.id_CATEGORY}}">{{category.title}}</a></li>
+                    </ol>
+                </div>
+                <!-- Article -->
+                <div class="full-width container-post">
+                    <div *ngFor="let article of articles">
+                        <div class="full-width post" *ngIf="!article.sold">
+                                <figure class="full-width post-img">
+                                    <img alt="" class="img-responsive" src="/api/articles/{{article.id_ARTICLE}}/image">
+                                </figure>
+                                <div class="full-width post-info">
+                                    <a class="full-width post-info-title" href="/post/{{article.id_ARTICLE}}">{{article.title}}</a>
+                                    <p class="full-width post-info-price">{{article.price}}€</p>
+                                    <span class="post-info-zone">{{article.city}}</span>
+                                    <span class="post-info-date">{{article.date}}</span>
+                                    <a *ngIf="this.loginService.isLogged()" (click)="addFavorite(this.loginService.currentUser().id_USER, article.id_ARTICLE)"><i class="fa fa-heart-o post-info-like"></i></a>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End Article -->
+                <!-- <div class="clearfix"></div>
+                <nav class="text-center">
+                    <ul class="pagination">
+                        <li>
+                            <a aria-label="Previous" href="#">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a aria-label="Next" href="#">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav> -->
+            </div>
+        </div>
+    </div>
+</section>

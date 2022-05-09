@@ -7,12 +7,14 @@ import es.codeurjc.wallypop.service.ArticleService;
 import es.codeurjc.wallypop.service.FavoritesService;
 import es.codeurjc.wallypop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import java.security.Principal;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,10 +31,35 @@ public class FavoritesRestController {
     @Autowired
     private ArticleService articleService;
 
-    public static ResponseEntity<Favorites> getFavoritesResponseEntity(@PathVariable long idArticle, Optional<User> us, ArticleService articleService, FavoritesService favoritesService) {
+    @GetMapping("/{idUser}")
+    public ResponseEntity<List<Favorites>> getFavorites(@PathVariable long idUser) {
+
+        Optional<User> us = userService.findById(idUser);
+        if (us.isPresent()) {
+            return new ResponseEntity<>(us.get().getFAVORITES(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/{idFavorite}/user")
+    public ResponseEntity<User> getUserFavorite(@PathVariable long idFavorite) {
+        User us = favoritesService.findById(idFavorite).get().getUSER();
+        return new ResponseEntity<>(us, HttpStatus.OK);
+    }
+
+    @GetMapping("/{idFavorite}/article")
+    public ResponseEntity<Article> getArtcileFavorite(@PathVariable long idFavorite) {
+        Article article = favoritesService.findById(idFavorite).get().getARTICLE();
+        return new ResponseEntity<>(article, HttpStatus.OK);
+    }
+
+    @PostMapping("/{idUser}/{idArticle}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<Favorites> createFavorites(@PathVariable long idUser, @PathVariable long idArticle) {
+        Optional<User> us = userService.findById(idUser);
         Optional<Article> art = articleService.findById(idArticle);
         Favorites favorites = favoritesService.findByUSERAndARTICLE(us.get(), art.get());
-        if (art.isPresent()) {
+        if (us.isPresent() && art.isPresent()) {
             Favorites fav = new Favorites(us.get(), art.get());
             if (favorites != null) {
                 favoritesService.delete(favorites);
@@ -44,43 +71,46 @@ public class FavoritesRestController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("")
-    public ResponseEntity<List<Favorites>> myFavorites(HttpServletRequest request) {
-        Principal principal = request.getUserPrincipal();
-        if (principal != null) {
-            return new ResponseEntity<>(userService.findByNAME(principal.getName()).get().getFAVORITES(), HttpStatus.OK);
+    @GetMapping("/{idUser}/{idArticle}")
+    public ResponseEntity<Favorites> getFavorites(@PathVariable long idUser, @PathVariable long idArticle) {
+
+        Optional<User> us = userService.findById(idUser);
+        Optional<Article> art = articleService.findById(idArticle);
+        if (us.isPresent() && art.isPresent()) {
+            Favorites op = favoritesService.findByUSERAndARTICLE(us.get(), art.get());
+            if (op != null) {
+                return new ResponseEntity<>(op, HttpStatus.OK);
+            }
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping("/{idUser}/{idArticle}")
+    public ResponseEntity<Favorites> deleteFavorites(@PathVariable long idUser, @PathVariable long idArticle) {
+
+        Optional<User> us = userService.findById(idUser);
+        Optional<Article> art = articleService.findById(idArticle);
+        if (us.isPresent() && art.isPresent()) {
+            Favorites op = favoritesService.findByUSERAndARTICLE(us.get(), art.get());
+            favoritesService.delete(op);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+    }
+
+    @GetMapping("/{id}/image")
+    public ResponseEntity<Object> downloadImage(@PathVariable long id) throws SQLException {
+        Favorites favorite = favoritesService.findById(id).orElseThrow();
+        if (favorite.getARTICLE().getPHOTO() != null) {
+
+            Resource file = new InputStreamResource(favorite.getARTICLE().getPHOTO().getBinaryStream());
+
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                    .contentLength(favorite.getARTICLE().getPHOTO().length()).body(file);
+
         } else {
             return ResponseEntity.notFound().build();
-        }
-    }
-
-    @PostMapping("/{idArticle}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Favorites> createFavorites(HttpServletRequest request, @PathVariable long idArticle) {
-        Principal principal = request.getUserPrincipal();
-        if (principal != null) {
-            Optional<User> us = userService.findByNAME(principal.getName());
-            return getFavoritesResponseEntity(idArticle, us, articleService, favoritesService);
-        } else {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        }
-
-    }
-
-    @DeleteMapping("/{idArticle}")
-    public ResponseEntity<Favorites> deleteFavorites(HttpServletRequest request, @PathVariable long idArticle) {
-        Principal principal = request.getUserPrincipal();
-        if (principal != null) {
-            User us = userService.findByNAME(principal.getName()).get();
-            Optional<Article> art = articleService.findById(idArticle);
-            if (art.isPresent()) {
-                Favorites op = favoritesService.findByUSERAndARTICLE(us, art.get());
-                favoritesService.delete(op);
-                return new ResponseEntity<>(HttpStatus.OK);
-            }
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
     }
 }

@@ -3,9 +3,11 @@ package es.codeurjc.wallypop.controller.api;
 import es.codeurjc.wallypop.dto.ArticleRequest;
 import es.codeurjc.wallypop.model.Article;
 import es.codeurjc.wallypop.model.Category;
+import es.codeurjc.wallypop.model.Favorites;
 import es.codeurjc.wallypop.model.User;
 import es.codeurjc.wallypop.service.ArticleService;
 import es.codeurjc.wallypop.service.CategoryService;
+import es.codeurjc.wallypop.service.MapService;
 import es.codeurjc.wallypop.service.UserService;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -233,4 +235,54 @@ public class ArticleRestController {
         }
         return ResponseEntity.ok(lArticles);
     }
+
+    @PostMapping("/{idArticle}/reserve")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<Article> reserveArticle(@PathVariable long idArticle) {
+        Optional<Article> article = articleService.findById(idArticle);
+        if (article.isPresent()) {
+            Article art = article.get();
+            if (art.isRESERVED()) {
+                art.setRESERVED(false);
+            } else {
+                art.setRESERVED(true);
+            }
+            articleService.save(art);
+            return new ResponseEntity<>(art, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping("/{idArticle}/sell")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<Article> sellArticle(@PathVariable long idArticle) {
+        Optional<Article> article = articleService.findById(idArticle);
+        if (article.isPresent()) {
+            Article art = article.get();
+            if (art.isRESERVED()) {
+                art.setRESERVED(false);
+            }
+            if (art.isSOLD()) {
+                art.setSOLD(false);
+            } else {
+                art.setSOLD(true);
+            }
+            articleService.save(art);
+            return new ResponseEntity<>(art, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/{id}/map")
+    public ResponseEntity<String[]> getCoordenates(@PathVariable long id) throws Exception {
+
+        Optional<Article> op = articleService.findById(id);
+        if (op.isPresent()) {
+            Article article = op.get();
+            return new ResponseEntity<>(MapService.getLatitudeLongitude(article.getCITY() + " " + article.getPOSTAL_CODE()), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

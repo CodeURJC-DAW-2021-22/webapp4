@@ -1,0 +1,83 @@
+<div *ngIf="loginService.currentUser().full_NAME !== ''">
+    <section class="full-width section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <!--<buttom class="btn btn-default btn-block visible-xs btn-dropdown-conatiner"
+                            data-drop-cont=".user-menu-xs">
+                        <i aria-hidden="true" class="fa fa-user fa-fw"></i> MOSTRAR MENÚ <i aria-hidden="true"
+                                                                                            class="fa fa-sort pull-right"></i>
+                    </buttom> -->
+                    <div class="full-width user-menu-xs" style="text-align: center">
+                        <div class="full-width post-user-info" style="margin: 0 !important;">
+                            <!-- {{#admin}} -->
+                            <p class="full-width"><small *ngIf="loginService.isLogged() && loginService.isAdmin()">ADMIN</small></p>
+                            <!-- {{/admin}} -->
+                            <p class="full-width"><small>{{loginService.currentUser().full_NAME}}</small></p>
+                            <img alt="User" class="" height="auto" src="/assets/img/user.png"
+                                 style="border:1px;top:0px;" width="90px">
+                            <p class="full-width"><small>{{loginService.currentUser().name}}</small></p>
+                            <div class="full-width div-table">
+                                <div class="full-width div-table-row">
+                                    <div class="div-table-cell div-table-cell-xs"
+                                         style="height: auto !important; line-height: inherit; border:none;">
+                                        {{loginService.currentUser().n_SELL}} <br>
+                                        <small>En venta</small>
+                                    </div>
+                                    <div class="div-table-cell div-table-cell-xs"
+                                         style="height: auto !important; line-height: inherit; border:none;">
+                                        {{loginService.currentUser().n_SOLD}} <br>
+                                        <small>Vendidos</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="full-width list-group" style="border-radius: 0;">
+                            <!-- {{>nav_side}} -->
+                            <a class="list-group-item" href="/new/profile">
+                                <i aria-hidden="true" class="fa fa-user fa-fw"></i> TU PERFIL
+                            </a>
+                            <a class="list-group-item active" href="/new/yourcommercial">
+                                <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS
+                            </a>
+                            <a class="list-group-item" href="/new/yourcommercialsold">
+                                <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS VENDIDOS
+                            </a>
+                            <a class="list-group-item" href="/new/favorites">
+                                <i aria-hidden="true" class="fa fa-heart-o fa-fw"></i> FAVORITOS
+                            </a>
+                            <span *ngIf="loginService.isAdmin()">
+                                <a class="list-group-item" href="/new/category">
+                                    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN CATEGORÍAS
+                                </a>
+                                <a class="list-group-item" href="/new/reports">
+                                    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN REPORTES
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-xs-12 col-sm-8 col-md-9">
+                <div class="full-width bar-info-user">
+                    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i>
+                    <div>TUS ANUNCIOS</div>
+                </div>
+                <!-- Article -->
+                    <div *ngFor="let article of articles">
+                        <div class="full-width post">
+                            <figure class="full-width post-img">
+                                <img alt="" class="img-responsive" src="/api/articles/{{article.id_ARTICLE}}/image">
+                            </figure>
+                            <div class="full-width post-info">
+                                <a class="full-width post-info-title" href="/new/post/{{article.id_ARTICLE}}">{{article.title}}</a>
+                                <p class="full-width post-info-price">{{article.price}}€</p>
+                                <span class="post-info-zone">{{article.city}}</span>
+                                <span class="post-info-date">{{article.date}}</span>
+                                <a *ngIf="this.loginService.isLogged()" (click)="addFavorite(this.loginService.currentUser().id_USER, article.id_ARTICLE)"><i class="fa fa-heart-o post-info-like"></i></a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>

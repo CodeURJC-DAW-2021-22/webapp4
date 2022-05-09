@@ -34,23 +34,23 @@
                         </div>
                         <div class="full-width list-group" style="border-radius: 0;">
                             <!-- {{>nav_side}} -->
-                            <a class="list-group-item active" href="/profile">
+                            <a class="list-group-item active" href="/new/profile">
                                 <i aria-hidden="true" class="fa fa-user fa-fw"></i> TU PERFIL
                             </a>
-                            <a class="list-group-item" href="/yourcommercial">
+                            <a class="list-group-item" href="/new/yourcommercial">
                                 <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS
                             </a>
-                            <a class="list-group-item" href="/yourcommercialsold">
+                            <a class="list-group-item" href="/new/yourcommercialsold">
                                 <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS VENDIDOS
                             </a>
-                            <a class="list-group-item" href="/favorites">
+                            <a class="list-group-item" href="/new/favorites">
                                 <i aria-hidden="true" class="fa fa-heart-o fa-fw"></i> FAVORITOS
                             </a>
                             <span *ngIf="loginService.isAdmin()">
-                                <a class="list-group-item" href="/category">
+                                <a class="list-group-item" href="/new/category">
                                     <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN CATEGORÍAS
                                 </a>
-                                <a class="list-group-item" href="/reports">
+                                <a class="list-group-item" href="/new/reports">
                                     <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN REPORTES
                                 </a>
                             </span>
@@ -76,38 +76,10 @@
                                 <h4> - Teléfono: {{loginService.currentUser().tel}}<small> (Éste será el teléfono de contacto en tus anuncios)</small></h4>
                             </div>
                             <br>
-                            <div class="form-group">
-                                <a href="modifyDataUser">Modificar Datos</a>
-                            </div>
+                            <!-- <div class="form-group">
+                                <a href="/new/modifyDataUser">Modificar Datos</a>
+                            </div> -->
                         </form>
-
-                        <div class="form-group">
-                            <!-- {{#TOKEN}} -->
-                            <p>Token: <!-- {{TOKEN}} --></p>
-                            <!-- {{/TOKEN}} -->
-                            <a href="/token">Generar nuevo token</a>
-                        </div>
-                        <p><a href="javascript:show();">Mostrar token API</a></p>
-                        <div class="" form-group id="token_div" style="display:none;">
-                            <div id="close"><a href="javascript:close();">cerrar</a></div>
-                            <!-- {{#TOKEN}} -->
-                            <p>Token: <!-- {{TOKEN}} --></p>
-                            <!-- {{/TOKEN}} -->
-
-                        </div>
-                        <a href="/token">Generar nuevo token</a><small> Generar un nuevo token implica que el anterior será
-                        revocado</small>
-                        <script languague="javascript">
-                            function show() {
-                                div = document.getElementById('token_div');
-                                div.style.display = '';
-                            }
-
-                            function close() {
-                                div = document.getElementById('token_div');
-                                div.style.display = 'none';
-                            }
-                        </script>
                     </div>
                 </div>
             </div>

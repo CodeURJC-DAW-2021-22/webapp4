@@ -39,23 +39,23 @@
                     <div class="full-width list-group" style="border-radius: 0;">
 <!-- {{>nav_side}} -->
 
-<a class="list-group-item" href="profile">
+<a class="list-group-item" href="/new/profile">
     <i aria-hidden="true" class="fa fa-user fa-fw"></i> TU PERFIL
 </a>
-<a class="list-group-item" href="yourcommercial">
+<a class="list-group-item" href="/new/yourcommercial">
     <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS
 </a>
-<a class="list-group-item" href="yourcommercialsold">
+<a class="list-group-item" href="/new/yourcommercialsold">
     <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS VENDIDOS
 </a>
-<a class="list-group-item" href="favorites">
+<a class="list-group-item" href="/new/favorites">
     <i aria-hidden="true" class="fa fa-heart-o fa-fw"></i> FAVORITOS
 </a>
 <span *ngIf="loginService.isAdmin()">
-    <a class="list-group-item" href="/category">
+    <a class="list-group-item" href="/new/category">
         <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN CATEGORÍAS
     </a>
-    <a class="list-group-item" href="/reports">
+    <a class="list-group-item" href="/new/reports">
         <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN REPORTES
     </a>
 </span>
@@ -67,18 +67,7 @@
         <div>GESTIÓN CATEGORÍAS</div>
     </div>
     <!-- Content -->
-    <section class="full-width hidden-md hidden-lg Search-mobile">
-        <form action="commercial" style="padding-top: 15px;">
-            <div class="form-group">
-                <input class="form-control input-lg" placeholder="Estoy buscado..." required="" type="text">
-            </div>
-            <div class="form-group">
-                <input class="form-control input-lg" placeholder="Provincia, ciudad, distrito..." required=""
-                       type="text">
-            </div>
-            <button class="btn btn-danger btn-lg" type="submit">BUSCAR</button>
-        </form>
-    </section>
+    <search></search>
     <!-- ====== Page content ======-->
     <section class="section">
         <h2 class="text-center text-light">CATEGORÍAS</h2>
@@ -89,19 +78,12 @@
                         <h3 class="text-info">Busca una categoría</h3>
                         <div class="form-group">
                             <div class="col-sm-3 control-label">
-                                <label>Busca categoría</label>
+                                <label>Mire aquí el listado de categorias</label>
                             </div>
                             <div class="col-sm-7">
-                                
-                                <div class="form-group">
-                                    <select class="form-control" name="lcategories">
-                                        <option *ngFor="let category of categories" name="ID_CATEGORY" value="{{category.id_CATEGORY}}">{{category.title}}</option>
-                                    </select>
-                                    <input class="btn btn-default" type="submit" value="Buscar Categoria">
-                                </div>
                             
                                 <div class="form-group">
-                                    <a href="categoryList">VER LISTADO CATEGORÍAS</a>
+                                    <a href="/new/categoryList">VER LISTADO CATEGORÍAS</a>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +97,7 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="form-group">
-                                    <input #title class="form-control" name="TITLE" placeholder="Añade nueva categoría"
+                                    <input [(ngModel)]="category.title" class="form-control" name="TITLE" placeholder="Añade nueva categoría"
                                            type="text">
                                 </div>
                             </div>
@@ -128,7 +110,7 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="form-group">
-                                    <textarea #description class="form-control" name="DESCRIPTION" placeholder="Descripción"
+                                    <textarea [(ngModel)]="category.description" class="form-control" name="DESCRIPTION" placeholder="Descripción"
                                               rows="3"></textarea>
                                 </div>
                             </div>
@@ -139,7 +121,7 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="form-group">
-                                    <input #icon class="form-control" name="ICON" placeholder="Icono" type="text">
+                                    <input [(ngModel)]="category.icon" class="form-control" name="ICON" placeholder="Icono" type="text">
                                     <p>Busca aquí el icono que quieres utilizar: <a
                                             href="https://fontawesome.com/search?m=free&s=solid%2Cbrands">Fontawesome</a>
                                     </p>
@@ -152,7 +134,7 @@
                         <p>¡Añade una foto a la categoría!</p>
                         <div class="form-group">
                             <div class="custom-input-file">
-                                <input #file accept=".jpg, .jpeg" class="input-file" name="imageField" size="1" type="file"/>
+                                <input #file accept=".jpg, .jpeg" class="input-file" name="imageFile" size="1" type="file"/>
                                 <i aria-hidden="true" class="fa fa-picture-o"></i>
                             </div>
                             <br>
@@ -160,7 +142,7 @@
                         </div>
                     
                         <p class="text-center">
-                            <button (click)="addCategory($event, title.value, description.value, icon.value)" class="btn btn-danger btn-lg" type="submit">Guardar</button>
+                            <button (click)="save()" class="btn btn-danger btn-lg" type="submit">Guardar</button>
                         </p>
                     </form>
                 </div>

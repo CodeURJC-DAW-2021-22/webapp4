@@ -6,6 +6,7 @@ import {catchError} from 'rxjs/operators';
 import {Category} from '../models/category.model';
 import {Router} from '@angular/router';
 import {Article} from '../models/article.model';
+import { Data } from '../models/data.model';
 
 const BASE_URL = '/api/';
 
@@ -33,17 +34,25 @@ export class CategoryService {
         ) as Observable<Article[]>;
     }
 
-    addCategory(title: string, description: string, icon: string): void {
+    getGraphicContent(): Observable<Data[]> {
+        return this.httpClient.get(BASE_URL + 'graphic').pipe(
+            catchError(error => CategoryService.handleError(error))
+        ) as Observable<Data[]>;
+    }
 
-        this.httpClient.post(BASE_URL + 'admin/categories', {title, description, icon}, {withCredentials: true})
-            .subscribe(
-                (response) => this.router.navigate(['profile']),
-                (error) => alert('Error al añadir categoria')
-            );
-        /*return this.httpClient.post(BASE_URL + 'admin/categories', {title, description, icon}, {withCredentials: true})
-            .pipe(
-                catchError(error => CategoryService.handleError(error))
-            );*/
+    addCategory(category: Category) {
+
+        
+        if (!category.id_CATEGORY) {
+			return this.httpClient.post(BASE_URL + "admin/categories", category)
+				.pipe(
+					catchError(error => CategoryService.handleError(error))
+				);
+		} else {
+			return this.httpClient.put(BASE_URL + "admin/categories/" + category.id_CATEGORY, category).pipe(
+				catchError(error => CategoryService.handleError(error))
+			);
+		}
     }
 
     setCategoryImage(category: Category, formData: FormData): Observable<any> {

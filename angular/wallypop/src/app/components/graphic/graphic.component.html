@@ -1,0 +1,15 @@
+<!-- <h1 style="text-align:center">Pie Chart using HighChart</h1>
+<div id="container"></div> -->
+
+
+<div style=" display:flex; justify-content: center; align-items: center; flex-direction: column;">
+    <div id="chart" class="collapse">
+        <highcharts-chart
+                [Highcharts]="Highcharts"
+                [options]="chartOptions"
+                [(update)]="updateFlag"
+        >
+        </highcharts-chart>
+    </div>
+    <button data-toggle="collapse" data-target="#chart" class="btn btn-info" (click)="handleUpdate()">Mostrar gráfico</button>
+</div>

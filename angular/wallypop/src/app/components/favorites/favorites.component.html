@@ -1,0 +1,112 @@
+
+<!-- ====== Page content ======-->
+<!-- {{>nav_side}} -->
+<section class="full-width section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <!--<buttom class="btn btn-default btn-block visible-xs btn-dropdown-conatiner"
+                        data-drop-cont=".user-menu-xs">
+                    <i aria-hidden="true" class="fa fa-user fa-fw"></i> MOSTRAR MENÚ <i aria-hidden="true"
+                                                                                        class="fa fa-sort pull-right"></i>
+                </buttom> -->
+                <div class="full-width user-menu-xs" style="text-align: center">
+                        <div class="full-width post-user-info" style="margin: 0 !important;">
+                            <!-- {{#admin}} -->
+                            <p class="full-width"><small *ngIf="loginService.isLogged() && loginService.isAdmin()">ADMIN</small></p>
+                            <!-- {{/admin}} -->
+                            <p class="full-width"><small>{{loginService.currentUser().full_NAME}}</small></p>
+                            <img alt="User" class="" height="auto" src="/assets/img/user.png"
+                                 style="border:1px;top:0px;" width="90px">
+                            <p class="full-width"><small>{{loginService.currentUser().name}}</small></p>
+                            <div class="full-width div-table">
+                                <div class="full-width div-table-row">
+                                    <div class="div-table-cell div-table-cell-xs"
+                                         style="height: auto !important; line-height: inherit; border:none;">
+                                        {{loginService.currentUser().n_SELL}} <br>
+                                        <small>En venta</small>
+                                    </div>
+                                    <div class="div-table-cell div-table-cell-xs"
+                                         style="height: auto !important; line-height: inherit; border:none;">
+                                        {{loginService.currentUser().n_SOLD}} <br>
+                                        <small>Vendidos</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="full-width list-group" style="border-radius: 0;">
+<!-- {{>nav_side}} -->
+<a class="list-group-item" href="/new/profile">
+    <i aria-hidden="true" class="fa fa-user fa-fw"></i> TU PERFIL
+</a>
+<a class="list-group-item" href="/new/yourcommercial">
+    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS
+</a>
+<a class="list-group-item" href="/new/yourcommercialsold">
+    <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> TUS ANUNCIOS VENDIDOS
+</a>
+<a class="list-group-item active" href="/new/favorites">
+    <i aria-hidden="true" class="fa fa-heart-o fa-fw"></i> FAVORITOS
+</a>
+<span *ngIf="loginService.isAdmin()">
+    <a class="list-group-item" href="/new/category">
+        <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN CATEGORÍAS
+    </a>
+    <a class="list-group-item" href="/new/reports">
+        <i aria-hidden="true" class="fa fa-object-group fa-fw"></i> GESTIÓN REPORTES
+    </a>
+</span>
+</div>
+</div>
+</div>
+<div class="col-xs-12 col-sm-8 col-md-9">
+    <div class="full-width bar-info-user">
+        <i aria-hidden="true" class="fa fa-heart-o fa-fw"></i>
+        <div>FAVORITOS</div>
+    </div>
+    <!-- Content-->
+    <div class="full-widht">
+        <i class="fa fa-th-large btn btn-default hidden-xs btn-change-post"></i>
+        <i class="fa fa-refresh btn btn-default"></i>
+        <i class="fa fa-angle-right btn btn-default"></i>
+    </div>
+    <div class="full-width container-post">
+            <div *ngFor="let favorite of favorites; index as i">
+                <div class="full-width post">
+                        <figure class="full-width post-img">
+                            <img alt="" class="img-responsive" src="/api/favorites/{{favorite.id_FAVORITE}}/image">
+                        </figure>
+                        <div class="full-width post-info">
+                            <a class="full-width post-info-title" href="/new/post/{{articles[i].id_ARTICLE}}">{{articles[i].title}}</a>
+                            <p class="full-width post-info-price">{{articles[i].price}}€</p>
+                            <span class="post-info-zone">{{articles[i].city}}</span>
+                            <span class="post-info-date">{{articles[i].date}}</span>
+                            <a (click)="addFavorite(user.id_USER, articles[i].id_ARTICLE)"><i class="fa fa-heart-o post-info-like"></i></a>
+                        </div>
+                </div>
+            </div>
+    </div>
+    <div class="clearfix"></div>
+    <nav class="text-center">
+        <ul class="pagination">
+            <li>
+                <a aria-label="Previous" href="#">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a aria-label="Next" href="#">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</div>
+</div>
+</section>
